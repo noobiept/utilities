@@ -189,19 +189,26 @@ Utilities.MOUSE_CODE = {
 };
 
 
-/*
+/**
     Returns the angle between 2 points in radians.
+    Positive in clockwise direction.
 
     Returns null if:
         - any of the arguments isn't a number
+
+    @param {Number} aX
+    @param {Number} aY
+    @param {Number} bX
+    @param {Number} bY
+    @return {Number}
  */
 
 Utilities.calculateAngle = function( aX, aY, bX, bY )
 {
-if ( _.isNaN( aX ) ||
-     _.isNaN( aY ) ||
-     _.isNaN( bX ) ||
-     _.isNaN( bY ) )
+if ( !_.isFinite( aX ) ||
+     !_.isFinite( aY ) ||
+     !_.isFinite( bX ) ||
+     !_.isFinite( bY ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -215,19 +222,25 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
 };
 
 
-/*
+/**
     Distance between 2 points.
 
     Returns null if:
         - any of the arguments isn't a number
+
+    @param {Number} aX
+    @param {Number} aY
+    @param {Number} bX
+    @param {Number} bY
+    @return {Number}
  */
 
 Utilities.calculateDistance = function( aX, aY, bX, bY )
 {
-if ( _.isNaN( aX ) ||
-     _.isNaN( aY ) ||
-     _.isNaN( bX ) ||
-     _.isNaN( bY ) )
+if ( !_.isFinite( aX ) ||
+     !_.isFinite( aY ) ||
+     !_.isFinite( bX ) ||
+     !_.isFinite( bY ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -239,18 +252,21 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
 };
 
 
-/*
+/**
     Converts a number in degrees to radians and returns it.
 
     Returns null if:
         - the argument isn't a number
+
+    @param {Number} degrees
+    @return {Number}
  */
 
 Utilities.toRadians = function( degrees )
 {
-if ( _.isNaN( degrees ) )
+if ( !_.isFinite( degrees ) )
     {
-    throw new Error( 'Invalid arguments.' );
+    throw new Error( 'Invalid argument.' );
     }
 
 return degrees * Math.PI / 180;
@@ -268,7 +284,7 @@ Utilities.toDegrees = function( radians )
 {
 if ( _.isNaN( radians ) )
     {
-    throw new Error( 'Invalid arguments.' );
+    throw new Error( 'Invalid argument.' );
     }
 
 return radians * 180 / Math.PI;
