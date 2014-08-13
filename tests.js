@@ -1,6 +1,6 @@
     // getRandomInt //
 QUnit.module( 'getRandomInt' );
-QUnit.test( "test for valid arguments", function( assert )
+QUnit.test( "validate arguments", function( assert )
 {
 var expect = Error;
 
@@ -59,7 +59,7 @@ assert.ok( expect, 'Zero in one of the range limits.' );
 
     // getSeveralRandomInts //
 QUnit.module( 'getSeveralRandomInts' );
-QUnit.test( 'test for valid arguments', function( assert )
+QUnit.test( 'validate arguments', function( assert )
 {
 var expect = Error;
 
@@ -174,4 +174,55 @@ result = Utilities.getSeveralRandomInts( 0, 0, 1 );
 ok = result[ 0 ] === 0;
 
 assert.ok( ok, 'A zero in the range limits.' );
+});
+
+
+    // getRandomFloat //
+QUnit.module( 'getRandomFloat' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.getRandomFloat();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.getRandomFloat( 1 );
+    }, expect, 'Only one argument.' );
+
+assert.throws( function()
+    {
+    Utilities.getRandomFloat( 'asd', 'dsa' );
+    }, expect, 'Passed string arguments.' );
+
+assert.throws( function()
+    {
+    Utilities.getRandomFloat( 4.22, 2 );
+    }, expect, 'max less than min.' );
+});
+
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+var ok;
+
+result = Utilities.getRandomFloat( 2, 2 );
+expect = 2;
+
+assert.deepEqual( result, expect, 'Inclusive limits.' );
+
+result = Utilities.getRandomFloat( -4.44, 4.44 );
+ok = result >= -4.44 && result <= 4.44;
+
+assert.ok( ok, 'A random value between the limits.' );
+
+result = Utilities.getRandomFloat( 0, 4.123 );
+ok = result >= 0 && result <= 4.123;
+
+assert.ok( ok, 'Zero in one of the range limits.' );
 });

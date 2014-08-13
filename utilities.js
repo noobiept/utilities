@@ -76,18 +76,22 @@ return numbers;
 
 
 
-/*
+/**
     Returns a random float number between 'min' and 'max' (inclusive).
 
     Returns null if:
         - either min or max is not a number
         - the minimum value is bigger than the maximum.
+
+    @param {Number} min
+    @param {Number} max
+    @return {Number}
  */
 
 Utilities.getRandomFloat = function( min, max )
 {
-if ( _.isNaN( min ) ||
-     _.isNaN( max ) ||
+if ( !_.isFinite( min ) ||
+     !_.isFinite( max ) ||
     (min > max) )
     {
     throw new Error( 'Invalid arguments.' );
