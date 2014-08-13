@@ -2,38 +2,37 @@
 QUnit.module( 'getRandomInt' );
 QUnit.test( "test for valid arguments", function( assert )
 {
-var result;
-var expect;
+var expect = Error;
 
-result = Utilities.getRandomInt();
-expect = null;
+assert.throws( function()
+    {
+    Utilities.getRandomInt();
+    }, expect, 'No arguments given.' );
 
-assert.deepEqual( result, expect, 'No arguments given.' );
+assert.throws( function()
+    {
+    Utilities.getRandomInt( 1 );
+    }, expect, 'Only one argument.' );
 
-result = Utilities.getRandomInt( 1 );
-expect = null;
+assert.throws( function()
+    {
+    Utilities.getRandomInt( 'hi', 'there' );
+    }, expect, 'Passed string arguments.' );
 
-assert.deepEqual( result, expect, 'Only one argument.' );
+assert.throws( function()
+    {
+    Utilities.getRandomInt( 3, 2 );
+    }, expect, 'max less than min.' );
 
-result = Utilities.getRandomInt( 'hi', 'there' );
-expect = null;
+assert.throws( function()
+    {
+    Utilities.getRandomInt( 2.7, 3 );
+    }, expect, 'Passed a float value to 1st argument.' );
 
-assert.deepEqual( result, expect, 'Passed string arguments.' );
-
-result = Utilities.getRandomInt( 3, 2 );
-expect = null;
-
-assert.deepEqual( result, expect, 'max less than min.' );
-
-result = Utilities.getRandomInt( 2.7, 3 );
-expect = null;
-
-assert.deepEqual( result, expect, 'Passed a float value to 1st argument.' );
-
-result = Utilities.getRandomInt( 1, 2.1 );
-expect = null;
-
-assert.deepEqual( result, expect, 'Passed a float to the 2nd argument.' );
+assert.throws( function()
+    {
+    Utilities.getRandomInt( 1, 2.1 );
+    }, expect, 'Passed a float to the 2nd argument.' );
 });
 
 QUnit.test( 'test with valid arguments', function( assert )

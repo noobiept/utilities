@@ -24,7 +24,7 @@ if ( !min || !_.isFinite( min ) || (min % 1 !== 0) ||
      !max || !_.isFinite( max ) || (max % 1 !== 0) ||
     (min > max) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 return Math.floor( Math.random() * (max - min + 1) ) + min;
@@ -47,7 +47,7 @@ if ( _.isNaN( min ) ||
     (min > max) ||
     ((max - min) < howMany) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 var numbers = [];
@@ -81,7 +81,7 @@ if ( _.isNaN( min ) ||
      _.isNaN( max ) ||
     (min > max) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 return Math.random() * (max - min) + min;
@@ -190,7 +190,7 @@ if ( _.isNaN( aX ) ||
      _.isNaN( bX ) ||
      _.isNaN( bY ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
     // make a triangle from the position the objectA is in, relative to the objectB position
@@ -216,7 +216,7 @@ if ( _.isNaN( aX ) ||
      _.isNaN( bX ) ||
      _.isNaN( bY ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 var opposite = bY - aY;
@@ -237,7 +237,7 @@ Utilities.toRadians = function( degrees )
 {
 if ( _.isNaN( degrees ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 return degrees * Math.PI / 180;
@@ -255,7 +255,7 @@ Utilities.toDegrees = function( radians )
 {
 if ( _.isNaN( radians ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 return radians * 180 / Math.PI;
@@ -273,7 +273,7 @@ Utilities.numberOfDigits = function( theNumber )
 {
 if ( _.isNaN( theNumber ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 if ( theNumber < 0 )
@@ -310,7 +310,7 @@ Utilities.Timeout.prototype.start = function( functionToCall, interval )
 if ( !_.isFunction( functionToCall ) ||
      _.isNaN( interval ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 var _this = this;
@@ -423,7 +423,7 @@ Utilities.saveObject = function( key, value )
 {
 if ( !_.isString( key ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 localStorage.setItem( key, JSON.stringify( value ) );
@@ -442,7 +442,7 @@ Utilities.getObject = function( key )
 {
 if ( !_.isString( key ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 var value = localStorage.getItem( key );
@@ -484,7 +484,7 @@ if ( _.isNaN( num ) ||
      _.isNaN( dec ) ||
     (dec < 0) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
@@ -504,7 +504,7 @@ Utilities.timeToString = function( dateMilliseconds, totalUnits )
 {
 if ( _.isNaN( dateMilliseconds ) )
     {
-    return null;
+    throw new Error( 'Invalid arguments.' );
     }
 
 if ( typeof totalUnits === 'undefined' || _.isNaN( totalUnits ) )
