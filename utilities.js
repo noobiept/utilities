@@ -20,8 +20,8 @@ function Utilities()
 
 Utilities.getRandomInt = function( min, max )
 {
-if ( _.isNaN( min ) ||
-     _.isNaN( max ) ||
+if ( !min || !_.isFinite( min ) || (min % 1 !== 0) ||
+     !max || !_.isFinite( max ) || (max % 1 !== 0) ||
     (min > max) )
     {
     return null;
