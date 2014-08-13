@@ -401,3 +401,164 @@ expect = 3 / 2 * Math.PI;
 
 assert.deepEqual( result, expect );
 });
+
+
+    // toDegrees //
+QUnit.module( 'toDegrees' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.toDegrees();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.toDegrees( 'hi' );
+    }, expect, 'Passed string argument.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.toDegrees( 0 );
+expect = 0;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.toDegrees( Math.PI / 2 );
+expect = 90;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.toDegrees( 3 / 2 * Math.PI );
+expect = 270;
+
+assert.deepEqual( result, expect );
+});
+
+
+    // numberOfDigits //
+
+QUnit.module( 'numberOfDigits' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.numberOfDigits();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.numberOfDigits( 'asd' );
+    }, expect, 'Passed string argument.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.numberOfDigits( 4 );
+expect = 1;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.numberOfDigits( 12 );
+expect = 2;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.numberOfDigits( -12 );
+expect = 2;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.numberOfDigits( 12.11 );
+expect = 4;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.numberOfDigits( -12.34 );
+expect = 4;
+
+assert.deepEqual( result, expect );
+});
+
+
+    // Timeout //
+QUnit.module( 'Timeout' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+var timeout = new Utilities.Timeout();
+var func = function() {};
+
+assert.throws( function()
+    {
+    timeout.start();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    timeout.start( func );
+    }, expect, 'Only one argument' );
+
+assert.throws( function()
+    {
+    timeout.start( null, 1000 );
+    }, expect, 'Passing null to the function argument.' );
+
+assert.throws( function()
+    {
+    timeout.start( func, 'asd' );
+    }, expect, 'Wrong time of interval.' );
+
+    // just in case a test fails and starts the timeout
+timeout.clear();
+});
+
+QUnit.asyncTest( 'test with valid arguments', function( assert )
+{
+expect( 1 );    // number of assertions within this test
+
+var value = 0;
+var timeout = new Utilities.Timeout();
+
+timeout.start( function()
+    {
+    value = 1;
+
+    assert.deepEqual( value, 1 );
+    QUnit.start();
+    }, 10 );
+});
+
+    // boxBoxCollision //
+QUnit.module( 'boxBoxCollision' );
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.boxBoxCollision( 0, 0, 1, 1, 2, 2, 1, 1 );
+expect = false;
+
+assert.deepEqual( result, expect, "Doesn't collide." );
+
+result = Utilities.boxBoxCollision( 0, 0, 2, 1, 2, 0, 1, 4 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Boxes touching.' );
+
+result = Utilities.boxBoxCollision( 0, 0, 2, 2, 0, 0, 1, 1 );
+expect = true;
+
+assert.deepEqual( result, expect, 'One box inside the other.' );
+});

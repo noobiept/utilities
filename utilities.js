@@ -13,7 +13,7 @@ function Utilities()
 /**
     Returns a random integer number between 'min' and 'max' (inclusive).
 
-    Returns null if:
+    Throws an Error exception if:
         - min or max isn't a number
         - the minimum value is bigger than the maximum.
 
@@ -37,7 +37,7 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
 /**
     Returns several different random integers, in the range between 'min' and 'max' (inclusive).
 
-    Returns null if:
+    Throws an Error exception if:
         - min, max or howMany isn't a number
         - the minimum value is bigger than the maximum
         - the range is less than the number of integers required
@@ -45,7 +45,7 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
     @param {Number} min
     @param {Number} max
     @param {Number} howMany
-    @return {Number}
+    @return {Number[]}
  */
 
 Utilities.getSeveralRandomInts = function( min, max, howMany )
@@ -79,7 +79,7 @@ return numbers;
 /**
     Returns a random float number between 'min' and 'max' (inclusive).
 
-    Returns null if:
+    Throws an Error exception if:
         - either min or max is not a number
         - the minimum value is bigger than the maximum.
 
@@ -193,7 +193,7 @@ Utilities.MOUSE_CODE = {
     Returns the angle between 2 points in radians.
     Positive in clockwise direction.
 
-    Returns null if:
+    Throws an Error exception if:
         - any of the arguments isn't a number
 
     @param {Number} aX
@@ -225,7 +225,7 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
 /**
     Distance between 2 points.
 
-    Returns null if:
+    Throws an Error exception if:
         - any of the arguments isn't a number
 
     @param {Number} aX
@@ -255,7 +255,7 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
 /**
     Converts a number in degrees to radians and returns it.
 
-    Returns null if:
+    Throws an Error exception if:
         - the argument isn't a number
 
     @param {Number} degrees
@@ -273,16 +273,19 @@ return degrees * Math.PI / 180;
 };
 
 
-/*
+/**
     Converts a number in radians to degrees and returns it.
 
-    Returns null if:
+    Throws an Error exception if:
         - the argument isn't a number
+
+    @param {Number} radians
+    @return {Number}
  */
 
 Utilities.toDegrees = function( radians )
 {
-if ( _.isNaN( radians ) )
+if ( !_.isFinite( radians ) )
     {
     throw new Error( 'Invalid argument.' );
     }
@@ -290,17 +293,20 @@ if ( _.isNaN( radians ) )
 return radians * 180 / Math.PI;
 };
 
-/*
+/**
     Returns the number of digits in a number.
     It doesn't consider the minus signal, nor the dot (in floats) as a digit.
 
-    Returns null if:
+    Throws an Error exception if:
         - the argument is not a number
+
+    @param {Number} theNumber
+    @return {Number}
  */
 
 Utilities.numberOfDigits = function( theNumber )
 {
-if ( _.isNaN( theNumber ) )
+if ( !_.isFinite( theNumber ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -326,18 +332,21 @@ this.is_active = false;
 this.id = -1;
 };
 
-/*
+/**
     Starts the timeout. If there was an active timeout already, it is canceled.
 
-    returns null if:
+    Throws an Error exception if:
         - functionToCall isn't a function
         - interval isn't a number
+
+    @param {Function} functionToCall
+    @param {Number} interval
  */
 
 Utilities.Timeout.prototype.start = function( functionToCall, interval )
 {
 if ( !_.isFunction( functionToCall ) ||
-     _.isNaN( interval ) )
+     !_.isFinite( interval ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -372,8 +381,18 @@ window.clearTimeout( this.id );
 
 
 
-/*
+/**
     Detects collision between 2 boxes.
+
+    @param {Number} oneX
+    @param {Number} oneY
+    @param {Number} oneWidth
+    @param {Number} oneHeight
+    @param {Number} twoX
+    @param {Number} twoY
+    @param {Number} twoWidth
+    @param {Number} twoHeight
+    @return {Boolean}
  */
 
 Utilities.boxBoxCollision = function( oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight )
@@ -444,7 +463,7 @@ return false;
 /*
     Saves in the localStorage a json string representation of the value.
 
-    Returns null if:
+    Throws an Error exception if:
         - key is not a string
  */
 
@@ -462,7 +481,7 @@ localStorage.setItem( key, JSON.stringify( value ) );
 /*
     Gets an object (parsed with json) from localStorage.
 
-    Returns null if:
+    Throws an Error exception if:
         - key is not a string
         - it doesn't find
  */
@@ -502,7 +521,7 @@ derivedClass.prototype = prototype;
 /*
     Rounds a number to a specified decimal case.
 
-    Returns null if:
+    Throws an Error exception if:
         - num or dec isn't a number
         - dec is less than 0
  */
@@ -525,7 +544,7 @@ return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
     The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a totalUnits of 2)).
     The units available are: day/hour/minute/second.
 
-    Returns null if:
+    Throws an Error exception if:
         - the dateMilliseconds argument isn't a number
  */
 
