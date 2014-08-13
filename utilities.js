@@ -10,18 +10,22 @@ function Utilities()
 
 }
 
-/*
+/**
     Returns a random integer number between 'min' and 'max' (inclusive).
 
     Returns null if:
         - min or max isn't a number
         - the minimum value is bigger than the maximum.
+
+    @param {Number} min
+    @param {Number} max
+    @return {Number}
  */
 
 Utilities.getRandomInt = function( min, max )
 {
-if ( !min || !_.isFinite( min ) || (min % 1 !== 0) ||
-     !max || !_.isFinite( max ) || (max % 1 !== 0) ||
+if ( !_.isFinite( min ) || (min % 1 !== 0) ||
+     !_.isFinite( max ) || (max % 1 !== 0) ||
     (min > max) )
     {
     throw new Error( 'Invalid arguments.' );
@@ -30,22 +34,27 @@ if ( !min || !_.isFinite( min ) || (min % 1 !== 0) ||
 return Math.floor( Math.random() * (max - min + 1) ) + min;
 };
 
-/*
+/**
     Returns several different random integers, in the range between 'min' and 'max' (inclusive).
 
     Returns null if:
         - min, max or howMany isn't a number
         - the minimum value is bigger than the maximum
         - the range is less than the number of integers required
+
+    @param {Number} min
+    @param {Number} max
+    @param {Number} howMany
+    @return {Number}
  */
 
 Utilities.getSeveralRandomInts = function( min, max, howMany )
 {
-if ( _.isNaN( min ) ||
-     _.isNaN( max ) ||
-     _.isNaN( howMany ) ||
+if ( !_.isFinite( min ) || (min % 1) !== 0 ||
+     !_.isFinite( max ) || (max % 1) !== 0 ||
+     !_.isFinite( howMany ) || (howMany % 1) !== 0 ||
     (min > max) ||
-    ((max - min) < howMany) )
+    ((max - min) < howMany - 1) )
     {
     throw new Error( 'Invalid arguments.' );
     }
