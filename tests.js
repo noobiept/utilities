@@ -562,3 +562,264 @@ expect = true;
 
 assert.deepEqual( result, expect, 'One box inside the other.' );
 });
+
+
+    // pointBoxCollision //
+QUnit.module( 'pointBoxCollision' );
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.pointBoxCollision( 0, 0, 2, 4, 1, 0 );
+expect = false;
+
+assert.deepEqual( result, expect, 'No collision.' );
+
+result = Utilities.pointBoxCollision( 0, 0, 0, 2, 1, 0 );
+expect = true;
+
+assert.deepEqual( result, expect, "Point on the border of the box." );
+
+result = Utilities.pointBoxCollision( 0, 0, -2, 2, 2, -2 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Point inside the box.' );
+});
+
+
+    // circlePointCollision //
+QUnit.module( 'circlePointCollision' );
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.circlePointCollision( 0, 0, 4, 5, 5 );
+expect = false;
+
+assert.deepEqual( result, expect, 'No collision.' );
+
+result = Utilities.circlePointCollision( 0, 0, 4, 4, 0 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Point on the border of the circle.' );
+
+result = Utilities.circlePointCollision( 0, 0, 4, 0, 0 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Point inside the circle.' );
+});
+
+
+    // circleCircleCollision //
+QUnit.module( 'circleCircleCollision' );
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.circleCircleCollision( 0, 0, 2, 5, 5, 2 );
+expect = false;
+
+assert.deepEqual( result, expect, 'No collision.' );
+
+result = Utilities.circleCircleCollision( 0, 0, 2, 4, 0, 2 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Start of the collision.' );
+
+result = Utilities.circleCircleCollision( 0, 0, 4, 0, 0, 2 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Second circle inside the first.' );
+});
+
+
+    // saveObject / getObject //
+QUnit.module( 'saveGetObject' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.saveObject();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.saveObject( 4, 4 );
+    }, expect, 'Passed a number for the key argument.' );
+
+assert.throws( function()
+    {
+    Utilities.getObject();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.getObject( 4 );
+    }, expect, 'Passed a number for the key argument.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var key = 'test';
+var returnedValue;
+
+var testValues = [ 4, 'hi there', { one: 2, three: [ 4, 5 ] } ];
+
+for (var a = 0 ; a < testValues.length ; a++)
+    {
+    var value = testValues[ a ];
+
+    Utilities.saveObject( key, value );
+
+    returnedValue = Utilities.getObject( key );
+
+    assert.deepEqual( returnedValue, value );
+    }
+});
+
+
+    // inheritPrototype //
+QUnit.module( 'inheritPrototype' );
+QUnit.test( 'test with valid arguments', function( assert )
+{
+function BaseClass( b )
+    {
+    this.a = 'a';
+    this.b = b;
+    this.one = function() { return '1'; };
+    }
+
+BaseClass.prototype.two = function()
+    {
+    return '2';
+    };
+
+function DerivedClass()
+    {
+    BaseClass.call( this, 'b' );
+
+    this.c = 'c';
+    }
+
+Utilities.inheritPrototype( DerivedClass, BaseClass );
+
+DerivedClass.prototype.three = function()
+    {
+    return '3';
+    };
+
+
+var expect = 'abc123';
+
+var obj = new DerivedClass();
+var result = obj.a + obj.b + obj.c + obj.one() + obj.two() + obj.three();
+
+assert.deepEqual( result, expect );
+});
+
+
+    // round //
+QUnit.module( 'round' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.round();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.round( 1.1 );
+    }, expect, 'Only one argument.' );
+
+assert.throws( function()
+    {
+    Utilities.round( 'hi', 'there' );
+    }, expect, 'String arguments.' );
+
+assert.throws( function()
+    {
+    Utilities.round( 4.22, 2.2 );
+    }, expect, 'Float decimal case.' );
+
+assert.throws( function()
+    {
+    Utilities.round( 4.22, -2 );
+    }, expect, 'Negative decimal case.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var result;
+var expect;
+
+result = Utilities.round( 4.22, 1 );
+expect = 4.2;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.round( 4.25, 1 );
+expect = 4.3;
+
+assert.deepEqual( result, expect );
+
+result = Utilities.round( -4.5, 0 );
+expect = -4;
+
+assert.deepEqual( result, expect );
+});
+
+
+    // timeToString //
+QUnit.module( 'timeToString' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.timeToString();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.timeToString( '1 december' );
+    }, expect, 'Passed a string argument.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var values = [
+        { milliSeconds: 0, expectedString: '0 seconds' },
+        { milliSeconds: 1000, expectedString: '1 second' },
+        { milliSeconds: 30000, expectedString: '30 seconds' },
+        { milliSeconds: 60000, expectedString: '1 minute' },
+        { milliSeconds: 61000, expectedString: '1 minute 1 second' },
+        { milliSeconds: 150000, expectedString: '2 minutes 30 seconds' },
+        { milliSeconds: 3600000, expectedString: '1 hour' },
+        { milliSeconds: 3601000, expectedString: '1 hour 1 second' },
+        { milliSeconds: 3720000, expectedString: '1 hour 2 minutes' },
+        { milliSeconds: 9000000, expectedString: '2 hours 30 minutes' },
+        { milliSeconds: 86400000, expectedString: '1 day' },
+        { milliSeconds: 88201000, expectedString: '1 day 30 minutes' },
+        { milliSeconds: 864020000, expectedString: '10 days 20 seconds' }
+    ];
+
+for (var a = 0 ; a < values.length ; a++)
+    {
+    var value = values[ a ];
+
+    var result = Utilities.timeToString( value.milliSeconds );
+
+    assert.deepEqual( result, value.expectedString );
+    }
+
+assert.deepEqual( Utilities.timeToString( 88201000, 3 ), '1 day 30 minutes 1 second' );
+});

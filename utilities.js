@@ -405,13 +405,21 @@ return !(
     );
 };
 
-/*
+/**
     Detects collision between a point and a box.
+
+    @param {Number} pointX
+    @param {Number} pointY
+    @param {Number} boxLeft
+    @param {Number} boxRight
+    @param {Number} boxTop
+    @param {Number} boxBottom
+    @return {Boolean}
  */
 
 Utilities.pointBoxCollision = function( pointX, pointY, boxLeft, boxRight, boxTop, boxBottom )
 {
-if ( pointX < boxLeft || pointX > boxRight || pointY < boxTop || pointY > boxBottom )
+if ( pointX < boxLeft || pointX > boxRight || pointY > boxTop || pointY < boxBottom )
     {
     return false;
     }
@@ -420,8 +428,15 @@ return true;
 };
 
 
-/*
+/**
     Detects collision between a circle and a point.
+
+    @param {Number} circleX
+    @param {Number} circleY
+    @param {Number} circleRadius
+    @param {Number} pointX
+    @param {Number} pointY
+    @return {Boolean}
  */
 
 Utilities.circlePointCollision = function( circleX, circleY, circleRadius, pointX, pointY )
@@ -432,7 +447,7 @@ var distanceY = circleY - pointY;
     // pythagoras
 var squareDistance = distanceX * distanceX + distanceY * distanceY;
 
-if ( squareDistance < circleRadius * circleRadius )
+if ( squareDistance <= circleRadius * circleRadius )
     {
     return true;
     }
@@ -441,8 +456,16 @@ return false;
 };
 
 
-/*
+/**
     Detects collision between two circles.
+
+    @param {Number} x1
+    @param {Number} y1
+    @param {Number} radius1
+    @param {Number} x2
+    @param {Number} y2
+    @param {Number} radius2
+    @return {Boolean}
  */
 
 Utilities.circleCircleCollision = function( x1, y1, radius1, x2, y2, radius2 )
@@ -460,11 +483,14 @@ return false;
 
 
 
-/*
+/**
     Saves in the localStorage a json string representation of the value.
 
     Throws an Error exception if:
         - key is not a string
+
+    @param {String} key
+    @param value
  */
 
 Utilities.saveObject = function( key, value )
@@ -478,12 +504,14 @@ localStorage.setItem( key, JSON.stringify( value ) );
 };
 
 
-/*
+/**
     Gets an object (parsed with json) from localStorage.
 
     Throws an Error exception if:
         - key is not a string
         - it doesn't find
+
+    @param {String} key
  */
 
 Utilities.getObject = function( key )
@@ -518,18 +546,22 @@ derivedClass.prototype = prototype;
 
 
 
-/*
+/**
     Rounds a number to a specified decimal case.
 
     Throws an Error exception if:
         - num or dec isn't a number
         - dec is less than 0
+
+    @param {Number} num
+    @param {Number} dec
+    @return {Number}
  */
 
 Utilities.round = function( num, dec )
 {
-if ( _.isNaN( num ) ||
-     _.isNaN( dec ) ||
+if ( !_.isFinite( num ) ||
+     !_.isFinite( dec ) || (dec % 1 !== 0) ||
     (dec < 0) )
     {
     throw new Error( 'Invalid arguments.' );
@@ -539,23 +571,26 @@ return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
 };
 
 
-/*
+/**
     Converts a time (in milliseconds) to a string (with the number of days/hours...).
     The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a totalUnits of 2)).
     The units available are: day/hour/minute/second.
 
     Throws an Error exception if:
         - the dateMilliseconds argument isn't a number
+
+    @param {Number} dateMilliseconds
+    @param {Number=2} totalUnits
  */
 
 Utilities.timeToString = function( dateMilliseconds, totalUnits )
 {
-if ( _.isNaN( dateMilliseconds ) )
+if ( !_.isFinite( dateMilliseconds ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
 
-if ( typeof totalUnits === 'undefined' || _.isNaN( totalUnits ) )
+if ( typeof totalUnits === 'undefined' || !_.isFinite( totalUnits ) )
     {
     totalUnits = 2;
     }
@@ -575,7 +610,7 @@ var secondsLeft = 0;
 
 
     //count the days
-while (dateMilliseconds > day)
+while (dateMilliseconds >= day)
     {
     daysLeft++;
 
@@ -583,7 +618,7 @@ while (dateMilliseconds > day)
     }
 
     //count the hours
-while (dateMilliseconds > hour)
+while (dateMilliseconds >= hour)
     {
     hoursLeft++;
 
@@ -591,7 +626,7 @@ while (dateMilliseconds > hour)
     }
 
     //count the minutes
-while (dateMilliseconds > minute)
+while (dateMilliseconds >= minute)
     {
     minutesLeft++;
 
@@ -599,7 +634,7 @@ while (dateMilliseconds > minute)
     }
 
     //and the seconds
-secondsLeft = Utilities.round( dateMilliseconds / 1000, 2).toFixed( 1 );
+secondsLeft = Utilities.round( dateMilliseconds / second, 2);
 
 
     // :: construct the string :: //
@@ -614,7 +649,7 @@ var constructDate = function(dateTmp, numberOf)
         dateTmp += "s";
         }
 
-    return numberOf + " " + dateTmp + " ";
+    return numberOf + " " + dateTmp;
     };
 
 
@@ -633,12 +668,23 @@ for (i = 0 ; i < theDate.length ; i++)
         // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
     if ( theDate[ i ][ 1 ] !== 0 )
         {
+            // add spacing between the units apart from the first one
+        if ( date !== '' )
+            {
+            date += ' ';
+            }
+
         date += constructDate( theDate[ i ][ 0 ], theDate[ i ][ 1 ] );
 
         totalUnits--;
         }
     }
 
+
+if ( date === '' )
+    {
+    date = '0 seconds';
+    }
 
 return date;
 };
