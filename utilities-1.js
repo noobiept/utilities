@@ -1,4 +1,6 @@
 /*
+    version : 1
+
     dependencies:
         - underscorejs : 1.6
  */
