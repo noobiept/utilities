@@ -3,6 +3,17 @@
 
     dependencies:
         - underscorejs : 1.6
+
+    Functions/classes are placed first in a group, then alphabetically ordered within that group.
+
+    Groups:
+        - collision detection
+        - events
+        - local storage
+        - number utilities
+        - object utilities
+        - time utilities
+        - trigonometry
  */
 
 (function(window)
@@ -12,107 +23,113 @@ function Utilities()
 
 }
 
-/**
-    Returns a random integer number between 'min' and 'max' (inclusive).
 
-    Throws an Error exception if:
-        - min or max isn't a number
-        - the minimum value is bigger than the maximum.
-
-    @param {Number} min
-    @param {Number} max
-    @return {Number}
- */
-
-Utilities.getRandomInt = function( min, max )
-{
-if ( !_.isFinite( min ) || (min % 1 !== 0) ||
-     !_.isFinite( max ) || (max % 1 !== 0) ||
-    (min > max) )
-    {
-    throw new Error( 'Invalid arguments.' );
-    }
-
-return Math.floor( Math.random() * (max - min + 1) ) + min;
-};
-
-/**
-    Returns several different random integers, in the range between 'min' and 'max' (inclusive).
-
-    Throws an Error exception if:
-        - min, max or howMany isn't a number
-        - the minimum value is bigger than the maximum
-        - the range is less than the number of integers required
-
-    @param {Number} min
-    @param {Number} max
-    @param {Number} howMany
-    @return {Number[]}
- */
-
-Utilities.getSeveralRandomInts = function( min, max, howMany )
-{
-if ( !_.isFinite( min ) || (min % 1) !== 0 ||
-     !_.isFinite( max ) || (max % 1) !== 0 ||
-     !_.isFinite( howMany ) || (howMany % 1) !== 0 ||
-    (min > max) ||
-    ((max - min) < howMany - 1) )
-    {
-    throw new Error( 'Invalid arguments.' );
-    }
-
-var numbers = [];
-
-while( numbers.length < howMany )
-    {
-    var randomNumber = Utilities.getRandomInt( min, max );
-
-    if ( numbers.indexOf( randomNumber ) < 0 )
-        {
-        numbers.push( randomNumber );
-        }
-    }
-
-return numbers;
-};
-
+// ---------- Collision Detection ---------- //
 
 
 /**
-    Returns a random float number between 'min' and 'max' (inclusive).
+    Detects collision between 2 boxes.
 
-    Throws an Error exception if:
-        - either min or max is not a number
-        - the minimum value is bigger than the maximum.
-
-    @param {Number} min
-    @param {Number} max
-    @return {Number}
+    @param {Number} oneX
+    @param {Number} oneY
+    @param {Number} oneWidth
+    @param {Number} oneHeight
+    @param {Number} twoX
+    @param {Number} twoY
+    @param {Number} twoWidth
+    @param {Number} twoHeight
+    @return {Boolean}
  */
 
-Utilities.getRandomFloat = function( min, max )
+Utilities.boxBoxCollision = function( oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight )
 {
-if ( !_.isFinite( min ) ||
-     !_.isFinite( max ) ||
-    (min > max) )
+return !(
+        ( oneY + oneHeight < twoY ) ||
+        ( oneY > twoY + twoHeight ) ||
+        ( oneX > twoX + twoWidth ) ||
+        ( oneX + oneWidth < twoX )
+    );
+};
+
+
+/**
+    Detects collision between two circles.
+
+    @param {Number} x1
+    @param {Number} y1
+    @param {Number} radius1
+    @param {Number} x2
+    @param {Number} y2
+    @param {Number} radius2
+    @return {Boolean}
+ */
+
+Utilities.circleCircleCollision = function( x1, y1, radius1, x2, y2, radius2 )
+{
+var distX = x1 - x2;
+var distY = y1 - y2;
+
+if ( Math.pow( distX, 2 ) + Math.pow( distY, 2 ) <= Math.pow( radius1 + radius2, 2 ) )
     {
-    throw new Error( 'Invalid arguments.' );
+    return true;
     }
 
-return Math.random() * (max - min) + min;
+return false;
 };
 
 
+/**
+    Detects collision between a circle and a point.
 
-/*
-    Returns a deep clone/copy of the object.
+    @param {Number} circleX
+    @param {Number} circleY
+    @param {Number} circleRadius
+    @param {Number} pointX
+    @param {Number} pointY
+    @return {Boolean}
  */
 
-Utilities.deepClone = function( obj )
+Utilities.circlePointCollision = function( circleX, circleY, circleRadius, pointX, pointY )
 {
-return JSON.parse( JSON.stringify( obj ) );
+var distanceX = circleX - pointX;
+var distanceY = circleY - pointY;
+
+    // pythagoras
+var squareDistance = distanceX * distanceX + distanceY * distanceY;
+
+if ( squareDistance <= circleRadius * circleRadius )
+    {
+    return true;
+    }
+
+return false;
 };
 
+
+/**
+    Detects collision between a point and a box.
+
+    @param {Number} pointX
+    @param {Number} pointY
+    @param {Number} boxLeft
+    @param {Number} boxRight
+    @param {Number} boxTop
+    @param {Number} boxBottom
+    @return {Boolean}
+ */
+
+Utilities.pointBoxCollision = function( pointX, pointY, boxLeft, boxRight, boxTop, boxBottom )
+{
+if ( pointX < boxLeft || pointX > boxRight || pointY > boxTop || pointY < boxBottom )
+    {
+    return false;
+    }
+
+return true;
+};
+
+
+// ---------- Events ---------- //
 
 
 Utilities.KEY_CODE = {
@@ -191,109 +208,146 @@ Utilities.MOUSE_CODE = {
 };
 
 
+// ---------- Local Storage ---------- //
+
+
 /**
-    Returns the angle between 2 points in radians.
-    Positive in clockwise direction.
+    Gets an object (parsed with json) from localStorage.
 
     Throws an Error exception if:
-        - any of the arguments isn't a number
+        - key is not a string
+        - it doesn't find
 
-    @param {Number} aX
-    @param {Number} aY
-    @param {Number} bX
-    @param {Number} bY
-    @return {Number}
+    @param {String} key
  */
 
-Utilities.calculateAngle = function( aX, aY, bX, bY )
+Utilities.getObject = function( key )
 {
-if ( !_.isFinite( aX ) ||
-     !_.isFinite( aY ) ||
-     !_.isFinite( bX ) ||
-     !_.isFinite( bY ) )
+if ( !_.isString( key ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
 
-    // make a triangle from the position the objectA is in, relative to the objectB position
-var triangleOppositeSide = aY - bY;
-var triangleAdjacentSide = bX - aX;
+var value = localStorage.getItem( key );
 
-    // find the angle, given the two sides (of a right triangle)
-return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
+return value && JSON.parse( value );
 };
 
 
 /**
-    Distance between 2 points.
+    Saves in the localStorage a json string representation of the value.
 
     Throws an Error exception if:
-        - any of the arguments isn't a number
+        - key is not a string
 
-    @param {Number} aX
-    @param {Number} aY
-    @param {Number} bX
-    @param {Number} bY
-    @return {Number}
+    @param {String} key
+    @param value
  */
 
-Utilities.calculateDistance = function( aX, aY, bX, bY )
+Utilities.saveObject = function( key, value )
 {
-if ( !_.isFinite( aX ) ||
-     !_.isFinite( aY ) ||
-     !_.isFinite( bX ) ||
-     !_.isFinite( bY ) )
+if ( !_.isString( key ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
 
-var opposite = bY - aY;
-var adjacent = bX - aX;
+localStorage.setItem( key, JSON.stringify( value ) );
+};
 
-return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
+
+// ---------- Number Utilities ---------- //
+
+
+/**
+    Returns a random float number between 'min' and 'max' (inclusive).
+
+    Throws an Error exception if:
+        - either min or max is not a number
+        - the minimum value is bigger than the maximum.
+
+    @param {Number} min
+    @param {Number} max
+    @return {Number}
+ */
+
+Utilities.getRandomFloat = function( min, max )
+{
+if ( !_.isFinite( min ) ||
+     !_.isFinite( max ) ||
+    (min > max) )
+    {
+    throw new Error( 'Invalid arguments.' );
+    }
+
+return Math.random() * (max - min) + min;
 };
 
 
 /**
-    Converts a number in degrees to radians and returns it.
+    Returns a random integer number between 'min' and 'max' (inclusive).
 
     Throws an Error exception if:
-        - the argument isn't a number
+        - min or max isn't a number
+        - the minimum value is bigger than the maximum.
 
-    @param {Number} degrees
+    @param {Number} min
+    @param {Number} max
     @return {Number}
  */
 
-Utilities.toRadians = function( degrees )
+Utilities.getRandomInt = function( min, max )
 {
-if ( !_.isFinite( degrees ) )
+if ( !_.isFinite( min ) || (min % 1 !== 0) ||
+     !_.isFinite( max ) || (max % 1 !== 0) ||
+    (min > max) )
     {
-    throw new Error( 'Invalid argument.' );
+    throw new Error( 'Invalid arguments.' );
     }
 
-return degrees * Math.PI / 180;
+return Math.floor( Math.random() * (max - min + 1) ) + min;
 };
 
 
 /**
-    Converts a number in radians to degrees and returns it.
+    Returns several different random integers, in the range between 'min' and 'max' (inclusive).
 
     Throws an Error exception if:
-        - the argument isn't a number
+        - min, max or howMany isn't a number
+        - the minimum value is bigger than the maximum
+        - the range is less than the number of integers required
 
-    @param {Number} radians
-    @return {Number}
+    @param {Number} min
+    @param {Number} max
+    @param {Number} howMany
+    @return {Number[]}
  */
 
-Utilities.toDegrees = function( radians )
+Utilities.getSeveralRandomInts = function( min, max, howMany )
 {
-if ( !_.isFinite( radians ) )
+if ( !_.isFinite( min ) || (min % 1) !== 0 ||
+     !_.isFinite( max ) || (max % 1) !== 0 ||
+     !_.isFinite( howMany ) || (howMany % 1) !== 0 ||
+    (min > max) ||
+    ((max - min) < howMany - 1) )
     {
-    throw new Error( 'Invalid argument.' );
+    throw new Error( 'Invalid arguments.' );
     }
 
-return radians * 180 / Math.PI;
+var numbers = [];
+
+while( numbers.length < howMany )
+    {
+    var randomNumber = Utilities.getRandomInt( min, max );
+
+    if ( numbers.indexOf( randomNumber ) < 0 )
+        {
+        numbers.push( randomNumber );
+        }
+    }
+
+return numbers;
 };
+
 
 /**
     Returns the number of digits in a number.
@@ -324,230 +378,6 @@ return numberString.length;
 };
 
 
-/*
-    Uses the window.setTimeout()
- */
-
-Utilities.Timeout = function()
-{
-this.is_active = false;
-this.id = -1;
-};
-
-/**
-    Starts the timeout. If there was an active timeout already, it is canceled.
-
-    Throws an Error exception if:
-        - functionToCall isn't a function
-        - interval isn't a number
-
-    @param {Function} functionToCall
-    @param {Number} interval
- */
-
-Utilities.Timeout.prototype.start = function( functionToCall, interval )
-{
-if ( !_.isFunction( functionToCall ) ||
-     !_.isFinite( interval ) )
-    {
-    throw new Error( 'Invalid arguments.' );
-    }
-
-var _this = this;
-
-if ( this.is_active )
-    {
-    this.clear();
-    }
-
-this.is_active = true;
-
-this.id = window.setTimeout( function()
-    {
-    _this.is_active = false;
-
-    functionToCall();
-
-    }, interval );
-};
-
-/*
-    Clears the timeout.
- */
-
-Utilities.Timeout.prototype.clear = function()
-{
-this.is_active = false;
-window.clearTimeout( this.id );
-};
-
-
-
-/**
-    Detects collision between 2 boxes.
-
-    @param {Number} oneX
-    @param {Number} oneY
-    @param {Number} oneWidth
-    @param {Number} oneHeight
-    @param {Number} twoX
-    @param {Number} twoY
-    @param {Number} twoWidth
-    @param {Number} twoHeight
-    @return {Boolean}
- */
-
-Utilities.boxBoxCollision = function( oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight )
-{
-return !(
-        ( oneY + oneHeight < twoY ) ||
-        ( oneY > twoY + twoHeight ) ||
-        ( oneX > twoX + twoWidth ) ||
-        ( oneX + oneWidth < twoX )
-    );
-};
-
-/**
-    Detects collision between a point and a box.
-
-    @param {Number} pointX
-    @param {Number} pointY
-    @param {Number} boxLeft
-    @param {Number} boxRight
-    @param {Number} boxTop
-    @param {Number} boxBottom
-    @return {Boolean}
- */
-
-Utilities.pointBoxCollision = function( pointX, pointY, boxLeft, boxRight, boxTop, boxBottom )
-{
-if ( pointX < boxLeft || pointX > boxRight || pointY > boxTop || pointY < boxBottom )
-    {
-    return false;
-    }
-
-return true;
-};
-
-
-/**
-    Detects collision between a circle and a point.
-
-    @param {Number} circleX
-    @param {Number} circleY
-    @param {Number} circleRadius
-    @param {Number} pointX
-    @param {Number} pointY
-    @return {Boolean}
- */
-
-Utilities.circlePointCollision = function( circleX, circleY, circleRadius, pointX, pointY )
-{
-var distanceX = circleX - pointX;
-var distanceY = circleY - pointY;
-
-    // pythagoras
-var squareDistance = distanceX * distanceX + distanceY * distanceY;
-
-if ( squareDistance <= circleRadius * circleRadius )
-    {
-    return true;
-    }
-
-return false;
-};
-
-
-/**
-    Detects collision between two circles.
-
-    @param {Number} x1
-    @param {Number} y1
-    @param {Number} radius1
-    @param {Number} x2
-    @param {Number} y2
-    @param {Number} radius2
-    @return {Boolean}
- */
-
-Utilities.circleCircleCollision = function( x1, y1, radius1, x2, y2, radius2 )
-{
-var distX = x1 - x2;
-var distY = y1 - y2;
-
-if ( Math.pow( distX, 2 ) + Math.pow( distY, 2 ) <= Math.pow( radius1 + radius2, 2 ) )
-    {
-    return true;
-    }
-
-return false;
-};
-
-
-
-/**
-    Saves in the localStorage a json string representation of the value.
-
-    Throws an Error exception if:
-        - key is not a string
-
-    @param {String} key
-    @param value
- */
-
-Utilities.saveObject = function( key, value )
-{
-if ( !_.isString( key ) )
-    {
-    throw new Error( 'Invalid arguments.' );
-    }
-
-localStorage.setItem( key, JSON.stringify( value ) );
-};
-
-
-/**
-    Gets an object (parsed with json) from localStorage.
-
-    Throws an Error exception if:
-        - key is not a string
-        - it doesn't find
-
-    @param {String} key
- */
-
-Utilities.getObject = function( key )
-{
-if ( !_.isString( key ) )
-    {
-    throw new Error( 'Invalid arguments.' );
-    }
-
-var value = localStorage.getItem( key );
-
-return value && JSON.parse( value );
-};
-
-
-
-/*
-    Used for 'class' inheritance (search for parasitic combination inheritance)
- */
-
-Utilities.inheritPrototype = function( derivedClass, baseClass )
-{
-var f = function() {};
-
-f.prototype = baseClass.prototype;
-var prototype = new f();
-
-prototype.constructor = derivedClass;
-
-derivedClass.prototype = prototype;
-};
-
-
-
 /**
     Rounds a number to a specified decimal case.
 
@@ -571,6 +401,39 @@ if ( !_.isFinite( num ) ||
 
 return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
 };
+
+
+// ---------- Object Utilities ---------- //
+
+
+/*
+    Returns a deep clone/copy of the object.
+ */
+
+Utilities.deepClone = function( obj )
+{
+return JSON.parse( JSON.stringify( obj ) );
+};
+
+
+/*
+    Used for 'class' inheritance (search for parasitic combination inheritance)
+ */
+
+Utilities.inheritPrototype = function( derivedClass, baseClass )
+{
+var f = function() {};
+
+f.prototype = baseClass.prototype;
+var prototype = new f();
+
+prototype.constructor = derivedClass;
+
+derivedClass.prototype = prototype;
+};
+
+
+// ---------- Time Utilities ---------- //
 
 
 /**
@@ -689,6 +552,172 @@ if ( date === '' )
     }
 
 return date;
+};
+
+
+/*
+    Uses the window.setTimeout()
+ */
+
+Utilities.Timeout = function()
+{
+this.is_active = false;
+this.id = -1;
+};
+
+/**
+    Starts the timeout. If there was an active timeout already, it is canceled.
+
+    Throws an Error exception if:
+        - functionToCall isn't a function
+        - interval isn't a number
+
+    @param {Function} functionToCall
+    @param {Number} interval
+ */
+
+Utilities.Timeout.prototype.start = function( functionToCall, interval )
+{
+if ( !_.isFunction( functionToCall ) ||
+     !_.isFinite( interval ) )
+    {
+    throw new Error( 'Invalid arguments.' );
+    }
+
+var _this = this;
+
+if ( this.is_active )
+    {
+    this.clear();
+    }
+
+this.is_active = true;
+
+this.id = window.setTimeout( function()
+    {
+    _this.is_active = false;
+
+    functionToCall();
+
+    }, interval );
+};
+
+/*
+    Clears the timeout.
+ */
+
+Utilities.Timeout.prototype.clear = function()
+{
+this.is_active = false;
+window.clearTimeout( this.id );
+};
+
+
+// ---------- Trigonometry ---------- //
+
+
+/**
+    Returns the angle between 2 points in radians.
+    Positive in clockwise direction.
+
+    Throws an Error exception if:
+        - any of the arguments isn't a number
+
+    @param {Number} aX
+    @param {Number} aY
+    @param {Number} bX
+    @param {Number} bY
+    @return {Number}
+ */
+
+Utilities.calculateAngle = function( aX, aY, bX, bY )
+{
+if ( !_.isFinite( aX ) ||
+     !_.isFinite( aY ) ||
+     !_.isFinite( bX ) ||
+     !_.isFinite( bY ) )
+    {
+    throw new Error( 'Invalid arguments.' );
+    }
+
+    // make a triangle from the position the objectA is in, relative to the objectB position
+var triangleOppositeSide = aY - bY;
+var triangleAdjacentSide = bX - aX;
+
+    // find the angle, given the two sides (of a right triangle)
+return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
+};
+
+
+/**
+    Distance between 2 points.
+
+    Throws an Error exception if:
+        - any of the arguments isn't a number
+
+    @param {Number} aX
+    @param {Number} aY
+    @param {Number} bX
+    @param {Number} bY
+    @return {Number}
+ */
+
+Utilities.calculateDistance = function( aX, aY, bX, bY )
+{
+if ( !_.isFinite( aX ) ||
+     !_.isFinite( aY ) ||
+     !_.isFinite( bX ) ||
+     !_.isFinite( bY ) )
+    {
+    throw new Error( 'Invalid arguments.' );
+    }
+
+var opposite = bY - aY;
+var adjacent = bX - aX;
+
+return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
+};
+
+
+/**
+    Converts a number in radians to degrees and returns it.
+
+    Throws an Error exception if:
+        - the argument isn't a number
+
+    @param {Number} radians
+    @return {Number}
+ */
+
+Utilities.toDegrees = function( radians )
+{
+if ( !_.isFinite( radians ) )
+    {
+    throw new Error( 'Invalid argument.' );
+    }
+
+return radians * 180 / Math.PI;
+};
+
+
+/**
+    Converts a number in degrees to radians and returns it.
+
+    Throws an Error exception if:
+        - the argument isn't a number
+
+    @param {Number} degrees
+    @return {Number}
+ */
+
+Utilities.toRadians = function( degrees )
+{
+if ( !_.isFinite( degrees ) )
+    {
+    throw new Error( 'Invalid argument.' );
+    }
+
+return degrees * Math.PI / 180;
 };
 
 
