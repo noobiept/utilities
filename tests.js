@@ -650,6 +650,35 @@ timeout.start( function()
 });
 
 
+    // Timer //
+QUnit.module( 'Timer' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    new Utilities.Timer();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    new Utilities.Timer( 0 );
+    }, expect, 'Not an html element.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var htmlElement = document.createElement( 'div' );
+var timer = new Utilities.Timer( htmlElement );
+
+    // starting value of the timer (0 seconds)
+assert.deepEqual( htmlElement.innerHTML, '0 seconds', 'Starting time string (from the html element).' );
+assert.deepEqual( timer.getTimeString(), '0 seconds', 'Starting time (from the timer object).' );
+assert.deepEqual( timer.getTimeSeconds(), 0, '0 seconds.' );
+});
+
+
 // ---------- Trigonometry ---------- //
 
 

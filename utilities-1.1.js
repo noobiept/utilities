@@ -1,5 +1,5 @@
 /*
-    version : 1
+    version : 1.1
 
     dependencies:
         - underscorejs : 1.6
@@ -610,6 +610,103 @@ Utilities.Timeout.prototype.clear = function()
 {
 this.is_active = false;
 window.clearTimeout( this.id );
+};
+
+
+/**
+    Count-up timer. Updates directly to the html element.
+
+    @param {HTMLElement} htmlElement
+ */
+
+Utilities.Timer = function( htmlElement )
+{
+if ( !(htmlElement instanceof HTMLElement) )
+    {
+    throw new Error( 'Missing argument or not an HTML element.' );
+    }
+
+this.time_passed = 0;
+this.interval_f = null;
+
+this.html_element = htmlElement;
+this.html_element.innerHTML = this.getTimeString();
+};
+
+
+/*
+    Start counting.
+ */
+
+Utilities.Timer.prototype.start = function()
+{
+var _this = this;
+var interval = 1000;
+
+this.interval_f = window.setInterval( function()
+    {
+    _this.time_passed += interval;
+
+    _this.html_element.innerHTML = _this.getTimeString();
+
+    }, interval );
+};
+
+
+/*
+    Stop counting.
+ */
+
+Utilities.Timer.prototype.stop = function()
+{
+if ( this.interval_f )
+    {
+    window.clearInterval( this.interval_f );
+    this.interval_f = null;
+    }
+};
+
+
+/*
+    Stops and resets the count.
+ */
+
+Utilities.Timer.prototype.reset = function()
+{
+this.stop();
+
+this.time_passed = 0;
+this.html_element.innerHTML = this.getTimeString();
+};
+
+
+/*
+    Restart the timer.
+ */
+
+Utilities.Timer.prototype.restart = function()
+{
+this.reset();
+this.start();
+};
+
+/*
+    Returns a string with the time passed so far.
+ */
+
+Utilities.Timer.prototype.getTimeString = function()
+{
+return Utilities.timeToString( this.time_passed );
+};
+
+
+/*
+    Returns the time it has passed so far, in seconds.
+ */
+
+Utilities.Timer.prototype.getTimeSeconds = function()
+{
+return this.time_passed / 1000;
 };
 
 
