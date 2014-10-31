@@ -1,14 +1,12 @@
 /*
     version : 1.1
 
-    dependencies:
-        - underscorejs : 1.6
-
     Functions/classes are placed first in a group, then alphabetically ordered within that group.
 
     Groups:
         - collision detection
         - events
+        - is type
         - local storage
         - number utilities
         - object utilities
@@ -223,7 +221,7 @@ Utilities.MOUSE_CODE = {
 
 Utilities.getObject = function( key )
 {
-if ( !_.isString( key ) )
+if ( !Utilities.isString( key ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -246,12 +244,65 @@ return value && JSON.parse( value );
 
 Utilities.saveObject = function( key, value )
 {
-if ( !_.isString( key ) )
+if ( !Utilities.isString( key ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
 
 localStorage.setItem( key, JSON.stringify( value ) );
+};
+
+
+// ---------- Is Type ---------- //
+
+
+/**
+    @return {Boolean}
+ */
+
+Utilities.isArray = function( element )
+{
+return Object.prototype.toString.call( element ) === '[object Array]';
+};
+
+
+/**
+    @return {Boolean}
+ */
+
+Utilities.isBoolean = function( element )
+{
+return element === true || element === false || Object.prototype.toString.call( element ) === '[object Boolean]'
+};
+
+
+/**
+    @return {Boolean}
+ */
+
+Utilities.isFunction = function( element )
+{
+return typeof element === 'function' && Object.prototype.toString.call( element ) === '[object Function]';
+};
+
+
+/**
+    @return {Boolean}
+ */
+
+Utilities.isNumber = function( element )
+{
+return typeof element === 'number' && !isNaN( parseFloat( element ) ) && isFinite( element );
+};
+
+
+/**
+    @return {Boolean}
+ */
+
+Utilities.isString = function( element )
+{
+return typeof element === 'string' || element instanceof String;
 };
 
 
@@ -272,8 +323,8 @@ localStorage.setItem( key, JSON.stringify( value ) );
 
 Utilities.getRandomFloat = function( min, max )
 {
-if ( !_.isFinite( min ) ||
-     !_.isFinite( max ) ||
+if ( !Utilities.isNumber( min ) ||
+     !Utilities.isNumber( max ) ||
     (min > max) )
     {
     throw new Error( 'Invalid arguments.' );
@@ -297,8 +348,8 @@ return Math.random() * (max - min) + min;
 
 Utilities.getRandomInt = function( min, max )
 {
-if ( !_.isFinite( min ) || (min % 1 !== 0) ||
-     !_.isFinite( max ) || (max % 1 !== 0) ||
+if ( !Utilities.isNumber( min ) || (min % 1 !== 0) ||
+     !Utilities.isNumber( max ) || (max % 1 !== 0) ||
     (min > max) )
     {
     throw new Error( 'Invalid arguments.' );
@@ -324,9 +375,9 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
 
 Utilities.getSeveralRandomInts = function( min, max, howMany )
 {
-if ( !_.isFinite( min ) || (min % 1) !== 0 ||
-     !_.isFinite( max ) || (max % 1) !== 0 ||
-     !_.isFinite( howMany ) || (howMany % 1) !== 0 ||
+if ( !Utilities.isNumber( min ) || (min % 1) !== 0 ||
+     !Utilities.isNumber( max ) || (max % 1) !== 0 ||
+     !Utilities.isNumber( howMany ) || (howMany % 1) !== 0 ||
     (min > max) ||
     ((max - min) < howMany - 1) )
     {
@@ -362,7 +413,7 @@ return numbers;
 
 Utilities.numberOfDigits = function( theNumber )
 {
-if ( !_.isFinite( theNumber ) )
+if ( !Utilities.isNumber( theNumber ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -392,8 +443,8 @@ return numberString.length;
 
 Utilities.round = function( num, dec )
 {
-if ( !_.isFinite( num ) ||
-     !_.isFinite( dec ) || (dec % 1 !== 0) ||
+if ( !Utilities.isNumber( num ) ||
+     !Utilities.isNumber( dec ) || (dec % 1 !== 0) ||
     (dec < 0) )
     {
     throw new Error( 'Invalid arguments.' );
@@ -450,12 +501,12 @@ derivedClass.prototype = prototype;
 
 Utilities.timeToString = function( dateMilliseconds, totalUnits )
 {
-if ( !_.isFinite( dateMilliseconds ) )
+if ( !Utilities.isNumber( dateMilliseconds ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
 
-if ( typeof totalUnits === 'undefined' || !_.isFinite( totalUnits ) )
+if ( typeof totalUnits === 'undefined' || !Utilities.isNumber( totalUnits ) )
     {
     totalUnits = 2;
     }
@@ -578,8 +629,8 @@ this.id = -1;
 
 Utilities.Timeout.prototype.start = function( functionToCall, interval )
 {
-if ( !_.isFunction( functionToCall ) ||
-     !_.isFinite( interval ) )
+if ( !Utilities.isFunction( functionToCall ) ||
+     !Utilities.isNumber( interval ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -729,10 +780,10 @@ return this.time_passed / 1000;
 
 Utilities.calculateAngle = function( aX, aY, bX, bY )
 {
-if ( !_.isFinite( aX ) ||
-     !_.isFinite( aY ) ||
-     !_.isFinite( bX ) ||
-     !_.isFinite( bY ) )
+if ( !Utilities.isNumber( aX ) ||
+     !Utilities.isNumber( aY ) ||
+     !Utilities.isNumber( bX ) ||
+     !Utilities.isNumber( bY ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -761,10 +812,10 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
 
 Utilities.calculateDistance = function( aX, aY, bX, bY )
 {
-if ( !_.isFinite( aX ) ||
-     !_.isFinite( aY ) ||
-     !_.isFinite( bX ) ||
-     !_.isFinite( bY ) )
+if ( !Utilities.isNumber( aX ) ||
+     !Utilities.isNumber( aY ) ||
+     !Utilities.isNumber( bX ) ||
+     !Utilities.isNumber( bY ) )
     {
     throw new Error( 'Invalid arguments.' );
     }
@@ -788,7 +839,7 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
 
 Utilities.toDegrees = function( radians )
 {
-if ( !_.isFinite( radians ) )
+if ( !Utilities.isNumber( radians ) )
     {
     throw new Error( 'Invalid argument.' );
     }
@@ -809,7 +860,7 @@ return radians * 180 / Math.PI;
 
 Utilities.toRadians = function( degrees )
 {
-if ( !_.isFinite( degrees ) )
+if ( !Utilities.isNumber( degrees ) )
     {
     throw new Error( 'Invalid argument.' );
     }
