@@ -1,5 +1,5 @@
 /*
-    version : 1.1
+    version : 1.2
 
     Functions/classes are placed first in a group, then alphabetically ordered within that group.
 
