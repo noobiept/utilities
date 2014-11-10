@@ -497,6 +497,7 @@ derivedClass.prototype = prototype;
 
     @param {Number} dateMilliseconds
     @param {Number=2} totalUnits
+    @return {String}
  */
 
 Utilities.timeToString = function( dateMilliseconds, totalUnits )
