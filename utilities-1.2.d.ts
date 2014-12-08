@@ -142,7 +142,8 @@ export class Timer
     {
     constructor( htmlElement: HTMLElement );
 
-    start(): void;
+    start( startValue= 0, endValue= null, callback= null, countDown= false ): void;
+    resume(): void;
     stop(): void;
     reset(): void;
     restart(): void;
