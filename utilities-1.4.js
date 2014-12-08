@@ -844,6 +844,19 @@ this.reset();
 this.start( this.start_value, this.end_value, this.end_callback, this.count_down );
 };
 
+
+/**
+    Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
+
+    @param {Number} time - in milliseconds
+ */
+
+Utilities.Timer.prototype.add = function( time )
+{
+this.time_count += time;
+};
+
+
 /*
     Returns a string with the time passed so far.
  */
@@ -862,6 +875,16 @@ Utilities.Timer.prototype.getTimeSeconds = function()
 {
 return this.time_count / 1000;
 };
+
+/*
+    Returns the time it has passed so far, in milliseconds.
+ */
+
+Utilities.Timer.prototype.getTimeMilliseconds = function()
+{
+return this.time_count;
+};
+
 
 
 // ---------- Trigonometry ---------- //

@@ -147,8 +147,10 @@ export class Timer
     stop(): void;
     reset(): void;
     restart(): void;
+    add( time: number ): void;
     getTimeString(): string;
     getTimeSeconds(): number;
+    getTimeMilliseconds(): number;
     }
 
 
