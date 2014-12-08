@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="utilities-1.2.js"></script>
+        <script type="text/javascript" src="test_timer.js"></script>
+
+        <style type="text/css">
+            .button
+                {
+                cursor: pointer;
+                padding: 0 10px;
+                }
+
+            .button:hover
+                {
+                background-color: #a5ddce;
+                }
+
+            ul
+                {
+                list-style-type: none;
+                margin: 0;
+                margin-top: 20px;
+                padding: 0;
+                }
+
+            ul > *
+                {
+                display: inline-block;
+                margin: 5px;
+                }
+        </style>
+    </head>
+<body>
+
+<div>Timer: <span id="Timer"></span></div>
+
+<div>Message: <span id="Message">---</span></div>
+
+<div id="Menu">
+    <ul>
+        <li>start value: <input id="StartValue" type="number" value="0" /></li>
+        <li>end value <input id="WithEndValue" type="checkbox" checked />: <input id="EndValue" type="number" value="10" /></li>
+        <li>count down: <input id="CountDown" type="checkbox" /></li>
+    </ul>
+    <ul>
+        <li class="button" id="Start">start</li>
+        <li class="button" id="Restart">restart</li>
+        <li class="button" id="Resume">resume</li>
+        <li class="button" id="Stop">stop</li>
+        <li class="button" id="Reset">reset</li>
+        <li class="button" id="GetTimeString">get time string</li>
+        <li class="button" id="GetTimeSeconds">get time seconds</li>
+    </ul>
+</div>
+
+</body>
+</html>

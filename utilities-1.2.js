@@ -660,13 +660,13 @@ this.id = window.setTimeout( function()
 
 Utilities.Timeout.prototype.clear = function()
 {
-this.is_active = false;
 window.clearTimeout( this.id );
+this.is_active = false;
 };
 
 
 /**
-    Count-up timer. Updates directly to the html element.
+    Count-up or count-down timer. Updates directly to the html element.
 
     @param {HTMLElement} htmlElement
  */
@@ -678,7 +678,12 @@ if ( !(htmlElement instanceof HTMLElement) )
     throw new Error( 'Missing argument or not an HTML element.' );
     }
 
-this.time_passed = 0;
+this.is_active = false;
+this.start_value = 0;
+this.end_value = null;  // null means it doesn't have an end value
+this.end_callback = null;
+this.count_down = false;
+this.time_count = 0;
 this.interval_f = null;
 
 this.html_element = htmlElement;
@@ -686,18 +691,113 @@ this.html_element.innerHTML = this.getTimeString();
 };
 
 
-/*
+/**
     Start counting.
+    If no endValue is given, it never stops counting.
+
+    @param {Number=} startValue - in milliseconds
+    @param {Number=} endValue - in milliseconds
+    @param {Function=} callback - To be called when the timer ends (only if an endValue is provided)
+    @param {Boolean=} countDown - count down or count up
  */
 
-Utilities.Timer.prototype.start = function()
+Utilities.Timer.prototype.start = function( startValue, endValue, callback, countDown )
 {
+if ( !Utilities.isNumber( startValue ) )
+    {
+    startValue = 0;
+    }
+
+if ( !Utilities.isNumber( endValue ) )
+    {
+    endValue = null;
+    }
+
+if ( !Utilities.isFunction( callback ) )
+    {
+    callback = null;
+    }
+
+if ( countDown !== true )
+    {
+    countDown = false;
+    }
+
+
+if ( this.is_active )
+    {
+    this.stop();
+    }
+
+this.count_down = countDown;
+this.time_count = startValue;
+this.start_value = startValue;
+this.end_value = endValue;
+this.end_callback = callback;
+
+this.html_element.innerHTML = this.getTimeString();
+this.resume();
+};
+
+
+/*
+    Resumes the timer with the same settings/values that were set before it was stopped.
+ */
+
+Utilities.Timer.prototype.resume = function()
+{
+if ( this.is_active )
+    {
+    return;
+    }
+
 var _this = this;
 var interval = 1000;
 
+this.is_active = true;
 this.interval_f = window.setInterval( function()
     {
-    _this.time_passed += interval;
+    if ( _this.count_down )
+        {
+        _this.time_count -= interval;
+        }
+
+    else
+        {
+        _this.time_count += interval;
+        }
+
+    if ( _this.end_value !== null )
+        {
+        var ended = false;
+
+        if ( _this.count_down )
+            {
+            if ( _this.time_count <= _this.end_value )
+                {
+                ended = true;
+                }
+            }
+
+        else
+            {
+            if ( _this.time_count >= _this.end_value )
+                {
+                ended = true;
+                }
+            }
+
+
+        if ( ended )
+            {
+            _this.stop();
+
+            if ( _this.end_callback !== null )
+                {
+                _this.end_callback();
+                }
+            }
+        }
 
     _this.html_element.innerHTML = _this.getTimeString();
 
@@ -716,6 +816,8 @@ if ( this.interval_f )
     window.clearInterval( this.interval_f );
     this.interval_f = null;
     }
+
+this.is_active = false;
 };
 
 
@@ -727,7 +829,7 @@ Utilities.Timer.prototype.reset = function()
 {
 this.stop();
 
-this.time_passed = 0;
+this.time_count = this.start_value;
 this.html_element.innerHTML = this.getTimeString();
 };
 
@@ -739,7 +841,7 @@ this.html_element.innerHTML = this.getTimeString();
 Utilities.Timer.prototype.restart = function()
 {
 this.reset();
-this.start();
+this.start( this.start_value, this.end_value, this.end_callback, this.count_down );
 };
 
 /*
@@ -748,7 +850,7 @@ this.start();
 
 Utilities.Timer.prototype.getTimeString = function()
 {
-return Utilities.timeToString( this.time_passed );
+return Utilities.timeToString( this.time_count );
 };
 
 
@@ -758,7 +860,7 @@ return Utilities.timeToString( this.time_passed );
 
 Utilities.Timer.prototype.getTimeSeconds = function()
 {
-return this.time_passed / 1000;
+return this.time_count / 1000;
 };
 
 
