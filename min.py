@@ -17,4 +17,4 @@ def compress( pathToFile ):
 
 if __name__ == '__main__':
 
-    compress( 'utilities-1.4.js' )
+    compress( 'utilities-1.5.js' )

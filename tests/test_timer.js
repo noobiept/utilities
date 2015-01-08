@@ -4,9 +4,13 @@ window.onload = function()
 {
 var timerElement = document.querySelector( '#Timer' );
 
-var callback = function()
+var endCallback = function()
     {
     showMessage( 'Timer end!' );
+    };
+var tickCallback = function()
+    {
+    console.log( 'tick' );
     };
 
 var timer = new Utilities.Timer( timerElement );
@@ -35,7 +39,13 @@ start.onclick = function()
     var start = parseFloat( startValue.value ) * 1000;
     var down = countDown.checked;
 
-    timer.start( start, end, callback, down );
+    timer.start({
+            startValue   : start,
+            endValue     : end,
+            endCallback  : endCallback,
+            tickCallback : tickCallback,
+            countDown    : down
+        });
     showMessage( 'Start!' );
     };
 

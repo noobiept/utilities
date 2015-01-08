@@ -695,32 +695,39 @@ this.html_element.innerHTML = this.getTimeString();
     Start counting.
     If no endValue is given, it never stops counting.
 
-    @param {Number=} startValue - in milliseconds
-    @param {Number=} endValue - in milliseconds
-    @param {Function=} callback - To be called when the timer ends (only if an endValue is provided)
-    @param {Boolean=} countDown - count down or count up
+    @param {Object} args
+    @param {Number=} args.startValue - in milliseconds
+    @param {Number=} args.endValue - in milliseconds
+    @param {Function=} args.endCallback - To be called when the timer ends (only if an endValue is provided)
+    @param {Function=} args.tickCallback - To be called every second.
+    @param {Boolean=} args.countDown - count down or count up
  */
 
-Utilities.Timer.prototype.start = function( startValue, endValue, callback, countDown )
+Utilities.Timer.prototype.start = function( args )
 {
-if ( !Utilities.isNumber( startValue ) )
+if ( !Utilities.isNumber( args.startValue ) )
     {
-    startValue = 0;
+    args.startValue = 0;
     }
 
-if ( !Utilities.isNumber( endValue ) )
+if ( !Utilities.isNumber( args.endValue ) )
     {
-    endValue = null;
+    args.endValue = null;
     }
 
-if ( !Utilities.isFunction( callback ) )
+if ( !Utilities.isFunction( args.endCallback ) )
     {
-    callback = null;
+    args.endCallback = null;
     }
 
-if ( countDown !== true )
+if ( !Utilities.isFunction( args.tickCallback ) )
     {
-    countDown = false;
+    args.tickCallback = null;
+    }
+
+if ( args.countDown !== true )
+    {
+    args.countDown = false;
     }
 
 
@@ -729,11 +736,12 @@ if ( this.is_active )
     this.stop();
     }
 
-this.count_down = countDown;
-this.time_count = startValue;
-this.start_value = startValue;
-this.end_value = endValue;
-this.end_callback = callback;
+this.count_down = args.countDown;
+this.time_count = args.startValue;
+this.start_value = args.startValue;
+this.end_value = args.endValue;
+this.end_callback = args.endCallback;
+this.tick_callback = args.tickCallback;
 
 this.html_element.innerHTML = this.getTimeString();
 this.resume();
@@ -757,6 +765,7 @@ var interval = 1000;
 this.is_active = true;
 this.interval_f = window.setInterval( function()
     {
+        // update the counter
     if ( _this.count_down )
         {
         _this.time_count -= interval;
@@ -767,6 +776,8 @@ this.interval_f = window.setInterval( function()
         _this.time_count += interval;
         }
 
+
+        // if there's an end value defined, check if we reached it
     if ( _this.end_value !== null )
         {
         var ended = false;
@@ -799,6 +810,14 @@ this.interval_f = window.setInterval( function()
             }
         }
 
+
+        // call the tick callback if there's one
+    if ( _this.tick_callback !== null )
+        {
+        _this.tick_callback();
+        }
+
+        // update the html element with the current time
     _this.html_element.innerHTML = _this.getTimeString();
 
     }, interval );
@@ -830,6 +849,7 @@ Utilities.Timer.prototype.reset = function()
 this.stop();
 
 this.time_count = this.start_value;
+
 this.html_element.innerHTML = this.getTimeString();
 };
 
@@ -841,7 +861,13 @@ this.html_element.innerHTML = this.getTimeString();
 Utilities.Timer.prototype.restart = function()
 {
 this.reset();
-this.start( this.start_value, this.end_value, this.end_callback, this.count_down );
+this.start({
+        startValue   : this.start_value,
+        endValue     : this.end_value,
+        endCallback  : this.end_callback,
+        tickCallback : this.tick_callback,
+        countDown    : this.count_down
+    });
 };
 
 
