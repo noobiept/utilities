@@ -8,7 +8,7 @@ export function circleCircleCollision( x1: number, y1: number, radius1: number, 
 
 export function circlePointCollision( circleX: number, circleY: number, circleRadius: number, pointX: number, pointY: number ): boolean;
 
-export function pointBoxCollision( pointX: number, pointY: number, boxLeft: number, boxRight: number, boxTop: number, boxBottom: number ): boolean;
+export function pointBoxCollision( pointX: number, pointY: number, boxX: number, boxY: number, boxWidth: number, boxHeight: number ): boolean;
 
 
 // ---------- Events ---------- //

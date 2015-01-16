@@ -107,16 +107,19 @@ return false;
 
     @param {Number} pointX
     @param {Number} pointY
-    @param {Number} boxLeft
-    @param {Number} boxRight
-    @param {Number} boxTop
-    @param {Number} boxBottom
+    @param {Number} boxX
+    @param {Number} boxY
+    @param {Number} boxWidth
+    @param {Number} boxHeight
     @return {Boolean}
  */
 
-Utilities.pointBoxCollision = function( pointX, pointY, boxLeft, boxRight, boxTop, boxBottom )
+Utilities.pointBoxCollision = function( pointX, pointY, boxX, boxY, boxWidth, boxHeight )
 {
-if ( pointX < boxLeft || pointX > boxRight || pointY > boxTop || pointY < boxBottom )
+if ( pointX < boxX ||
+     pointX > boxX + boxWidth ||
+     pointY < boxY ||
+     pointY > boxY + boxHeight )
     {
     return false;
     }

@@ -80,17 +80,22 @@ QUnit.test( 'test with valid arguments', function( assert )
 var result;
 var expect;
 
-result = Utilities.pointBoxCollision( 0, 0, 2, 4, 1, 0 );
+result = Utilities.pointBoxCollision( 0, 0, 2, 2, 10, 10 );
 expect = false;
 
 assert.deepEqual( result, expect, 'No collision.' );
 
-result = Utilities.pointBoxCollision( 0, 0, 0, 2, 1, 0 );
+result = Utilities.pointBoxCollision( 10, 5, 0, 0, 10, 10 );
 expect = true;
 
 assert.deepEqual( result, expect, "Point on the border of the box." );
 
-result = Utilities.pointBoxCollision( 0, 0, -2, 2, 2, -2 );
+result = Utilities.pointBoxCollision( 0, 0, -2, -2, 4, 4 );
+expect = true;
+
+assert.deepEqual( result, expect, 'Point inside the box.' );
+
+result = Utilities.pointBoxCollision( 2, 5, 0, 0, 10, 10 );
 expect = true;
 
 assert.deepEqual( result, expect, 'Point inside the box.' );
