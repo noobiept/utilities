@@ -125,6 +125,8 @@ export function round( num: number, dec: number ): number;
 
 export function deepClone( obj: any ): any;
 
+export function createEnum( values: string[], start?: number ): Object;
+
 export function inheritPrototype( derivedClass: any, baseClass: any );
 
 
@@ -142,7 +144,7 @@ export class Timer
     {
     constructor( htmlElement: HTMLElement );
 
-    start( args: {
+    start( args?: {
             startValue?   : number;
             endValue?     : number;
             endCallback?  : () => any;

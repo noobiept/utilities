@@ -638,6 +638,42 @@ assert.ok( test.two.length !== copy.two.length, 'Clone of an object.' );
 });
 
 
+    // createEnum //
+QUnit.module( 'createEnum' );
+
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.createEnum();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.createEnum( 'one' );
+    }, expect, 'Needs to be an array.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var obj1 = Utilities.createEnum( [ 'one', 'two' ] );
+
+assert.deepEqual( obj1[ 0 ], 'one' );
+assert.deepEqual( obj1[ '1' ], 'two' );
+assert.deepEqual( obj1[ 'one' ], 0 );
+assert.deepEqual( obj1.two, 1 );
+
+var obj2 = Utilities.createEnum( [ 'hi', 'there' ], -4 );
+
+assert.deepEqual( obj2[ -4 ], 'hi' );
+assert.deepEqual( obj2[ '-3' ], 'there' );
+assert.deepEqual( obj2[ 'hi' ], -4 );
+assert.deepEqual( obj2.there, -3 );
+});
+
+
     // inheritPrototype //
 QUnit.module( 'inheritPrototype' );
 QUnit.test( 'test with valid arguments', function( assert )

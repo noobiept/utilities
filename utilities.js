@@ -468,6 +468,43 @@ return JSON.parse( JSON.stringify( obj ) );
 };
 
 
+/**
+    Enum - A way to associate a string name to a number.
+
+    @param {String[]} values - enum names. Each name will have an associated number.
+    @param {Number=0} start - Starting number for the first name. The number is incremented by one for the next name.
+ */
+Utilities.createEnum = function( values, start )
+{
+if ( !Utilities.isArray( values ) )
+    {
+    throw new Error( "'values' argument needs to be an array of strings." );
+    }
+
+if ( !Utilities.isNumber( start ) )
+    {
+    start = 0;
+    }
+
+
+var obj = {};
+var length = values.length;
+var name;
+
+for (var a = 0 ; a < length ; a++)
+    {
+    name = values[ a ];
+
+    obj[ start ] = name;
+    obj[ name ] = start;
+
+    start++;
+    }
+
+return obj;
+};
+
+
 /*
     Used for 'class' inheritance (search for parasitic combination inheritance)
  */
@@ -696,7 +733,7 @@ this.html_element.innerHTML = this.getTimeString();
     Start counting.
     If no endValue is given, it never stops counting.
 
-    @param {Object} args
+    @param {Object=} args
     @param {Number=} args.startValue - in milliseconds
     @param {Number=} args.endValue - in milliseconds
     @param {Function=} args.endCallback - To be called when the timer ends (only if an endValue is provided)
@@ -706,6 +743,11 @@ this.html_element.innerHTML = this.getTimeString();
 
 Utilities.Timer.prototype.start = function( args )
 {
+if ( typeof args === 'undefined' )
+    {
+    args = {};
+    }
+
 if ( !Utilities.isNumber( args.startValue ) )
     {
     args.startValue = 0;
