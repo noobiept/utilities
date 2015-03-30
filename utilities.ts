@@ -1,5 +1,5 @@
-/*
-    Random collection of utilities functions/classes.
+/**
+ * Random collection of utilities functions/classes.
  */
 module Utilities
 {
@@ -7,19 +7,9 @@ module Utilities
 
 
 /**
-    Detects collision between 2 boxes.
-
-    @param {Number} oneX
-    @param {Number} oneY
-    @param {Number} oneWidth
-    @param {Number} oneHeight
-    @param {Number} twoX
-    @param {Number} twoY
-    @param {Number} twoWidth
-    @param {Number} twoHeight
-    @return {Boolean}
+ * Detects collision between 2 boxes.
  */
-export function boxBoxCollision( oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight )
+export function boxBoxCollision( oneX: number, oneY: number, oneWidth: number, oneHeight: number, twoX: number, twoY: number, twoWidth: number, twoHeight: number )
 {
 return !(
         ( oneY + oneHeight < twoY ) ||
@@ -31,17 +21,9 @@ return !(
 
 
 /**
-    Detects collision between two circles.
-
-    @param {Number} x1
-    @param {Number} y1
-    @param {Number} radius1
-    @param {Number} x2
-    @param {Number} y2
-    @param {Number} radius2
-    @return {Boolean}
+ * Detects collision between two circles.
  */
-export function circleCircleCollision( x1, y1, radius1, x2, y2, radius2 )
+export function circleCircleCollision( x1: number, y1: number, radius1: number, x2: number, y2: number, radius2: number )
 {
 var distX = x1 - x2;
 var distY = y1 - y2;
@@ -56,16 +38,9 @@ return false;
 
 
 /**
-    Detects collision between a circle and a point.
-
-    @param {Number} circleX
-    @param {Number} circleY
-    @param {Number} circleRadius
-    @param {Number} pointX
-    @param {Number} pointY
-    @return {Boolean}
+ * Detects collision between a circle and a point.
  */
-export function circlePointCollision( circleX, circleY, circleRadius, pointX, pointY )
+export function circlePointCollision( circleX: number, circleY: number, circleRadius: number, pointX: number, pointY: number )
 {
 var distanceX = circleX - pointX;
 var distanceY = circleY - pointY;
@@ -83,17 +58,9 @@ return false;
 
 
 /**
-    Detects collision between a point and a box.
-
-    @param {Number} pointX
-    @param {Number} pointY
-    @param {Number} boxX
-    @param {Number} boxY
-    @param {Number} boxWidth
-    @param {Number} boxHeight
-    @return {Boolean}
+ * Detects collision between a point and a box.
  */
-export function pointBoxCollision( pointX, pointY, boxX, boxY, boxWidth, boxHeight )
+export function pointBoxCollision( pointX: number, pointY: number, boxX: number, boxY: number, boxWidth: number, boxHeight: number )
 {
 if ( pointX < boxX ||
      pointX > boxX + boxWidth ||
@@ -110,6 +77,9 @@ return true;
 // ---------- Events ---------- //
 
 
+/**
+ * Numeric code of each key.
+ */
 export var KEY_CODE = {
 
     backspace  : 8,
@@ -179,6 +149,9 @@ export var KEY_CODE = {
 };
 
 
+/**
+ * Numeric code of each mouse button.
+ */
 export var MOUSE_CODE = {
     left   : 0,
     middle : 1,
@@ -190,15 +163,13 @@ export var MOUSE_CODE = {
 
 
 /**
-    Gets an object (parsed with json) from localStorage.
-
-    Throws an Error exception if:
-        - key is not a string
-        - it doesn't find
-
-    @param {String} key
+ * Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
+ *
+ * Throws an `Error` exception if:
+ * - `key` is not a string.
+ * - `key` wasn't found.
  */
-export function getObject( key )
+export function getObject( key: string )
 {
 if ( !Utilities.isString( key ) )
     {
@@ -212,15 +183,12 @@ return value && JSON.parse( value );
 
 
 /**
-    Saves in the localStorage a json string representation of the value.
-
-    Throws an Error exception if:
-        - key is not a string
-
-    @param {String} key
-    @param value
+ * Saves in the `localStorage` a json string representation of the `value`.
+ *
+ * Throws an `Error` exception if:
+ * - `key` is not a `string`.
  */
-export function saveObject( key, value )
+export function saveObject( key: string, value: any )
 {
 if ( !Utilities.isString( key ) )
     {
@@ -235,45 +203,45 @@ localStorage.setItem( key, JSON.stringify( value ) );
 
 
 /**
-    @return {Boolean}
+ * @return If it is an array or not.
  */
-export function isArray( element )
+export function isArray( element: any )
 {
 return Object.prototype.toString.call( element ) === '[object Array]';
 }
 
 
 /**
-    @return {Boolean}
+ * @return If it is a boolean.
  */
-export function isBoolean( element )
+export function isBoolean( element: any )
 {
 return element === true || element === false || Object.prototype.toString.call( element ) === '[object Boolean]'
 }
 
 
 /**
-    @return {Boolean}
+ * @return If it is a function.
  */
-export function isFunction( element )
+export function isFunction( element: any )
 {
 return typeof element === 'function' && Object.prototype.toString.call( element ) === '[object Function]';
 }
 
 
 /**
-    @return {Boolean}
+ * @return If it is a number.
  */
-export function isNumber( element )
+export function isNumber( element: any )
 {
 return typeof element === 'number' && !isNaN( parseFloat( element ) ) && isFinite( element );
 }
 
 
 /**
-    @return {Boolean}
+ * @return If it is a string.
  */
-export function isString( element )
+export function isString( element: any )
 {
 return typeof element === 'string' || element instanceof String;
 }
@@ -283,17 +251,13 @@ return typeof element === 'string' || element instanceof String;
 
 
 /**
-    Returns a random float number between 'min' and 'max' (inclusive).
-
-    Throws an Error exception if:
-        - either min or max is not a number
-        - the minimum value is bigger than the maximum.
-
-    @param {Number} min
-    @param {Number} max
-    @return {Number}
+ * Returns a random float number between `min` and `max` (inclusive).
+ *
+ * Throws an `Error` exception if:
+ * - either `min` or `max` is not a `number`.
+ * - the minimum value is bigger than the maximum.
  */
-export function getRandomFloat( min, max )
+export function getRandomFloat( min: number, max: number )
 {
 if ( !Utilities.isNumber( min ) ||
      !Utilities.isNumber( max ) ||
@@ -307,17 +271,13 @@ return Math.random() * (max - min) + min;
 
 
 /**
-    Returns a random integer number between 'min' and 'max' (inclusive).
-
-    Throws an Error exception if:
-        - min or max isn't a number
-        - the minimum value is bigger than the maximum.
-
-    @param {Number} min
-    @param {Number} max
-    @return {Number}
+ * Returns a random integer number between `min` and `max` (inclusive).
+ *
+ * Throws an `Error` exception if:
+ * - `min` or `max` isn't a number.
+ * - the minimum value is bigger than the maximum.
  */
-export function getRandomInt( min, max )
+export function getRandomInt( min: number, max: number )
 {
 if ( !Utilities.isNumber( min ) || (min % 1 !== 0) ||
      !Utilities.isNumber( max ) || (max % 1 !== 0) ||
@@ -331,19 +291,14 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
 
 
 /**
-    Returns several different random integers, in the range between 'min' and 'max' (inclusive).
-
-    Throws an Error exception if:
-        - min, max or howMany isn't a number
-        - the minimum value is bigger than the maximum
-        - the range is less than the number of integers required
-
-    @param {Number} min
-    @param {Number} max
-    @param {Number} howMany
-    @return {Number[]}
+ * Returns several different random integers, in the range between `min` and `max` (inclusive).
+ *
+ * Throws an Error exception if:
+ * - `min`, `max` or `howMany` isn't a number.
+ * - the minimum value is bigger than the maximum.
+ * - the range is less than the number of integers required.
  */
-export function getSeveralRandomInts( min, max, howMany )
+export function getSeveralRandomInts( min: number, max: number, howMany: number ): number[]
 {
 if ( !Utilities.isNumber( min ) || (min % 1) !== 0 ||
      !Utilities.isNumber( max ) || (max % 1) !== 0 ||
@@ -371,16 +326,13 @@ return numbers;
 
 
 /**
-    Returns the number of digits in a number.
-    It doesn't consider the minus signal, nor the dot (in floats) as a digit.
-
-    Throws an Error exception if:
-        - the argument is not a number
-
-    @param {Number} theNumber
-    @return {Number}
+ * Returns the number of digits in a number.
+ * It doesn't consider the minus signal, nor the dot (in floats) as a digit.
+ *
+ * Throws an `Error` exception if:
+ * - the argument is not a number.
  */
-export function numberOfDigits( theNumber )
+export function numberOfDigits( theNumber: number )
 {
 if ( !Utilities.isNumber( theNumber ) )
     {
@@ -399,17 +351,13 @@ return numberString.length;
 
 
 /**
-    Rounds a number to a specified decimal case.
-
-    Throws an Error exception if:
-        - num or dec isn't a number
-        - dec is less than 0
-
-    @param {Number} num
-    @param {Number} dec
-    @return {Number}
+ * Rounds a number to a specified decimal case.
+ *
+ * Throws an `Error` exception if:
+ * - `num` or `dec` isn't a number.
+ * - `dec` is less than 0.
  */
-export function round( num, dec )
+export function round( num: number, dec: number )
 {
 if ( !Utilities.isNumber( num ) ||
      !Utilities.isNumber( dec ) || (dec % 1 !== 0) ||
@@ -425,22 +373,22 @@ return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
 // ---------- Object Utilities ---------- //
 
 
-/*
-    Returns a deep clone/copy of the object.
+/**
+ * Returns a deep clone/copy of the object.
  */
-export function deepClone( obj )
+export function deepClone( obj: any )
 {
 return JSON.parse( JSON.stringify( obj ) );
 }
 
 
 /**
-    Enum - A way to associate a string name to a number.
-
-    @param {String[]} values - enum names. Each name will have an associated number.
-    @param {Number} [start=0] - Starting number for the first name. The number is incremented by one for the next name.
+ * Enum - A way to associate a string name to a number.
+ *
+ * @param values The `enum` names. Each name will have an associated number.
+ * @param start Starting number for the first name. The number is incremented by one for the next name.
  */
-export function createEnum( values, start )
+export function createEnum( values: string[], start?: number )
 {
 if ( !Utilities.isArray( values ) )
     {
@@ -471,10 +419,10 @@ return obj;
 }
 
 
-/*
-    Used for 'class' inheritance (search for parasitic combination inheritance)
+/**
+ * Used for `class` inheritance (search for parasitic combination inheritance).
  */
-export function inheritPrototype( derivedClass, baseClass )
+export function inheritPrototype( derivedClass: Function, baseClass: Function )
 {
 var f = function() {};
 
@@ -491,18 +439,16 @@ derivedClass.prototype = prototype;
 
 
 /**
-    Converts a time (in milliseconds) to a string (with the number of days/hours...).
-    The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a totalUnits of 2)).
-    The units available are: day/hour/minute/second.
-
-    Throws an Error exception if:
-        - the dateMilliseconds argument isn't a number
-
-    @param {Number} dateMilliseconds
-    @param {Number} [totalUnits=2]
-    @return {String}
+ * Converts a time (in milliseconds) to a string (with the number of days/hours...).
+ *
+ * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).
+ *
+ * The units available are: day/hour/minute/second.
+ *
+ * Throws an `Error` exception if:
+ * - the `dateMilliseconds` argument isn't a number.
  */
-export function timeToString( dateMilliseconds, totalUnits? )
+export function timeToString( dateMilliseconds: number, totalUnits: number = 2 )
 {
 if ( !Utilities.isNumber( dateMilliseconds ) )
     {
@@ -609,8 +555,8 @@ return date;
 }
 
 
-/*
-    Uses the window.setTimeout()
+/**
+ * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
  */
 export class Timeout
 {
@@ -625,16 +571,13 @@ constructor()
 
 
 /**
-    Starts the timeout. If there was an active timeout already, it is canceled.
-
-    Throws an Error exception if:
-        - functionToCall isn't a function
-        - interval isn't a number
-
-    @param {Function} functionToCall
-    @param {Number} interval
+ * Starts the timeout. If there was an active timeout already, that one is canceled.
+ *
+ * Throws an `Error` exception if:
+ * - `functionToCall` isn't a function.
+ * - `interval` isn't a number.
  */
-start( functionToCall, interval )
+start( functionToCall: Function, interval: number )
     {
     if ( !Utilities.isFunction( functionToCall ) ||
          !Utilities.isNumber( interval ) )
@@ -661,8 +604,8 @@ start( functionToCall, interval )
     }
 
 
-/*
-    Clears the timeout.
+/**
+ * Cancels the timeout.
  */
 clear()
     {
@@ -673,10 +616,7 @@ clear()
 
 
 /**
-    Count-up or count-down timer. Updates directly to the html element.
-
-    @constructor Timer
-    @param {HTMLElement} htmlElement
+ * Count-up or count-down timer. Updates directly to the html element.
  */
 export class Timer
 {
@@ -690,7 +630,7 @@ time_count: number;
 interval_f: number;
 html_element: HTMLElement;
 
-constructor( htmlElement )
+constructor( htmlElement: HTMLElement )
     {
     if ( !(htmlElement instanceof HTMLElement) )
         {
@@ -712,18 +652,16 @@ constructor( htmlElement )
 
 
 /**
-    Start counting.
-    If no endValue is given, it never stops counting.
-
-    @param {Object=} args
-    @param {Number=} args.startValue - in milliseconds
-    @param {Number=} args.endValue - in milliseconds
-    @param {Function=} args.endCallback - To be called when the timer ends (only if an endValue is provided)
-    @param {Function=} args.tickCallback - To be called every second.
-    @param {Boolean=} args.countDown - count down or count up
+ * Start counting.
+ * If no endValue is given, it never stops counting.
+ *
+ * `startValue` and `endValue` are in milliseconds.
+ *
+ * `endCallback` is called when the timer ends (only if an `endValue` was provided).
+ *
+ * `tickCallback` is called every second.
  */
-
-start( args )
+start( args?: { startValue?: number; endValue?: number; endCallback?: () => any; tickCallback?: () => any; countDown?: boolean } )
     {
     if ( typeof args === 'undefined' )
         {
@@ -773,8 +711,8 @@ start( args )
     }
 
 
-/*
-    Resumes the timer with the same settings/values that were set before it was stopped.
+/**
+ * Resumes the timer with the same settings/values that were set before it was stopped.
  */
 resume()
     {
@@ -848,8 +786,8 @@ resume()
     }
 
 
-/*
-    Stop counting.
+/**
+ * Stop counting.
  */
 stop()
     {
@@ -863,8 +801,8 @@ stop()
     }
 
 
-/*
-    Stops and resets the count.
+/**
+ * Stops and resets the count.
  */
 reset()
     {
@@ -876,8 +814,8 @@ reset()
     }
 
 
-/*
-    Restart the timer.
+/**
+ * Restart the timer.
  */
 restart()
     {
@@ -893,18 +831,18 @@ restart()
 
 
 /**
-    Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
-
-    @param {Number} time - in milliseconds
+ * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
+ *
+ * @param time In milliseconds.
  */
-add( time )
+add( time: number )
     {
     this.time_count += time;
     }
 
 
-/*
-    Returns a string with the time passed so far.
+/**
+ * Returns a string with the time passed so far.
  */
 getTimeString()
     {
@@ -912,16 +850,16 @@ getTimeString()
     }
 
 
-/*
-    Returns the time it has passed so far, in seconds.
+/**
+ * Returns the time it has passed so far, in seconds.
  */
 getTimeSeconds()
     {
     return this.time_count / 1000;
     }
 
-/*
-    Returns the time it has passed so far, in milliseconds.
+/**
+ * Returns the time it has passed so far, in milliseconds.
  */
 getTimeMilliseconds()
     {
@@ -934,19 +872,13 @@ getTimeMilliseconds()
 
 
 /**
-    Returns the angle between 2 points in radians.
-    Positive in clockwise direction.
-
-    Throws an Error exception if:
-        - any of the arguments isn't a number
-
-    @param {Number} aX
-    @param {Number} aY
-    @param {Number} bX
-    @param {Number} bY
-    @return {Number}
+ * Returns the angle between 2 points in radians.
+ * Positive in clockwise direction.
+ *
+ * Throws an `Error` exception if:
+ * - any of the arguments isn't a number.
  */
-export function calculateAngle( aX, aY, bX, bY )
+export function calculateAngle( aX: number, aY: number, bX: number, bY: number )
 {
 if ( !Utilities.isNumber( aX ) ||
      !Utilities.isNumber( aY ) ||
@@ -966,18 +898,12 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
 
 
 /**
-    Distance between 2 points.
-
-    Throws an Error exception if:
-        - any of the arguments isn't a number
-
-    @param {Number} aX
-    @param {Number} aY
-    @param {Number} bX
-    @param {Number} bY
-    @return {Number}
+ * Distance between 2 points.
+ *
+ * Throws an `Error` exception if:
+ * - any of the arguments isn't a number.
  */
-export function calculateDistance( aX, aY, bX, bY )
+export function calculateDistance( aX: number, aY: number, bX: number, bY: number )
 {
 if ( !Utilities.isNumber( aX ) ||
      !Utilities.isNumber( aY ) ||
@@ -995,15 +921,12 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
 
 
 /**
-    Converts a number in radians to degrees and returns it.
-
-    Throws an Error exception if:
-        - the argument isn't a number
-
-    @param {Number} radians
-    @return {Number}
+ * Converts a number in `radians` to `degrees` and returns it.
+ *
+ * Throws an `Error` exception if:
+ * - the argument isn't a number.
  */
-export function toDegrees( radians )
+export function toDegrees( radians: number )
 {
 if ( !Utilities.isNumber( radians ) )
     {
@@ -1015,16 +938,12 @@ return radians * 180 / Math.PI;
 
 
 /**
-    Converts a number in degrees to radians and returns it.
-
-    Throws an Error exception if:
-        - the argument isn't a number
-
-    @param {Number} degrees
-    @return {Number}
+ * Converts a number in `degrees` to `radians` and returns it.
+ *
+ * Throws an `Error` exception if:
+ * - the argument isn't a number.
  */
-
-export function toRadians( degrees )
+export function toRadians( degrees: number )
 {
 if ( !Utilities.isNumber( degrees ) )
     {

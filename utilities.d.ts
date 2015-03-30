@@ -1,53 +1,26 @@
+/**
+ * Random collection of utilities functions/classes.
+ */
 declare module Utilities {
     /**
-        Detects collision between 2 boxes.
-    
-        @param {Number} oneX
-        @param {Number} oneY
-        @param {Number} oneWidth
-        @param {Number} oneHeight
-        @param {Number} twoX
-        @param {Number} twoY
-        @param {Number} twoWidth
-        @param {Number} twoHeight
-        @return {Boolean}
+     * Detects collision between 2 boxes.
      */
-    function boxBoxCollision(oneX: any, oneY: any, oneWidth: any, oneHeight: any, twoX: any, twoY: any, twoWidth: any, twoHeight: any): boolean;
+    function boxBoxCollision(oneX: number, oneY: number, oneWidth: number, oneHeight: number, twoX: number, twoY: number, twoWidth: number, twoHeight: number): boolean;
     /**
-        Detects collision between two circles.
-    
-        @param {Number} x1
-        @param {Number} y1
-        @param {Number} radius1
-        @param {Number} x2
-        @param {Number} y2
-        @param {Number} radius2
-        @return {Boolean}
+     * Detects collision between two circles.
      */
-    function circleCircleCollision(x1: any, y1: any, radius1: any, x2: any, y2: any, radius2: any): boolean;
+    function circleCircleCollision(x1: number, y1: number, radius1: number, x2: number, y2: number, radius2: number): boolean;
     /**
-        Detects collision between a circle and a point.
-    
-        @param {Number} circleX
-        @param {Number} circleY
-        @param {Number} circleRadius
-        @param {Number} pointX
-        @param {Number} pointY
-        @return {Boolean}
+     * Detects collision between a circle and a point.
      */
-    function circlePointCollision(circleX: any, circleY: any, circleRadius: any, pointX: any, pointY: any): boolean;
+    function circlePointCollision(circleX: number, circleY: number, circleRadius: number, pointX: number, pointY: number): boolean;
     /**
-        Detects collision between a point and a box.
-    
-        @param {Number} pointX
-        @param {Number} pointY
-        @param {Number} boxX
-        @param {Number} boxY
-        @param {Number} boxWidth
-        @param {Number} boxHeight
-        @return {Boolean}
+     * Detects collision between a point and a box.
      */
-    function pointBoxCollision(pointX: any, pointY: any, boxX: any, boxY: any, boxWidth: any, boxHeight: any): boolean;
+    function pointBoxCollision(pointX: number, pointY: number, boxX: number, boxY: number, boxWidth: number, boxHeight: number): boolean;
+    /**
+     * Numeric code of each key.
+     */
     var KEY_CODE: {
         "0": number;
         "1": number;
@@ -110,156 +83,138 @@ declare module Utilities {
         f11: number;
         f12: number;
     };
+    /**
+     * Numeric code of each mouse button.
+     */
     var MOUSE_CODE: {
         left: number;
         middle: number;
         right: number;
     };
     /**
-        Gets an object (parsed with json) from localStorage.
-    
-        Throws an Error exception if:
-            - key is not a string
-            - it doesn't find
-    
-        @param {String} key
+     * Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
+     *
+     * Throws an `Error` exception if:
+     * - `key` is not a string.
+     * - `key` wasn't found.
      */
-    function getObject(key: any): any;
+    function getObject(key: string): any;
     /**
-        Saves in the localStorage a json string representation of the value.
-    
-        Throws an Error exception if:
-            - key is not a string
-    
-        @param {String} key
-        @param value
+     * Saves in the `localStorage` a json string representation of the `value`.
+     *
+     * Throws an `Error` exception if:
+     * - `key` is not a `string`.
      */
-    function saveObject(key: any, value: any): void;
+    function saveObject(key: string, value: any): void;
     /**
-        @return {Boolean}
+     * @return If it is an array or not.
      */
     function isArray(element: any): boolean;
     /**
-        @return {Boolean}
+     * @return If it is a boolean.
      */
     function isBoolean(element: any): boolean;
     /**
-        @return {Boolean}
+     * @return If it is a function.
      */
     function isFunction(element: any): boolean;
     /**
-        @return {Boolean}
+     * @return If it is a number.
      */
     function isNumber(element: any): boolean;
     /**
-        @return {Boolean}
+     * @return If it is a string.
      */
     function isString(element: any): boolean;
     /**
-        Returns a random float number between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - either min or max is not a number
-            - the minimum value is bigger than the maximum.
-    
-        @param {Number} min
-        @param {Number} max
-        @return {Number}
+     * Returns a random float number between `min` and `max` (inclusive).
+     *
+     * Throws an `Error` exception if:
+     * - either `min` or `max` is not a `number`.
+     * - the minimum value is bigger than the maximum.
      */
-    function getRandomFloat(min: any, max: any): any;
+    function getRandomFloat(min: number, max: number): number;
     /**
-        Returns a random integer number between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - min or max isn't a number
-            - the minimum value is bigger than the maximum.
-    
-        @param {Number} min
-        @param {Number} max
-        @return {Number}
+     * Returns a random integer number between `min` and `max` (inclusive).
+     *
+     * Throws an `Error` exception if:
+     * - `min` or `max` isn't a number.
+     * - the minimum value is bigger than the maximum.
      */
-    function getRandomInt(min: any, max: any): any;
+    function getRandomInt(min: number, max: number): number;
     /**
-        Returns several different random integers, in the range between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - min, max or howMany isn't a number
-            - the minimum value is bigger than the maximum
-            - the range is less than the number of integers required
-    
-        @param {Number} min
-        @param {Number} max
-        @param {Number} howMany
-        @return {Number[]}
+     * Returns several different random integers, in the range between `min` and `max` (inclusive).
+     *
+     * Throws an Error exception if:
+     * - `min`, `max` or `howMany` isn't a number.
+     * - the minimum value is bigger than the maximum.
+     * - the range is less than the number of integers required.
      */
-    function getSeveralRandomInts(min: any, max: any, howMany: any): any[];
+    function getSeveralRandomInts(min: number, max: number, howMany: number): number[];
     /**
-        Returns the number of digits in a number.
-        It doesn't consider the minus signal, nor the dot (in floats) as a digit.
-    
-        Throws an Error exception if:
-            - the argument is not a number
-    
-        @param {Number} theNumber
-        @return {Number}
+     * Returns the number of digits in a number.
+     * It doesn't consider the minus signal, nor the dot (in floats) as a digit.
+     *
+     * Throws an `Error` exception if:
+     * - the argument is not a number.
      */
-    function numberOfDigits(theNumber: any): any;
+    function numberOfDigits(theNumber: number): number;
     /**
-        Rounds a number to a specified decimal case.
-    
-        Throws an Error exception if:
-            - num or dec isn't a number
-            - dec is less than 0
-    
-        @param {Number} num
-        @param {Number} dec
-        @return {Number}
+     * Rounds a number to a specified decimal case.
+     *
+     * Throws an `Error` exception if:
+     * - `num` or `dec` isn't a number.
+     * - `dec` is less than 0.
      */
-    function round(num: any, dec: any): number;
+    function round(num: number, dec: number): number;
+    /**
+     * Returns a deep clone/copy of the object.
+     */
     function deepClone(obj: any): any;
     /**
-        Enum - A way to associate a string name to a number.
-    
-        @param {String[]} values - enum names. Each name will have an associated number.
-        @param {Number} [start=0] - Starting number for the first name. The number is incremented by one for the next name.
+     * Enum - A way to associate a string name to a number.
+     *
+     * @param values The `enum` names. Each name will have an associated number.
+     * @param start Starting number for the first name. The number is incremented by one for the next name.
      */
-    function createEnum(values: any, start: any): {};
-    function inheritPrototype(derivedClass: any, baseClass: any): void;
+    function createEnum(values: string[], start?: number): {};
     /**
-        Converts a time (in milliseconds) to a string (with the number of days/hours...).
-        The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a totalUnits of 2)).
-        The units available are: day/hour/minute/second.
-    
-        Throws an Error exception if:
-            - the dateMilliseconds argument isn't a number
-    
-        @param {Number} dateMilliseconds
-        @param {Number} [totalUnits=2]
-        @return {String}
+     * Used for `class` inheritance (search for parasitic combination inheritance).
      */
-    function timeToString(dateMilliseconds: any, totalUnits?: any): string;
+    function inheritPrototype(derivedClass: Function, baseClass: Function): void;
+    /**
+     * Converts a time (in milliseconds) to a string (with the number of days/hours...).
+     *
+     * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).
+     *
+     * The units available are: day/hour/minute/second.
+     *
+     * Throws an `Error` exception if:
+     * - the `dateMilliseconds` argument isn't a number.
+     */
+    function timeToString(dateMilliseconds: number, totalUnits?: number): string;
+    /**
+     * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
+     */
     class Timeout {
         is_active: boolean;
         id: number;
         constructor();
         /**
-            Starts the timeout. If there was an active timeout already, it is canceled.
-        
-            Throws an Error exception if:
-                - functionToCall isn't a function
-                - interval isn't a number
-        
-            @param {Function} functionToCall
-            @param {Number} interval
+         * Starts the timeout. If there was an active timeout already, that one is canceled.
+         *
+         * Throws an `Error` exception if:
+         * - `functionToCall` isn't a function.
+         * - `interval` isn't a number.
          */
-        start(functionToCall: any, interval: any): void;
+        start(functionToCall: Function, interval: number): void;
+        /**
+         * Cancels the timeout.
+         */
         clear(): void;
     }
     /**
-        Count-up or count-down timer. Updates directly to the html element.
-    
-        @constructor Timer
-        @param {HTMLElement} htmlElement
+     * Count-up or count-down timer. Updates directly to the html element.
      */
     class Timer {
         is_active: boolean;
@@ -271,78 +226,86 @@ declare module Utilities {
         time_count: number;
         interval_f: number;
         html_element: HTMLElement;
-        constructor(htmlElement: any);
+        constructor(htmlElement: HTMLElement);
         /**
-            Start counting.
-            If no endValue is given, it never stops counting.
-        
-            @param {Object=} args
-            @param {Number=} args.startValue - in milliseconds
-            @param {Number=} args.endValue - in milliseconds
-            @param {Function=} args.endCallback - To be called when the timer ends (only if an endValue is provided)
-            @param {Function=} args.tickCallback - To be called every second.
-            @param {Boolean=} args.countDown - count down or count up
+         * Start counting.
+         * If no endValue is given, it never stops counting.
+         *
+         * `startValue` and `endValue` are in milliseconds.
+         *
+         * `endCallback` is called when the timer ends (only if an `endValue` was provided).
+         *
+         * `tickCallback` is called every second.
          */
-        start(args: any): void;
+        start(args?: {
+            startValue?: number;
+            endValue?: number;
+            endCallback?: () => any;
+            tickCallback?: () => any;
+            countDown?: boolean;
+        }): void;
+        /**
+         * Resumes the timer with the same settings/values that were set before it was stopped.
+         */
         resume(): void;
+        /**
+         * Stop counting.
+         */
         stop(): void;
+        /**
+         * Stops and resets the count.
+         */
         reset(): void;
+        /**
+         * Restart the timer.
+         */
         restart(): void;
         /**
-            Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
-        
-            @param {Number} time - in milliseconds
+         * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
+         *
+         * @param time In milliseconds.
          */
-        add(time: any): void;
+        add(time: number): void;
+        /**
+         * Returns a string with the time passed so far.
+         */
         getTimeString(): string;
+        /**
+         * Returns the time it has passed so far, in seconds.
+         */
         getTimeSeconds(): number;
+        /**
+         * Returns the time it has passed so far, in milliseconds.
+         */
         getTimeMilliseconds(): number;
     }
     /**
-        Returns the angle between 2 points in radians.
-        Positive in clockwise direction.
-    
-        Throws an Error exception if:
-            - any of the arguments isn't a number
-    
-        @param {Number} aX
-        @param {Number} aY
-        @param {Number} bX
-        @param {Number} bY
-        @return {Number}
+     * Returns the angle between 2 points in radians.
+     * Positive in clockwise direction.
+     *
+     * Throws an `Error` exception if:
+     * - any of the arguments isn't a number.
      */
-    function calculateAngle(aX: any, aY: any, bX: any, bY: any): number;
+    function calculateAngle(aX: number, aY: number, bX: number, bY: number): number;
     /**
-        Distance between 2 points.
-    
-        Throws an Error exception if:
-            - any of the arguments isn't a number
-    
-        @param {Number} aX
-        @param {Number} aY
-        @param {Number} bX
-        @param {Number} bY
-        @return {Number}
+     * Distance between 2 points.
+     *
+     * Throws an `Error` exception if:
+     * - any of the arguments isn't a number.
      */
-    function calculateDistance(aX: any, aY: any, bX: any, bY: any): number;
+    function calculateDistance(aX: number, aY: number, bX: number, bY: number): number;
     /**
-        Converts a number in radians to degrees and returns it.
-    
-        Throws an Error exception if:
-            - the argument isn't a number
-    
-        @param {Number} radians
-        @return {Number}
+     * Converts a number in `radians` to `degrees` and returns it.
+     *
+     * Throws an `Error` exception if:
+     * - the argument isn't a number.
      */
-    function toDegrees(radians: any): number;
+    function toDegrees(radians: number): number;
     /**
-        Converts a number in degrees to radians and returns it.
-    
-        Throws an Error exception if:
-            - the argument isn't a number
-    
-        @param {Number} degrees
-        @return {Number}
+     * Converts a number in `degrees` to `radians` and returns it.
+     *
+     * Throws an `Error` exception if:
+     * - the argument isn't a number.
      */
-    function toRadians(degrees: any): number;
+    function toRadians(degrees: number): number;
 }

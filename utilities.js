@@ -1,36 +1,18 @@
-/*
-    Random collection of utilities functions/classes.
+/**
+ * Random collection of utilities functions/classes.
  */
 var Utilities;
 (function (Utilities) {
     // ---------- Collision Detection ---------- //
     /**
-        Detects collision between 2 boxes.
-    
-        @param {Number} oneX
-        @param {Number} oneY
-        @param {Number} oneWidth
-        @param {Number} oneHeight
-        @param {Number} twoX
-        @param {Number} twoY
-        @param {Number} twoWidth
-        @param {Number} twoHeight
-        @return {Boolean}
+     * Detects collision between 2 boxes.
      */
     function boxBoxCollision(oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight) {
         return !((oneY + oneHeight < twoY) || (oneY > twoY + twoHeight) || (oneX > twoX + twoWidth) || (oneX + oneWidth < twoX));
     }
     Utilities.boxBoxCollision = boxBoxCollision;
     /**
-        Detects collision between two circles.
-    
-        @param {Number} x1
-        @param {Number} y1
-        @param {Number} radius1
-        @param {Number} x2
-        @param {Number} y2
-        @param {Number} radius2
-        @return {Boolean}
+     * Detects collision between two circles.
      */
     function circleCircleCollision(x1, y1, radius1, x2, y2, radius2) {
         var distX = x1 - x2;
@@ -42,14 +24,7 @@ var Utilities;
     }
     Utilities.circleCircleCollision = circleCircleCollision;
     /**
-        Detects collision between a circle and a point.
-    
-        @param {Number} circleX
-        @param {Number} circleY
-        @param {Number} circleRadius
-        @param {Number} pointX
-        @param {Number} pointY
-        @return {Boolean}
+     * Detects collision between a circle and a point.
      */
     function circlePointCollision(circleX, circleY, circleRadius, pointX, pointY) {
         var distanceX = circleX - pointX;
@@ -63,15 +38,7 @@ var Utilities;
     }
     Utilities.circlePointCollision = circlePointCollision;
     /**
-        Detects collision between a point and a box.
-    
-        @param {Number} pointX
-        @param {Number} pointY
-        @param {Number} boxX
-        @param {Number} boxY
-        @param {Number} boxWidth
-        @param {Number} boxHeight
-        @return {Boolean}
+     * Detects collision between a point and a box.
      */
     function pointBoxCollision(pointX, pointY, boxX, boxY, boxWidth, boxHeight) {
         if (pointX < boxX || pointX > boxX + boxWidth || pointY < boxY || pointY > boxY + boxHeight) {
@@ -81,6 +48,9 @@ var Utilities;
     }
     Utilities.pointBoxCollision = pointBoxCollision;
     // ---------- Events ---------- //
+    /**
+     * Numeric code of each key.
+     */
     Utilities.KEY_CODE = {
         backspace: 8,
         tab: 9,
@@ -143,6 +113,9 @@ var Utilities;
         f11: 122,
         f12: 123
     };
+    /**
+     * Numeric code of each mouse button.
+     */
     Utilities.MOUSE_CODE = {
         left: 0,
         middle: 1,
@@ -150,13 +123,11 @@ var Utilities;
     };
     // ---------- Local Storage ---------- //
     /**
-        Gets an object (parsed with json) from localStorage.
-    
-        Throws an Error exception if:
-            - key is not a string
-            - it doesn't find
-    
-        @param {String} key
+     * Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
+     *
+     * Throws an `Error` exception if:
+     * - `key` is not a string.
+     * - `key` wasn't found.
      */
     function getObject(key) {
         if (!Utilities.isString(key)) {
@@ -167,13 +138,10 @@ var Utilities;
     }
     Utilities.getObject = getObject;
     /**
-        Saves in the localStorage a json string representation of the value.
-    
-        Throws an Error exception if:
-            - key is not a string
-    
-        @param {String} key
-        @param value
+     * Saves in the `localStorage` a json string representation of the `value`.
+     *
+     * Throws an `Error` exception if:
+     * - `key` is not a `string`.
      */
     function saveObject(key, value) {
         if (!Utilities.isString(key)) {
@@ -184,35 +152,35 @@ var Utilities;
     Utilities.saveObject = saveObject;
     // ---------- Is Type ---------- //
     /**
-        @return {Boolean}
+     * @return If it is an array or not.
      */
     function isArray(element) {
         return Object.prototype.toString.call(element) === '[object Array]';
     }
     Utilities.isArray = isArray;
     /**
-        @return {Boolean}
+     * @return If it is a boolean.
      */
     function isBoolean(element) {
         return element === true || element === false || Object.prototype.toString.call(element) === '[object Boolean]';
     }
     Utilities.isBoolean = isBoolean;
     /**
-        @return {Boolean}
+     * @return If it is a function.
      */
     function isFunction(element) {
         return typeof element === 'function' && Object.prototype.toString.call(element) === '[object Function]';
     }
     Utilities.isFunction = isFunction;
     /**
-        @return {Boolean}
+     * @return If it is a number.
      */
     function isNumber(element) {
         return typeof element === 'number' && !isNaN(parseFloat(element)) && isFinite(element);
     }
     Utilities.isNumber = isNumber;
     /**
-        @return {Boolean}
+     * @return If it is a string.
      */
     function isString(element) {
         return typeof element === 'string' || element instanceof String;
@@ -220,15 +188,11 @@ var Utilities;
     Utilities.isString = isString;
     // ---------- Number Utilities ---------- //
     /**
-        Returns a random float number between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - either min or max is not a number
-            - the minimum value is bigger than the maximum.
-    
-        @param {Number} min
-        @param {Number} max
-        @return {Number}
+     * Returns a random float number between `min` and `max` (inclusive).
+     *
+     * Throws an `Error` exception if:
+     * - either `min` or `max` is not a `number`.
+     * - the minimum value is bigger than the maximum.
      */
     function getRandomFloat(min, max) {
         if (!Utilities.isNumber(min) || !Utilities.isNumber(max) || (min > max)) {
@@ -238,15 +202,11 @@ var Utilities;
     }
     Utilities.getRandomFloat = getRandomFloat;
     /**
-        Returns a random integer number between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - min or max isn't a number
-            - the minimum value is bigger than the maximum.
-    
-        @param {Number} min
-        @param {Number} max
-        @return {Number}
+     * Returns a random integer number between `min` and `max` (inclusive).
+     *
+     * Throws an `Error` exception if:
+     * - `min` or `max` isn't a number.
+     * - the minimum value is bigger than the maximum.
      */
     function getRandomInt(min, max) {
         if (!Utilities.isNumber(min) || (min % 1 !== 0) || !Utilities.isNumber(max) || (max % 1 !== 0) || (min > max)) {
@@ -256,17 +216,12 @@ var Utilities;
     }
     Utilities.getRandomInt = getRandomInt;
     /**
-        Returns several different random integers, in the range between 'min' and 'max' (inclusive).
-    
-        Throws an Error exception if:
-            - min, max or howMany isn't a number
-            - the minimum value is bigger than the maximum
-            - the range is less than the number of integers required
-    
-        @param {Number} min
-        @param {Number} max
-        @param {Number} howMany
-        @return {Number[]}
+     * Returns several different random integers, in the range between `min` and `max` (inclusive).
+     *
+     * Throws an Error exception if:
+     * - `min`, `max` or `howMany` isn't a number.
+     * - the minimum value is bigger than the maximum.
+     * - the range is less than the number of integers required.
      */
     function getSeveralRandomInts(min, max, howMany) {
         if (!Utilities.isNumber(min) || (min % 1) !== 0 || !Utilities.isNumber(max) || (max % 1) !== 0 || !Utilities.isNumber(howMany) || (howMany % 1) !== 0 || (min > max) || ((max - min) < howMany - 1)) {
@@ -283,14 +238,11 @@ var Utilities;
     }
     Utilities.getSeveralRandomInts = getSeveralRandomInts;
     /**
-        Returns the number of digits in a number.
-        It doesn't consider the minus signal, nor the dot (in floats) as a digit.
-    
-        Throws an Error exception if:
-            - the argument is not a number
-    
-        @param {Number} theNumber
-        @return {Number}
+     * Returns the number of digits in a number.
+     * It doesn't consider the minus signal, nor the dot (in floats) as a digit.
+     *
+     * Throws an `Error` exception if:
+     * - the argument is not a number.
      */
     function numberOfDigits(theNumber) {
         if (!Utilities.isNumber(theNumber)) {
@@ -304,15 +256,11 @@ var Utilities;
     }
     Utilities.numberOfDigits = numberOfDigits;
     /**
-        Rounds a number to a specified decimal case.
-    
-        Throws an Error exception if:
-            - num or dec isn't a number
-            - dec is less than 0
-    
-        @param {Number} num
-        @param {Number} dec
-        @return {Number}
+     * Rounds a number to a specified decimal case.
+     *
+     * Throws an `Error` exception if:
+     * - `num` or `dec` isn't a number.
+     * - `dec` is less than 0.
      */
     function round(num, dec) {
         if (!Utilities.isNumber(num) || !Utilities.isNumber(dec) || (dec % 1 !== 0) || (dec < 0)) {
@@ -322,18 +270,18 @@ var Utilities;
     }
     Utilities.round = round;
     // ---------- Object Utilities ---------- //
-    /*
-        Returns a deep clone/copy of the object.
+    /**
+     * Returns a deep clone/copy of the object.
      */
     function deepClone(obj) {
         return JSON.parse(JSON.stringify(obj));
     }
     Utilities.deepClone = deepClone;
     /**
-        Enum - A way to associate a string name to a number.
-    
-        @param {String[]} values - enum names. Each name will have an associated number.
-        @param {Number} [start=0] - Starting number for the first name. The number is incremented by one for the next name.
+     * Enum - A way to associate a string name to a number.
+     *
+     * @param values The `enum` names. Each name will have an associated number.
+     * @param start Starting number for the first name. The number is incremented by one for the next name.
      */
     function createEnum(values, start) {
         if (!Utilities.isArray(values)) {
@@ -354,8 +302,8 @@ var Utilities;
         return obj;
     }
     Utilities.createEnum = createEnum;
-    /*
-        Used for 'class' inheritance (search for parasitic combination inheritance)
+    /**
+     * Used for `class` inheritance (search for parasitic combination inheritance).
      */
     function inheritPrototype(derivedClass, baseClass) {
         var f = function () {
@@ -368,18 +316,17 @@ var Utilities;
     Utilities.inheritPrototype = inheritPrototype;
     // ---------- Time Utilities ---------- //
     /**
-        Converts a time (in milliseconds) to a string (with the number of days/hours...).
-        The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a totalUnits of 2)).
-        The units available are: day/hour/minute/second.
-    
-        Throws an Error exception if:
-            - the dateMilliseconds argument isn't a number
-    
-        @param {Number} dateMilliseconds
-        @param {Number} [totalUnits=2]
-        @return {String}
+     * Converts a time (in milliseconds) to a string (with the number of days/hours...).
+     *
+     * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).
+     *
+     * The units available are: day/hour/minute/second.
+     *
+     * Throws an `Error` exception if:
+     * - the `dateMilliseconds` argument isn't a number.
      */
     function timeToString(dateMilliseconds, totalUnits) {
+        if (totalUnits === void 0) { totalUnits = 2; }
         if (!Utilities.isNumber(dateMilliseconds)) {
             throw new Error('Invalid arguments.');
         }
@@ -443,8 +390,8 @@ var Utilities;
         return date;
     }
     Utilities.timeToString = timeToString;
-    /*
-        Uses the window.setTimeout()
+    /**
+     * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
      */
     var Timeout = (function () {
         function Timeout() {
@@ -452,14 +399,11 @@ var Utilities;
             this.id = -1;
         }
         /**
-            Starts the timeout. If there was an active timeout already, it is canceled.
-        
-            Throws an Error exception if:
-                - functionToCall isn't a function
-                - interval isn't a number
-        
-            @param {Function} functionToCall
-            @param {Number} interval
+         * Starts the timeout. If there was an active timeout already, that one is canceled.
+         *
+         * Throws an `Error` exception if:
+         * - `functionToCall` isn't a function.
+         * - `interval` isn't a number.
          */
         Timeout.prototype.start = function (functionToCall, interval) {
             if (!Utilities.isFunction(functionToCall) || !Utilities.isNumber(interval)) {
@@ -475,8 +419,8 @@ var Utilities;
                 functionToCall();
             }, interval);
         };
-        /*
-            Clears the timeout.
+        /**
+         * Cancels the timeout.
          */
         Timeout.prototype.clear = function () {
             window.clearTimeout(this.id);
@@ -486,10 +430,7 @@ var Utilities;
     })();
     Utilities.Timeout = Timeout;
     /**
-        Count-up or count-down timer. Updates directly to the html element.
-    
-        @constructor Timer
-        @param {HTMLElement} htmlElement
+     * Count-up or count-down timer. Updates directly to the html element.
      */
     var Timer = (function () {
         function Timer(htmlElement) {
@@ -508,15 +449,14 @@ var Utilities;
             this.html_element.innerHTML = this.getTimeString();
         }
         /**
-            Start counting.
-            If no endValue is given, it never stops counting.
-        
-            @param {Object=} args
-            @param {Number=} args.startValue - in milliseconds
-            @param {Number=} args.endValue - in milliseconds
-            @param {Function=} args.endCallback - To be called when the timer ends (only if an endValue is provided)
-            @param {Function=} args.tickCallback - To be called every second.
-            @param {Boolean=} args.countDown - count down or count up
+         * Start counting.
+         * If no endValue is given, it never stops counting.
+         *
+         * `startValue` and `endValue` are in milliseconds.
+         *
+         * `endCallback` is called when the timer ends (only if an `endValue` was provided).
+         *
+         * `tickCallback` is called every second.
          */
         Timer.prototype.start = function (args) {
             if (typeof args === 'undefined') {
@@ -549,8 +489,8 @@ var Utilities;
             this.html_element.innerHTML = this.getTimeString();
             this.resume();
         };
-        /*
-            Resumes the timer with the same settings/values that were set before it was stopped.
+        /**
+         * Resumes the timer with the same settings/values that were set before it was stopped.
          */
         Timer.prototype.resume = function () {
             if (this.is_active) {
@@ -595,8 +535,8 @@ var Utilities;
                 _this.html_element.innerHTML = _this.getTimeString();
             }, interval);
         };
-        /*
-            Stop counting.
+        /**
+         * Stop counting.
          */
         Timer.prototype.stop = function () {
             if (this.interval_f) {
@@ -605,16 +545,16 @@ var Utilities;
             }
             this.is_active = false;
         };
-        /*
-            Stops and resets the count.
+        /**
+         * Stops and resets the count.
          */
         Timer.prototype.reset = function () {
             this.stop();
             this.time_count = this.start_value;
             this.html_element.innerHTML = this.getTimeString();
         };
-        /*
-            Restart the timer.
+        /**
+         * Restart the timer.
          */
         Timer.prototype.restart = function () {
             this.reset();
@@ -627,27 +567,27 @@ var Utilities;
             });
         };
         /**
-            Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
-        
-            @param {Number} time - in milliseconds
+         * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
+         *
+         * @param time In milliseconds.
          */
         Timer.prototype.add = function (time) {
             this.time_count += time;
         };
-        /*
-            Returns a string with the time passed so far.
+        /**
+         * Returns a string with the time passed so far.
          */
         Timer.prototype.getTimeString = function () {
             return Utilities.timeToString(this.time_count);
         };
-        /*
-            Returns the time it has passed so far, in seconds.
+        /**
+         * Returns the time it has passed so far, in seconds.
          */
         Timer.prototype.getTimeSeconds = function () {
             return this.time_count / 1000;
         };
-        /*
-            Returns the time it has passed so far, in milliseconds.
+        /**
+         * Returns the time it has passed so far, in milliseconds.
          */
         Timer.prototype.getTimeMilliseconds = function () {
             return this.time_count;
@@ -657,17 +597,11 @@ var Utilities;
     Utilities.Timer = Timer;
     // ---------- Trigonometry ---------- //
     /**
-        Returns the angle between 2 points in radians.
-        Positive in clockwise direction.
-    
-        Throws an Error exception if:
-            - any of the arguments isn't a number
-    
-        @param {Number} aX
-        @param {Number} aY
-        @param {Number} bX
-        @param {Number} bY
-        @return {Number}
+     * Returns the angle between 2 points in radians.
+     * Positive in clockwise direction.
+     *
+     * Throws an `Error` exception if:
+     * - any of the arguments isn't a number.
      */
     function calculateAngle(aX, aY, bX, bY) {
         if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
@@ -681,16 +615,10 @@ var Utilities;
     }
     Utilities.calculateAngle = calculateAngle;
     /**
-        Distance between 2 points.
-    
-        Throws an Error exception if:
-            - any of the arguments isn't a number
-    
-        @param {Number} aX
-        @param {Number} aY
-        @param {Number} bX
-        @param {Number} bY
-        @return {Number}
+     * Distance between 2 points.
+     *
+     * Throws an `Error` exception if:
+     * - any of the arguments isn't a number.
      */
     function calculateDistance(aX, aY, bX, bY) {
         if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
@@ -702,13 +630,10 @@ var Utilities;
     }
     Utilities.calculateDistance = calculateDistance;
     /**
-        Converts a number in radians to degrees and returns it.
-    
-        Throws an Error exception if:
-            - the argument isn't a number
-    
-        @param {Number} radians
-        @return {Number}
+     * Converts a number in `radians` to `degrees` and returns it.
+     *
+     * Throws an `Error` exception if:
+     * - the argument isn't a number.
      */
     function toDegrees(radians) {
         if (!Utilities.isNumber(radians)) {
@@ -718,13 +643,10 @@ var Utilities;
     }
     Utilities.toDegrees = toDegrees;
     /**
-        Converts a number in degrees to radians and returns it.
-    
-        Throws an Error exception if:
-            - the argument isn't a number
-    
-        @param {Number} degrees
-        @return {Number}
+     * Converts a number in `degrees` to `radians` and returns it.
+     *
+     * Throws an `Error` exception if:
+     * - the argument isn't a number.
      */
     function toRadians(degrees) {
         if (!Utilities.isNumber(degrees)) {
