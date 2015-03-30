@@ -3,6 +3,29 @@
  */
 var Utilities;
 (function (Utilities) {
+    // ---------- Array Utilities ---------- //
+    /**
+     * Shuffle an array.
+     */
+    function shuffle(array) {
+        if (!Utilities.isArray(array)) {
+            throw new Error('Invalid argument. Not an array.');
+        }
+        var currentIndex = array.length;
+        var temporaryValue;
+        var randomIndex;
+        while (currentIndex !== 0) {
+            // pick a remaining element
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            // swap it with the current element
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+    Utilities.shuffle = shuffle;
     // ---------- Collision Detection ---------- //
     /**
      * Detects collision between 2 boxes.

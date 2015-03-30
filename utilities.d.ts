@@ -3,6 +3,10 @@
  */
 declare module Utilities {
     /**
+     * Shuffle an array.
+     */
+    function shuffle(array: any[]): any[];
+    /**
      * Detects collision between 2 boxes.
      */
     function boxBoxCollision(oneX: number, oneY: number, oneWidth: number, oneHeight: number, twoX: number, twoY: number, twoWidth: number, twoHeight: number): boolean;

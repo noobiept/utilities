@@ -1,3 +1,40 @@
+// ---------- Array Utilities ---------- //
+
+
+    // shuffle //
+QUnit.module( 'shuffle' );
+QUnit.test( 'validate arguments', function( assert )
+{
+var expect = Error;
+
+assert.throws( function()
+    {
+    Utilities.shuffle();
+    }, expect, 'No arguments given.' );
+
+assert.throws( function()
+    {
+    Utilities.shuffle( 1 );
+    }, expect, 'Wrong argument type.' );
+});
+
+QUnit.test( 'test with valid arguments', function( assert )
+{
+var test = [ 1, 2, 3, 4 ];
+var length = test.length;
+
+Utilities.shuffle( test );
+
+assert.deepEqual( test.length, length, 'Should still have the same length.' );
+
+    // see if the same values are still there (just on different order)
+assert.deepEqual( test.indexOf( 1 ) >= 0, true );
+assert.deepEqual( test.indexOf( 2 ) >= 0, true );
+assert.deepEqual( test.indexOf( 3 ) >= 0, true );
+assert.deepEqual( test.indexOf( 4 ) >= 0, true );
+});
+
+
 // ---------- Collision Detection ---------- //
 
 
