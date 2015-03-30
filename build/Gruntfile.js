@@ -4,36 +4,54 @@ module.exports = function( grunt )
 grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
 
+
+            // run the tests
         qunit: {
             all: [ '../tests/tests.html' ]
         },
 
-        copy: {
-            definitions: {
-                files: [
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: '../utilities.d.ts',
-                        dest: '../release/'
-                    }
-                ]
-            }
-        },
 
-        rename: {
-            definitions: {
-                src: '../release/utilities.d.ts',
-                dest: '../release/<%= pkg.name %>.<%= pkg.version %>.d.ts'
-            }
-        },
+            // compile the typescript code to javascript
+        typescript: {
+            dev: {
+                src: [ '../utilities.ts' ],
+                dest: '../<%= pkg.name %>.js',
+                options: {
+                    declaration: true
+                }
+            },
 
-        uglify: {
             release: {
-                files: {
-                    '../release/<%= pkg.name %>.<%= pkg.version %>.min.js': [ '../utilities.js' ]
+                src: [ '../utilities.ts' ],
+                dest: '../release/<%= pkg.version %>/<%= pkg.name %>.<%= pkg.version %>.js',
+                options: {
+                    declaration: true
                 }
             }
+        },
+
+
+            // minify the javascript code
+        uglify: {
+            options: {
+                mangle: false
+            },
+            release: {
+                files: {
+                    '../release/<%= pkg.version %>/<%= pkg.name %>.<%= pkg.version %>.min.js': [ '../release/<%= pkg.version %>/<%= pkg.name %>.<%= pkg.version %>.js' ]
+                }
+            }
+        },
+
+
+            // build the documentation
+        typedoc: {
+            options: {
+                out: '../documentation/',
+                name: 'Utilities',
+                mode: 'File'
+            },
+            src: '../utilities.ts'
         }
    });
 
@@ -42,10 +60,12 @@ grunt.initConfig({
 grunt.loadNpmTasks( 'grunt-contrib-qunit' );
 grunt.loadNpmTasks( 'grunt-contrib-copy' );
 grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-grunt.loadNpmTasks( 'grunt-rename' );
+grunt.loadNpmTasks( 'grunt-typescript' );
+grunt.loadNpmTasks( 'typedoc' );
 
     // tasks
-grunt.registerTask( 'tests', [ 'qunit' ] );
-grunt.registerTask( 'release', [ 'uglify', 'copy:definitions', 'rename:definitions' ] );
-grunt.registerTask( 'default', [ 'tests', 'release' ] );
+grunt.registerTask( 'default', [ 'typescript:dev' ] );
+grunt.registerTask( 'tests', [ 'default', 'qunit' ] );
+grunt.registerTask( 'docs', [ 'typedoc' ] );
+grunt.registerTask( 'release', [ 'tests', 'typescript:release', 'uglify', 'docs' ] );
 };
