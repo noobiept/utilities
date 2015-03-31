@@ -9,7 +9,7 @@ var Utilities;
      */
     function shuffle(array) {
         if (!Utilities.isArray(array)) {
-            throw new Error('Invalid argument. Not an array.');
+            throw new Error("Utilities.shuffle() -> Invalid 'array' argument. Not an array.");
         }
         var currentIndex = array.length;
         var temporaryValue;
@@ -154,7 +154,7 @@ var Utilities;
      */
     function getObject(key) {
         if (!Utilities.isString(key)) {
-            throw new Error('Invalid arguments.');
+            throw new Error("Utilities.getObject() -> Invalid 'key' argument. Not a string.");
         }
         var value = localStorage.getItem(key);
         return value && JSON.parse(value);
@@ -168,7 +168,7 @@ var Utilities;
      */
     function saveObject(key, value) {
         if (!Utilities.isString(key)) {
-            throw new Error('Invalid arguments.');
+            throw new Error("Utilities.saveObject() -> Invalid 'key' argument. Not a string.");
         }
         localStorage.setItem(key, JSON.stringify(value));
     }
@@ -196,6 +196,13 @@ var Utilities;
     }
     Utilities.isFunction = isFunction;
     /**
+     * @return If it is an integer.
+     */
+    function isInteger(value) {
+        return Utilities.isNumber(value) && (value % 1) === 0;
+    }
+    Utilities.isInteger = isInteger;
+    /**
      * @return If it is a number.
      */
     function isNumber(element) {
@@ -219,7 +226,7 @@ var Utilities;
      */
     function getRandomFloat(min, max) {
         if (!Utilities.isNumber(min) || !Utilities.isNumber(max) || (min > max)) {
-            throw new Error('Invalid arguments.');
+            throw new Error("Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'.");
         }
         return Math.random() * (max - min) + min;
     }
@@ -228,12 +235,12 @@ var Utilities;
      * Returns a random integer number between `min` and `max` (inclusive).
      *
      * Throws an `Error` exception if:
-     * - `min` or `max` isn't a number.
+     * - `min` or `max` isn't an integer.
      * - the minimum value is bigger than the maximum.
      */
     function getRandomInt(min, max) {
-        if (!Utilities.isNumber(min) || (min % 1 !== 0) || !Utilities.isNumber(max) || (max % 1 !== 0) || (min > max)) {
-            throw new Error('Invalid arguments.');
+        if (!Utilities.isInteger(min) || !Utilities.isInteger(max) || (min > max)) {
+            throw new Error("Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'.");
         }
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -242,13 +249,13 @@ var Utilities;
      * Returns several different random integers, in the range between `min` and `max` (inclusive).
      *
      * Throws an Error exception if:
-     * - `min`, `max` or `howMany` isn't a number.
+     * - `min`, `max` or `howMany` isn't an integer.
      * - the minimum value is bigger than the maximum.
      * - the range is less than the number of integers required.
      */
     function getSeveralRandomInts(min, max, howMany) {
-        if (!Utilities.isNumber(min) || (min % 1) !== 0 || !Utilities.isNumber(max) || (max % 1) !== 0 || !Utilities.isNumber(howMany) || (howMany % 1) !== 0 || (min > max) || ((max - min) < howMany - 1)) {
-            throw new Error('Invalid arguments.');
+        if (!Utilities.isInteger(min) || !Utilities.isInteger(max) || !Utilities.isInteger(howMany) || (min > max) || ((max - min) < howMany - 1)) {
+            throw new Error("Utilities.getSeveralRandomInts() -> Invalid arguments.");
         }
         var numbers = [];
         while (numbers.length < howMany) {
@@ -269,7 +276,7 @@ var Utilities;
      */
     function numberOfDigits(theNumber) {
         if (!Utilities.isNumber(theNumber)) {
-            throw new Error('Invalid arguments.');
+            throw new Error("Utilities.numberOfDigits() -> Invalid 'theNumber' argument. Not a number.");
         }
         if (theNumber < 0) {
             theNumber *= -1;
@@ -282,12 +289,13 @@ var Utilities;
      * Rounds a number to a specified decimal case.
      *
      * Throws an `Error` exception if:
-     * - `num` or `dec` isn't a number.
+     * - `num` isn't a number.
+     * - `dec` isn't an integer.
      * - `dec` is less than 0.
      */
     function round(num, dec) {
-        if (!Utilities.isNumber(num) || !Utilities.isNumber(dec) || (dec % 1 !== 0) || (dec < 0)) {
-            throw new Error('Invalid arguments.');
+        if (!Utilities.isNumber(num) || !Utilities.isInteger(dec) || (dec < 0)) {
+            throw new Error('Utilities.round() -> Invalid arguments.');
         }
         return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
     }
@@ -308,7 +316,7 @@ var Utilities;
      */
     function createEnum(values, start) {
         if (!Utilities.isArray(values)) {
-            throw new Error("'values' argument needs to be an array of strings.");
+            throw new Error("Utilities.createEnum() -> Invalid 'values' argument. Needs to be an array of strings.");
         }
         if (!Utilities.isNumber(start)) {
             start = 0;
@@ -351,9 +359,9 @@ var Utilities;
     function timeToString(dateMilliseconds, totalUnits) {
         if (totalUnits === void 0) { totalUnits = 2; }
         if (!Utilities.isNumber(dateMilliseconds)) {
-            throw new Error('Invalid arguments.');
+            throw new Error("Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number.");
         }
-        if (typeof totalUnits === 'undefined' || !Utilities.isNumber(totalUnits)) {
+        if (!Utilities.isNumber(totalUnits)) {
             totalUnits = 2;
         }
         // :: convert to days/hours :: //
@@ -430,7 +438,7 @@ var Utilities;
          */
         Timeout.prototype.start = function (functionToCall, interval) {
             if (!Utilities.isFunction(functionToCall) || !Utilities.isNumber(interval)) {
-                throw new Error('Invalid arguments.');
+                throw new Error('Utilities.Timeout.start() -> Invalid arguments.');
             }
             var _this = this;
             if (this.is_active) {
@@ -458,7 +466,7 @@ var Utilities;
     var Timer = (function () {
         function Timer(htmlElement) {
             if (!(htmlElement instanceof HTMLElement)) {
-                throw new Error('Missing argument or not an HTML element.');
+                throw new Error("Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element.");
             }
             this.is_active = false;
             this.start_value = 0;
@@ -628,7 +636,7 @@ var Utilities;
      */
     function calculateAngle(aX, aY, bX, bY) {
         if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
-            throw new Error('Invalid arguments.');
+            throw new Error('Utilities.calculateAngle() -> Invalid arguments. Needs to be a number.');
         }
         // make a triangle from the position the objectA is in, relative to the objectB position
         var triangleOppositeSide = aY - bY;
@@ -645,7 +653,7 @@ var Utilities;
      */
     function calculateDistance(aX, aY, bX, bY) {
         if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
-            throw new Error('Invalid arguments.');
+            throw new Error('Utilities.calculateDistance() -> Invalid arguments. Needs to be a number.');
         }
         var opposite = bY - aY;
         var adjacent = bX - aX;
@@ -660,7 +668,7 @@ var Utilities;
      */
     function toDegrees(radians) {
         if (!Utilities.isNumber(radians)) {
-            throw new Error('Invalid argument.');
+            throw new Error("Utilities.toDegrees() -> Invalid 'radians' argument. Not a number.");
         }
         return radians * 180 / Math.PI;
     }
@@ -673,7 +681,7 @@ var Utilities;
      */
     function toRadians(degrees) {
         if (!Utilities.isNumber(degrees)) {
-            throw new Error('Invalid argument.');
+            throw new Error("Utilities.toRadians() -> Invalid 'degrees' argument. Not a number.");
         }
         return degrees * Math.PI / 180;
     }

@@ -123,6 +123,10 @@ declare module Utilities {
      */
     function isFunction(element: any): boolean;
     /**
+     * @return If it is an integer.
+     */
+    function isInteger(value: any): boolean;
+    /**
      * @return If it is a number.
      */
     function isNumber(element: any): boolean;
@@ -142,7 +146,7 @@ declare module Utilities {
      * Returns a random integer number between `min` and `max` (inclusive).
      *
      * Throws an `Error` exception if:
-     * - `min` or `max` isn't a number.
+     * - `min` or `max` isn't an integer.
      * - the minimum value is bigger than the maximum.
      */
     function getRandomInt(min: number, max: number): number;
@@ -150,7 +154,7 @@ declare module Utilities {
      * Returns several different random integers, in the range between `min` and `max` (inclusive).
      *
      * Throws an Error exception if:
-     * - `min`, `max` or `howMany` isn't a number.
+     * - `min`, `max` or `howMany` isn't an integer.
      * - the minimum value is bigger than the maximum.
      * - the range is less than the number of integers required.
      */
@@ -167,7 +171,8 @@ declare module Utilities {
      * Rounds a number to a specified decimal case.
      *
      * Throws an `Error` exception if:
-     * - `num` or `dec` isn't a number.
+     * - `num` isn't a number.
+     * - `dec` isn't an integer.
      * - `dec` is less than 0.
      */
     function round(num: number, dec: number): number;

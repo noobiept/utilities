@@ -232,6 +232,36 @@ for (var a = 0 ; a < values.length ; a++)
 });
 
 
+    // isInteger //
+QUnit.module( 'isInteger' );
+QUnit.test( 'Test type', function( assert )
+{
+var values = [
+        { value: 1, expect: true },
+        { value: 1.2, expect: false },
+        { value: NaN, expect: false },
+        { value: Infinity, expect: false },
+        { value: "1.3", expect: false },
+        { value: 'a', expect: false },
+        { value: '', expect: false },
+        { value: undefined, expect: false },
+        { value: null, expect: false },
+        { value: true, expect: false },
+        { value: {}, expect: false },
+        { value: function() {}, expect: false },
+        { value: [], expect: false }
+    ];
+
+for (var a = 0 ; a < values.length ; a++)
+    {
+    var value = values[ a ].value;
+    var expect = values[ a ].expect;
+
+    assert.strictEqual( Utilities.isInteger( value ), expect, 'Value: ' + value );
+    }
+});
+
+
     // isNumber //
 QUnit.module( 'isNumber' );
 QUnit.test( 'Test type', function( assert )
@@ -258,6 +288,36 @@ for (var a = 0 ; a < values.length ; a++)
     var expect = values[ a ].expect;
 
     assert.strictEqual( Utilities.isNumber( value ), expect, 'Value: ' + value );
+    }
+});
+
+
+    // isString //
+QUnit.module( 'isString' );
+QUnit.test( 'Test type', function( assert )
+{
+var values = [
+        { value: 1, expect: false },
+        { value: 1.2, expect: false },
+        { value: NaN, expect: false },
+        { value: Infinity, expect: false },
+        { value: "1.3", expect: true },
+        { value: 'a', expect: true },
+        { value: '', expect: true },
+        { value: undefined, expect: false },
+        { value: null, expect: false },
+        { value: true, expect: false },
+        { value: {}, expect: false },
+        { value: function() {}, expect: false },
+        { value: [], expect: false }
+    ];
+
+for (var a = 0 ; a < values.length ; a++)
+    {
+    var value = values[ a ].value;
+    var expect = values[ a ].expect;
+
+    assert.strictEqual( Utilities.isString( value ), expect, 'Value: ' + value );
     }
 });
 
