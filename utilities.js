@@ -14,6 +14,7 @@ var Utilities;
         var currentIndex = array.length;
         var temporaryValue;
         var randomIndex;
+        // while there's still elements to shuffle
         while (currentIndex !== 0) {
             // pick a remaining element
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -31,7 +32,10 @@ var Utilities;
      * Detects collision between 2 boxes.
      */
     function boxBoxCollision(oneX, oneY, oneWidth, oneHeight, twoX, twoY, twoWidth, twoHeight) {
-        return !((oneY + oneHeight < twoY) || (oneY > twoY + twoHeight) || (oneX > twoX + twoWidth) || (oneX + oneWidth < twoX));
+        return !((oneY + oneHeight < twoY) ||
+            (oneY > twoY + twoHeight) ||
+            (oneX > twoX + twoWidth) ||
+            (oneX + oneWidth < twoX));
     }
     Utilities.boxBoxCollision = boxBoxCollision;
     /**
@@ -64,7 +68,10 @@ var Utilities;
      * Detects collision between a point and a box.
      */
     function pointBoxCollision(pointX, pointY, boxX, boxY, boxWidth, boxHeight) {
-        if (pointX < boxX || pointX > boxX + boxWidth || pointY < boxY || pointY > boxY + boxHeight) {
+        if (pointX < boxX ||
+            pointX > boxX + boxWidth ||
+            pointY < boxY ||
+            pointY > boxY + boxHeight) {
             return false;
         }
         return true;
@@ -225,7 +232,9 @@ var Utilities;
      * - the minimum value is bigger than the maximum.
      */
     function getRandomFloat(min, max) {
-        if (!Utilities.isNumber(min) || !Utilities.isNumber(max) || (min > max)) {
+        if (!Utilities.isNumber(min) ||
+            !Utilities.isNumber(max) ||
+            (min > max)) {
             throw new Error("Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'.");
         }
         return Math.random() * (max - min) + min;
@@ -239,7 +248,9 @@ var Utilities;
      * - the minimum value is bigger than the maximum.
      */
     function getRandomInt(min, max) {
-        if (!Utilities.isInteger(min) || !Utilities.isInteger(max) || (min > max)) {
+        if (!Utilities.isInteger(min) ||
+            !Utilities.isInteger(max) ||
+            (min > max)) {
             throw new Error("Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'.");
         }
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -254,7 +265,11 @@ var Utilities;
      * - the range is less than the number of integers required.
      */
     function getSeveralRandomInts(min, max, howMany) {
-        if (!Utilities.isInteger(min) || !Utilities.isInteger(max) || !Utilities.isInteger(howMany) || (min > max) || ((max - min) < howMany - 1)) {
+        if (!Utilities.isInteger(min) ||
+            !Utilities.isInteger(max) ||
+            !Utilities.isInteger(howMany) ||
+            (min > max) ||
+            ((max - min) < howMany - 1)) {
             throw new Error("Utilities.getSeveralRandomInts() -> Invalid arguments.");
         }
         var numbers = [];
@@ -294,7 +309,9 @@ var Utilities;
      * - `dec` is less than 0.
      */
     function round(num, dec) {
-        if (!Utilities.isNumber(num) || !Utilities.isInteger(dec) || (dec < 0)) {
+        if (!Utilities.isNumber(num) ||
+            !Utilities.isInteger(dec) ||
+            (dec < 0)) {
             throw new Error('Utilities.round() -> Invalid arguments.');
         }
         return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
@@ -337,8 +354,7 @@ var Utilities;
      * Used for `class` inheritance (search for parasitic combination inheritance).
      */
     function inheritPrototype(derivedClass, baseClass) {
-        var f = function () {
-        };
+        var f = function () { };
         f.prototype = baseClass.prototype;
         var prototype = new f();
         prototype.constructor = derivedClass;
@@ -374,14 +390,17 @@ var Utilities;
         var hoursLeft = 0;
         var daysLeft = 0;
         var secondsLeft = 0;
+        //count the days
         while (dateMilliseconds >= day) {
             daysLeft++;
             dateMilliseconds -= day;
         }
+        //count the hours
         while (dateMilliseconds >= hour) {
             hoursLeft++;
             dateMilliseconds -= hour;
         }
+        //count the minutes
         while (dateMilliseconds >= minute) {
             minutesLeft++;
             dateMilliseconds -= minute;
@@ -437,7 +456,8 @@ var Utilities;
          * - `interval` isn't a number.
          */
         Timeout.prototype.start = function (functionToCall, interval) {
-            if (!Utilities.isFunction(functionToCall) || !Utilities.isNumber(interval)) {
+            if (!Utilities.isFunction(functionToCall) ||
+                !Utilities.isNumber(interval)) {
                 throw new Error('Utilities.Timeout.start() -> Invalid arguments.');
             }
             var _this = this;
@@ -458,16 +478,13 @@ var Utilities;
             this.is_active = false;
         };
         return Timeout;
-    })();
+    }());
     Utilities.Timeout = Timeout;
     /**
-     * Count-up or count-down timer. Updates directly to the html element.
+     * Count-up or count-down timer. Can optionally update an html element.
      */
     var Timer = (function () {
         function Timer(htmlElement) {
-            if (!(htmlElement instanceof HTMLElement)) {
-                throw new Error("Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element.");
-            }
             this.is_active = false;
             this.start_value = 0;
             this.end_value = null; // null means it doesn't have an end value
@@ -477,7 +494,7 @@ var Utilities;
             this.time_count = 0;
             this.interval_f = null;
             this.html_element = htmlElement;
-            this.html_element.innerHTML = this.getTimeString();
+            this.updateHtmlElement();
         }
         /**
          * Start counting.
@@ -517,7 +534,7 @@ var Utilities;
             this.end_value = args.endValue;
             this.end_callback = args.endCallback;
             this.tick_callback = args.tickCallback;
-            this.html_element.innerHTML = this.getTimeString();
+            this.updateHtmlElement();
             this.resume();
         };
         /**
@@ -563,7 +580,7 @@ var Utilities;
                     _this.tick_callback();
                 }
                 // update the html element with the current time
-                _this.html_element.innerHTML = _this.getTimeString();
+                _this.updateHtmlElement();
             }, interval);
         };
         /**
@@ -582,7 +599,7 @@ var Utilities;
         Timer.prototype.reset = function () {
             this.stop();
             this.time_count = this.start_value;
-            this.html_element.innerHTML = this.getTimeString();
+            this.updateHtmlElement();
         };
         /**
          * Restart the timer.
@@ -596,6 +613,14 @@ var Utilities;
                 tickCallback: this.tick_callback,
                 countDown: this.count_down
             });
+        };
+        /**
+         * Updates the associated html element (if was given) with the current time value.
+         */
+        Timer.prototype.updateHtmlElement = function () {
+            if (this.html_element) {
+                this.html_element.innerHTML = this.getTimeString();
+            }
         };
         /**
          * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
@@ -624,7 +649,7 @@ var Utilities;
             return this.time_count;
         };
         return Timer;
-    })();
+    }());
     Utilities.Timer = Timer;
     // ---------- Trigonometry ---------- //
     /**
@@ -635,7 +660,10 @@ var Utilities;
      * - any of the arguments isn't a number.
      */
     function calculateAngle(aX, aY, bX, bY) {
-        if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
+        if (!Utilities.isNumber(aX) ||
+            !Utilities.isNumber(aY) ||
+            !Utilities.isNumber(bX) ||
+            !Utilities.isNumber(bY)) {
             throw new Error('Utilities.calculateAngle() -> Invalid arguments. Needs to be a number.');
         }
         // make a triangle from the position the objectA is in, relative to the objectB position
@@ -652,7 +680,10 @@ var Utilities;
      * - any of the arguments isn't a number.
      */
     function calculateDistance(aX, aY, bX, bY) {
-        if (!Utilities.isNumber(aX) || !Utilities.isNumber(aY) || !Utilities.isNumber(bX) || !Utilities.isNumber(bY)) {
+        if (!Utilities.isNumber(aX) ||
+            !Utilities.isNumber(aY) ||
+            !Utilities.isNumber(bX) ||
+            !Utilities.isNumber(bY)) {
             throw new Error('Utilities.calculateDistance() -> Invalid arguments. Needs to be a number.');
         }
         var opposite = bY - aY;

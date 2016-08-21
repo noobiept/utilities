@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "noImplicitReturns": true,
+        "target": "es5",
+        "declaration": true
+    },
+    "compileOnSave": true,
+    "files": [
+        "utilities.ts"
+    ]
+}

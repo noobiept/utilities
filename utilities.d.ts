@@ -223,7 +223,7 @@ declare module Utilities {
         clear(): void;
     }
     /**
-     * Count-up or count-down timer. Updates directly to the html element.
+     * Count-up or count-down timer. Can optionally update an html element.
      */
     class Timer {
         is_active: boolean;
@@ -235,7 +235,7 @@ declare module Utilities {
         time_count: number;
         interval_f: number;
         html_element: HTMLElement;
-        constructor(htmlElement: HTMLElement);
+        constructor(htmlElement?: HTMLElement);
         /**
          * Start counting.
          * If no endValue is given, it never stops counting.
@@ -269,6 +269,10 @@ declare module Utilities {
          * Restart the timer.
          */
         restart(): void;
+        /**
+         * Updates the associated html element (if was given) with the current time value.
+         */
+        updateHtmlElement(): void;
         /**
          * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
          *

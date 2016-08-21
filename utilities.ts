@@ -660,7 +660,7 @@ clear()
 
 
 /**
- * Count-up or count-down timer. Updates directly to the html element.
+ * Count-up or count-down timer. Can optionally update an html element.
  */
 export class Timer
 {
@@ -674,13 +674,8 @@ time_count: number;
 interval_f: number;
 html_element: HTMLElement;
 
-constructor( htmlElement: HTMLElement )
+constructor( htmlElement?: HTMLElement )
     {
-    if ( !(htmlElement instanceof HTMLElement) )
-        {
-        throw new Error( "Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element." );
-        }
-
     this.is_active = false;
     this.start_value = 0;
     this.end_value = null;  // null means it doesn't have an end value
@@ -689,9 +684,9 @@ constructor( htmlElement: HTMLElement )
     this.count_down = false;
     this.time_count = 0;
     this.interval_f = null;
-
     this.html_element = htmlElement;
-    this.html_element.innerHTML = this.getTimeString();
+
+    this.updateHtmlElement();
     }
 
 
@@ -750,7 +745,7 @@ start( args?: { startValue?: number; endValue?: number; endCallback?: () => any;
     this.end_callback = args.endCallback;
     this.tick_callback = args.tickCallback;
 
-    this.html_element.innerHTML = this.getTimeString();
+    this.updateHtmlElement();
     this.resume();
     }
 
@@ -824,7 +819,7 @@ resume()
             }
 
             // update the html element with the current time
-        _this.html_element.innerHTML = _this.getTimeString();
+        _this.updateHtmlElement();
 
         }, interval );
     }
@@ -853,8 +848,7 @@ reset()
     this.stop();
 
     this.time_count = this.start_value;
-
-    this.html_element.innerHTML = this.getTimeString();
+    this.updateHtmlElement();
     }
 
 
@@ -871,6 +865,18 @@ restart()
             tickCallback : this.tick_callback,
             countDown    : this.count_down
         });
+    }
+
+
+/**
+ * Updates the associated html element (if was given) with the current time value.
+ */
+updateHtmlElement()
+    {
+    if ( this.html_element )
+        {
+        this.html_element.innerHTML = this.getTimeString();
+        }
     }
 
 
