@@ -2,7 +2,8 @@
     "compilerOptions": {
         "noImplicitReturns": true,
         "target": "es5",
-        "declaration": true
+        "declaration": true,
+        "removeComments": false
     },
     "compileOnSave": true,
     "files": [

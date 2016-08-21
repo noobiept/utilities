@@ -15,6 +15,12 @@ Build
 
 Uses typescript `1.8`.
 
+Development.
+
+    tsc -w
+
+Release.
+
     cd build
     npm install
-    grunt release
+    grunt
