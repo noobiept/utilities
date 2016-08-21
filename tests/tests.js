@@ -894,9 +894,9 @@ assert.throws( function()
 timeout.clear();
 });
 
-QUnit.asyncTest( 'test with valid arguments', function( assert )
+QUnit.test( 'test with valid arguments', function( assert )
 {
-expect( 1 );    // number of assertions within this test
+var done = assert.async();
 
 var value = 0;
 var timeout = new Utilities.Timeout();
@@ -906,7 +906,7 @@ timeout.start( function()
     value = 1;
 
     assert.deepEqual( value, 1 );
-    QUnit.start();
+    done();
     }, 10 );
 });
 
@@ -916,11 +916,7 @@ QUnit.module( 'Timer' );
 QUnit.test( 'validate arguments', function( assert )
 {
 var expect = Error;
-
-assert.throws( function()
-    {
-    new Utilities.Timer();
-    }, expect, 'No arguments given.' );
+assert.ok( new Utilities.Timer(), "Doesn't need an argument." );
 
 assert.throws( function()
     {
@@ -928,7 +924,15 @@ assert.throws( function()
     }, expect, 'Not an html element.' );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
+QUnit.test( 'test without an argument.', function( assert )
+{
+var timer = new Utilities.Timer();
+
+assert.deepEqual( timer.getTimeString(), '0 seconds' );
+assert.deepEqual( timer.getTimeSeconds(), 0 );
+});
+
+QUnit.test( 'test with a given html element.', function( assert )
 {
 var htmlElement = document.createElement( 'div' );
 var timer = new Utilities.Timer( htmlElement );

@@ -676,6 +676,12 @@ html_element: HTMLElement;
 
 constructor( htmlElement?: HTMLElement )
     {
+        // either don't receive an argument, or if given needs to be an HTMLElement
+    if ( typeof htmlElement !== 'undefined' && !(htmlElement instanceof HTMLElement) )
+        {
+        throw new Error( "Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element." );
+        }
+
     this.is_active = false;
     this.start_value = 0;
     this.end_value = null;  // null means it doesn't have an end value
