@@ -13,8 +13,6 @@ You can read the documentation here -> [http://javascript-utilities.herokuapp.co
 Build
 =====
 
-Uses typescript `1.8`.
-
 Development.
 
     tsc -w

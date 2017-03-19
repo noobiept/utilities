@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
+        "noImplicitAny": true,
         "noImplicitReturns": true,
-        "target": "es5",
-        "declaration": true,
-        "removeComments": false
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "target": "es2015"
     },
-    "compileOnSave": true,
-    "files": [
-        "utilities.ts"
+    "include": [
+        "source/**/*.ts"
     ]
 }
