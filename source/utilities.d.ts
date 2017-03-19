@@ -26,16 +26,6 @@ declare module Utilities {
      * Numeric code of each key.
      */
     var KEY_CODE: {
-        "0": number;
-        "1": number;
-        "2": number;
-        "3": number;
-        "4": number;
-        "5": number;
-        "6": number;
-        "7": number;
-        "8": number;
-        "9": number;
         backspace: number;
         tab: number;
         enter: number;
@@ -48,6 +38,16 @@ declare module Utilities {
         rightArrow: number;
         downArrow: number;
         del: number;
+        "0": number;
+        "1": number;
+        "2": number;
+        "3": number;
+        "4": number;
+        "5": number;
+        "6": number;
+        "7": number;
+        "8": number;
+        "9": number;
         a: number;
         b: number;
         c: number;
@@ -186,7 +186,9 @@ declare module Utilities {
      * @param values The `enum` names. Each name will have an associated number.
      * @param start Starting number for the first name. The number is incremented by one for the next name.
      */
-    function createEnum(values: string[], start?: number): {};
+    function createEnum(values: string[], start?: number): {
+        [key: string]: string | number;
+    };
     /**
      * Used for `class` inheritance (search for parasitic combination inheritance).
      */

@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Random collection of utilities functions/classes.
  */
@@ -340,12 +341,11 @@ var Utilities;
         }
         var obj = {};
         var length = values.length;
-        var name;
         for (var a = 0; a < length; a++) {
-            name = values[a];
+            let name = values[a];
             obj[start] = name;
             obj[name] = start;
-            start++;
+            start = start + 1;
         }
         return obj;
     }
@@ -407,7 +407,12 @@ var Utilities;
         //and the seconds
         secondsLeft = Utilities.round(dateMilliseconds / second, 2);
         // :: construct the string :: //
-        var theDate = [["day", daysLeft], ["hour", hoursLeft], ["minute", minutesLeft], ["second", secondsLeft]];
+        var theDate = [
+            { name: "day", time: daysLeft },
+            { name: "hour", time: hoursLeft },
+            { name: "minute", time: minutesLeft },
+            { name: "second", time: secondsLeft }
+        ];
         var constructDate = function (dateTmp, numberOf) {
             // day to days, hour to hours...
             if (numberOf !== 1) {
@@ -422,14 +427,15 @@ var Utilities;
             if (totalUnits === 0) {
                 break;
             }
+            let component = theDate[i];
             // only show when there's something relevant to be shown
             // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
-            if (theDate[i][1] !== 0) {
+            if (component.time !== 0) {
                 // add spacing between the units apart from the first one
                 if (date !== '') {
                     date += ' ';
                 }
-                date += constructDate(theDate[i][0], theDate[i][1]);
+                date += constructDate(component.name, component.time);
                 totalUnits--;
             }
         }
