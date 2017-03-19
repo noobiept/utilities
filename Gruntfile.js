@@ -17,6 +17,10 @@ grunt.initConfig({
             release: {
                 tsconfig: 'tsconfig.json',
                 dest: 'release/<%= pkg.version %>/<%= pkg.name %>.<%= pkg.version %>.js'
+            },
+            options: {
+                removeComments: false,
+                sourceMap: false
             }
         },
 
@@ -45,7 +49,13 @@ grunt.initConfig({
 
 
         clean: {
-            afterBuild: [ '.tscache' ]
+            previousBuild: [
+                'release/<%= pkg.version %>'
+            ],
+            afterBuild: [
+                '.tscache',
+                'release/<%= pkg.version %>/<%= pkg.name %>.<%= pkg.version %>.js'
+            ]
         }
    });
 
@@ -59,5 +69,5 @@ grunt.loadNpmTasks( 'grunt-ts' );
 grunt.loadNpmTasks( 'grunt-typedoc' );
 
     // tasks
-grunt.registerTask( 'default', [ 'qunit', 'ts', 'uglify', 'typedoc', 'clean:afterBuild' ] );
+grunt.registerTask( 'default', [ 'qunit', 'clean:previousBuild', 'ts', 'uglify', 'typedoc', 'clean:afterBuild' ] );
 };
