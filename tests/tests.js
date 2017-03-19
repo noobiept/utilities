@@ -771,46 +771,6 @@ assert.deepEqual( obj2.there, -3 );
 });
 
 
-    // inheritPrototype //
-QUnit.module( 'inheritPrototype' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-function BaseClass( b )
-    {
-    this.a = 'a';
-    this.b = b;
-    this.one = function() { return '1'; };
-    }
-
-BaseClass.prototype.two = function()
-    {
-    return '2';
-    };
-
-function DerivedClass()
-    {
-    BaseClass.call( this, 'b' );
-
-    this.c = 'c';
-    }
-
-Utilities.inheritPrototype( DerivedClass, BaseClass );
-
-DerivedClass.prototype.three = function()
-    {
-    return '3';
-    };
-
-
-var expect = 'abc123';
-
-var obj = new DerivedClass();
-var result = obj.a + obj.b + obj.c + obj.one() + obj.two() + obj.three();
-
-assert.deepEqual( result, expect );
-});
-
-
 // ---------- Time Utilities ---------- //
 
 
