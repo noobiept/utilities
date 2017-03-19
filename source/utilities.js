@@ -372,8 +372,7 @@ var Utilities;
      * Throws an `Error` exception if:
      * - the `dateMilliseconds` argument isn't a number.
      */
-    function timeToString(dateMilliseconds, totalUnits) {
-        if (totalUnits === void 0) { totalUnits = 2; }
+    function timeToString(dateMilliseconds, totalUnits = 2) {
         if (!Utilities.isNumber(dateMilliseconds)) {
             throw new Error("Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number.");
         }
@@ -443,8 +442,8 @@ var Utilities;
     /**
      * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
      */
-    var Timeout = (function () {
-        function Timeout() {
+    class Timeout {
+        constructor() {
             this.is_active = false;
             this.id = -1;
         }
@@ -455,7 +454,7 @@ var Utilities;
          * - `functionToCall` isn't a function.
          * - `interval` isn't a number.
          */
-        Timeout.prototype.start = function (functionToCall, interval) {
+        start(functionToCall, interval) {
             if (!Utilities.isFunction(functionToCall) ||
                 !Utilities.isNumber(interval)) {
                 throw new Error('Utilities.Timeout.start() -> Invalid arguments.');
@@ -469,22 +468,21 @@ var Utilities;
                 _this.is_active = false;
                 functionToCall();
             }, interval);
-        };
+        }
         /**
          * Cancels the timeout.
          */
-        Timeout.prototype.clear = function () {
+        clear() {
             window.clearTimeout(this.id);
             this.is_active = false;
-        };
-        return Timeout;
-    }());
+        }
+    }
     Utilities.Timeout = Timeout;
     /**
      * Count-up or count-down timer. Can optionally update an html element.
      */
-    var Timer = (function () {
-        function Timer(htmlElement) {
+    class Timer {
+        constructor(htmlElement) {
             // either don't receive an argument, or if given needs to be an HTMLElement
             if (typeof htmlElement !== 'undefined' && !(htmlElement instanceof HTMLElement)) {
                 throw new Error("Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element.");
@@ -510,7 +508,7 @@ var Utilities;
          *
          * `tickCallback` is called every second.
          */
-        Timer.prototype.start = function (args) {
+        start(args) {
             if (typeof args === 'undefined') {
                 args = {};
             }
@@ -540,11 +538,11 @@ var Utilities;
             this.tick_callback = args.tickCallback;
             this.updateHtmlElement();
             this.resume();
-        };
+        }
         /**
          * Resumes the timer with the same settings/values that were set before it was stopped.
          */
-        Timer.prototype.resume = function () {
+        resume() {
             if (this.is_active) {
                 return;
             }
@@ -586,29 +584,29 @@ var Utilities;
                 // update the html element with the current time
                 _this.updateHtmlElement();
             }, interval);
-        };
+        }
         /**
          * Stop counting.
          */
-        Timer.prototype.stop = function () {
+        stop() {
             if (this.interval_f) {
                 window.clearInterval(this.interval_f);
                 this.interval_f = null;
             }
             this.is_active = false;
-        };
+        }
         /**
          * Stops and resets the count.
          */
-        Timer.prototype.reset = function () {
+        reset() {
             this.stop();
             this.time_count = this.start_value;
             this.updateHtmlElement();
-        };
+        }
         /**
          * Restart the timer.
          */
-        Timer.prototype.restart = function () {
+        restart() {
             this.reset();
             this.start({
                 startValue: this.start_value,
@@ -617,43 +615,42 @@ var Utilities;
                 tickCallback: this.tick_callback,
                 countDown: this.count_down
             });
-        };
+        }
         /**
          * Updates the associated html element (if was given) with the current time value.
          */
-        Timer.prototype.updateHtmlElement = function () {
+        updateHtmlElement() {
             if (this.html_element) {
                 this.html_element.innerHTML = this.getTimeString();
             }
-        };
+        }
         /**
          * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
          *
          * @param time In milliseconds.
          */
-        Timer.prototype.add = function (time) {
+        add(time) {
             this.time_count += time;
-        };
+        }
         /**
          * Returns a string with the time passed so far.
          */
-        Timer.prototype.getTimeString = function () {
+        getTimeString() {
             return Utilities.timeToString(this.time_count);
-        };
+        }
         /**
          * Returns the time it has passed so far, in seconds.
          */
-        Timer.prototype.getTimeSeconds = function () {
+        getTimeSeconds() {
             return this.time_count / 1000;
-        };
+        }
         /**
          * Returns the time it has passed so far, in milliseconds.
          */
-        Timer.prototype.getTimeMilliseconds = function () {
+        getTimeMilliseconds() {
             return this.time_count;
-        };
-        return Timer;
-    }());
+        }
+    }
     Utilities.Timer = Timer;
     // ---------- Trigonometry ---------- //
     /**
