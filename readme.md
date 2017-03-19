@@ -19,6 +19,5 @@ Development.
 
 Release.
 
-    cd build
     npm install
     grunt

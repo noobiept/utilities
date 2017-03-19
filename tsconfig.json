@@ -7,9 +7,12 @@
         "noImplicitThis": true,
         "noUnusedLocals": true,
         "strictNullChecks": true,
-        "target": "es2015"
+        "target": "es5"
     },
     "include": [
         "source/**/*.ts"
+    ],
+    "exclude": [
+        "source/**/*.d.ts"
     ]
 }
