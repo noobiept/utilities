@@ -462,22 +462,6 @@ return obj;
 }
 
 
-/**
- * Used for `class` inheritance (search for parasitic combination inheritance).
- */
-export function inheritPrototype( derivedClass: Function, baseClass: Function )
-{
-var f = function() {};
-
-f.prototype = baseClass.prototype;
-var prototype = new f();
-
-prototype.constructor = derivedClass;
-
-derivedClass.prototype = prototype;
-}
-
-
 // ---------- Time Utilities ---------- //
 
 

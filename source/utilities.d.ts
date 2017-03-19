@@ -190,10 +190,6 @@ declare module Utilities {
         [key: string]: string | number;
     };
     /**
-     * Used for `class` inheritance (search for parasitic combination inheritance).
-     */
-    function inheritPrototype(derivedClass: Function, baseClass: Function): void;
-    /**
      * Converts a time (in milliseconds) to a string (with the number of days/hours...).
      *
      * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).

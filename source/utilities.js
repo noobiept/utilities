@@ -350,17 +350,6 @@ var Utilities;
         return obj;
     }
     Utilities.createEnum = createEnum;
-    /**
-     * Used for `class` inheritance (search for parasitic combination inheritance).
-     */
-    function inheritPrototype(derivedClass, baseClass) {
-        var f = function () { };
-        f.prototype = baseClass.prototype;
-        var prototype = new f();
-        prototype.constructor = derivedClass;
-        derivedClass.prototype = prototype;
-    }
-    Utilities.inheritPrototype = inheritPrototype;
     // ---------- Time Utilities ---------- //
     /**
      * Converts a time (in milliseconds) to a string (with the number of days/hours...).
