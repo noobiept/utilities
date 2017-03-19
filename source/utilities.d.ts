@@ -230,13 +230,13 @@ declare module Utilities {
     class Timer {
         is_active: boolean;
         start_value: number;
-        end_value: number;
-        end_callback: () => any;
-        tick_callback: () => any;
         count_down: boolean;
         time_count: number;
-        interval_f: number;
-        html_element: HTMLElement;
+        end_value?: number;
+        end_callback?: () => any;
+        tick_callback?: () => any;
+        interval_f?: number;
+        html_element?: HTMLElement;
         constructor(htmlElement?: HTMLElement);
         /**
          * Start counting.

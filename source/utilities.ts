@@ -672,13 +672,15 @@ export class Timer
 {
 is_active: boolean;
 start_value: number;
-end_value: number;
-end_callback: () => any;
-tick_callback: () => any;
 count_down: boolean;
 time_count: number;
-interval_f: number;
-html_element: HTMLElement;
+
+    // these can have the 'undefined' value (which means they aren't set)
+end_value?: number;
+end_callback?: () => any;
+tick_callback?: () => any;
+interval_f?: number;
+html_element?: HTMLElement;
 
 constructor( htmlElement?: HTMLElement )
     {
@@ -690,12 +692,8 @@ constructor( htmlElement?: HTMLElement )
 
     this.is_active = false;
     this.start_value = 0;
-    this.end_value = null;  // null means it doesn't have an end value
-    this.end_callback = null;
-    this.tick_callback = null;
     this.count_down = false;
     this.time_count = 0;
-    this.interval_f = null;
     this.html_element = htmlElement;
 
     this.updateHtmlElement();
@@ -726,17 +724,17 @@ start( args?: { startValue?: number; endValue?: number; endCallback?: () => any;
 
     if ( !Utilities.isNumber( args.endValue ) )
         {
-        args.endValue = null;
+        args.endValue = undefined;
         }
 
     if ( !Utilities.isFunction( args.endCallback ) )
         {
-        args.endCallback = null;
+        args.endCallback = undefined;
         }
 
     if ( !Utilities.isFunction( args.tickCallback ) )
         {
-        args.tickCallback = null;
+        args.tickCallback = undefined;
         }
 
     if ( args.countDown !== true )
@@ -751,8 +749,8 @@ start( args?: { startValue?: number; endValue?: number; endCallback?: () => any;
         }
 
     this.count_down = args.countDown;
-    this.time_count = args.startValue;
-    this.start_value = args.startValue;
+    this.time_count = args.startValue!;
+    this.start_value = args.startValue!;
     this.end_value = args.endValue;
     this.end_callback = args.endCallback;
     this.tick_callback = args.tickCallback;
@@ -791,7 +789,7 @@ resume()
 
 
             // if there's an end value defined, check if we reached it
-        if ( _this.end_value !== null )
+        if ( _this.end_value !== undefined )
             {
             var ended = false;
 
@@ -816,7 +814,7 @@ resume()
                 {
                 _this.stop();
 
-                if ( _this.end_callback !== null )
+                if ( _this.end_callback !== undefined )
                     {
                     _this.end_callback();
                     }
@@ -825,7 +823,7 @@ resume()
 
 
             // call the tick callback if there's one
-        if ( _this.tick_callback !== null )
+        if ( _this.tick_callback !== undefined )
             {
             _this.tick_callback();
             }
@@ -845,7 +843,7 @@ stop()
     if ( this.interval_f )
         {
         window.clearInterval( this.interval_f );
-        this.interval_f = null;
+        this.interval_f = undefined;
         }
 
     this.is_active = false;
