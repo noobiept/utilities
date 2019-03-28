@@ -1,0 +1,5 @@
+syntax: glob
+info.txt
+documentation/
+node_modules/
+.DS_Store
