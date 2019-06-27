@@ -2,6 +2,17 @@
     "name": "utilities",
     "version": "3.0.0",
     "description": "Random collection of utilities functions/classes.",
+    "author": {
+        "name": "Pedro Ferreira",
+        "email": "plferreira4@gmail.com",
+        "url": "https://nbpt.eu/"
+    },
+    "main": "utilities.js",
+    "module": "utilities.es.js",
+    "files": [
+        "build"
+    ],
+    "types": "utilities.d.ts",
     "repository": {
         "type": "hg",
         "url": "https://bitbucket.org/drk4/javascript_utilities/"
@@ -19,6 +30,9 @@
         "grunt-ts": "~6.0.0-beta.22",
         "typedoc": "~0.14.2",
         "grunt-typedoc": "~0.2.4",
-        "typescript": "~3.3.4000"
+        "typescript": "~3.5.2"
+    },
+    "scripts": {
+        "dev": "tsc -w"
     }
 }

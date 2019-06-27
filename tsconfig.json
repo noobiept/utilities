@@ -1,18 +1,15 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "alwaysStrict": true,
-        "noImplicitAny": true,
+        "strict": true,
         "noImplicitReturns": true,
-        "noImplicitThis": true,
         "noUnusedLocals": true,
-        "strictNullChecks": true,
-        "target": "es5"
+        "noUnusedParameters": true,
+        "target": "es5",
+        "outDir": "./build",
+        "declarationDir": "./build"
     },
     "include": [
         "source/**/*.ts"
-    ],
-    "exclude": [
-        "source/**/*.d.ts"
     ]
 }

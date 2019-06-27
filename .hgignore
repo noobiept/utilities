@@ -2,4 +2,5 @@ syntax: glob
 info.txt
 documentation/
 node_modules/
+build/
 .DS_Store
