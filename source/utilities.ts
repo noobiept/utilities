@@ -1,8 +1,7 @@
 /**
  * Random collection of utilities functions/classes.
  */
-module Utilities
-{
+
 // ---------- Array Utilities ---------- //
 
 
@@ -11,7 +10,7 @@ module Utilities
  */
 export function shuffle( array: any[] )
 {
-if ( !Utilities.isArray( array ) )
+if ( !isArray( array ) )
     {
     throw new Error( "Utilities.shuffle() -> Invalid 'array' argument. Not an array." );
     }
@@ -205,7 +204,7 @@ export var MOUSE_CODE = {
  */
 export function getObject( key: string )
 {
-if ( !Utilities.isString( key ) )
+if ( !isString( key ) )
     {
     throw new Error( "Utilities.getObject() -> Invalid 'key' argument. Not a string." );
     }
@@ -224,7 +223,7 @@ return value && JSON.parse( value );
  */
 export function saveObject( key: string, value: any )
 {
-if ( !Utilities.isString( key ) )
+if ( !isString( key ) )
     {
     throw new Error( "Utilities.saveObject() -> Invalid 'key' argument. Not a string." );
     }
@@ -268,7 +267,7 @@ return typeof element === 'function' && Object.prototype.toString.call( element 
  */
 export function isInteger( value: any )
 {
-return Utilities.isNumber( value ) && ( value % 1 ) === 0;
+return isNumber( value ) && ( value % 1 ) === 0;
 }
 
 
@@ -302,8 +301,8 @@ return typeof element === 'string' || element instanceof String;
  */
 export function getRandomFloat( min: number, max: number )
 {
-if ( !Utilities.isNumber( min ) ||
-     !Utilities.isNumber( max ) ||
+if ( !isNumber( min ) ||
+     !isNumber( max ) ||
     (min > max) )
     {
     throw new Error( "Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'." );
@@ -322,8 +321,8 @@ return Math.random() * (max - min) + min;
  */
 export function getRandomInt( min: number, max: number )
 {
-if ( !Utilities.isInteger( min ) ||
-     !Utilities.isInteger( max ) ||
+if ( !isInteger( min ) ||
+     !isInteger( max ) ||
     (min > max) )
     {
     throw new Error( "Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'." );
@@ -343,9 +342,9 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
  */
 export function getSeveralRandomInts( min: number, max: number, howMany: number ): number[]
 {
-if ( !Utilities.isInteger( min ) ||
-     !Utilities.isInteger( max ) ||
-     !Utilities.isInteger( howMany ) ||
+if ( !isInteger( min ) ||
+     !isInteger( max ) ||
+     !isInteger( howMany ) ||
     (min > max) ||
     ((max - min) < howMany - 1) )
     {
@@ -356,7 +355,7 @@ var numbers = [];
 
 while( numbers.length < howMany )
     {
-    var randomNumber = Utilities.getRandomInt( min, max );
+    var randomNumber = getRandomInt( min, max );
 
     if ( numbers.indexOf( randomNumber ) < 0 )
         {
@@ -377,7 +376,7 @@ return numbers;
  */
 export function numberOfDigits( theNumber: number )
 {
-if ( !Utilities.isNumber( theNumber ) )
+if ( !isNumber( theNumber ) )
     {
     throw new Error( "Utilities.numberOfDigits() -> Invalid 'theNumber' argument. Not a number." );
     }
@@ -403,8 +402,8 @@ return numberString.length;
  */
 export function round( num: number, dec: number )
 {
-if ( !Utilities.isNumber( num ) ||
-     !Utilities.isInteger( dec ) ||
+if ( !isNumber( num ) ||
+     !isInteger( dec ) ||
     (dec < 0) )
     {
     throw new Error( 'Utilities.round() -> Invalid arguments.' );
@@ -434,12 +433,12 @@ return JSON.parse( JSON.stringify( obj ) );
  */
 export function createEnum( values: string[], start?: number )
 {
-if ( !Utilities.isArray( values ) )
+if ( !isArray( values ) )
     {
     throw new Error( "Utilities.createEnum() -> Invalid 'values' argument. Needs to be an array of strings." );
     }
 
-if ( !Utilities.isNumber( start ) )
+if ( !isNumber( start ) )
     {
     start = 0;
     }
@@ -477,12 +476,12 @@ return obj;
  */
 export function timeToString( dateMilliseconds: number, totalUnits: number = 2 )
 {
-if ( !Utilities.isNumber( dateMilliseconds ) )
+if ( !isNumber( dateMilliseconds ) )
     {
     throw new Error( "Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number." );
     }
 
-if ( !Utilities.isNumber( totalUnits ) )
+if ( !isNumber( totalUnits ) )
     {
     totalUnits = 2;
     }
@@ -526,7 +525,7 @@ while (dateMilliseconds >= minute)
     }
 
     //and the seconds
-secondsLeft = Utilities.round( dateMilliseconds / second, 2);
+secondsLeft = round( dateMilliseconds / second, 2);
 
 
     // :: construct the string :: //
@@ -613,8 +612,8 @@ constructor()
  */
 start( functionToCall: Function, interval: number )
     {
-    if ( !Utilities.isFunction( functionToCall ) ||
-         !Utilities.isNumber( interval ) )
+    if ( !isFunction( functionToCall ) ||
+         !isNumber( interval ) )
         {
         throw new Error( 'Utilities.Timeout.start() -> Invalid arguments.' );
         }
@@ -701,22 +700,22 @@ start( args?: { startValue?: number; endValue?: number; endCallback?: () => any;
         args = {};
         }
 
-    if ( !Utilities.isNumber( args.startValue ) )
+    if ( !isNumber( args.startValue ) )
         {
         args.startValue = 0;
         }
 
-    if ( !Utilities.isNumber( args.endValue ) )
+    if ( !isNumber( args.endValue ) )
         {
         args.endValue = undefined;
         }
 
-    if ( !Utilities.isFunction( args.endCallback ) )
+    if ( !isFunction( args.endCallback ) )
         {
         args.endCallback = undefined;
         }
 
-    if ( !Utilities.isFunction( args.tickCallback ) )
+    if ( !isFunction( args.tickCallback ) )
         {
         args.tickCallback = undefined;
         }
@@ -890,7 +889,7 @@ add( time: number )
  */
 getTimeString()
     {
-    return Utilities.timeToString( this.time_count );
+    return timeToString( this.time_count );
     }
 
 
@@ -924,10 +923,10 @@ getTimeMilliseconds()
  */
 export function calculateAngle( aX: number, aY: number, bX: number, bY: number )
 {
-if ( !Utilities.isNumber( aX ) ||
-     !Utilities.isNumber( aY ) ||
-     !Utilities.isNumber( bX ) ||
-     !Utilities.isNumber( bY ) )
+if ( !isNumber( aX ) ||
+     !isNumber( aY ) ||
+     !isNumber( bX ) ||
+     !isNumber( bY ) )
     {
     throw new Error( 'Utilities.calculateAngle() -> Invalid arguments. Needs to be a number.' );
     }
@@ -949,10 +948,10 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
  */
 export function calculateDistance( aX: number, aY: number, bX: number, bY: number )
 {
-if ( !Utilities.isNumber( aX ) ||
-     !Utilities.isNumber( aY ) ||
-     !Utilities.isNumber( bX ) ||
-     !Utilities.isNumber( bY ) )
+if ( !isNumber( aX ) ||
+     !isNumber( aY ) ||
+     !isNumber( bX ) ||
+     !isNumber( bY ) )
     {
     throw new Error( 'Utilities.calculateDistance() -> Invalid arguments. Needs to be a number.' );
     }
@@ -972,7 +971,7 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
  */
 export function toDegrees( radians: number )
 {
-if ( !Utilities.isNumber( radians ) )
+if ( !isNumber( radians ) )
     {
     throw new Error( "Utilities.toDegrees() -> Invalid 'radians' argument. Not a number." );
     }
@@ -989,12 +988,10 @@ return radians * 180 / Math.PI;
  */
 export function toRadians( degrees: number )
 {
-if ( !Utilities.isNumber( degrees ) )
+if ( !isNumber( degrees ) )
     {
     throw new Error( "Utilities.toRadians() -> Invalid 'degrees' argument. Not a number." );
     }
 
 return degrees * Math.PI / 180;
-}
-
 }

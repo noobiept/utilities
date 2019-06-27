@@ -22,3 +22,7 @@ Release.
 
     npm install
     grunt
+
+
+- `npm install` (install the dependencies).
+- `npm run build` (builds into the `/build` directory).
