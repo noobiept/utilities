@@ -6,10 +6,7 @@ grunt.initConfig({
 
             // run the tests
         qunit: {
-            all: [ 'tests.html' ],
-            options: {
-                httpBase: 'tests'
-            }
+            all: [ 'tests/tests.html' ],
         },
 
             // compile the typescript code to javascript
@@ -69,5 +66,6 @@ grunt.loadNpmTasks( 'grunt-ts' );
 grunt.loadNpmTasks( 'grunt-typedoc' );
 
     // tasks
-grunt.registerTask( 'default', [ 'qunit', 'clean:previousBuild', 'ts', 'uglify', 'typedoc', 'clean:afterBuild' ] );
+grunt.registerTask( 'test', [ 'qunit' ] );
+grunt.registerTask( 'default', [ 'test', 'clean:previousBuild', 'ts', 'uglify', 'typedoc', 'clean:afterBuild' ] );
 };

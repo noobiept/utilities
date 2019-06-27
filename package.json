@@ -39,6 +39,7 @@
         "build": "npm-run-all --serial build:tsc --parallel build:iife build:cjs",
         "build:tsc": "tsc",
         "build:iife": "rollup build/utilities.js -o build/utilities.iife.js --format iife --name Utilities",
-        "build:cjs": "rollup build/utilities.js -o build/utilities.cjs.js --format cjs"
+        "build:cjs": "rollup build/utilities.js -o build/utilities.cjs.js --format cjs",
+        "test": "grunt test"
     }
 }
