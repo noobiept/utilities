@@ -29,6 +29,7 @@
         "grunt-contrib-uglify": "~4.0.1",
         "grunt-ts": "~6.0.0-beta.22",
         "grunt-typedoc": "~0.2.4",
+        "node-qunit-puppeteer": "^1.0.12",
         "npm-run-all": "^4.1.5",
         "qunit": "^2.9.2",
         "rollup": "^1.16.2",
@@ -41,6 +42,7 @@
         "build": "npm-run-all --serial build:tsc build:rollup",
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
-        "test": "grunt test"
+        "test": "node-qunit-puppeteer tests/tests.html",
+        "documentation": "typedoc --out documentation/ source/ --name Utilities --mode file"
     }
 }
