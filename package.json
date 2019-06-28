@@ -7,8 +7,8 @@
         "email": "plferreira4@gmail.com",
         "url": "https://nbpt.eu/"
     },
-    "main": "utilities.js",
-    "module": "utilities.es.js",
+    "main": "utilities.cjs.js",
+    "module": "utilities.js",
     "files": [
         "build"
     ],
