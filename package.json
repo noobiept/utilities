@@ -8,7 +8,7 @@
         "url": "https://nbpt.eu/"
     },
     "main": "utilities.cjs.js",
-    "module": "utilities.js",
+    "module": "utilities.esm.js",
     "files": [
         "build"
     ],
@@ -32,15 +32,15 @@
         "npm-run-all": "^4.1.5",
         "qunit": "^2.9.2",
         "rollup": "^1.16.2",
+        "rollup-plugin-terser": "^5.0.0",
         "typedoc": "~0.14.2",
         "typescript": "~3.5.2"
     },
     "scripts": {
         "dev": "tsc -w",
-        "build": "npm-run-all --serial build:tsc --parallel build:iife build:cjs",
+        "build": "npm-run-all --serial build:tsc build:rollup",
         "build:tsc": "tsc",
-        "build:iife": "rollup build/utilities.js -o build/utilities.iife.js --format iife --name Utilities",
-        "build:cjs": "rollup build/utilities.js -o build/utilities.cjs.js --format cjs",
+        "build:rollup": "rollup --config rollup.config.js",
         "test": "grunt test"
     }
 }

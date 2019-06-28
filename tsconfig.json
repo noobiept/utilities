@@ -7,7 +7,6 @@
         "noUnusedParameters": true,
         "target": "es2018",
         "module": "es2015",
-        "outDir": "./build",
         "declarationDir": "./build"
     },
     "include": [

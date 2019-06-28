@@ -4,3 +4,4 @@ documentation/
 node_modules/
 build/
 .DS_Store
+source/**/*.js
