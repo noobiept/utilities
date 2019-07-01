@@ -1,0 +1,8 @@
+.hg/
+build/
+documentation/
+node_modules/
+release/
+source/**/*.js
+package-lock.json
+*.yml

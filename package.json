@@ -21,9 +21,22 @@
         "utilities"
     ],
     "license": "MIT",
+    "prettier": {
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": false,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "arrowParens": "always",
+        "htmlWhitespaceSensitivity": "strict",
+        "endOfLine": "lf"
+    },
     "devDependencies": {
         "node-qunit-puppeteer": "^1.0.12",
         "npm-run-all": "^4.1.5",
+        "prettier": "^1.18.2",
         "qunit": "^2.9.2",
         "rollup": "^1.16.3",
         "rollup-plugin-terser": "^5.0.0",
@@ -36,6 +49,8 @@
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
         "test": "node-qunit-puppeteer tests/tests.html",
-        "documentation": "typedoc --out documentation/ source/ --name Utilities --mode file"
+        "documentation": "typedoc --out documentation/ source/ --name Utilities --mode file",
+        "formatting:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
+        "formatting:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\""
     }
 }
