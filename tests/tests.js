@@ -1,1098 +1,1200 @@
 // ---------- Array Utilities ---------- //
 
+// shuffle //
+QUnit.module("shuffle");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // shuffle //
-QUnit.module( 'shuffle' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.shuffle();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.shuffle();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.shuffle( 1 );
-    }, expect, 'Wrong argument type.' );
+    assert.throws(
+        function() {
+            Utilities.shuffle(1);
+        },
+        expect,
+        "Wrong argument type."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var test = [ 1, 2, 3, 4 ];
-var length = test.length;
+QUnit.test("test with valid arguments", function(assert) {
+    var test = [1, 2, 3, 4];
+    var length = test.length;
 
-Utilities.shuffle( test );
+    Utilities.shuffle(test);
 
-assert.deepEqual( test.length, length, 'Should still have the same length.' );
+    assert.deepEqual(test.length, length, "Should still have the same length.");
 
     // see if the same values are still there (just on different order)
-assert.deepEqual( test.indexOf( 1 ) >= 0, true );
-assert.deepEqual( test.indexOf( 2 ) >= 0, true );
-assert.deepEqual( test.indexOf( 3 ) >= 0, true );
-assert.deepEqual( test.indexOf( 4 ) >= 0, true );
+    assert.deepEqual(test.indexOf(1) >= 0, true);
+    assert.deepEqual(test.indexOf(2) >= 0, true);
+    assert.deepEqual(test.indexOf(3) >= 0, true);
+    assert.deepEqual(test.indexOf(4) >= 0, true);
 });
-
 
 // ---------- Collision Detection ---------- //
 
+// boxBoxCollision //
+QUnit.module("boxBoxCollision");
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-    // boxBoxCollision //
-QUnit.module( 'boxBoxCollision' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+    result = Utilities.boxBoxCollision(0, 0, 1, 1, 2, 2, 1, 1);
+    expect = false;
 
-result = Utilities.boxBoxCollision( 0, 0, 1, 1, 2, 2, 1, 1 );
-expect = false;
+    assert.deepEqual(result, expect, "Doesn't collide.");
 
-assert.deepEqual( result, expect, "Doesn't collide." );
+    result = Utilities.boxBoxCollision(0, 0, 2, 1, 2, 0, 1, 4);
+    expect = true;
 
-result = Utilities.boxBoxCollision( 0, 0, 2, 1, 2, 0, 1, 4 );
-expect = true;
+    assert.deepEqual(result, expect, "Boxes touching.");
 
-assert.deepEqual( result, expect, 'Boxes touching.' );
+    result = Utilities.boxBoxCollision(0, 0, 2, 2, 0, 0, 1, 1);
+    expect = true;
 
-result = Utilities.boxBoxCollision( 0, 0, 2, 2, 0, 0, 1, 1 );
-expect = true;
-
-assert.deepEqual( result, expect, 'One box inside the other.' );
+    assert.deepEqual(result, expect, "One box inside the other.");
 });
 
+// circleCircleCollision //
+QUnit.module("circleCircleCollision");
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-    // circleCircleCollision //
-QUnit.module( 'circleCircleCollision' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+    result = Utilities.circleCircleCollision(0, 0, 2, 5, 5, 2);
+    expect = false;
 
-result = Utilities.circleCircleCollision( 0, 0, 2, 5, 5, 2 );
-expect = false;
+    assert.deepEqual(result, expect, "No collision.");
 
-assert.deepEqual( result, expect, 'No collision.' );
+    result = Utilities.circleCircleCollision(0, 0, 2, 4, 0, 2);
+    expect = true;
 
-result = Utilities.circleCircleCollision( 0, 0, 2, 4, 0, 2 );
-expect = true;
+    assert.deepEqual(result, expect, "Start of the collision.");
 
-assert.deepEqual( result, expect, 'Start of the collision.' );
+    result = Utilities.circleCircleCollision(0, 0, 4, 0, 0, 2);
+    expect = true;
 
-result = Utilities.circleCircleCollision( 0, 0, 4, 0, 0, 2 );
-expect = true;
-
-assert.deepEqual( result, expect, 'Second circle inside the first.' );
+    assert.deepEqual(result, expect, "Second circle inside the first.");
 });
 
+// circlePointCollision //
+QUnit.module("circlePointCollision");
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-    // circlePointCollision //
-QUnit.module( 'circlePointCollision' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+    result = Utilities.circlePointCollision(0, 0, 4, 5, 5);
+    expect = false;
 
-result = Utilities.circlePointCollision( 0, 0, 4, 5, 5 );
-expect = false;
+    assert.deepEqual(result, expect, "No collision.");
 
-assert.deepEqual( result, expect, 'No collision.' );
+    result = Utilities.circlePointCollision(0, 0, 4, 4, 0);
+    expect = true;
 
-result = Utilities.circlePointCollision( 0, 0, 4, 4, 0 );
-expect = true;
+    assert.deepEqual(result, expect, "Point on the border of the circle.");
 
-assert.deepEqual( result, expect, 'Point on the border of the circle.' );
+    result = Utilities.circlePointCollision(0, 0, 4, 0, 0);
+    expect = true;
 
-result = Utilities.circlePointCollision( 0, 0, 4, 0, 0 );
-expect = true;
-
-assert.deepEqual( result, expect, 'Point inside the circle.' );
+    assert.deepEqual(result, expect, "Point inside the circle.");
 });
 
+// pointBoxCollision //
+QUnit.module("pointBoxCollision");
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-    // pointBoxCollision //
-QUnit.module( 'pointBoxCollision' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+    result = Utilities.pointBoxCollision(0, 0, 2, 2, 10, 10);
+    expect = false;
 
-result = Utilities.pointBoxCollision( 0, 0, 2, 2, 10, 10 );
-expect = false;
+    assert.deepEqual(result, expect, "No collision.");
 
-assert.deepEqual( result, expect, 'No collision.' );
+    result = Utilities.pointBoxCollision(10, 5, 0, 0, 10, 10);
+    expect = true;
 
-result = Utilities.pointBoxCollision( 10, 5, 0, 0, 10, 10 );
-expect = true;
+    assert.deepEqual(result, expect, "Point on the border of the box.");
 
-assert.deepEqual( result, expect, "Point on the border of the box." );
+    result = Utilities.pointBoxCollision(0, 0, -2, -2, 4, 4);
+    expect = true;
 
-result = Utilities.pointBoxCollision( 0, 0, -2, -2, 4, 4 );
-expect = true;
+    assert.deepEqual(result, expect, "Point inside the box.");
 
-assert.deepEqual( result, expect, 'Point inside the box.' );
+    result = Utilities.pointBoxCollision(2, 5, 0, 0, 10, 10);
+    expect = true;
 
-result = Utilities.pointBoxCollision( 2, 5, 0, 0, 10, 10 );
-expect = true;
-
-assert.deepEqual( result, expect, 'Point inside the box.' );
+    assert.deepEqual(result, expect, "Point inside the box.");
 });
-
 
 // ---------- Is Type ---------- //
 
-
-    // isArray //
-QUnit.module( 'isArray' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isArray //
+QUnit.module("isArray");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: false },
         { value: 1.2, expect: false },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: false },
-        { value: 'a', expect: false },
-        { value: '', expect: false },
+        { value: "a", expect: false },
+        { value: "", expect: false },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: false },
         { value: {}, expect: false },
         { value: function() {}, expect: false },
-        { value: [], expect: true }
+        { value: [], expect: true },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isArray( value ), expect, 'Value: ' + value );
+        assert.strictEqual(Utilities.isArray(value), expect, "Value: " + value);
     }
 });
 
-
-    // isBoolean //
-QUnit.module( 'isBoolean' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isBoolean //
+QUnit.module("isBoolean");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: false },
         { value: 1.2, expect: false },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: false },
-        { value: 'a', expect: false },
-        { value: '', expect: false },
+        { value: "a", expect: false },
+        { value: "", expect: false },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: true },
         { value: {}, expect: false },
         { value: function() {}, expect: false },
-        { value: [], expect: false }
+        { value: [], expect: false },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isBoolean( value ), expect, 'Value: ' + value );
+        assert.strictEqual(
+            Utilities.isBoolean(value),
+            expect,
+            "Value: " + value
+        );
     }
 });
 
-
-    // isFunction //
-QUnit.module( 'isFunction' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isFunction //
+QUnit.module("isFunction");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: false },
         { value: 1.2, expect: false },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: false },
-        { value: 'a', expect: false },
-        { value: '', expect: false },
+        { value: "a", expect: false },
+        { value: "", expect: false },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: false },
         { value: {}, expect: false },
         { value: function() {}, expect: true },
-        { value: [], expect: false }
+        { value: [], expect: false },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isFunction( value ), expect, 'Value: ' + value );
+        assert.strictEqual(
+            Utilities.isFunction(value),
+            expect,
+            "Value: " + value
+        );
     }
 });
 
-
-    // isInteger //
-QUnit.module( 'isInteger' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isInteger //
+QUnit.module("isInteger");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: true },
         { value: 1.2, expect: false },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: false },
-        { value: 'a', expect: false },
-        { value: '', expect: false },
+        { value: "a", expect: false },
+        { value: "", expect: false },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: false },
         { value: {}, expect: false },
         { value: function() {}, expect: false },
-        { value: [], expect: false }
+        { value: [], expect: false },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isInteger( value ), expect, 'Value: ' + value );
+        assert.strictEqual(
+            Utilities.isInteger(value),
+            expect,
+            "Value: " + value
+        );
     }
 });
 
-
-    // isNumber //
-QUnit.module( 'isNumber' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isNumber //
+QUnit.module("isNumber");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: true },
         { value: 1.2, expect: true },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: false },
-        { value: 'a', expect: false },
-        { value: '', expect: false },
+        { value: "a", expect: false },
+        { value: "", expect: false },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: false },
         { value: {}, expect: false },
         { value: function() {}, expect: false },
-        { value: [], expect: false }
+        { value: [], expect: false },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isNumber( value ), expect, 'Value: ' + value );
+        assert.strictEqual(
+            Utilities.isNumber(value),
+            expect,
+            "Value: " + value
+        );
     }
 });
 
-
-    // isString //
-QUnit.module( 'isString' );
-QUnit.test( 'Test type', function( assert )
-{
-var values = [
+// isString //
+QUnit.module("isString");
+QUnit.test("Test type", function(assert) {
+    var values = [
         { value: 1, expect: false },
         { value: 1.2, expect: false },
         { value: NaN, expect: false },
         { value: Infinity, expect: false },
         { value: "1.3", expect: true },
-        { value: 'a', expect: true },
-        { value: '', expect: true },
+        { value: "a", expect: true },
+        { value: "", expect: true },
         { value: undefined, expect: false },
         { value: null, expect: false },
         { value: true, expect: false },
         { value: {}, expect: false },
         { value: function() {}, expect: false },
-        { value: [], expect: false }
+        { value: [], expect: false },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ].value;
-    var expect = values[ a ].expect;
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a].value;
+        var expect = values[a].expect;
 
-    assert.strictEqual( Utilities.isString( value ), expect, 'Value: ' + value );
+        assert.strictEqual(
+            Utilities.isString(value),
+            expect,
+            "Value: " + value
+        );
     }
 });
-
 
 // ---------- Local Storage ---------- //
 
+// saveObject / getObject //
+QUnit.module("saveGetObject");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // saveObject / getObject //
-QUnit.module( 'saveGetObject' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.saveObject();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.saveObject();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.saveObject(4, 4);
+        },
+        expect,
+        "Passed a number for the key argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.saveObject( 4, 4 );
-    }, expect, 'Passed a number for the key argument.' );
+    assert.throws(
+        function() {
+            Utilities.getObject();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getObject();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.getObject( 4 );
-    }, expect, 'Passed a number for the key argument.' );
+    assert.throws(
+        function() {
+            Utilities.getObject(4);
+        },
+        expect,
+        "Passed a number for the key argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var key = 'test';
-var returnedValue;
+QUnit.test("test with valid arguments", function(assert) {
+    var key = "test";
+    var returnedValue;
 
-var testValues = [ 4, 'hi there', { one: 2, three: [ 4, 5 ] } ];
+    var testValues = [4, "hi there", { one: 2, three: [4, 5] }];
 
-for (var a = 0 ; a < testValues.length ; a++)
-    {
-    var value = testValues[ a ];
+    for (var a = 0; a < testValues.length; a++) {
+        var value = testValues[a];
 
-    Utilities.saveObject( key, value );
+        Utilities.saveObject(key, value);
 
-    returnedValue = Utilities.getObject( key );
+        returnedValue = Utilities.getObject(key);
 
-    assert.deepEqual( returnedValue, value );
+        assert.deepEqual(returnedValue, value);
     }
 });
-
 
 // ---------- Number Utilities ---------- //
 
+// getRandomFloat //
+QUnit.module("getRandomFloat");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // getRandomFloat //
-QUnit.module( 'getRandomFloat' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.getRandomFloat();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomFloat();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomFloat(1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomFloat( 1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomFloat("asd", "dsa");
+        },
+        expect,
+        "Passed string arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomFloat( 'asd', 'dsa' );
-    }, expect, 'Passed string arguments.' );
-
-assert.throws( function()
-    {
-    Utilities.getRandomFloat( 4.22, 2 );
-    }, expect, 'max less than min.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomFloat(4.22, 2);
+        },
+        expect,
+        "max less than min."
+    );
 });
 
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
+    var ok;
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
-var ok;
+    result = Utilities.getRandomFloat(2, 2);
+    expect = 2;
 
-result = Utilities.getRandomFloat( 2, 2 );
-expect = 2;
+    assert.deepEqual(result, expect, "Inclusive limits.");
 
-assert.deepEqual( result, expect, 'Inclusive limits.' );
+    result = Utilities.getRandomFloat(-4.44, 4.44);
+    ok = result >= -4.44 && result <= 4.44;
 
-result = Utilities.getRandomFloat( -4.44, 4.44 );
-ok = result >= -4.44 && result <= 4.44;
+    assert.ok(ok, "A random value between the limits.");
 
-assert.ok( ok, 'A random value between the limits.' );
+    result = Utilities.getRandomFloat(0, 4.123);
+    ok = result >= 0 && result <= 4.123;
 
-result = Utilities.getRandomFloat( 0, 4.123 );
-ok = result >= 0 && result <= 4.123;
-
-assert.ok( ok, 'Zero in one of the range limits.' );
+    assert.ok(ok, "Zero in one of the range limits.");
 });
 
+// getRandomInt //
+QUnit.module("getRandomInt");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // getRandomInt //
-QUnit.module( 'getRandomInt' );
-QUnit.test( "validate arguments", function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.getRandomInt();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomInt();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomInt(1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomInt( 1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomInt("hi", "there");
+        },
+        expect,
+        "Passed string arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomInt( 'hi', 'there' );
-    }, expect, 'Passed string arguments.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomInt(3, 2);
+        },
+        expect,
+        "max less than min."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomInt( 3, 2 );
-    }, expect, 'max less than min.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomInt(2.7, 3);
+        },
+        expect,
+        "Passed a float value to 1st argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getRandomInt( 2.7, 3 );
-    }, expect, 'Passed a float value to 1st argument.' );
-
-assert.throws( function()
-    {
-    Utilities.getRandomInt( 1, 2.1 );
-    }, expect, 'Passed a float to the 2nd argument.' );
+    assert.throws(
+        function() {
+            Utilities.getRandomInt(1, 2.1);
+        },
+        expect,
+        "Passed a float to the 2nd argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.getRandomInt( 4, 4 );
-expect = 4;
+    result = Utilities.getRandomInt(4, 4);
+    expect = 4;
 
-assert.deepEqual( result, expect, 'Inclusive limits.' );
+    assert.deepEqual(result, expect, "Inclusive limits.");
 
-result = Utilities.getRandomInt( -4, 4 );
-expect = result >= -4 && result <= 4;
+    result = Utilities.getRandomInt(-4, 4);
+    expect = result >= -4 && result <= 4;
 
-assert.ok( expect, 'A value between -4 and 4' );
+    assert.ok(expect, "A value between -4 and 4");
 
-result = Utilities.getRandomInt( 0, 2 );
-expect = result >= 0 && result <= 2;
+    result = Utilities.getRandomInt(0, 2);
+    expect = result >= 0 && result <= 2;
 
-assert.ok( expect, 'Zero in one of the range limits.' );
+    assert.ok(expect, "Zero in one of the range limits.");
 });
 
+// getSeveralRandomInts //
+QUnit.module("getSeveralRandomInts");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // getSeveralRandomInts //
-QUnit.module( 'getSeveralRandomInts' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(1, 2);
+        },
+        expect,
+        "Only two arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 1, 2 );
-    }, expect, 'Only two arguments.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts("hi", "there", "!");
+        },
+        expect,
+        "Passed string arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 'hi', 'there', '!' );
-    }, expect, 'Passed string arguments.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(3, 2, 5);
+        },
+        expect,
+        "max less than min."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 3, 2, 5 );
-    }, expect, 'max less than min.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(2.7, 6, 2);
+        },
+        expect,
+        "Passed a float value to 1st argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 2.7, 6, 2 );
-    }, expect, 'Passed a float value to 1st argument.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(1, 4.1, 2);
+        },
+        expect,
+        "Passed a float to the 2nd argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 1, 4.1, 2 );
-    }, expect, 'Passed a float to the 2nd argument.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(1, 4, 2.1);
+        },
+        expect,
+        "Passed a float to the 3rd argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 1, 4, 2.1 );
-    }, expect, 'Passed a float to the 3rd argument.' );
-
-assert.throws( function()
-    {
-    Utilities.getSeveralRandomInts( 1, 2, 3 );
-    }, expect, 'Try to get more integers than the range of values provided.' );
+    assert.throws(
+        function() {
+            Utilities.getSeveralRandomInts(1, 2, 3);
+        },
+        expect,
+        "Try to get more integers than the range of values provided."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
-var ok;
-var a;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
+    var ok;
+    var a;
 
-result = Utilities.getSeveralRandomInts( 1, 1, 1 );
-expect = [ 1 ];
+    result = Utilities.getSeveralRandomInts(1, 1, 1);
+    expect = [1];
 
-assert.deepEqual( result, expect, 'Range of 1 with 1 random integer needed.' );
+    assert.deepEqual(
+        result,
+        expect,
+        "Range of 1 with 1 random integer needed."
+    );
 
-result = Utilities.getSeveralRandomInts( 1, 2, 2 );
-expect = [ 1, 2 ];
+    result = Utilities.getSeveralRandomInts(1, 2, 2);
+    expect = [1, 2];
 
-ok = true;
+    ok = true;
 
-if ( result.length === expect.length )
-    {
-    for (a = 0 ; a < expect.length ; a++)
-        {
-        if ( result.indexOf( expect[ a ] ) < 0 )
-            {
-            ok = false;
-            break;
+    if (result.length === expect.length) {
+        for (a = 0; a < expect.length; a++) {
+            if (result.indexOf(expect[a]) < 0) {
+                ok = false;
+                break;
             }
         }
+    } else {
+        ok = false;
     }
 
-else
-    {
-    ok = false;
-    }
+    assert.ok(ok, "A range of 2, with 2 required integers.");
 
-assert.ok( ok, 'A range of 2, with 2 required integers.' );
+    result = Utilities.getSeveralRandomInts(-4, 4, 4);
+    ok = true;
 
-result = Utilities.getSeveralRandomInts( -4, 4, 4 );
-ok = true;
+    if (result.length === 4) {
+        for (a = 0; a < result.length; a++) {
+            var value = result[a];
 
-if ( result.length === 4 )
-    {
-    for (a = 0 ; a < result.length ; a++)
-        {
-        var value = result[ a ];
-
-        if ( value < -4 || value > 4 )
-            {
-            ok = false;
-            break;
+            if (value < -4 || value > 4) {
+                ok = false;
+                break;
             }
         }
+    } else {
+        ok = false;
     }
 
-else
-    {
-    ok = false;
-    }
+    assert.ok(ok, "A range bigger than the number of required integers.");
 
-assert.ok( ok, 'A range bigger than the number of required integers.' );
+    result = Utilities.getSeveralRandomInts(0, 0, 1);
+    ok = result[0] === 0;
 
-
-result = Utilities.getSeveralRandomInts( 0, 0, 1 );
-ok = result[ 0 ] === 0;
-
-assert.ok( ok, 'A zero in the range limits.' );
+    assert.ok(ok, "A zero in the range limits.");
 });
 
+// numberOfDigits //
 
-    // numberOfDigits //
+QUnit.module("numberOfDigits");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-QUnit.module( 'numberOfDigits' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.numberOfDigits();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.numberOfDigits();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.numberOfDigits( 'asd' );
-    }, expect, 'Passed string argument.' );
+    assert.throws(
+        function() {
+            Utilities.numberOfDigits("asd");
+        },
+        expect,
+        "Passed string argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.numberOfDigits( 4 );
-expect = 1;
+    result = Utilities.numberOfDigits(4);
+    expect = 1;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.numberOfDigits( 12 );
-expect = 2;
+    result = Utilities.numberOfDigits(12);
+    expect = 2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.numberOfDigits( -12 );
-expect = 2;
+    result = Utilities.numberOfDigits(-12);
+    expect = 2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.numberOfDigits( 12.11 );
-expect = 4;
+    result = Utilities.numberOfDigits(12.11);
+    expect = 4;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.numberOfDigits( -12.34 );
-expect = 4;
+    result = Utilities.numberOfDigits(-12.34);
+    expect = 4;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });
 
+// round //
+QUnit.module("round");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // round //
-QUnit.module( 'round' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.round();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.round();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.round(1.1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.round( 1.1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.round("hi", "there");
+        },
+        expect,
+        "String arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.round( 'hi', 'there' );
-    }, expect, 'String arguments.' );
+    assert.throws(
+        function() {
+            Utilities.round(4.22, 2.2);
+        },
+        expect,
+        "Float decimal case."
+    );
 
-assert.throws( function()
-    {
-    Utilities.round( 4.22, 2.2 );
-    }, expect, 'Float decimal case.' );
-
-assert.throws( function()
-    {
-    Utilities.round( 4.22, -2 );
-    }, expect, 'Negative decimal case.' );
+    assert.throws(
+        function() {
+            Utilities.round(4.22, -2);
+        },
+        expect,
+        "Negative decimal case."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.round( 4.22, 1 );
-expect = 4.2;
+    result = Utilities.round(4.22, 1);
+    expect = 4.2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.round( 4.25, 1 );
-expect = 4.3;
+    result = Utilities.round(4.25, 1);
+    expect = 4.3;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.round( -4.5, 0 );
-expect = -4;
+    result = Utilities.round(-4.5, 0);
+    expect = -4;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });
-
 
 // ---------- Object Utilities ---------- //
 
+// deepClone //
+QUnit.module("deepClone");
+QUnit.test("test with valid arguments", function(assert) {
+    var test;
+    var copy;
 
-    // deepClone //
-QUnit.module( 'deepClone' );
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var test;
-var copy;
+    test = [1, 2, 3];
+    copy = Utilities.deepClone(test);
 
-test = [ 1, 2, 3 ];
-copy = Utilities.deepClone( test );
+    test[0] = 4;
 
-test[ 0 ] = 4;
+    assert.notDeepEqual(copy, test, "Clone of an array of numbers.");
 
-assert.notDeepEqual( copy, test, 'Clone of an array of numbers.' );
+    test = { one: 1, two: ["three", "four"] };
+    copy = Utilities.deepClone(test);
 
-test = { one: 1, two: [ 'three', 'four' ] };
-copy = Utilities.deepClone( test );
+    test.two.push("five");
 
-test.two.push( 'five' );
-
-assert.ok( test.two.length !== copy.two.length, 'Clone of an object.' );
+    assert.ok(test.two.length !== copy.two.length, "Clone of an object.");
 });
 
+// createEnum //
+QUnit.module("createEnum");
 
-    // createEnum //
-QUnit.module( 'createEnum' );
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.createEnum();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.createEnum();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.createEnum( 'one' );
-    }, expect, 'Needs to be an array.' );
+    assert.throws(
+        function() {
+            Utilities.createEnum("one");
+        },
+        expect,
+        "Needs to be an array."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var obj1 = Utilities.createEnum( [ 'one', 'two' ] );
+QUnit.test("test with valid arguments", function(assert) {
+    var obj1 = Utilities.createEnum(["one", "two"]);
 
-assert.deepEqual( obj1[ 0 ], 'one' );
-assert.deepEqual( obj1[ '1' ], 'two' );
-assert.deepEqual( obj1[ 'one' ], 0 );
-assert.deepEqual( obj1.two, 1 );
+    assert.deepEqual(obj1[0], "one");
+    assert.deepEqual(obj1["1"], "two");
+    assert.deepEqual(obj1["one"], 0);
+    assert.deepEqual(obj1.two, 1);
 
-var obj2 = Utilities.createEnum( [ 'hi', 'there' ], -4 );
+    var obj2 = Utilities.createEnum(["hi", "there"], -4);
 
-assert.deepEqual( obj2[ -4 ], 'hi' );
-assert.deepEqual( obj2[ '-3' ], 'there' );
-assert.deepEqual( obj2[ 'hi' ], -4 );
-assert.deepEqual( obj2.there, -3 );
+    assert.deepEqual(obj2[-4], "hi");
+    assert.deepEqual(obj2["-3"], "there");
+    assert.deepEqual(obj2["hi"], -4);
+    assert.deepEqual(obj2.there, -3);
 });
-
 
 // ---------- Time Utilities ---------- //
 
+// timeToString //
+QUnit.module("timeToString");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // timeToString //
-QUnit.module( 'timeToString' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.timeToString();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.timeToString();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.timeToString( '1 december' );
-    }, expect, 'Passed a string argument.' );
+    assert.throws(
+        function() {
+            Utilities.timeToString("1 december");
+        },
+        expect,
+        "Passed a string argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var values = [
-        { milliSeconds: 0, expectedString: '0 seconds' },
-        { milliSeconds: 1000, expectedString: '1 second' },
-        { milliSeconds: 30000, expectedString: '30 seconds' },
-        { milliSeconds: 60000, expectedString: '1 minute' },
-        { milliSeconds: 61000, expectedString: '1 minute 1 second' },
-        { milliSeconds: 150000, expectedString: '2 minutes 30 seconds' },
-        { milliSeconds: 3600000, expectedString: '1 hour' },
-        { milliSeconds: 3601000, expectedString: '1 hour 1 second' },
-        { milliSeconds: 3720000, expectedString: '1 hour 2 minutes' },
-        { milliSeconds: 9000000, expectedString: '2 hours 30 minutes' },
-        { milliSeconds: 86400000, expectedString: '1 day' },
-        { milliSeconds: 88201000, expectedString: '1 day 30 minutes' },
-        { milliSeconds: 864020000, expectedString: '10 days 20 seconds' }
+QUnit.test("test with valid arguments", function(assert) {
+    var values = [
+        { milliSeconds: 0, expectedString: "0 seconds" },
+        { milliSeconds: 1000, expectedString: "1 second" },
+        { milliSeconds: 30000, expectedString: "30 seconds" },
+        { milliSeconds: 60000, expectedString: "1 minute" },
+        { milliSeconds: 61000, expectedString: "1 minute 1 second" },
+        { milliSeconds: 150000, expectedString: "2 minutes 30 seconds" },
+        { milliSeconds: 3600000, expectedString: "1 hour" },
+        { milliSeconds: 3601000, expectedString: "1 hour 1 second" },
+        { milliSeconds: 3720000, expectedString: "1 hour 2 minutes" },
+        { milliSeconds: 9000000, expectedString: "2 hours 30 minutes" },
+        { milliSeconds: 86400000, expectedString: "1 day" },
+        { milliSeconds: 88201000, expectedString: "1 day 30 minutes" },
+        { milliSeconds: 864020000, expectedString: "10 days 20 seconds" },
     ];
 
-for (var a = 0 ; a < values.length ; a++)
-    {
-    var value = values[ a ];
+    for (var a = 0; a < values.length; a++) {
+        var value = values[a];
 
-    var result = Utilities.timeToString( value.milliSeconds );
+        var result = Utilities.timeToString(value.milliSeconds);
 
-    assert.deepEqual( result, value.expectedString );
+        assert.deepEqual(result, value.expectedString);
     }
 
-assert.deepEqual( Utilities.timeToString( 88201000, 3 ), '1 day 30 minutes 1 second' );
+    assert.deepEqual(
+        Utilities.timeToString(88201000, 3),
+        "1 day 30 minutes 1 second"
+    );
 });
 
+// Timeout //
+QUnit.module("Timeout");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
+    var timeout = new Utilities.Timeout();
+    var func = function() {};
 
-    // Timeout //
-QUnit.module( 'Timeout' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
-var timeout = new Utilities.Timeout();
-var func = function() {};
+    assert.throws(
+        function() {
+            timeout.start();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    timeout.start();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            timeout.start(func);
+        },
+        expect,
+        "Only one argument"
+    );
 
-assert.throws( function()
-    {
-    timeout.start( func );
-    }, expect, 'Only one argument' );
+    assert.throws(
+        function() {
+            timeout.start(null, 1000);
+        },
+        expect,
+        "Passing null to the function argument."
+    );
 
-assert.throws( function()
-    {
-    timeout.start( null, 1000 );
-    }, expect, 'Passing null to the function argument.' );
-
-assert.throws( function()
-    {
-    timeout.start( func, 'asd' );
-    }, expect, 'Wrong time of interval.' );
+    assert.throws(
+        function() {
+            timeout.start(func, "asd");
+        },
+        expect,
+        "Wrong time of interval."
+    );
 
     // just in case a test fails and starts the timeout
-timeout.clear();
+    timeout.clear();
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var done = assert.async();
+QUnit.test("test with valid arguments", function(assert) {
+    var done = assert.async();
 
-var value = 0;
-var timeout = new Utilities.Timeout();
+    var value = 0;
+    var timeout = new Utilities.Timeout();
 
-timeout.start( function()
-    {
-    value = 1;
+    timeout.start(function() {
+        value = 1;
 
-    assert.deepEqual( value, 1 );
-    done();
-    }, 10 );
+        assert.deepEqual(value, 1);
+        done();
+    }, 10);
 });
 
+// Timer //
+QUnit.module("Timer");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
+    assert.ok(new Utilities.Timer(), "Doesn't need an argument.");
 
-    // Timer //
-QUnit.module( 'Timer' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
-assert.ok( new Utilities.Timer(), "Doesn't need an argument." );
-
-assert.throws( function()
-    {
-    new Utilities.Timer( 0 );
-    }, expect, 'Not an html element.' );
+    assert.throws(
+        function() {
+            new Utilities.Timer(0);
+        },
+        expect,
+        "Not an html element."
+    );
 });
 
-QUnit.test( 'test without an argument.', function( assert )
-{
-var timer = new Utilities.Timer();
+QUnit.test("test without an argument.", function(assert) {
+    var timer = new Utilities.Timer();
 
-assert.deepEqual( timer.getTimeString(), '0 seconds' );
-assert.deepEqual( timer.getTimeSeconds(), 0 );
+    assert.deepEqual(timer.getTimeString(), "0 seconds");
+    assert.deepEqual(timer.getTimeSeconds(), 0);
 });
 
-QUnit.test( 'test with a given html element.', function( assert )
-{
-var htmlElement = document.createElement( 'div' );
-var timer = new Utilities.Timer( htmlElement );
+QUnit.test("test with a given html element.", function(assert) {
+    var htmlElement = document.createElement("div");
+    var timer = new Utilities.Timer(htmlElement);
 
     // starting value of the timer (0 seconds)
-assert.deepEqual( htmlElement.innerHTML, '0 seconds', 'Starting time string (from the html element).' );
-assert.deepEqual( timer.getTimeString(), '0 seconds', 'Starting time (from the timer object).' );
-assert.deepEqual( timer.getTimeSeconds(), 0, '0 seconds.' );
+    assert.deepEqual(
+        htmlElement.innerHTML,
+        "0 seconds",
+        "Starting time string (from the html element)."
+    );
+    assert.deepEqual(
+        timer.getTimeString(),
+        "0 seconds",
+        "Starting time (from the timer object)."
+    );
+    assert.deepEqual(timer.getTimeSeconds(), 0, "0 seconds.");
 });
-
 
 // ---------- Trigonometry ---------- //
 
+// calculateAngle //
+QUnit.module("calculateAngle");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // calculateAngle //
-QUnit.module( 'calculateAngle' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.calculateAngle();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateAngle();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.calculateAngle(1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateAngle( 1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.calculateAngle(1, 2);
+        },
+        expect,
+        "Only two arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateAngle( 1, 2 );
-    }, expect, 'Only two arguments.' );
+    assert.throws(
+        function() {
+            Utilities.calculateAngle(1, 2, 3);
+        },
+        expect,
+        "Only three arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateAngle( 1, 2, 3 );
-    }, expect, 'Only three arguments.' );
-
-assert.throws( function()
-    {
-    Utilities.calculateAngle( 'hi', 'there' );
-    }, expect, 'Passed string arguments.' );
+    assert.throws(
+        function() {
+            Utilities.calculateAngle("hi", "there");
+        },
+        expect,
+        "Passed string arguments."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.calculateAngle( 0, 0, 4, 0 );
-expect = 0;
+    result = Utilities.calculateAngle(0, 0, 4, 0);
+    expect = 0;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.calculateAngle( 0, 0, 0, 4 );
-expect = -Math.PI / 2;
+    result = Utilities.calculateAngle(0, 0, 0, 4);
+    expect = -Math.PI / 2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.calculateAngle( 0, 0, -4, 0 );
-expect = Math.PI;
+    result = Utilities.calculateAngle(0, 0, -4, 0);
+    expect = Math.PI;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.calculateAngle( 0, 0, 0, -4 );
-expect = Math.PI / 2;
+    result = Utilities.calculateAngle(0, 0, 0, -4);
+    expect = Math.PI / 2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });
 
+// calculateDistance //
+QUnit.module("calculateDistance");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // calculateDistance //
-QUnit.module( 'calculateDistance' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.calculateDistance();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateDistance();
-    }, expect, 'No arguments given.' );
+    assert.throws(
+        function() {
+            Utilities.calculateDistance(1);
+        },
+        expect,
+        "Only one argument."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateDistance( 1 );
-    }, expect, 'Only one argument.' );
+    assert.throws(
+        function() {
+            Utilities.calculateDistance(1, 2);
+        },
+        expect,
+        "Only two arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateDistance( 1, 2 );
-    }, expect, 'Only two arguments.' );
+    assert.throws(
+        function() {
+            Utilities.calculateDistance(1, 2, 3);
+        },
+        expect,
+        "Only three arguments."
+    );
 
-assert.throws( function()
-    {
-    Utilities.calculateDistance( 1, 2, 3 );
-    }, expect, 'Only three arguments.' );
-
-assert.throws( function()
-    {
-    Utilities.calculateDistance( 'hi', 'there' );
-    }, expect, 'Passed string arguments.' );
+    assert.throws(
+        function() {
+            Utilities.calculateDistance("hi", "there");
+        },
+        expect,
+        "Passed string arguments."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.calculateDistance( 0, 0, 4, 0 );
-expect = 4;
+    result = Utilities.calculateDistance(0, 0, 4, 0);
+    expect = 4;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.calculateDistance( 0, 0, 4, 10 );
-expect = Math.sqrt( 4 * 4 + 10 * 10 );
+    result = Utilities.calculateDistance(0, 0, 4, 10);
+    expect = Math.sqrt(4 * 4 + 10 * 10);
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.calculateDistance( 0, 0, -4, -5 );
-expect = Math.sqrt( 4 * 4 + 5 * 5 );
+    result = Utilities.calculateDistance(0, 0, -4, -5);
+    expect = Math.sqrt(4 * 4 + 5 * 5);
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });
 
+// toDegrees //
+QUnit.module("toDegrees");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // toDegrees //
-QUnit.module( 'toDegrees' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.toDegrees();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.toDegrees();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.toDegrees( 'hi' );
-    }, expect, 'Passed string argument.' );
+    assert.throws(
+        function() {
+            Utilities.toDegrees("hi");
+        },
+        expect,
+        "Passed string argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.toDegrees( 0 );
-expect = 0;
+    result = Utilities.toDegrees(0);
+    expect = 0;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.toDegrees( Math.PI / 2 );
-expect = 90;
+    result = Utilities.toDegrees(Math.PI / 2);
+    expect = 90;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.toDegrees( 3 / 2 * Math.PI );
-expect = 270;
+    result = Utilities.toDegrees((3 / 2) * Math.PI);
+    expect = 270;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });
 
+// toRadians //
+QUnit.module("toRadians");
+QUnit.test("validate arguments", function(assert) {
+    var expect = Error;
 
-    // toRadians //
-QUnit.module( 'toRadians' );
-QUnit.test( 'validate arguments', function( assert )
-{
-var expect = Error;
+    assert.throws(
+        function() {
+            Utilities.toRadians();
+        },
+        expect,
+        "No arguments given."
+    );
 
-assert.throws( function()
-    {
-    Utilities.toRadians();
-    }, expect, 'No arguments given.' );
-
-assert.throws( function()
-    {
-    Utilities.toRadians( 'hi' );
-    }, expect, 'Passed string argument.' );
+    assert.throws(
+        function() {
+            Utilities.toRadians("hi");
+        },
+        expect,
+        "Passed string argument."
+    );
 });
 
-QUnit.test( 'test with valid arguments', function( assert )
-{
-var result;
-var expect;
+QUnit.test("test with valid arguments", function(assert) {
+    var result;
+    var expect;
 
-result = Utilities.toRadians( 0 );
-expect = 0;
+    result = Utilities.toRadians(0);
+    expect = 0;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.toRadians( 90 );
-expect = Math.PI / 2;
+    result = Utilities.toRadians(90);
+    expect = Math.PI / 2;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 
-result = Utilities.toRadians( 270 );
-expect = 3 / 2 * Math.PI;
+    result = Utilities.toRadians(270);
+    expect = (3 / 2) * Math.PI;
 
-assert.deepEqual( result, expect );
+    assert.deepEqual(result, expect);
 });

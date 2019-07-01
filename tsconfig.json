@@ -9,7 +9,5 @@
         "module": "es2015",
         "declarationDir": "./build"
     },
-    "include": [
-        "source/**/*.ts"
-    ]
+    "include": ["source/**/*.ts"]
 }

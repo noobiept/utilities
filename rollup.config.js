@@ -1,22 +1,21 @@
-import { terser } from 'rollup-plugin-terser';
-
+import { terser } from "rollup-plugin-terser";
 
 module.exports = {
-    input: 'source/utilities.js',
+    input: "source/utilities.js",
     output: [
         {
-            file: 'build/utilities.cjs.js',
-            format: 'cjs'
+            file: "build/utilities.cjs.js",
+            format: "cjs",
         },
         {
-            file: 'build/utilities.iife.js',
-            format: 'iife',
-            name: 'Utilities'
+            file: "build/utilities.iife.js",
+            format: "iife",
+            name: "Utilities",
         },
         {
-            file: 'build/utilities.esm.js',
-            format: 'esm'
-        }
+            file: "build/utilities.esm.js",
+            format: "esm",
+        },
     ],
-    plugins: [ terser() ]
+    plugins: [terser()],
 };

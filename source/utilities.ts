@@ -4,196 +4,209 @@
 
 // ---------- Array Utilities ---------- //
 
-
 /**
  * Shuffle an array.
  */
-export function shuffle( array: any[] )
-{
-if ( !isArray( array ) )
-    {
-    throw new Error( "Utilities.shuffle() -> Invalid 'array' argument. Not an array." );
+export function shuffle(array: any[]) {
+    if (!isArray(array)) {
+        throw new Error(
+            "Utilities.shuffle() -> Invalid 'array' argument. Not an array."
+        );
     }
 
-var currentIndex = array.length;
-var temporaryValue;
-var randomIndex;
+    var currentIndex = array.length;
+    var temporaryValue;
+    var randomIndex;
 
     // while there's still elements to shuffle
-while( currentIndex !== 0 )
-    {
+    while (currentIndex !== 0) {
         // pick a remaining element
-    randomIndex = Math.floor( Math.random() * currentIndex );
-    currentIndex--;
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
         // swap it with the current element
-    temporaryValue = array[ currentIndex ];
-    array[ currentIndex ] = array[ randomIndex ];
-    array[ randomIndex ] = temporaryValue;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
 
-return array;
+    return array;
 }
 
-
 // ---------- Collision Detection ---------- //
-
 
 /**
  * Detects collision between 2 boxes.
  */
-export function boxBoxCollision( oneX: number, oneY: number, oneWidth: number, oneHeight: number, twoX: number, twoY: number, twoWidth: number, twoHeight: number )
-{
-return !(
-        ( oneY + oneHeight < twoY ) ||
-        ( oneY > twoY + twoHeight ) ||
-        ( oneX > twoX + twoWidth ) ||
-        ( oneX + oneWidth < twoX )
+export function boxBoxCollision(
+    oneX: number,
+    oneY: number,
+    oneWidth: number,
+    oneHeight: number,
+    twoX: number,
+    twoY: number,
+    twoWidth: number,
+    twoHeight: number
+) {
+    return !(
+        oneY + oneHeight < twoY ||
+        oneY > twoY + twoHeight ||
+        oneX > twoX + twoWidth ||
+        oneX + oneWidth < twoX
     );
 }
-
 
 /**
  * Detects collision between two circles.
  */
-export function circleCircleCollision( x1: number, y1: number, radius1: number, x2: number, y2: number, radius2: number )
-{
-var distX = x1 - x2;
-var distY = y1 - y2;
+export function circleCircleCollision(
+    x1: number,
+    y1: number,
+    radius1: number,
+    x2: number,
+    y2: number,
+    radius2: number
+) {
+    var distX = x1 - x2;
+    var distY = y1 - y2;
 
-if ( Math.pow( distX, 2 ) + Math.pow( distY, 2 ) <= Math.pow( radius1 + radius2, 2 ) )
-    {
-    return true;
+    if (
+        Math.pow(distX, 2) + Math.pow(distY, 2) <=
+        Math.pow(radius1 + radius2, 2)
+    ) {
+        return true;
     }
 
-return false;
+    return false;
 }
-
 
 /**
  * Detects collision between a circle and a point.
  */
-export function circlePointCollision( circleX: number, circleY: number, circleRadius: number, pointX: number, pointY: number )
-{
-var distanceX = circleX - pointX;
-var distanceY = circleY - pointY;
+export function circlePointCollision(
+    circleX: number,
+    circleY: number,
+    circleRadius: number,
+    pointX: number,
+    pointY: number
+) {
+    var distanceX = circleX - pointX;
+    var distanceY = circleY - pointY;
 
     // pythagoras
-var squareDistance = distanceX * distanceX + distanceY * distanceY;
+    var squareDistance = distanceX * distanceX + distanceY * distanceY;
 
-if ( squareDistance <= circleRadius * circleRadius )
-    {
-    return true;
+    if (squareDistance <= circleRadius * circleRadius) {
+        return true;
     }
 
-return false;
+    return false;
 }
-
 
 /**
  * Detects collision between a point and a box.
  */
-export function pointBoxCollision( pointX: number, pointY: number, boxX: number, boxY: number, boxWidth: number, boxHeight: number )
-{
-if ( pointX < boxX ||
-     pointX > boxX + boxWidth ||
-     pointY < boxY ||
-     pointY > boxY + boxHeight )
-    {
-    return false;
+export function pointBoxCollision(
+    pointX: number,
+    pointY: number,
+    boxX: number,
+    boxY: number,
+    boxWidth: number,
+    boxHeight: number
+) {
+    if (
+        pointX < boxX ||
+        pointX > boxX + boxWidth ||
+        pointY < boxY ||
+        pointY > boxY + boxHeight
+    ) {
+        return false;
     }
 
-return true;
+    return true;
 }
 
-
 // ---------- Events ---------- //
-
 
 /**
  * Numeric code of each key.
  */
 export var KEY_CODE = {
+    backspace: 8,
+    tab: 9,
+    enter: 13,
+    esc: 27,
+    space: 32,
+    end: 35,
+    home: 36,
+    leftArrow: 37,
+    upArrow: 38,
+    rightArrow: 39,
+    downArrow: 40,
+    del: 46,
 
-    backspace  : 8,
-    tab        : 9,
-    enter      : 13,
-    esc        : 27,
-    space      : 32,
-    end        : 35,
-    home       : 36,
-    leftArrow  : 37,
-    upArrow    : 38,
-    rightArrow : 39,
-    downArrow  : 40,
-    del        : 46,
+    "0": 48,
+    "1": 49,
+    "2": 50,
+    "3": 51,
+    "4": 52,
+    "5": 53,
+    "6": 54,
+    "7": 55,
+    "8": 56,
+    "9": 57,
 
-    "0" : 48,
-    "1" : 49,
-    "2" : 50,
-    "3" : 51,
-    "4" : 52,
-    "5" : 53,
-    "6" : 54,
-    "7" : 55,
-    "8" : 56,
-    "9" : 57,
+    a: 65,
+    b: 66,
+    c: 67,
+    d: 68,
+    e: 69,
+    f: 70,
+    g: 71,
+    h: 72,
+    i: 73,
+    j: 74,
+    k: 75,
+    l: 76,
+    m: 77,
+    n: 78,
+    o: 79,
+    p: 80,
+    q: 81,
+    r: 82,
+    s: 83,
+    t: 84,
+    u: 85,
+    v: 86,
+    w: 87,
+    x: 88,
+    y: 89,
+    z: 90,
 
-    a : 65,
-    b : 66,
-    c : 67,
-    d : 68,
-    e : 69,
-    f : 70,
-    g : 71,
-    h : 72,
-    i : 73,
-    j : 74,
-    k : 75,
-    l : 76,
-    m : 77,
-    n : 78,
-    o : 79,
-    p : 80,
-    q : 81,
-    r : 82,
-    s : 83,
-    t : 84,
-    u : 85,
-    v : 86,
-    w : 87,
-    x : 88,
-    y : 89,
-    z : 90,
-
-    f1  : 112,
-    f2  : 113,
-    f3  : 114,
-    f4  : 115,
-    f5  : 116,
-    f6  : 117,
-    f7  : 118,
-    f8  : 119,
-    f9  : 120,
-    f10 : 121,
-    f11 : 122,
-    f12 : 123
-
+    f1: 112,
+    f2: 113,
+    f3: 114,
+    f4: 115,
+    f5: 116,
+    f6: 117,
+    f7: 118,
+    f8: 119,
+    f9: 120,
+    f10: 121,
+    f11: 122,
+    f12: 123,
 };
-
 
 /**
  * Numeric code of each mouse button.
  */
 export var MOUSE_CODE = {
-    left   : 0,
-    middle : 1,
-    right  : 2
+    left: 0,
+    middle: 1,
+    right: 2,
 };
 
-
 // ---------- Local Storage ---------- //
-
 
 /**
  * Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
@@ -202,18 +215,17 @@ export var MOUSE_CODE = {
  * - `key` is not a string.
  * - `key` wasn't found.
  */
-export function getObject( key: string )
-{
-if ( !isString( key ) )
-    {
-    throw new Error( "Utilities.getObject() -> Invalid 'key' argument. Not a string." );
+export function getObject(key: string) {
+    if (!isString(key)) {
+        throw new Error(
+            "Utilities.getObject() -> Invalid 'key' argument. Not a string."
+        );
     }
 
-var value = localStorage.getItem( key );
+    var value = localStorage.getItem(key);
 
-return value && JSON.parse( value );
+    return value && JSON.parse(value);
 }
-
 
 /**
  * Saves in the `localStorage` a json string representation of the `value`.
@@ -221,76 +233,72 @@ return value && JSON.parse( value );
  * Throws an `Error` exception if:
  * - `key` is not a `string`.
  */
-export function saveObject( key: string, value: any )
-{
-if ( !isString( key ) )
-    {
-    throw new Error( "Utilities.saveObject() -> Invalid 'key' argument. Not a string." );
+export function saveObject(key: string, value: any) {
+    if (!isString(key)) {
+        throw new Error(
+            "Utilities.saveObject() -> Invalid 'key' argument. Not a string."
+        );
     }
 
-localStorage.setItem( key, JSON.stringify( value ) );
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
-
 // ---------- Is Type ---------- //
-
 
 /**
  * @return If it is an array or not.
  */
-export function isArray( element: any )
-{
-return Object.prototype.toString.call( element ) === '[object Array]';
+export function isArray(element: any) {
+    return Object.prototype.toString.call(element) === "[object Array]";
 }
-
 
 /**
  * @return If it is a boolean.
  */
-export function isBoolean( element: any )
-{
-return element === true || element === false || Object.prototype.toString.call( element ) === '[object Boolean]'
+export function isBoolean(element: any) {
+    return (
+        element === true ||
+        element === false ||
+        Object.prototype.toString.call(element) === "[object Boolean]"
+    );
 }
-
 
 /**
  * @return If it is a function.
  */
-export function isFunction( element: any )
-{
-return typeof element === 'function' && Object.prototype.toString.call( element ) === '[object Function]';
+export function isFunction(element: any) {
+    return (
+        typeof element === "function" &&
+        Object.prototype.toString.call(element) === "[object Function]"
+    );
 }
-
 
 /**
  * @return If it is an integer.
  */
-export function isInteger( value: any )
-{
-return isNumber( value ) && ( value % 1 ) === 0;
+export function isInteger(value: any) {
+    return isNumber(value) && value % 1 === 0;
 }
-
 
 /**
  * @return If it is a number.
  */
-export function isNumber( element: any )
-{
-return typeof element === 'number' && !isNaN( parseFloat( <any>element ) ) && isFinite( element );
+export function isNumber(element: any) {
+    return (
+        typeof element === "number" &&
+        !isNaN(parseFloat(<any>element)) &&
+        isFinite(element)
+    );
 }
-
 
 /**
  * @return If it is a string.
  */
-export function isString( element: any )
-{
-return typeof element === 'string' || element instanceof String;
+export function isString(element: any) {
+    return typeof element === "string" || element instanceof String;
 }
 
-
 // ---------- Number Utilities ---------- //
-
 
 /**
  * Returns a random float number between `min` and `max` (inclusive).
@@ -299,18 +307,15 @@ return typeof element === 'string' || element instanceof String;
  * - either `min` or `max` is not a `number`.
  * - the minimum value is bigger than the maximum.
  */
-export function getRandomFloat( min: number, max: number )
-{
-if ( !isNumber( min ) ||
-     !isNumber( max ) ||
-    (min > max) )
-    {
-    throw new Error( "Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'." );
+export function getRandomFloat(min: number, max: number) {
+    if (!isNumber(min) || !isNumber(max) || min > max) {
+        throw new Error(
+            "Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'."
+        );
     }
 
-return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
-
 
 /**
  * Returns a random integer number between `min` and `max` (inclusive).
@@ -319,18 +324,15 @@ return Math.random() * (max - min) + min;
  * - `min` or `max` isn't an integer.
  * - the minimum value is bigger than the maximum.
  */
-export function getRandomInt( min: number, max: number )
-{
-if ( !isInteger( min ) ||
-     !isInteger( max ) ||
-    (min > max) )
-    {
-    throw new Error( "Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'." );
+export function getRandomInt(min: number, max: number) {
+    if (!isInteger(min) || !isInteger(max) || min > max) {
+        throw new Error(
+            "Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'."
+        );
     }
 
-return Math.floor( Math.random() * (max - min + 1) ) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 /**
  * Returns several different random integers, in the range between `min` and `max` (inclusive).
@@ -340,32 +342,35 @@ return Math.floor( Math.random() * (max - min + 1) ) + min;
  * - the minimum value is bigger than the maximum.
  * - the range is less than the number of integers required.
  */
-export function getSeveralRandomInts( min: number, max: number, howMany: number ): number[]
-{
-if ( !isInteger( min ) ||
-     !isInteger( max ) ||
-     !isInteger( howMany ) ||
-    (min > max) ||
-    ((max - min) < howMany - 1) )
-    {
-    throw new Error( "Utilities.getSeveralRandomInts() -> Invalid arguments." );
+export function getSeveralRandomInts(
+    min: number,
+    max: number,
+    howMany: number
+): number[] {
+    if (
+        !isInteger(min) ||
+        !isInteger(max) ||
+        !isInteger(howMany) ||
+        min > max ||
+        max - min < howMany - 1
+    ) {
+        throw new Error(
+            "Utilities.getSeveralRandomInts() -> Invalid arguments."
+        );
     }
 
-var numbers = [];
+    var numbers = [];
 
-while( numbers.length < howMany )
-    {
-    var randomNumber = getRandomInt( min, max );
+    while (numbers.length < howMany) {
+        var randomNumber = getRandomInt(min, max);
 
-    if ( numbers.indexOf( randomNumber ) < 0 )
-        {
-        numbers.push( randomNumber );
+        if (numbers.indexOf(randomNumber) < 0) {
+            numbers.push(randomNumber);
         }
     }
 
-return numbers;
+    return numbers;
 }
-
 
 /**
  * Returns the number of digits in a number.
@@ -374,23 +379,21 @@ return numbers;
  * Throws an `Error` exception if:
  * - the argument is not a number.
  */
-export function numberOfDigits( theNumber: number )
-{
-if ( !isNumber( theNumber ) )
-    {
-    throw new Error( "Utilities.numberOfDigits() -> Invalid 'theNumber' argument. Not a number." );
+export function numberOfDigits(theNumber: number) {
+    if (!isNumber(theNumber)) {
+        throw new Error(
+            "Utilities.numberOfDigits() -> Invalid 'theNumber' argument. Not a number."
+        );
     }
 
-if ( theNumber < 0 )
-    {
-    theNumber *= -1;
+    if (theNumber < 0) {
+        theNumber *= -1;
     }
 
-var numberString = theNumber.toString().replace( '.', '' );
+    var numberString = theNumber.toString().replace(".", "");
 
-return numberString.length;
+    return numberString.length;
 }
-
 
 /**
  * Rounds a number to a specified decimal case.
@@ -400,30 +403,22 @@ return numberString.length;
  * - `dec` isn't an integer.
  * - `dec` is less than 0.
  */
-export function round( num: number, dec: number )
-{
-if ( !isNumber( num ) ||
-     !isInteger( dec ) ||
-    (dec < 0) )
-    {
-    throw new Error( 'Utilities.round() -> Invalid arguments.' );
+export function round(num: number, dec: number) {
+    if (!isNumber(num) || !isInteger(dec) || dec < 0) {
+        throw new Error("Utilities.round() -> Invalid arguments.");
     }
 
-return Math.round( num * Math.pow( 10, dec ) ) / Math.pow( 10, dec );
+    return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
 }
 
-
 // ---------- Object Utilities ---------- //
-
 
 /**
  * Returns a deep clone/copy of the object.
  */
-export function deepClone( obj: any )
-{
-return JSON.parse( JSON.stringify( obj ) );
+export function deepClone(obj: any) {
+    return JSON.parse(JSON.stringify(obj));
 }
-
 
 /**
  * Enum - A way to associate a string name to a number.
@@ -431,38 +426,33 @@ return JSON.parse( JSON.stringify( obj ) );
  * @param values The `enum` names. Each name will have an associated number.
  * @param start Starting number for the first name. The number is incremented by one for the next name.
  */
-export function createEnum( values: string[], start?: number )
-{
-if ( !isArray( values ) )
-    {
-    throw new Error( "Utilities.createEnum() -> Invalid 'values' argument. Needs to be an array of strings." );
+export function createEnum(values: string[], start?: number) {
+    if (!isArray(values)) {
+        throw new Error(
+            "Utilities.createEnum() -> Invalid 'values' argument. Needs to be an array of strings."
+        );
     }
 
-if ( !isNumber( start ) )
-    {
-    start = 0;
+    if (!isNumber(start)) {
+        start = 0;
     }
 
+    var obj: { [key: string]: string | number } = {};
+    var length = values.length;
 
-var obj: { [key: string]: string | number } = {};
-var length = values.length;
+    for (var a = 0; a < length; a++) {
+        let name = values[a];
 
-for (var a = 0 ; a < length ; a++)
-    {
-    let name = values[ a ];
+        obj[start!] = name;
+        obj[name] = start!;
 
-    obj[ start! ] = name;
-    obj[ name ] = start!;
-
-    start = start! + 1;
+        start = start! + 1;
     }
 
-return obj;
+    return obj;
 }
 
-
 // ---------- Time Utilities ---------- //
-
 
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
@@ -474,445 +464,374 @@ return obj;
  * Throws an `Error` exception if:
  * - the `dateMilliseconds` argument isn't a number.
  */
-export function timeToString( dateMilliseconds: number, totalUnits: number = 2 )
-{
-if ( !isNumber( dateMilliseconds ) )
-    {
-    throw new Error( "Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number." );
+export function timeToString(dateMilliseconds: number, totalUnits: number = 2) {
+    if (!isNumber(dateMilliseconds)) {
+        throw new Error(
+            "Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number."
+        );
     }
 
-if ( !isNumber( totalUnits ) )
-    {
-    totalUnits = 2;
+    if (!isNumber(totalUnits)) {
+        totalUnits = 2;
     }
 
     // :: convert to days/hours :: //
 
     //in milliseconds
-var second = 1000;
-var minute = 60 * second;
-var hour   = 60 * minute;
-var day    = 24 * hour;
+    var second = 1000;
+    var minute = 60 * second;
+    var hour = 60 * minute;
+    var day = 24 * hour;
 
-var minutesLeft = 0;
-var hoursLeft = 0;
-var daysLeft = 0;
-var secondsLeft = 0;
-
+    var minutesLeft = 0;
+    var hoursLeft = 0;
+    var daysLeft = 0;
+    var secondsLeft = 0;
 
     //count the days
-while (dateMilliseconds >= day)
-    {
-    daysLeft++;
+    while (dateMilliseconds >= day) {
+        daysLeft++;
 
-    dateMilliseconds -= day;
+        dateMilliseconds -= day;
     }
 
     //count the hours
-while (dateMilliseconds >= hour)
-    {
-    hoursLeft++;
+    while (dateMilliseconds >= hour) {
+        hoursLeft++;
 
-    dateMilliseconds -= hour;
+        dateMilliseconds -= hour;
     }
 
     //count the minutes
-while (dateMilliseconds >= minute)
-    {
-    minutesLeft++;
+    while (dateMilliseconds >= minute) {
+        minutesLeft++;
 
-    dateMilliseconds -= minute;
+        dateMilliseconds -= minute;
     }
 
     //and the seconds
-secondsLeft = round( dateMilliseconds / second, 2);
-
+    secondsLeft = round(dateMilliseconds / second, 2);
 
     // :: construct the string :: //
 
-var theDate = [
-    { name: "day", time: daysLeft },
-    { name: "hour", time: hoursLeft },
-    { name: "minute", time: minutesLeft },
-    { name: "second", time: secondsLeft }
-];
+    var theDate = [
+        { name: "day", time: daysLeft },
+        { name: "hour", time: hoursLeft },
+        { name: "minute", time: minutesLeft },
+        { name: "second", time: secondsLeft },
+    ];
 
-var constructDate = function( dateTmp: string, numberOf: number )
-    {
+    var constructDate = function(dateTmp: string, numberOf: number) {
         // day to days, hour to hours...
-    if ( numberOf !== 1 )
-        {
-        dateTmp += "s";
+        if (numberOf !== 1) {
+            dateTmp += "s";
         }
 
-    return numberOf + " " + dateTmp;
+        return numberOf + " " + dateTmp;
     };
 
+    var date = "";
+    var i;
 
-var date = "";
-var i;
-
-for (i = 0 ; i < theDate.length ; i++)
-    {
+    for (i = 0; i < theDate.length; i++) {
         // reached the limit of the units
-    if (totalUnits === 0)
-        {
-        break;
+        if (totalUnits === 0) {
+            break;
         }
 
-    let component = theDate[ i ];
+        let component = theDate[i];
 
         // only show when there's something relevant to be shown
         // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
-    if ( component.time !== 0 )
-        {
+        if (component.time !== 0) {
             // add spacing between the units apart from the first one
-        if ( date !== '' )
-            {
-            date += ' ';
+            if (date !== "") {
+                date += " ";
             }
 
-        date += constructDate( component.name, component.time );
+            date += constructDate(component.name, component.time);
 
-        totalUnits--;
+            totalUnits--;
         }
     }
 
-
-if ( date === '' )
-    {
-    date = '0 seconds';
+    if (date === "") {
+        date = "0 seconds";
     }
 
-return date;
+    return date;
 }
-
 
 /**
  * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
  */
-export class Timeout
-{
-is_active: boolean;
-id: number;
+export class Timeout {
+    is_active: boolean;
+    id: number;
 
-constructor()
-    {
-    this.is_active = false;
-    this.id = -1;
+    constructor() {
+        this.is_active = false;
+        this.id = -1;
     }
 
-
-/**
- * Starts the timeout. If there was an active timeout already, that one is canceled.
- *
- * Throws an `Error` exception if:
- * - `functionToCall` isn't a function.
- * - `interval` isn't a number.
- */
-start( functionToCall: Function, interval: number )
-    {
-    if ( !isFunction( functionToCall ) ||
-         !isNumber( interval ) )
-        {
-        throw new Error( 'Utilities.Timeout.start() -> Invalid arguments.' );
+    /**
+     * Starts the timeout. If there was an active timeout already, that one is canceled.
+     *
+     * Throws an `Error` exception if:
+     * - `functionToCall` isn't a function.
+     * - `interval` isn't a number.
+     */
+    start(functionToCall: Function, interval: number) {
+        if (!isFunction(functionToCall) || !isNumber(interval)) {
+            throw new Error("Utilities.Timeout.start() -> Invalid arguments.");
         }
 
-    var _this = this;
+        var _this = this;
 
-    if ( this.is_active )
-        {
-        this.clear();
+        if (this.is_active) {
+            this.clear();
         }
 
-    this.is_active = true;
+        this.is_active = true;
 
-    this.id = window.setTimeout( function()
-        {
-        _this.is_active = false;
+        this.id = window.setTimeout(function() {
+            _this.is_active = false;
 
-        functionToCall();
-
-        }, interval );
+            functionToCall();
+        }, interval);
     }
 
-
-/**
- * Cancels the timeout.
- */
-clear()
-    {
-    window.clearTimeout( this.id );
-    this.is_active = false;
+    /**
+     * Cancels the timeout.
+     */
+    clear() {
+        window.clearTimeout(this.id);
+        this.is_active = false;
     }
 }
-
 
 /**
  * Count-up or count-down timer. Can optionally update an html element.
  */
-export class Timer
-{
-is_active: boolean;
-start_value: number;
-count_down: boolean;
-time_count: number;
+export class Timer {
+    is_active: boolean;
+    start_value: number;
+    count_down: boolean;
+    time_count: number;
 
     // these can have the 'undefined' value (which means they aren't set)
-end_value?: number;
-end_callback?: () => any;
-tick_callback?: () => any;
-interval_f?: number;
-html_element?: HTMLElement;
+    end_value?: number;
+    end_callback?: () => any;
+    tick_callback?: () => any;
+    interval_f?: number;
+    html_element?: HTMLElement;
 
-constructor( htmlElement?: HTMLElement )
-    {
+    constructor(htmlElement?: HTMLElement) {
         // either don't receive an argument, or if given needs to be an HTMLElement
-    if ( typeof htmlElement !== 'undefined' && !(htmlElement instanceof HTMLElement) )
-        {
-        throw new Error( "Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element." );
+        if (
+            typeof htmlElement !== "undefined" &&
+            !(htmlElement instanceof HTMLElement)
+        ) {
+            throw new Error(
+                "Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element."
+            );
         }
 
-    this.is_active = false;
-    this.start_value = 0;
-    this.count_down = false;
-    this.time_count = 0;
-    this.html_element = htmlElement;
+        this.is_active = false;
+        this.start_value = 0;
+        this.count_down = false;
+        this.time_count = 0;
+        this.html_element = htmlElement;
 
-    this.updateHtmlElement();
+        this.updateHtmlElement();
     }
 
-
-/**
- * Start counting.
- * If no endValue is given, it never stops counting.
- *
- * `startValue` and `endValue` are in milliseconds.
- *
- * `endCallback` is called when the timer ends (only if an `endValue` was provided).
- *
- * `tickCallback` is called every second.
- */
-start( args?: { startValue?: number; endValue?: number; endCallback?: () => any; tickCallback?: () => any; countDown?: boolean } )
-    {
-    if ( typeof args === 'undefined' )
-        {
-        args = {};
+    /**
+     * Start counting.
+     * If no endValue is given, it never stops counting.
+     *
+     * `startValue` and `endValue` are in milliseconds.
+     *
+     * `endCallback` is called when the timer ends (only if an `endValue` was provided).
+     *
+     * `tickCallback` is called every second.
+     */
+    start(args?: {
+        startValue?: number;
+        endValue?: number;
+        endCallback?: () => any;
+        tickCallback?: () => any;
+        countDown?: boolean;
+    }) {
+        if (typeof args === "undefined") {
+            args = {};
         }
 
-    if ( !isNumber( args.startValue ) )
-        {
-        args.startValue = 0;
+        if (!isNumber(args.startValue)) {
+            args.startValue = 0;
         }
 
-    if ( !isNumber( args.endValue ) )
-        {
-        args.endValue = undefined;
+        if (!isNumber(args.endValue)) {
+            args.endValue = undefined;
         }
 
-    if ( !isFunction( args.endCallback ) )
-        {
-        args.endCallback = undefined;
+        if (!isFunction(args.endCallback)) {
+            args.endCallback = undefined;
         }
 
-    if ( !isFunction( args.tickCallback ) )
-        {
-        args.tickCallback = undefined;
+        if (!isFunction(args.tickCallback)) {
+            args.tickCallback = undefined;
         }
 
-    if ( args.countDown !== true )
-        {
-        args.countDown = false;
+        if (args.countDown !== true) {
+            args.countDown = false;
         }
 
-
-    if ( this.is_active )
-        {
-        this.stop();
+        if (this.is_active) {
+            this.stop();
         }
 
-    this.count_down = args.countDown;
-    this.time_count = args.startValue!;
-    this.start_value = args.startValue!;
-    this.end_value = args.endValue;
-    this.end_callback = args.endCallback;
-    this.tick_callback = args.tickCallback;
+        this.count_down = args.countDown;
+        this.time_count = args.startValue!;
+        this.start_value = args.startValue!;
+        this.end_value = args.endValue;
+        this.end_callback = args.endCallback;
+        this.tick_callback = args.tickCallback;
 
-    this.updateHtmlElement();
-    this.resume();
+        this.updateHtmlElement();
+        this.resume();
     }
 
-
-/**
- * Resumes the timer with the same settings/values that were set before it was stopped.
- */
-resume()
-    {
-    if ( this.is_active )
-        {
-        return;
+    /**
+     * Resumes the timer with the same settings/values that were set before it was stopped.
+     */
+    resume() {
+        if (this.is_active) {
+            return;
         }
 
-    var _this = this;
-    var interval = 1000;
+        var _this = this;
+        var interval = 1000;
 
-    this.is_active = true;
-    this.interval_f = window.setInterval( function()
-        {
+        this.is_active = true;
+        this.interval_f = window.setInterval(function() {
             // update the counter
-        if ( _this.count_down )
-            {
-            _this.time_count -= interval;
+            if (_this.count_down) {
+                _this.time_count -= interval;
+            } else {
+                _this.time_count += interval;
             }
-
-        else
-            {
-            _this.time_count += interval;
-            }
-
 
             // if there's an end value defined, check if we reached it
-        if ( _this.end_value !== undefined )
-            {
-            var ended = false;
+            if (_this.end_value !== undefined) {
+                var ended = false;
 
-            if ( _this.count_down )
-                {
-                if ( _this.time_count <= _this.end_value )
-                    {
-                    ended = true;
+                if (_this.count_down) {
+                    if (_this.time_count <= _this.end_value) {
+                        ended = true;
+                    }
+                } else {
+                    if (_this.time_count >= _this.end_value) {
+                        ended = true;
                     }
                 }
 
-            else
-                {
-                if ( _this.time_count >= _this.end_value )
-                    {
-                    ended = true;
-                    }
-                }
+                if (ended) {
+                    _this.stop();
 
-
-            if ( ended )
-                {
-                _this.stop();
-
-                if ( _this.end_callback !== undefined )
-                    {
-                    _this.end_callback();
+                    if (_this.end_callback !== undefined) {
+                        _this.end_callback();
                     }
                 }
             }
 
-
             // call the tick callback if there's one
-        if ( _this.tick_callback !== undefined )
-            {
-            _this.tick_callback();
+            if (_this.tick_callback !== undefined) {
+                _this.tick_callback();
             }
 
             // update the html element with the current time
-        _this.updateHtmlElement();
-
-        }, interval );
+            _this.updateHtmlElement();
+        }, interval);
     }
 
-
-/**
- * Stop counting.
- */
-stop()
-    {
-    if ( this.interval_f )
-        {
-        window.clearInterval( this.interval_f );
-        this.interval_f = undefined;
+    /**
+     * Stop counting.
+     */
+    stop() {
+        if (this.interval_f) {
+            window.clearInterval(this.interval_f);
+            this.interval_f = undefined;
         }
 
-    this.is_active = false;
+        this.is_active = false;
     }
 
+    /**
+     * Stops and resets the count.
+     */
+    reset() {
+        this.stop();
 
-/**
- * Stops and resets the count.
- */
-reset()
-    {
-    this.stop();
-
-    this.time_count = this.start_value;
-    this.updateHtmlElement();
+        this.time_count = this.start_value;
+        this.updateHtmlElement();
     }
 
-
-/**
- * Restart the timer.
- */
-restart()
-    {
-    this.reset();
-    this.start({
-            startValue   : this.start_value,
-            endValue     : this.end_value,
-            endCallback  : this.end_callback,
-            tickCallback : this.tick_callback,
-            countDown    : this.count_down
+    /**
+     * Restart the timer.
+     */
+    restart() {
+        this.reset();
+        this.start({
+            startValue: this.start_value,
+            endValue: this.end_value,
+            endCallback: this.end_callback,
+            tickCallback: this.tick_callback,
+            countDown: this.count_down,
         });
     }
 
-
-/**
- * Updates the associated html element (if was given) with the current time value.
- */
-updateHtmlElement()
-    {
-    if ( this.html_element )
-        {
-        this.html_element.innerHTML = this.getTimeString();
+    /**
+     * Updates the associated html element (if was given) with the current time value.
+     */
+    updateHtmlElement() {
+        if (this.html_element) {
+            this.html_element.innerHTML = this.getTimeString();
         }
     }
 
-
-/**
- * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
- *
- * @param time In milliseconds.
- */
-add( time: number )
-    {
-    this.time_count += time;
+    /**
+     * Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
+     *
+     * @param time In milliseconds.
+     */
+    add(time: number) {
+        this.time_count += time;
     }
 
-
-/**
- * Returns a string with the time passed so far.
- */
-getTimeString()
-    {
-    return timeToString( this.time_count );
+    /**
+     * Returns a string with the time passed so far.
+     */
+    getTimeString() {
+        return timeToString(this.time_count);
     }
 
-
-/**
- * Returns the time it has passed so far, in seconds.
- */
-getTimeSeconds()
-    {
-    return this.time_count / 1000;
+    /**
+     * Returns the time it has passed so far, in seconds.
+     */
+    getTimeSeconds() {
+        return this.time_count / 1000;
     }
 
-/**
- * Returns the time it has passed so far, in milliseconds.
- */
-getTimeMilliseconds()
-    {
-    return this.time_count;
+    /**
+     * Returns the time it has passed so far, in milliseconds.
+     */
+    getTimeMilliseconds() {
+        return this.time_count;
     }
 }
 
-
 // ---------- Trigonometry ---------- //
-
 
 /**
  * Returns the angle between 2 points in radians.
@@ -921,24 +840,20 @@ getTimeMilliseconds()
  * Throws an `Error` exception if:
  * - any of the arguments isn't a number.
  */
-export function calculateAngle( aX: number, aY: number, bX: number, bY: number )
-{
-if ( !isNumber( aX ) ||
-     !isNumber( aY ) ||
-     !isNumber( bX ) ||
-     !isNumber( bY ) )
-    {
-    throw new Error( 'Utilities.calculateAngle() -> Invalid arguments. Needs to be a number.' );
+export function calculateAngle(aX: number, aY: number, bX: number, bY: number) {
+    if (!isNumber(aX) || !isNumber(aY) || !isNumber(bX) || !isNumber(bY)) {
+        throw new Error(
+            "Utilities.calculateAngle() -> Invalid arguments. Needs to be a number."
+        );
     }
 
     // make a triangle from the position the objectA is in, relative to the objectB position
-var triangleOppositeSide = aY - bY;
-var triangleAdjacentSide = bX - aX;
+    var triangleOppositeSide = aY - bY;
+    var triangleAdjacentSide = bX - aX;
 
     // find the angle, given the two sides (of a right triangle)
-return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
+    return Math.atan2(triangleOppositeSide, triangleAdjacentSide);
 }
-
 
 /**
  * Distance between 2 points.
@@ -946,22 +861,23 @@ return Math.atan2( triangleOppositeSide, triangleAdjacentSide );
  * Throws an `Error` exception if:
  * - any of the arguments isn't a number.
  */
-export function calculateDistance( aX: number, aY: number, bX: number, bY: number )
-{
-if ( !isNumber( aX ) ||
-     !isNumber( aY ) ||
-     !isNumber( bX ) ||
-     !isNumber( bY ) )
-    {
-    throw new Error( 'Utilities.calculateDistance() -> Invalid arguments. Needs to be a number.' );
+export function calculateDistance(
+    aX: number,
+    aY: number,
+    bX: number,
+    bY: number
+) {
+    if (!isNumber(aX) || !isNumber(aY) || !isNumber(bX) || !isNumber(bY)) {
+        throw new Error(
+            "Utilities.calculateDistance() -> Invalid arguments. Needs to be a number."
+        );
     }
 
-var opposite = bY - aY;
-var adjacent = bX - aX;
+    var opposite = bY - aY;
+    var adjacent = bX - aX;
 
-return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
+    return Math.sqrt(Math.pow(opposite, 2) + Math.pow(adjacent, 2));
 }
-
 
 /**
  * Converts a number in `radians` to `degrees` and returns it.
@@ -969,16 +885,15 @@ return Math.sqrt( Math.pow( opposite, 2 ) + Math.pow( adjacent, 2 ) );
  * Throws an `Error` exception if:
  * - the argument isn't a number.
  */
-export function toDegrees( radians: number )
-{
-if ( !isNumber( radians ) )
-    {
-    throw new Error( "Utilities.toDegrees() -> Invalid 'radians' argument. Not a number." );
+export function toDegrees(radians: number) {
+    if (!isNumber(radians)) {
+        throw new Error(
+            "Utilities.toDegrees() -> Invalid 'radians' argument. Not a number."
+        );
     }
 
-return radians * 180 / Math.PI;
+    return (radians * 180) / Math.PI;
 }
-
 
 /**
  * Converts a number in `degrees` to `radians` and returns it.
@@ -986,12 +901,12 @@ return radians * 180 / Math.PI;
  * Throws an `Error` exception if:
  * - the argument isn't a number.
  */
-export function toRadians( degrees: number )
-{
-if ( !isNumber( degrees ) )
-    {
-    throw new Error( "Utilities.toRadians() -> Invalid 'degrees' argument. Not a number." );
+export function toRadians(degrees: number) {
+    if (!isNumber(degrees)) {
+        throw new Error(
+            "Utilities.toRadians() -> Invalid 'degrees' argument. Not a number."
+        );
     }
 
-return degrees * Math.PI / 180;
+    return (degrees * Math.PI) / 180;
 }
