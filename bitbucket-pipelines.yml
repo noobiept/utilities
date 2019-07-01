@@ -1,0 +1,37 @@
+image: node:12
+pipelines:
+    default:
+        - step:
+            script:
+                # install dependencies
+                - apt-get update
+                - apt-get --yes install zip
+                - apt-get --yes install curl
+                - npm install -g json
+                - npm install
+
+                # run some checks
+                - npm run test
+                - npm run formatting:check
+
+                # build the project
+                - npm run build
+                - npm run documentation
+
+                # get the current name/version of the project
+                - NAME=$(json -f ./package.json name)
+                - VERSION=$(json -f ./package.json version)
+
+                # zip the output
+                - pushd "./build/"
+                - zip -r "../${NAME}_${VERSION}.zip" *
+                - popd
+                
+                # zip the documentation
+                - pushd "./documentation/"
+                - zip -r "../${NAME}_${VERSION}_documentation.zip" *
+                - popd
+
+                # upload to the 'downloads' section of the bitbucket project
+                - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/drk4/javascript_utilities/downloads" --form files=@"${NAME}_${VERSION}.zip"
+                - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/drk4/javascript_utilities/downloads" --form files=@"${NAME}_${VERSION}_documentation.zip"
