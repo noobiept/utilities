@@ -50,7 +50,7 @@
         "build:clean": "rimraf build/",
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
-        "test": "node-qunit-puppeteer tests/tests.html",
+        "test": "node-qunit-puppeteer tests/tests.html 10000 \"--no-sandbox\"",
         "documentation": "typedoc --out documentation/ source/ --name Utilities --mode file",
         "formatting:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "formatting:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\""
