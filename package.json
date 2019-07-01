@@ -1,18 +1,18 @@
 {
-    "name": "utilities",
-    "version": "3.0.0",
+    "name": "@drk4/utilities",
+    "version": "3.0.1",
     "description": "Random collection of utilities functions/classes.",
     "author": {
         "name": "Pedro Ferreira",
         "email": "plferreira4@gmail.com",
         "url": "https://nbpt.eu/"
     },
-    "main": "utilities.cjs.js",
-    "module": "utilities.esm.js",
     "files": [
         "build"
     ],
-    "types": "utilities.d.ts",
+    "main": "build/utilities.cjs.js",
+    "module": "build/utilities.esm.js",
+    "types": "build/utilities.d.ts",
     "repository": {
         "type": "hg",
         "url": "https://bitbucket.org/drk4/javascript_utilities/"
@@ -21,6 +21,9 @@
         "utilities"
     ],
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "prettier": {
         "printWidth": 80,
         "tabWidth": 4,

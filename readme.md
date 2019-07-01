@@ -2,6 +2,10 @@
 
 Random collection of utilities functions/classes.
 
+# Installation
+
+-   `npm install @drk4/utilities`
+
 # Documentation
 
 You can read the documentation here -> [http://javascript-utilities.herokuapp.com](http://javascript-utilities.herokuapp.com).
