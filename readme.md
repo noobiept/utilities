@@ -16,6 +16,7 @@ When viewing the documentation, click on the 'Utilities' module on the right to 
 
 -   `npm install` (install the dependencies)
 -   `npm run dev` (run the typescript compiler on watch mode, useful for development)
+-   `npm run dev:test` (run a local server (at `localhost:8000/`) where you can run some tests that are used while developing the library components (go to the `/dev/` directory))
 -   `npm run build` (builds into the `/build` directory)
 -   `npm run test` (run the tests (expects the `/build` to exist, so run the above command first))
 -   `npm run documentation` (build the documentation into the `/documentation` directory)
