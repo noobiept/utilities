@@ -1,3 +1,5 @@
+import * as Utilities from "../../build/utilities.esm.js";
+
 var MESSAGE_TIMEOUT;
 
 window.onload = function() {
