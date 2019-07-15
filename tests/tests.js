@@ -879,63 +879,6 @@ QUnit.test("test with valid arguments", function(assert) {
     );
 });
 
-// Timeout //
-QUnit.module("Timeout");
-QUnit.test("validate arguments", function(assert) {
-    var expect = Error;
-    var timeout = new Utilities.Timeout();
-    var func = function() {};
-
-    assert.throws(
-        function() {
-            timeout.start();
-        },
-        expect,
-        "No arguments given."
-    );
-
-    assert.throws(
-        function() {
-            timeout.start(func);
-        },
-        expect,
-        "Only one argument"
-    );
-
-    assert.throws(
-        function() {
-            timeout.start(null, 1000);
-        },
-        expect,
-        "Passing null to the function argument."
-    );
-
-    assert.throws(
-        function() {
-            timeout.start(func, "asd");
-        },
-        expect,
-        "Wrong time of interval."
-    );
-
-    // just in case a test fails and starts the timeout
-    timeout.clear();
-});
-
-QUnit.test("test with valid arguments", function(assert) {
-    var done = assert.async();
-
-    var value = 0;
-    var timeout = new Utilities.Timeout();
-
-    timeout.start(function() {
-        value = 1;
-
-        assert.deepEqual(value, 1);
-        done();
-    }, 10);
-});
-
 // ---------- Trigonometry ---------- //
 
 // calculateAngle //
