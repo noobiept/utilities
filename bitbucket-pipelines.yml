@@ -20,7 +20,7 @@ pipelines:
                 - npm run formatting:check
 
                 # get the current name/version of the project
-                - NAME=$(json -f ./package.json name)
+                - NAME=$(json -f ./package.json displayName)
                 - VERSION=$(json -f ./package.json version)
 
                 # zip the output

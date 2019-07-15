@@ -1,5 +1,6 @@
 {
     "name": "@drk4/utilities",
+    "displayName": "utilities",
     "version": "3.0.1",
     "description": "Random collection of utilities functions/classes.",
     "author": {
