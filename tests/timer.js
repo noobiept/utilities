@@ -65,7 +65,7 @@ QUnit.test("Test with an end value.", function(assert) {
     const timer = new Utilities.Timer();
     timer.start({
         endValue: 1,
-        endCallback: () => {
+        onEnd: () => {
             assert.ok(true, "Called the 'end' callback.");
             assert.deepEqual(timer.getTimeSeconds(), 1);
             done();
@@ -81,12 +81,12 @@ QUnit.test("Test the 'tick' callback.", function(assert) {
     timer.start({
         startValue: count * 1000,
         endValue: 4000,
-        endCallback: () => {
+        onEnd: () => {
             assert.ok(true, "Called the 'end' callback.");
             assert.deepEqual(timer.getTimeSeconds(), 4);
             done();
         },
-        tickCallback: () => {
+        onTick: () => {
             // 1 second has passed, check if its all correct
             count++;
             assert.deepEqual(timer.getTimeSeconds(), count);
@@ -102,7 +102,7 @@ QUnit.test("Test a count down timer.", function(assert) {
         startValue: 7000,
         endValue: 6000,
         countDown: true,
-        endCallback: () => {
+        onEnd: () => {
             assert.ok(true, "Called the 'end' callback.");
             assert.deepEqual(timer.getTimeSeconds(), 6);
             done();

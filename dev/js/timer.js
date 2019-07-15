@@ -39,8 +39,8 @@ window.onload = function() {
         timer.start({
             startValue: start,
             endValue: end,
-            endCallback: endCallback,
-            tickCallback: tickCallback,
+            onEnd: endCallback,
+            onTick: tickCallback,
             countDown: down,
         });
         showMessage("Start!");

@@ -618,17 +618,17 @@ export class Timeout {
  * Count-up or count-down timer. Can optionally update an html element.
  */
 export class Timer {
-    is_active: boolean;
-    start_value: number;
-    count_down: boolean;
-    time_count: number;
+    private is_active: boolean;
+    private start_value: number;
+    private count_down: boolean;
+    private time_count: number;
 
     // these can have the 'undefined' value (which means they aren't set)
-    end_value?: number;
-    end_callback?: () => any;
-    tick_callback?: () => any;
-    interval_f?: number;
-    html_element?: HTMLElement;
+    private end_value?: number;
+    private end_callback?: () => any;
+    private tick_callback?: () => any;
+    private interval_f?: number;
+    private html_element?: HTMLElement;
 
     constructor(htmlElement?: HTMLElement) {
         // either don't receive an argument, or if given needs to be an HTMLElement
@@ -656,15 +656,14 @@ export class Timer {
      *
      * `startValue` and `endValue` are in milliseconds.
      *
-     * `endCallback` is called when the timer ends (only if an `endValue` was provided).
-     *
-     * `tickCallback` is called every second.
+     * `onEnd` is called when the timer ends (only if an `endValue` was provided).
+     * `onTick` is called every second.
      */
     start(args?: {
         startValue?: number;
         endValue?: number;
-        endCallback?: () => any;
-        tickCallback?: () => any;
+        onEnd?: () => void;
+        onTick?: () => void;
         countDown?: boolean;
     }) {
         if (typeof args === "undefined") {
@@ -679,12 +678,12 @@ export class Timer {
             args.endValue = undefined;
         }
 
-        if (!isFunction(args.endCallback)) {
-            args.endCallback = undefined;
+        if (!isFunction(args.onEnd)) {
+            args.onEnd = undefined;
         }
 
-        if (!isFunction(args.tickCallback)) {
-            args.tickCallback = undefined;
+        if (!isFunction(args.onTick)) {
+            args.onTick = undefined;
         }
 
         if (args.countDown !== true) {
@@ -699,8 +698,8 @@ export class Timer {
         this.time_count = args.startValue!;
         this.start_value = args.startValue!;
         this.end_value = args.endValue;
-        this.end_callback = args.endCallback;
-        this.tick_callback = args.tickCallback;
+        this.end_callback = args.onEnd;
+        this.tick_callback = args.onTick;
 
         this.updateHtmlElement();
         this.resume();
@@ -789,8 +788,8 @@ export class Timer {
         this.start({
             startValue: this.start_value,
             endValue: this.end_value,
-            endCallback: this.end_callback,
-            tickCallback: this.tick_callback,
+            onEnd: this.end_callback,
+            onTick: this.tick_callback,
             countDown: this.count_down,
         });
     }
