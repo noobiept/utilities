@@ -936,46 +936,6 @@ QUnit.test("test with valid arguments", function(assert) {
     }, 10);
 });
 
-// Timer //
-QUnit.module("Timer");
-QUnit.test("validate arguments", function(assert) {
-    var expect = Error;
-    assert.ok(new Utilities.Timer(), "Doesn't need an argument.");
-
-    assert.throws(
-        function() {
-            new Utilities.Timer(0);
-        },
-        expect,
-        "Not an html element."
-    );
-});
-
-QUnit.test("test without an argument.", function(assert) {
-    var timer = new Utilities.Timer();
-
-    assert.deepEqual(timer.getTimeString(), "0 seconds");
-    assert.deepEqual(timer.getTimeSeconds(), 0);
-});
-
-QUnit.test("test with a given html element.", function(assert) {
-    var htmlElement = document.createElement("div");
-    var timer = new Utilities.Timer(htmlElement);
-
-    // starting value of the timer (0 seconds)
-    assert.deepEqual(
-        htmlElement.innerHTML,
-        "0 seconds",
-        "Starting time string (from the html element)."
-    );
-    assert.deepEqual(
-        timer.getTimeString(),
-        "0 seconds",
-        "Starting time (from the timer object)."
-    );
-    assert.deepEqual(timer.getTimeSeconds(), 0, "0 seconds.");
-});
-
 // ---------- Trigonometry ---------- //
 
 // calculateAngle //
