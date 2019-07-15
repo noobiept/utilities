@@ -566,8 +566,8 @@ export function timeToString(dateMilliseconds: number, totalUnits: number = 2) {
  * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
  */
 export class Timeout {
-    is_active: boolean;
-    id: number;
+    private is_active: boolean;
+    private id: number;
 
     constructor() {
         this.is_active = false;
@@ -586,16 +586,13 @@ export class Timeout {
             throw new Error("Utilities.Timeout.start() -> Invalid arguments.");
         }
 
-        var _this = this;
-
         if (this.is_active) {
             this.clear();
         }
 
         this.is_active = true;
-
-        this.id = window.setTimeout(function() {
-            _this.is_active = false;
+        this.id = window.setTimeout(() => {
+            this.is_active = false;
 
             functionToCall();
         }, interval);
@@ -607,6 +604,13 @@ export class Timeout {
     clear() {
         window.clearTimeout(this.id);
         this.is_active = false;
+    }
+
+    /**
+     * Returns whether the timeout is active or not.
+     */
+    isActive() {
+        return this.is_active;
     }
 }
 
