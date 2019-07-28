@@ -3,5 +3,6 @@ info.txt
 documentation/
 node_modules/
 build/
+coverage/
 .DS_Store
 source/**/*.js
