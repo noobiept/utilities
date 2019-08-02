@@ -725,6 +725,11 @@ export class Timer {
                 _this.time_count += interval;
             }
 
+            // call the tick callback if there's one
+            if (_this.tick_callback !== undefined) {
+                _this.tick_callback();
+            }
+
             // if there's an end value defined, check if we reached it
             if (_this.end_value !== undefined) {
                 var ended = false;
@@ -746,11 +751,6 @@ export class Timer {
                         _this.end_callback();
                     }
                 }
-            }
-
-            // call the tick callback if there's one
-            if (_this.tick_callback !== undefined) {
-                _this.tick_callback();
             }
 
             // update the html element with the current time

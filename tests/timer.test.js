@@ -79,13 +79,11 @@ test("Test the 'tick' callback.", (done) => {
         onEnd: () => {
             expect(timer.getTimeSeconds()).toBe(4);
             done();
-            console.log("end");
         },
         onTick: () => {
             // 1 second has passed, check if its all correct
             count++;
             expect(timer.getTimeSeconds()).toBe(count);
-            console.log("tick");
         },
     });
 });
