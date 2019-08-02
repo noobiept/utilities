@@ -2,6 +2,7 @@
 build/
 documentation/
 node_modules/
+coverage/
 release/
 source/**/*.js
 package-lock.json
