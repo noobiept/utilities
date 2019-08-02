@@ -1,7 +1,7 @@
 {
     "name": "@drk4/utilities",
     "displayName": "utilities",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "Random collection of utilities functions/classes.",
     "author": {
         "name": "Pedro Ferreira",
@@ -66,6 +66,6 @@
         "documentation": "typedoc --out documentation/ source/ --name Utilities --mode file",
         "formatting:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "formatting:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\"",
-        "prepublish": "npm run build"
+        "prepublishOnly": "npm run build"
     }
 }
