@@ -723,6 +723,9 @@ export class Timer {
                 _this.time_count += interval;
             }
 
+            // update the html element with the current time
+            _this.updateHtmlElement();
+
             // call the tick callback if there's one
             if (_this.tick_callback !== undefined) {
                 _this.tick_callback();
@@ -750,9 +753,6 @@ export class Timer {
                     }
                 }
             }
-
-            // update the html element with the current time
-            _this.updateHtmlElement();
         }, interval);
     }
 
