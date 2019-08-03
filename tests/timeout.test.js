@@ -26,12 +26,14 @@ test("Validate arguments.", () => {
 
 test("Test with valid arguments.", (done) => {
     expect.assertions(1);
-    const timeout = new Utilities.Timeout();
 
-    timeout.start(function() {
-        expect(true).toBe(true);
+    const timeout = new Utilities.Timeout();
+    const func = jest.fn(() => {
+        expect(func).toBeCalled();
         done();
-    }, 10);
+    });
+
+    timeout.start(func, 10);
 });
 
 test("Test the 'isActive()' method.", (done) => {
@@ -49,4 +51,22 @@ test("Test the 'isActive()' method.", (done) => {
 
     // active during this time
     expect(timeout.isActive()).toBe(true);
+});
+
+test("Test '.start()' on an already active timeout.", (done) => {
+    expect.assertions(2);
+
+    const timeout = new Utilities.Timeout();
+    const first = jest.fn();
+    const second = jest.fn(() => {
+        expect(first).not.toBeCalled();
+        expect(second).toBeCalled();
+        done();
+    });
+
+    // this won't be called
+    timeout.start(first, 10);
+
+    // starting the timeout should reset the previous one
+    timeout.start(second, 100);
 });
