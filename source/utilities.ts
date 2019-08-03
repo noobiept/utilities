@@ -616,10 +616,11 @@ export class Timeout {
  * Count-up or count-down timer. Can optionally update an html element.
  */
 export class Timer {
-    private is_active: boolean;
-    private start_value: number;
-    private count_down: boolean;
-    private time_count: number;
+    private is_active = false;
+    private start_value = 0;
+    private count_down = false;
+    private time_count = 0;
+    private interval = 1000;
 
     // these can have the 'undefined' value (which means they aren't set)
     private end_value?: number;
@@ -639,12 +640,7 @@ export class Timer {
             );
         }
 
-        this.is_active = false;
-        this.start_value = 0;
-        this.count_down = false;
-        this.time_count = 0;
         this.html_element = htmlElement;
-
         this.updateHtmlElement();
     }
 
@@ -656,6 +652,8 @@ export class Timer {
      *
      * `onEnd` is called when the timer ends (only if an `endValue` was provided).
      * `onTick` is called every second.
+     * `countDown` if it counts up or down (default is count up).
+     * `interval` time in between each tick (default is 1000 milliseconds).
      */
     start(args?: {
         startValue?: number;
@@ -663,6 +661,7 @@ export class Timer {
         onEnd?: () => void;
         onTick?: () => void;
         countDown?: boolean;
+        interval?: number;
     }) {
         if (typeof args === "undefined") {
             args = {};
@@ -688,6 +687,10 @@ export class Timer {
             args.countDown = false;
         }
 
+        if (!isNumber(args.interval)) {
+            args.interval = 1000;
+        }
+
         if (this.is_active) {
             this.stop();
         }
@@ -696,6 +699,7 @@ export class Timer {
         this.time_count = args.startValue!;
         this.start_value = args.startValue!;
         this.end_value = args.endValue;
+        this.interval = args.interval!;
         this.end_callback = args.onEnd;
         this.tick_callback = args.onTick;
 
@@ -711,45 +715,44 @@ export class Timer {
             return;
         }
 
-        var _this = this;
-        var interval = 1000;
+        const interval = this.interval;
 
         this.is_active = true;
-        this.interval_f = window.setInterval(function() {
+        this.interval_f = window.setInterval(() => {
             // update the counter
-            if (_this.count_down) {
-                _this.time_count -= interval;
+            if (this.count_down) {
+                this.time_count -= interval;
             } else {
-                _this.time_count += interval;
+                this.time_count += interval;
             }
 
             // update the html element with the current time
-            _this.updateHtmlElement();
+            this.updateHtmlElement();
 
             // call the tick callback if there's one
-            if (_this.tick_callback !== undefined) {
-                _this.tick_callback();
+            if (this.tick_callback !== undefined) {
+                this.tick_callback();
             }
 
             // if there's an end value defined, check if we reached it
-            if (_this.end_value !== undefined) {
+            if (this.end_value !== undefined) {
                 var ended = false;
 
-                if (_this.count_down) {
-                    if (_this.time_count <= _this.end_value) {
+                if (this.count_down) {
+                    if (this.time_count <= this.end_value) {
                         ended = true;
                     }
                 } else {
-                    if (_this.time_count >= _this.end_value) {
+                    if (this.time_count >= this.end_value) {
                         ended = true;
                     }
                 }
 
                 if (ended) {
-                    _this.stop();
+                    this.stop();
 
-                    if (_this.end_callback !== undefined) {
-                        _this.end_callback();
+                    if (this.end_callback !== undefined) {
+                        this.end_callback();
                     }
                 }
             }
@@ -789,6 +792,7 @@ export class Timer {
             onEnd: this.end_callback,
             onTick: this.tick_callback,
             countDown: this.count_down,
+            interval: this.interval,
         });
     }
 

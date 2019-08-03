@@ -71,20 +71,22 @@ test("Test the 'tick' callback.", (done) => {
     expect.assertions(3);
 
     let count = 2;
+    const interval = 100;
     const timer = new Timer();
 
     timer.start({
-        startValue: count * 1000,
-        endValue: 4000,
+        startValue: count * interval,
+        endValue: 4 * interval,
         onEnd: () => {
-            expect(timer.getTimeSeconds()).toBe(4);
+            expect(timer.getTimeSeconds()).toBe(0.4);
             done();
         },
         onTick: () => {
             // 1 second has passed, check if its all correct
             count++;
-            expect(timer.getTimeSeconds()).toBe(count);
+            expect(timer.getTimeMilliseconds()).toBe(count * interval);
         },
+        interval,
     });
 });
 
