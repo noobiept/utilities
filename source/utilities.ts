@@ -456,9 +456,7 @@ export function createEnum(values: string[], start?: number) {
 
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
- *
  * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).
- *
  * The units available are: day/hour/minute/second.
  *
  * Throws an `Error` exception if:

@@ -1,19 +1,28 @@
-import * as Utilities from "../source/utilities";
+import { timeToString } from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
     expect(function() {
-        Utilities.timeToString();
+        timeToString();
     }).toThrow();
 
     // passed a string argument
     expect(function() {
-        Utilities.timeToString("1 december");
+        timeToString("1 december");
     }).toThrow();
+
+    // passed an invalid 'totalUnits' argument, should default to 2
+    const second = 1000;
+    const minute = 60 * second;
+    const hour = 60 * minute;
+    expect(timeToString(hour + minute + second, "ab")).toBe("1 hour 1 minute");
+    expect(timeToString(hour + minute + second, 3)).toBe(
+        "1 hour 1 minute 1 second"
+    );
 });
 
 test("Test with valid arguments.", () => {
-    var values = [
+    const values = [
         { milliSeconds: 0, expectedString: "0 seconds" },
         { milliSeconds: 1000, expectedString: "1 second" },
         { milliSeconds: 30000, expectedString: "30 seconds" },
@@ -29,14 +38,12 @@ test("Test with valid arguments.", () => {
         { milliSeconds: 864020000, expectedString: "10 days 20 seconds" },
     ];
 
-    for (var a = 0; a < values.length; a++) {
-        var value = values[a];
-        var result = Utilities.timeToString(value.milliSeconds);
+    for (let a = 0; a < values.length; a++) {
+        const value = values[a];
+        const result = timeToString(value.milliSeconds);
 
         expect(result).toBe(value.expectedString);
     }
 
-    expect(Utilities.timeToString(88201000, 3)).toBe(
-        "1 day 30 minutes 1 second"
-    );
+    expect(timeToString(88201000, 3)).toBe("1 day 30 minutes 1 second");
 });
