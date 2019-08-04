@@ -834,6 +834,13 @@ export class Timer {
     getTimeMilliseconds() {
         return this.time_count;
     }
+
+    /**
+     * Returns whether the timer is currently active or not.
+     */
+    isActive() {
+        return this.is_active;
+    }
 }
 
 // ---------- Trigonometry ---------- //
