@@ -359,17 +359,19 @@ export function getSeveralRandomInts(
         );
     }
 
-    var numbers = [];
+    let count = 0;
+    const numbers: { [key: string]: number } = {};
 
-    while (numbers.length < howMany) {
+    while (count < howMany) {
         var randomNumber = getRandomInt(min, max);
 
-        if (numbers.indexOf(randomNumber) < 0) {
-            numbers.push(randomNumber);
+        if (typeof numbers[randomNumber] === "undefined") {
+            numbers[randomNumber] = randomNumber;
+            count++;
         }
     }
 
-    return numbers;
+    return Object.values(numbers);
 }
 
 /**
