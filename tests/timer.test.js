@@ -198,3 +198,70 @@ test("Restart a timer.", (done) => {
     // should still keep all the callbacks, etc
     timer.restart();
 });
+
+test("When the end value is less than the start (on a count up).", (done) => {
+    expect.assertions(1);
+
+    const timer = new Timer();
+    const interval = 100;
+    const start = 200;
+    const onEnd = jest.fn(() => {
+        // should end immediately after the first tick
+        expect(timer.getTimeMilliseconds()).toBe(start + interval);
+        done();
+    });
+
+    timer.start({
+        startValue: start,
+        endValue: start - interval, // before the start
+        interval: interval,
+        onEnd: onEnd,
+        countDown: false,
+    });
+});
+
+test("When the end value higher than the start (on a count down).", (done) => {
+    expect.assertions(1);
+
+    const timer = new Timer();
+    const interval = 100;
+    const start = 200;
+    const onEnd = jest.fn(() => {
+        // should end immediately after the first tick
+        expect(timer.getTimeMilliseconds()).toBe(start - interval);
+        done();
+    });
+
+    timer.start({
+        startValue: start,
+        endValue: start + interval, // after the start
+        interval: interval,
+        onEnd: onEnd,
+        countDown: true,
+    });
+});
+
+test("Stopping an active timer.", () => {
+    expect.assertions(2);
+
+    const timer = new Timer();
+    const tick = jest.fn();
+
+    timer.start({ onTick: tick });
+    timer.stop();
+
+    expect(tick).not.toBeCalled();
+    expect(timer.isActive()).toBe(false);
+});
+
+test("The '.isActive()' method.", () => {
+    expect.assertions(3);
+
+    const timer = new Timer();
+
+    expect(timer.isActive()).toBe(false);
+    timer.start();
+    expect(timer.isActive()).toBe(true);
+    timer.stop();
+    expect(timer.isActive()).toBe(false);
+});
