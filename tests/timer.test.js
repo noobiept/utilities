@@ -32,7 +32,7 @@ test("Test with a given html element.", () => {
     expect(timer.getTimeSeconds()).toBe(0);
 });
 
-test("Test a 2 second duration.", (done) => {
+test("Test the default timer.", (done) => {
     expect.assertions(1);
     const timer = new Timer();
     timer.start();
@@ -95,13 +95,14 @@ test("Test a count down timer.", (done) => {
     const timer = new Timer();
 
     timer.start({
-        startValue: 7000,
-        endValue: 6000,
+        startValue: 700,
+        endValue: 600,
         countDown: true,
         onEnd: () => {
-            expect(timer.getTimeSeconds()).toBe(6);
+            expect(timer.getTimeSeconds()).toBe(0.6);
             done();
         },
+        interval: 100,
     });
 });
 
@@ -130,8 +131,8 @@ test("Start a timer that is already active.", (done) => {
         done();
     });
 
-    timer.start({ endValue: 1000, onEnd: notCalled });
-    timer.start({ endValue: 2000, onEnd: called });
+    timer.start({ endValue: 100, onEnd: notCalled, interval: 100 });
+    timer.start({ endValue: 200, onEnd: called, interval: 100 });
 });
 
 test("Resume a timer that is already active.", (done) => {
@@ -143,7 +144,7 @@ test("Resume a timer that is already active.", (done) => {
         done();
     });
 
-    timer.start({ endValue: 1000, onEnd: called });
+    timer.start({ endValue: 100, onEnd: called, interval: 100 });
     timer.resume(); // shouldn't have an impact
 });
 
@@ -181,16 +182,17 @@ test("Restart a timer.", (done) => {
     const onEnd = jest.fn(() => {
         expect(onTick).toBeCalledTimes(2);
         expect(onEnd).toBeCalled();
-        expect(timer.getTimeSeconds()).toBe(3);
+        expect(timer.getTimeSeconds()).toBe(0.3);
 
         done();
     });
 
     timer.start({
-        startValue: 1000,
-        endValue: 3000,
+        startValue: 100,
+        endValue: 300,
         onTick: onTick,
         onEnd: onEnd,
+        interval: 100,
     });
 
     // should still keep all the callbacks, etc
