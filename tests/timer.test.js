@@ -265,3 +265,43 @@ test("The '.isActive()' method.", () => {
     timer.stop();
     expect(timer.isActive()).toBe(false);
 });
+
+test("Calling '.stop()' on an already stopped timer.", () => {
+    const timer = new Timer();
+
+    expect(timer.isActive()).toBe(false);
+    timer.stop();
+    expect(timer.isActive()).toBe(false);
+});
+
+test("With an end value but without an end callback.", (done) => {
+    const timer = new Timer();
+    const tick = jest.fn(() => {
+        expect(timer.getTimeMilliseconds()).toBe(100);
+        done();
+    });
+
+    timer.start({
+        endValue: 100,
+        interval: 100,
+        onTick: tick,
+    });
+});
+
+test("A count down timer that ticks a couple of times.", (done) => {
+    expect.assertions(1);
+
+    const timer = new Timer();
+    const end = jest.fn(() => {
+        expect(end).toBeCalled();
+        done();
+    });
+
+    timer.start({
+        startValue: 200,
+        endValue: 0,
+        countDown: true,
+        interval: 100,
+        onEnd: end,
+    });
+});
