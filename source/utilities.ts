@@ -508,31 +508,19 @@ export function timeToString(args: TimeToStringArgs) {
     const hour = 60 * minute;
     const day = 24 * hour;
 
-    let minutesLeft = 0;
-    let hoursLeft = 0;
-    let daysLeft = 0;
-    let secondsLeft = 0;
+    // count the number of days/hours/minutes/seconds
+    let remainder = time;
 
-    //count the days
-    while (time >= day) {
-        daysLeft++;
-        time -= day;
-    }
+    const daysLeft = Math.floor(remainder / day);
+    remainder = remainder % day;
 
-    //count the hours
-    while (time >= hour) {
-        hoursLeft++;
-        time -= hour;
-    }
+    const hoursLeft = Math.floor(remainder / hour);
+    remainder = remainder % hour;
 
-    //count the minutes
-    while (time >= minute) {
-        minutesLeft++;
-        time -= minute;
-    }
+    const minutesLeft = Math.floor(remainder / minute);
+    remainder = remainder % minute;
 
-    //and the seconds
-    secondsLeft = round(time / second, 2);
+    const secondsLeft = round(remainder / second, 2);
 
     // :: construct the string :: //
     let date = "";
