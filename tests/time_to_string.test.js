@@ -15,8 +15,10 @@ test("Validate arguments.", () => {
     const second = 1000;
     const minute = 60 * second;
     const hour = 60 * minute;
-    expect(timeToString(hour + minute + second, "ab")).toBe("1 hour 1 minute");
-    expect(timeToString(hour + minute + second, 3)).toBe(
+    expect(timeToString({ time: hour + minute + second, units: "ab" })).toBe(
+        "1 hour 1 minute"
+    );
+    expect(timeToString({ time: hour + minute + second, units: 3 })).toBe(
         "1 hour 1 minute 1 second"
     );
 });
@@ -40,10 +42,12 @@ test("Test with valid arguments.", () => {
 
     for (let a = 0; a < values.length; a++) {
         const value = values[a];
-        const result = timeToString(value.milliSeconds);
+        const result = timeToString({ time: value.milliSeconds });
 
         expect(result).toBe(value.expectedString);
     }
 
-    expect(timeToString(88201000, 3)).toBe("1 day 30 minutes 1 second");
+    expect(timeToString({ time: 88201000, units: 3 })).toBe(
+        "1 day 30 minutes 1 second"
+    );
 });

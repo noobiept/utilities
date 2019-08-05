@@ -456,107 +456,134 @@ export function createEnum(values: string[], start?: number) {
 
 // ---------- Time Utilities ---------- //
 
+export interface TimeToStringArgs {
+    time: number;
+    units?: number;
+    format?: "daytime" | "string";
+}
+
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
- * The number of units to be shown can be set (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `totalUnits` of 2)).
  * The units available are: day/hour/minute/second.
  *
+ * There's 2 possible display formats.
+ * daytime:
+ *     `dd hh:mm:ss` (where d=day, h=hour, m=minute, s=second)
+ * string:
+ *     `(d) days (h) hours (m) minutes (s) seconds`
+ *
+ * The number of `units` can limit the number of units shown in the string format (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
+ *
+ * Defaults:
+ *     units: 2
+ *     format: string
+ *
  * Throws an `Error` exception if:
- * - the `dateMilliseconds` argument isn't a number.
+ * - the `time` argument isn't a number.
  */
-export function timeToString(dateMilliseconds: number, totalUnits: number = 2) {
-    if (!isNumber(dateMilliseconds)) {
+export function timeToString(args: TimeToStringArgs) {
+    let { time, units, format } = args;
+
+    // check if we got the required argument
+    if (!isNumber(time)) {
         throw new Error(
-            "Utilities.timeToString() -> Invalid 'dateMilliseconds' argument. Not a number."
+            "Utilities.timeToString() -> Invalid 'time' argument. Not a number."
         );
     }
 
-    if (!isNumber(totalUnits)) {
-        totalUnits = 2;
+    // setup the default values if not provided
+    if (!isNumber(units)) {
+        units = 2;
+    }
+
+    if (format !== "daytime") {
+        format = "string";
     }
 
     // :: convert to days/hours :: //
 
     //in milliseconds
-    var second = 1000;
-    var minute = 60 * second;
-    var hour = 60 * minute;
-    var day = 24 * hour;
+    const second = 1000;
+    const minute = 60 * second;
+    const hour = 60 * minute;
+    const day = 24 * hour;
 
-    var minutesLeft = 0;
-    var hoursLeft = 0;
-    var daysLeft = 0;
-    var secondsLeft = 0;
+    let minutesLeft = 0;
+    let hoursLeft = 0;
+    let daysLeft = 0;
+    let secondsLeft = 0;
 
     //count the days
-    while (dateMilliseconds >= day) {
+    while (time >= day) {
         daysLeft++;
-
-        dateMilliseconds -= day;
+        time -= day;
     }
 
     //count the hours
-    while (dateMilliseconds >= hour) {
+    while (time >= hour) {
         hoursLeft++;
-
-        dateMilliseconds -= hour;
+        time -= hour;
     }
 
     //count the minutes
-    while (dateMilliseconds >= minute) {
+    while (time >= minute) {
         minutesLeft++;
-
-        dateMilliseconds -= minute;
+        time -= minute;
     }
 
     //and the seconds
-    secondsLeft = round(dateMilliseconds / second, 2);
+    secondsLeft = round(time / second, 2);
 
     // :: construct the string :: //
+    let date = "";
 
-    var theDate = [
-        { name: "day", time: daysLeft },
-        { name: "hour", time: hoursLeft },
-        { name: "minute", time: minutesLeft },
-        { name: "second", time: secondsLeft },
-    ];
-
-    var constructDate = function(dateTmp: string, numberOf: number) {
-        // day to days, hour to hours...
-        if (numberOf !== 1) {
-            dateTmp += "s";
+    if (format === "daytime") {
+        if (daysLeft > 0) {
+            date += `${daysLeft} `;
         }
 
-        return numberOf + " " + dateTmp;
-    };
+        date += `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
+    } else {
+        const theDate = [
+            { name: "day", time: daysLeft },
+            { name: "hour", time: hoursLeft },
+            { name: "minute", time: minutesLeft },
+            { name: "second", time: secondsLeft },
+        ];
 
-    var date = "";
-    var i;
-
-    for (i = 0; i < theDate.length; i++) {
-        // reached the limit of the units
-        if (totalUnits === 0) {
-            break;
-        }
-
-        let component = theDate[i];
-
-        // only show when there's something relevant to be shown
-        // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
-        if (component.time !== 0) {
-            // add spacing between the units apart from the first one
-            if (date !== "") {
-                date += " ";
+        const constructDate = function(dateTmp: string, numberOf: number) {
+            // day to days, hour to hours...
+            if (numberOf !== 1) {
+                dateTmp += "s";
             }
 
-            date += constructDate(component.name, component.time);
+            return numberOf + " " + dateTmp;
+        };
 
-            totalUnits--;
+        for (let i = 0; i < theDate.length; i++) {
+            // reached the limit of the units
+            if (units === 0) {
+                break;
+            }
+
+            let component = theDate[i];
+
+            // only show when there's something relevant to be shown
+            // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
+            if (component.time !== 0) {
+                // add spacing between the units apart from the first one
+                if (date !== "") {
+                    date += " ";
+                }
+
+                date += constructDate(component.name, component.time);
+                units--;
+            }
         }
-    }
 
-    if (date === "") {
-        date = "0 seconds";
+        if (date === "") {
+            date = "0 seconds";
+        }
     }
 
     return date;
@@ -820,7 +847,7 @@ export class Timer {
      * Returns a string with the time passed so far.
      */
     getTimeString() {
-        return timeToString(this.time_count);
+        return timeToString({ time: this.time_count });
     }
 
     /**
