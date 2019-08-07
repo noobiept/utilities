@@ -530,7 +530,11 @@ export function timeToString(args: TimeToStringArgs) {
             date += `${daysLeft} `;
         }
 
-        date += `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
+        const hoursString = hoursLeft.toString().padStart(2, "0");
+        const minutesString = minutesLeft.toString().padStart(2, "0");
+        const secondsString = secondsLeft.toString().padStart(2, "0");
+
+        date += `${hoursString}:${minutesString}:${secondsString}`;
     } else {
         const theDate = [
             { name: "day", time: daysLeft },
