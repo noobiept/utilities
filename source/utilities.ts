@@ -13,3 +13,4 @@ export * from "./local_storage";
 export * from "./object";
 export * from "./trigonometry";
 export * from "./collision_detection";
+export * from "./dialog";
