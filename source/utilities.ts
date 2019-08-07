@@ -492,7 +492,7 @@ export function timeToString(args: TimeToStringArgs) {
     }
 
     // setup the default values if not provided
-    if (!isNumber(units)) {
+    if (!isNumber(units) || units < 1) {
         units = 2;
     }
 
