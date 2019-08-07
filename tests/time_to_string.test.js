@@ -80,7 +80,19 @@ test("The 'string' and 'daytime' format.", () => {
 });
 
 test("The 'units' argument.", () => {
-    expect(timeToString({ time: 88201000, units: 3 })).toBe(
+    // test with 3 units
+    expect(timeToString({ time: DAY + 30 * MINUTE + SECOND, units: 3 })).toBe(
         "1 day 30 minutes 1 second"
     );
+
+    // test with more units than actually shown (doesn't show when the unit value is 0)
+    expect(timeToString({ time: DAY, units: 4 })).toBe("1 day");
+
+    // test with less units than could have been
+    expect(timeToString({ time: DAY + HOUR + MINUTE + SECOND, units: 1 })).toBe(
+        "1 day"
+    );
+
+    // test with <1 unit (should go to the default units value)
+    expect(timeToString({ time: DAY + HOUR, units: 0 })).toBe("1 day 1 hour");
 });
