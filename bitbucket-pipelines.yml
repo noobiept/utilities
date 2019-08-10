@@ -27,11 +27,5 @@ pipelines:
                 - zip -r "../${NAME}_${VERSION}.zip" *
                 - popd
 
-                # zip the documentation
-                - pushd "./documentation/"
-                - zip -r "../${NAME}_${VERSION}_documentation.zip" *
-                - popd
-
                 # upload to the 'downloads' section of the bitbucket project
                 - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/drk4/javascript_utilities/downloads" --form files=@"${NAME}_${VERSION}.zip"
-                - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/drk4/javascript_utilities/downloads" --form files=@"${NAME}_${VERSION}_documentation.zip"
