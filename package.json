@@ -57,7 +57,7 @@
     "scripts": {
         "dev": "tsc -w",
         "dev:test": "light-server --serve . --port 8000 --open --watchexp \"source/**/*.js,dev/**\"",
-        "build": "npm-run-all --serial build:*",
+        "build": "npm-run-all --serial test build:* documentation",
         "build:clean": "rimraf build/",
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
