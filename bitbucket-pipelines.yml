@@ -12,10 +12,8 @@ pipelines:
 
                 # build the project
                 - npm run build
-                - npm run documentation
 
                 # run some checks
-                - npm run test
                 - npm run formatting:check
 
                 # get the current name/version of the project
