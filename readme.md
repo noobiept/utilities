@@ -34,11 +34,7 @@ You can also just load directly with a `script` tag.
 
 # Documentation
 
-You can read the documentation here -> [http://javascript-utilities.herokuapp.com](http://javascript-utilities.herokuapp.com).
-
-When viewing the documentation, click on the 'Utilities' module on the right to check what is available.
-
-You can also download it from the [download](https://bitbucket.org/drk4/javascript_utilities/downloads/) section to view it offline.
+You can read the documentation [here.](documentation/globals.md)
 
 # Build
 
