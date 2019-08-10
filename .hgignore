@@ -1,6 +1,5 @@
 syntax: glob
 info.txt
-documentation/
 node_modules/
 build/
 coverage/
