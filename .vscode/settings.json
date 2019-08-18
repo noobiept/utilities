@@ -6,6 +6,8 @@
         "source/*.js": true
     },
     "search.exclude": {
-        "build/**": true
+        "build/**": true,
+        "documentation/**": true,
+        "coverage/**": true
     }
 }
