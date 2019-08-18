@@ -1,4 +1,4 @@
-import { createDialog } from "../../source/dialog.js";
+import Dialog from "../../source/dialog.js";
 
 window.onload = function() {
     const openModalDialog = document.getElementById("OpenModalDialog");
@@ -11,7 +11,7 @@ window.onload = function() {
     let count = 0;
 
     openModalDialog.onclick = () => {
-        createDialog({
+        new Dialog({
             title: "A Dialog",
             body: "Hi.",
             onClose: () => {
@@ -22,7 +22,7 @@ window.onload = function() {
     };
 
     openDialog.onclick = () => {
-        createDialog({
+        new Dialog({
             title: "Non-modal dialog",
             body: "Hello there!",
             modal: false,

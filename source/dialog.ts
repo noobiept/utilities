@@ -1,7 +1,7 @@
 export interface DialogArgs {
     title: string;
     body: string;
-    onClose: () => void;
+    onClose?: () => void;
     modal?: boolean;
 }
 
@@ -9,90 +9,111 @@ export interface DialogArgs {
  * Create a dialog window with the given message.
  * Can be a modal (forces user interaction) or not.
  */
-export function createDialog(args: DialogArgs) {
-    // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
-    if (args.modal === false) {
-        const onClose = () => {
-            document.body.removeChild(container);
-            args.onClose();
-        };
+export default class Dialog {
+    private container: HTMLElement;
+    private overlay?: HTMLElement;
+    private onClose?: () => void;
+    private keyUp?: (event: KeyboardEvent) => void;
 
-        const container = createContainer(args.title, args.body, onClose);
-        document.body.appendChild(container);
-    } else {
-        const onClose = () => {
-            removeKeyboardShortcuts(keyUp);
-            document.body.removeChild(overlay);
-            document.body.removeChild(container);
-            args.onClose();
-        };
+    constructor(args: DialogArgs) {
+        this.onClose = args.onClose;
+        this.container = this.createContainer(args.title, args.body);
 
-        const overlay = createOverlay();
-        const container = createContainer(args.title, args.body, onClose);
-
-        document.body.appendChild(overlay);
-        document.body.appendChild(container);
-
-        const keyUp = setupKeyboardShortcuts(onClose);
-    }
-}
-
-function createContainer(
-    titleText: string,
-    bodyText: string,
-    removeDialog: () => void
-) {
-    const container = document.createElement("div");
-    const title = document.createElement("div");
-    const body = document.createElement("div");
-    const horizontalRule = document.createElement("hr");
-    const buttons = document.createElement("div");
-    const ok = document.createElement("button");
-
-    title.className = "dialogTitle";
-    body.className = "dialogBody";
-
-    container.className = "dialog";
-    buttons.className = "dialogButtons";
-    ok.className = "dialogButton";
-
-    ok.innerText = "Ok";
-    ok.onclick = removeDialog;
-    body.innerHTML = bodyText;
-    title.innerHTML = titleText;
-
-    buttons.appendChild(ok);
-    container.appendChild(title);
-    container.appendChild(body);
-    container.appendChild(horizontalRule);
-    container.appendChild(buttons);
-
-    return container;
-}
-
-function createOverlay() {
-    const overlay = document.createElement("div");
-    overlay.className = "dialogOverlay";
-
-    return overlay;
-}
-
-function setupKeyboardShortcuts(removeDialog: () => void) {
-    const keyUp = (event: KeyboardEvent) => {
-        switch (event.key) {
-            case "Escape":
-            case "Enter":
-                removeDialog();
-                break;
+        // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
+        if (args.modal !== false) {
+            this.overlay = this.createOverlay();
+            this.keyUp = this.setupKeyboardShortcuts();
         }
-    };
 
-    document.addEventListener("keyup", keyUp);
-    return keyUp;
-}
+        this.open();
+    }
 
-function removeKeyboardShortcuts(
-    keyUpListener: (event: KeyboardEvent) => void
-) {
-    document.removeEventListener("keyup", keyUpListener);
+    private createContainer(titleText: string, bodyText: string) {
+        const container = document.createElement("div");
+        const title = document.createElement("div");
+        const body = document.createElement("div");
+        const horizontalRule = document.createElement("hr");
+        const buttons = document.createElement("div");
+        const ok = document.createElement("button");
+
+        title.className = "dialogTitle";
+        body.className = "dialogBody";
+
+        container.className = "dialog";
+        buttons.className = "dialogButtons";
+        ok.className = "dialogButton";
+
+        ok.innerText = "Ok";
+        ok.onclick = () => {
+            this.close();
+        };
+        body.innerHTML = bodyText;
+        title.innerHTML = titleText;
+
+        buttons.appendChild(ok);
+        container.appendChild(title);
+        container.appendChild(body);
+        container.appendChild(horizontalRule);
+        container.appendChild(buttons);
+
+        return container;
+    }
+
+    private createOverlay() {
+        const overlay = document.createElement("div");
+        overlay.className = "dialogOverlay";
+
+        return overlay;
+    }
+
+    private setupKeyboardShortcuts() {
+        const keyUp = (event: KeyboardEvent) => {
+            switch (event.key) {
+                case "Escape":
+                case "Enter":
+                    this.close();
+                    break;
+            }
+        };
+
+        document.addEventListener("keyup", keyUp);
+        return keyUp;
+    }
+
+    private removeKeyboardShortcuts() {
+        if (this.keyUp) {
+            document.removeEventListener("keyup", this.keyUp);
+        }
+    }
+
+    /**
+     * Add the dialog to the page.
+     */
+    open() {
+        if (this.overlay) {
+            document.body.appendChild(this.overlay);
+        }
+
+        document.body.appendChild(this.container);
+    }
+
+    /**
+     * Remove the dialog from the page.
+     */
+    close() {
+        // remove the html elements
+        if (this.overlay) {
+            document.body.removeChild(this.overlay);
+        }
+
+        document.body.removeChild(this.container);
+
+        // clean up the event listeners
+        this.removeKeyboardShortcuts();
+
+        // call the given callback
+        if (this.onClose) {
+            this.onClose();
+        }
+    }
 }
