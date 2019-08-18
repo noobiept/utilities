@@ -11,13 +11,20 @@ export interface DialogArgs {
  */
 export default class Dialog {
     private container: HTMLElement;
+    private title: HTMLElement;
+    private body: HTMLElement;
     private overlay?: HTMLElement;
     private onClose?: () => void;
     private keyUp?: (event: KeyboardEvent) => void;
 
     constructor(args: DialogArgs) {
         this.onClose = args.onClose;
-        this.container = this.createContainer(args.title, args.body);
+
+        const elements = this.createContainer(args.title, args.body);
+
+        this.container = elements.container;
+        this.title = elements.title;
+        this.body = elements.body;
 
         // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
         if (args.modal !== false) {
@@ -56,7 +63,7 @@ export default class Dialog {
         container.appendChild(horizontalRule);
         container.appendChild(buttons);
 
-        return container;
+        return { container, title, body };
     }
 
     private createOverlay() {
@@ -115,5 +122,19 @@ export default class Dialog {
         if (this.onClose) {
             this.onClose();
         }
+    }
+
+    /**
+     * Change the title of the dialog.
+     */
+    setTitle(title: string) {
+        this.title.innerHTML = title;
+    }
+
+    /**
+     * Change the body of the dialog.
+     */
+    setBody(body: string) {
+        this.body.innerHTML = body;
     }
 }
