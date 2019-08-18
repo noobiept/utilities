@@ -3,11 +3,19 @@ export interface DialogArgs {
     body: string;
     onClose?: () => void;
     modal?: boolean;
+    okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
 }
 
 /**
  * Create a dialog window with the given message.
  * Can be a modal (forces user interaction) or not.
+ *
+ * Usage:
+ *     const dialog = new Dialog({
+ *         title: 'the title',
+ *         body: 'the body'
+ *     });
+ *     dialog.open();
  */
 export default class Dialog {
     private container: HTMLElement;
@@ -16,54 +24,79 @@ export default class Dialog {
     private overlay?: HTMLElement;
     private onClose?: () => void;
     private keyUp?: (event: KeyboardEvent) => void;
+    private opened: boolean;
 
     constructor(args: DialogArgs) {
         this.onClose = args.onClose;
 
-        const elements = this.createContainer(args.title, args.body);
+        const elements = this.createContainer(
+            args.title,
+            args.body,
+            args.okButton
+        );
 
         this.container = elements.container;
         this.title = elements.title;
         this.body = elements.body;
+        this.opened = false;
 
         // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
         if (args.modal !== false) {
             this.overlay = this.createOverlay();
             this.keyUp = this.setupKeyboardShortcuts();
         }
-
-        this.open();
     }
 
-    private createContainer(titleText: string, bodyText: string) {
+    private createContainer(
+        titleText: string,
+        bodyText: string,
+        okButton?: boolean
+    ) {
         const container = document.createElement("div");
         const title = document.createElement("div");
         const body = document.createElement("div");
-        const horizontalRule = document.createElement("hr");
-        const buttons = document.createElement("div");
-        const ok = document.createElement("button");
 
         title.className = "dialogTitle";
         body.className = "dialogBody";
 
         container.className = "dialog";
+
+        body.innerHTML = bodyText;
+        title.innerHTML = titleText;
+
+        container.appendChild(title);
+        container.appendChild(body);
+
+        if (okButton !== false) {
+            const horizontalRule = this.createHorizontalRule();
+            const buttons = this.createButtons();
+
+            container.appendChild(horizontalRule);
+            container.appendChild(buttons);
+        }
+
+        return { container, title, body };
+    }
+
+    private createHorizontalRule() {
+        const horizontalRule = document.createElement("hr");
+        return horizontalRule;
+    }
+
+    private createButtons() {
+        const buttons = document.createElement("div");
+        const ok = document.createElement("button");
+
         buttons.className = "dialogButtons";
         ok.className = "dialogButton";
-
         ok.innerText = "Ok";
         ok.onclick = () => {
             this.close();
         };
-        body.innerHTML = bodyText;
-        title.innerHTML = titleText;
 
         buttons.appendChild(ok);
-        container.appendChild(title);
-        container.appendChild(body);
-        container.appendChild(horizontalRule);
-        container.appendChild(buttons);
 
-        return { container, title, body };
+        return buttons;
     }
 
     private createOverlay() {
@@ -83,8 +116,13 @@ export default class Dialog {
             }
         };
 
-        document.addEventListener("keyup", keyUp);
         return keyUp;
+    }
+
+    private addKeyboardShortcuts() {
+        if (this.keyUp) {
+            document.addEventListener("keyup", this.keyUp);
+        }
     }
 
     private removeKeyboardShortcuts() {
@@ -97,17 +135,28 @@ export default class Dialog {
      * Add the dialog to the page.
      */
     open() {
+        if (this.opened) {
+            return;
+        }
+        this.opened = true;
+
         if (this.overlay) {
             document.body.appendChild(this.overlay);
         }
 
         document.body.appendChild(this.container);
+        this.addKeyboardShortcuts();
     }
 
     /**
      * Remove the dialog from the page.
      */
     close() {
+        if (!this.opened) {
+            return;
+        }
+        this.opened = false;
+
         // remove the html elements
         if (this.overlay) {
             document.body.removeChild(this.overlay);
@@ -121,6 +170,24 @@ export default class Dialog {
         // call the given callback
         if (this.onClose) {
             this.onClose();
+        }
+    }
+
+    /**
+     * Check if the dialog is opened or not.
+     */
+    isOpened() {
+        return this.opened;
+    }
+
+    /**
+     * Toggle between the open/close state.
+     */
+    toggle() {
+        if (this.opened) {
+            this.close();
+        } else {
+            this.open();
         }
     }
 

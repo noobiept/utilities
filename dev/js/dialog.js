@@ -11,7 +11,7 @@ window.onload = function() {
     let count = 0;
 
     openModalDialog.onclick = () => {
-        new Dialog({
+        const dialog = new Dialog({
             title: "A Dialog",
             body: "Hi.",
             onClose: () => {
@@ -19,10 +19,11 @@ window.onload = function() {
                 modalDialogCount.innerText = modalCount.toString();
             },
         });
+        dialog.open();
     };
 
     openDialog.onclick = () => {
-        new Dialog({
+        const dialog = new Dialog({
             title: "Non-modal dialog",
             body: "Hello there!",
             modal: false,
@@ -31,5 +32,18 @@ window.onload = function() {
                 dialogCount.innerText = count.toString();
             },
         });
+        dialog.open();
+    };
+
+    // setup dialog without buttons
+    const openWithout = document.getElementById("OpenDialogWithoutButtons");
+    const dialogWithout = new Dialog({
+        title: "Without",
+        body: "Without buttons",
+        okButton: false,
+    });
+
+    openWithout.onclick = () => {
+        dialogWithout.toggle();
     };
 };
