@@ -1,9 +1,17 @@
+export enum DialogPosition {
+    center,
+    bottomLeft,
+    bottom,
+    bottomRight,
+}
+
 export interface DialogArgs {
     title: string;
     body: string;
     onClose?: () => void;
     modal?: boolean;
     okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
+    position?: DialogPosition;
 }
 
 /**
@@ -29,11 +37,7 @@ export default class Dialog {
     constructor(args: DialogArgs) {
         this.onClose = args.onClose;
 
-        const elements = this.createContainer(
-            args.title,
-            args.body,
-            args.okButton
-        );
+        const elements = this.createContainer(args);
 
         this.container = elements.container;
         this.title = elements.title;
@@ -47,11 +51,7 @@ export default class Dialog {
         }
     }
 
-    private createContainer(
-        titleText: string,
-        bodyText: string,
-        okButton?: boolean
-    ) {
+    private createContainer(args: DialogArgs) {
         const container = document.createElement("div");
         const title = document.createElement("div");
         const body = document.createElement("div");
@@ -61,13 +61,29 @@ export default class Dialog {
 
         container.className = "dialog";
 
-        body.innerHTML = bodyText;
-        title.innerHTML = titleText;
+        switch (args.position) {
+            case DialogPosition.bottomLeft:
+                container.classList.add("dialog-bottomLeft");
+                break;
+            case DialogPosition.bottom:
+                container.classList.add("dialog-bottom");
+                break;
+            case DialogPosition.bottomRight:
+                container.classList.add("dialog-bottomRight");
+                break;
+
+            default:
+                container.classList.add("dialog-center");
+                break;
+        }
+
+        body.innerHTML = args.body;
+        title.innerHTML = args.title;
 
         container.appendChild(title);
         container.appendChild(body);
 
-        if (okButton !== false) {
+        if (args.okButton !== false) {
             const horizontalRule = this.createHorizontalRule();
             const buttons = this.createButtons();
 

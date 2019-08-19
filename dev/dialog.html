@@ -18,16 +18,35 @@
 
             .dialog {
                 position: fixed;
+                color: black;
+                background-color: white;
+                padding: 4px;
+                min-width: 200px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                z-index: 101;
+            }
+
+            .dialog-center {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                color: black;
-                background-color: white;
-                padding: 5px;
-                min-width: 200px;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 10px;
-                z-index: 101;
+            }
+
+            .dialog-bottomLeft {
+                bottom: 0;
+                left: 0;
+            }
+
+            .dialog-bottom {
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .dialog-bottomRight {
+                bottom: 0;
+                right: 0;
             }
 
             .dialog hr {
@@ -43,7 +62,7 @@
                     rgb(200, 200, 200)
                 );
                 border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 5px;
+                border-radius: 3px;
             }
 
             .dialogBody {
@@ -71,6 +90,10 @@
 
         <button id="OpenDialogWithoutButtons"
             >Open dialog without buttons</button
+        >
+
+        <button id="OpenDialogBottomLeft"
+            >Open dialog position in the bottom left.</button
         >
     </body>
 </html>

@@ -1,4 +1,4 @@
-import Dialog from "../../source/dialog.js";
+import Dialog, { DialogPosition } from "../../source/dialog.js";
 
 window.onload = function() {
     const openModalDialog = document.getElementById("OpenModalDialog");
@@ -45,5 +45,17 @@ window.onload = function() {
 
     openWithout.onclick = () => {
         dialogWithout.toggle();
+    };
+
+    // setup dialog positioned in bottom left
+    const openBottomLeft = document.getElementById("OpenDialogBottomLeft");
+    openBottomLeft.onclick = () => {
+        const dialog = new Dialog({
+            title: "Bottom-left",
+            body: "Positioned in the bottom left.",
+            okButton: false,
+            position: DialogPosition.bottomLeft,
+        });
+        dialog.open();
     };
 };
