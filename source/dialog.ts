@@ -25,7 +25,7 @@ export interface DialogArgs {
  *     });
  *     dialog.open();
  */
-export default class Dialog {
+export class Dialog {
     private container: HTMLElement;
     private title: HTMLElement;
     private body: HTMLElement;

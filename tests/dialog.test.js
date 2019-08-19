@@ -1,15 +1,15 @@
-import { createDialog } from "../source/utilities";
+import { Dialog } from "../source/utilities";
 
 beforeEach(() => {
     document.body.innerHTML = "";
 });
 
 test("Verify that all elements are created.", () => {
-    createDialog({
+    const dialog = new Dialog({
         title: "",
         body: "",
-        onClose: () => {},
     });
+    dialog.open();
 
     expect(document.querySelector(".dialogOverlay")).toBeTruthy();
     expect(document.querySelector(".dialog")).toBeTruthy();
@@ -24,11 +24,11 @@ test("Check if the title and body are correctly set.", () => {
     const title = "The title.";
     const body = "The body.";
 
-    createDialog({
+    const dialog = new Dialog({
         title: title,
         body: body,
-        onClose: () => {},
     });
+    dialog.open();
 
     expect(document.querySelector(".dialogTitle").innerHTML).toBe(title);
     expect(document.querySelector(".dialogBody").innerHTML).toBe(body);
@@ -36,11 +36,12 @@ test("Check if the title and body are correctly set.", () => {
 });
 
 test("If the dialog is correctly removed after pressing the button.", () => {
-    createDialog({
+    const dialog = new Dialog({
         title: "",
         body: "",
-        onClose: () => {},
     });
+    dialog.open();
+
     expect(document.body.innerHTML).not.toBe("");
 
     document.querySelector(".dialogButton").click();
@@ -55,11 +56,12 @@ test("If the callback is called.", (done) => {
         done();
     });
 
-    createDialog({
+    const dialog = new Dialog({
         title: "",
         body: "",
         onClose,
     });
+    dialog.open();
 
     document.querySelector(".dialogButton").click();
 });

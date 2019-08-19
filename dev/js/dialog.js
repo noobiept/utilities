@@ -1,4 +1,4 @@
-import Dialog, { DialogPosition } from "../../source/dialog.js";
+import { Dialog, DialogPosition } from "../../source/dialog.js";
 
 window.onload = function() {
     const openModalDialog = document.getElementById("OpenModalDialog");
