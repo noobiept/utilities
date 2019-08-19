@@ -1,6 +1,6 @@
-> **[Utilities](../README.md)**
+**[Utilities](../README.md)**
 
-[Globals](../globals.md) / [TimeToStringArgs](timetostringargs.md) /
+[Globals](../globals.md) › [TimeToStringArgs](timetostringargs.md)
 
 # Interface: TimeToStringArgs
 

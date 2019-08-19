@@ -1,13 +1,18 @@
-> **[Utilities](README.md)**
+**[Utilities](README.md)**
 
-[Globals](globals.md) /
+[Globals](globals.md)
 
 # Utilities
 
 ## Index
 
+### Enumerations
+
+* [DialogPosition](enums/dialogposition.md)
+
 ### Classes
 
+* [Dialog](classes/dialog.md)
 * [Timeout](classes/timeout.md)
 * [Timer](classes/timer.md)
 
@@ -23,7 +28,6 @@
 * [calculateDistance](globals.md#markdown-header-calculatedistance)
 * [circleCircleCollision](globals.md#markdown-header-circlecirclecollision)
 * [circlePointCollision](globals.md#markdown-header-circlepointcollision)
-* [createDialog](globals.md#markdown-header-createdialog)
 * [createEnum](globals.md#markdown-header-createenum)
 * [deepClone](globals.md#markdown-header-deepclone)
 * [getObject](globals.md#markdown-header-getobject)
@@ -168,22 +172,6 @@ Name | Type |
 `pointY` | number |
 
 **Returns:** *boolean*
-
-___
-
-###  createDialog
-
-▸ **createDialog**(`args`: [DialogArgs](interfaces/dialogargs.md)): *void*
-
-Defined in dialog.ts:7
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`args` | [DialogArgs](interfaces/dialogargs.md) |
-
-**Returns:** *void*
 
 ___
 

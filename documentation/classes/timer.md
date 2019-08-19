@@ -1,6 +1,6 @@
-> **[Utilities](../README.md)**
+**[Utilities](../README.md)**
 
-[Globals](../globals.md) / [Timer](timer.md) /
+[Globals](../globals.md) › [Timer](timer.md)
 
 # Class: Timer
 
@@ -47,7 +47,7 @@ Count-up or count-down timer. Can optionally update an html element.
 
 ###  constructor
 
-\+ **new Timer**(`htmlElement?`: `HTMLElement`): *[Timer](timer.md)*
+\+ **new Timer**(`htmlElement?`: HTMLElement): *[Timer](timer.md)*
 
 Defined in timer.ts:19
 
@@ -55,7 +55,7 @@ Defined in timer.ts:19
 
 Name | Type |
 ------ | ------ |
-`htmlElement?` | `HTMLElement` |
+`htmlElement?` | HTMLElement |
 
 **Returns:** *[Timer](timer.md)*
 
@@ -87,7 +87,7 @@ ___
 
 ### `Private` `Optional` html_element
 
-• **html_element**? : *`HTMLElement`*
+• **html_element**? : *HTMLElement*
 
 Defined in timer.ts:19
 

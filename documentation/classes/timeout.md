@@ -1,6 +1,6 @@
-> **[Utilities](../README.md)**
+**[Utilities](../README.md)**
 
-[Globals](../globals.md) / [Timeout](timeout.md) /
+[Globals](../globals.md) › [Timeout](timeout.md)
 
 # Class: Timeout
 
@@ -81,7 +81,7 @@ ___
 
 ###  start
 
-▸ **start**(`functionToCall`: `Function`, `interval`: number): *void*
+▸ **start**(`functionToCall`: Function, `interval`: number): *void*
 
 Defined in timeout.ts:22
 
@@ -95,7 +95,7 @@ Throws an `Error` exception if:
 
 Name | Type |
 ------ | ------ |
-`functionToCall` | `Function` |
+`functionToCall` | Function |
 `interval` | number |
 
 **Returns:** *void*
