@@ -1,7 +1,0 @@
-syntax: glob
-info.txt
-node_modules/
-build/
-coverage/
-.DS_Store
-source/**/*.js
