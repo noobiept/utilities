@@ -1,6 +1,6 @@
-**[Utilities](README.md)**
+[Utilities](README.md) › [Globals](globals.md)
 
-[Globals](globals.md)
+# Utilities
 
 # Javascript Utilities
 

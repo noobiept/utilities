@@ -65,8 +65,8 @@
         "build:copy_css": "cpy ./source/**/*.css ./build",
         "test": "jest ./tests/ --coverage",
         "documentation": "npm-run-all --serial documentation:*",
-        "documentation:clean": "rimraf documentation/",
-        "documentation:build": "typedoc --out documentation/ source/ --name Utilities --mode file --theme markdown --platform bitbucket",
+        "documentation:clean": "rimraf docs/",
+        "documentation:build": "typedoc --out docs/ source/ --name Utilities --mode file",
         "formatting:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "formatting:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "prepublishOnly": "npm run build"

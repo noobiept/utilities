@@ -1,6 +1,4 @@
-**[Utilities](../README.md)**
-
-[Globals](../globals.md) › [Timeout](timeout.md)
+[Utilities](../README.md) › [Globals](../globals.md) › [Timeout](timeout.md)
 
 # Class: Timeout
 
@@ -14,18 +12,18 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 ### Constructors
 
-* [constructor](timeout.md#markdown-header-constructor)
+* [constructor](timeout.md#constructor)
 
 ### Properties
 
-* [id](timeout.md#markdown-header-private-id)
-* [is_active](timeout.md#markdown-header-private-is_active)
+* [id](timeout.md#private-id)
+* [is_active](timeout.md#private-is_active)
 
 ### Methods
 
-* [clear](timeout.md#markdown-header-clear)
-* [isActive](timeout.md#markdown-header-isactive)
-* [start](timeout.md#markdown-header-start)
+* [clear](timeout.md#clear)
+* [isActive](timeout.md#isactive)
+* [start](timeout.md#start)
 
 ## Constructors
 
@@ -33,7 +31,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 \+ **new Timeout**(): *[Timeout](timeout.md)*
 
-Defined in timeout.ts:8
+*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L8)*
 
 **Returns:** *[Timeout](timeout.md)*
 
@@ -43,7 +41,7 @@ Defined in timeout.ts:8
 
 • **id**: *number*
 
-Defined in timeout.ts:8
+*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L8)*
 
 ___
 
@@ -51,7 +49,7 @@ ___
 
 • **is_active**: *boolean*
 
-Defined in timeout.ts:7
+*Defined in [timeout.ts:7](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L7)*
 
 ## Methods
 
@@ -59,7 +57,7 @@ Defined in timeout.ts:7
 
 ▸ **clear**(): *void*
 
-Defined in timeout.ts:42
+*Defined in [timeout.ts:42](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L42)*
 
 Cancels the timeout.
 
@@ -71,7 +69,7 @@ ___
 
 ▸ **isActive**(): *boolean*
 
-Defined in timeout.ts:50
+*Defined in [timeout.ts:50](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L50)*
 
 Returns whether the timeout is active or not.
 
@@ -83,7 +81,7 @@ ___
 
 ▸ **start**(`functionToCall`: Function, `interval`: number): *void*
 
-Defined in timeout.ts:22
+*Defined in [timeout.ts:22](https://github.com/noobiept/utilities/blob/27bf6ad/source/timeout.ts#L22)*
 
 Starts the timeout. If there was an active timeout already, that one is canceled.
 
