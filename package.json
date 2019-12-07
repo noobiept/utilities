@@ -67,7 +67,7 @@
         "documentation": "npm-run-all --serial documentation:*",
         "documentation:clean": "rimraf docs/",
         "documentation:build": "typedoc --out docs/ source/ --name Utilities --mode file --readme none",
-        "documentation:index": "mv docs/README.md docs/index.md",
+        "documentation:index": "cp docs/README.md docs/index.md",
         "formatting:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "formatting:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "prepublishOnly": "npm run build"
