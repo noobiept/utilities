@@ -20,7 +20,7 @@
 
 • **format**? : *"daytime" | "string"*
 
-*Defined in [time_to_string.ts:7](https://github.com/noobiept/utilities/blob/773a505/source/time_to_string.ts#L7)*
+*Defined in [time_to_string.ts:7](https://github.com/noobiept/utilities/blob/2f15bff/source/time_to_string.ts#L7)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **time**: *number*
 
-*Defined in [time_to_string.ts:5](https://github.com/noobiept/utilities/blob/773a505/source/time_to_string.ts#L5)*
+*Defined in [time_to_string.ts:5](https://github.com/noobiept/utilities/blob/2f15bff/source/time_to_string.ts#L5)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **units**? : *undefined | number*
 
-*Defined in [time_to_string.ts:6](https://github.com/noobiept/utilities/blob/773a505/source/time_to_string.ts#L6)*
+*Defined in [time_to_string.ts:6](https://github.com/noobiept/utilities/blob/2f15bff/source/time_to_string.ts#L6)*

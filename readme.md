@@ -34,7 +34,7 @@ You can also just load directly with a `script` tag.
 
 # Documentation
 
-You can read the [documentation here.](https://noobiept.github.io/utilities/)
+You can read the [documentation here.](docs/README.md)
 
 # Build
 
