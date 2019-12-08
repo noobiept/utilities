@@ -14,3 +14,4 @@ export * from "./object";
 export * from "./trigonometry";
 export * from "./collision_detection";
 export * from "./dialog";
+export * from "./events";
