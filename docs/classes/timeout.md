@@ -31,7 +31,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 \+ **new Timeout**(): *[Timeout](timeout.md)*
 
-*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L8)*
+*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L8)*
 
 **Returns:** *[Timeout](timeout.md)*
 
@@ -41,7 +41,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 • **id**: *number*
 
-*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L8)*
+*Defined in [timeout.ts:8](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L8)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **is_active**: *boolean*
 
-*Defined in [timeout.ts:7](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L7)*
+*Defined in [timeout.ts:7](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L7)*
 
 ## Methods
 
@@ -57,7 +57,7 @@ ___
 
 ▸ **clear**(): *void*
 
-*Defined in [timeout.ts:42](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L42)*
+*Defined in [timeout.ts:42](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L42)*
 
 Cancels the timeout.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **isActive**(): *boolean*
 
-*Defined in [timeout.ts:50](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L50)*
+*Defined in [timeout.ts:50](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L50)*
 
 Returns whether the timeout is active or not.
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **start**(`functionToCall`: Function, `interval`: number): *void*
 
-*Defined in [timeout.ts:22](https://github.com/noobiept/utilities/blob/2f15bff/source/timeout.ts#L22)*
+*Defined in [timeout.ts:22](https://github.com/noobiept/utilities/blob/5c55ec3/source/timeout.ts#L22)*
 
 Starts the timeout. If there was an active timeout already, that one is canceled.
 
