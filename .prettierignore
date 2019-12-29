@@ -1,6 +1,6 @@
-.hg/
+.git/
 build/
-documentation/
+docs/
 node_modules/
 coverage/
 release/
