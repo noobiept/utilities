@@ -6,8 +6,8 @@ export enum DialogPosition {
 }
 
 export interface DialogArgs {
-    title: string;
-    body: string;
+    title: string | HTMLElement;
+    body: string | HTMLElement;
     onClose?: () => void;
     modal?: boolean;
     okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
@@ -77,8 +77,17 @@ export class Dialog {
                 break;
         }
 
-        body.innerHTML = args.body;
-        title.innerHTML = args.title;
+        if (args.body instanceof HTMLElement) {
+            body.appendChild(args.body);
+        } else {
+            body.innerHTML = args.body;
+        }
+
+        if (args.title instanceof HTMLElement) {
+            title.appendChild(args.title);
+        } else {
+            title.innerHTML = args.title;
+        }
 
         container.appendChild(title);
         container.appendChild(body);

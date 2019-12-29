@@ -1,14 +1,18 @@
 import { Dialog, DialogPosition } from "../../source/dialog.js";
 
 window.onload = function() {
+    dialogModal();
+    dialogNonModal();
+    dialogWithoutButtons();
+    dialogBottomLeft();
+    dialogWithHTMLElements();
+};
+
+function dialogModal() {
     const openModalDialog = document.getElementById("OpenModalDialog");
     const modalDialogCount = document.getElementById("ModalDialogCount");
 
-    const openDialog = document.getElementById("OpenDialog");
-    const dialogCount = document.getElementById("DialogCount");
-
     let modalCount = 0;
-    let count = 0;
 
     openModalDialog.onclick = () => {
         const dialog = new Dialog({
@@ -21,6 +25,12 @@ window.onload = function() {
         });
         dialog.open();
     };
+}
+
+function dialogNonModal() {
+    const openDialog = document.getElementById("OpenDialog");
+    const dialogCount = document.getElementById("DialogCount");
+    let count = 0;
 
     openDialog.onclick = () => {
         const dialog = new Dialog({
@@ -34,8 +44,9 @@ window.onload = function() {
         });
         dialog.open();
     };
+}
 
-    // setup dialog without buttons
+function dialogWithoutButtons() {
     const openWithout = document.getElementById("OpenDialogWithoutButtons");
     const dialogWithout = new Dialog({
         title: "Without",
@@ -46,8 +57,9 @@ window.onload = function() {
     openWithout.onclick = () => {
         dialogWithout.toggle();
     };
+}
 
-    // setup dialog positioned in bottom left
+function dialogBottomLeft() {
     const openBottomLeft = document.getElementById("OpenDialogBottomLeft");
     openBottomLeft.onclick = () => {
         const dialog = new Dialog({
@@ -58,4 +70,33 @@ window.onload = function() {
         });
         dialog.open();
     };
-};
+}
+
+function dialogWithHTMLElements() {
+    const title = document.createElement("div");
+    title.innerText = "The title";
+    const titleButton = document.createElement("button");
+    titleButton.innerText = "click me";
+
+    title.appendChild(titleButton);
+
+    const body = document.createElement("div");
+    body.innerText = "The body";
+    const hr = document.createElement("hr");
+    const em = document.createElement("em");
+    em.innerText = "yay";
+
+    body.appendChild(hr);
+    body.appendChild(em);
+
+    const openWithHTMLElements = document.getElementById(
+        "OpenDialogHTMLElement"
+    );
+    openWithHTMLElements.onclick = () => {
+        const dialog = new Dialog({
+            title,
+            body,
+        });
+        dialog.open();
+    };
+}
