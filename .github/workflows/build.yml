@@ -1,0 +1,25 @@
+name: utilities
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: "12.x"
+
+            - run: npm install
+            - run: npm run formatting:check
+            - run: npm run build
+            - run: npm run test
+
+            - uses: actions/upload-artifact@master
+              with:
+                  name: utilities
+                  path: build/
