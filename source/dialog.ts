@@ -12,6 +12,7 @@ export interface DialogArgs {
     modal?: boolean;
     okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
     position?: DialogPosition;
+    id?: string; // CSS ID
 }
 
 /**
@@ -60,6 +61,10 @@ export class Dialog {
         body.className = "dialogBody";
 
         container.className = "dialog";
+
+        if (args.id) {
+            container.id = args.id;
+        }
 
         switch (args.position) {
             case DialogPosition.bottomLeft:

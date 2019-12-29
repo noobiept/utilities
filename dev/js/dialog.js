@@ -6,6 +6,7 @@ window.onload = function() {
     dialogWithoutButtons();
     dialogBottomLeft();
     dialogWithHTMLElements();
+    dialogWithID();
 };
 
 function dialogModal() {
@@ -96,6 +97,18 @@ function dialogWithHTMLElements() {
         const dialog = new Dialog({
             title,
             body,
+        });
+        dialog.open();
+    };
+}
+
+function dialogWithID() {
+    const openWithID = document.getElementById("OpenDialogWithID");
+    openWithID.onclick = () => {
+        const dialog = new Dialog({
+            title: "title",
+            body: "body",
+            id: "Alternate",
         });
         dialog.open();
     };

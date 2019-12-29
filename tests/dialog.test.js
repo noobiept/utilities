@@ -306,6 +306,19 @@ describe("Dialog", () => {
         );
     });
 
+    test("A dialog with a specific ID.", () => {
+        const id = "SpecificID";
+        const dialog = new Dialog({
+            title: "title",
+            body: "body",
+            id,
+        });
+        dialog.open();
+
+        const container = document.querySelector(".dialog");
+        expect(container.id).toBe(id);
+    });
+
     /*
     test("If the dialog is correctly removed after pressing the 'enter' key.", (done) => {
         expect.assertions(3);
