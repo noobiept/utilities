@@ -45,6 +45,9 @@ export class Dialog {
         this.body = elements.body;
         this.opened = false;
 
+        this.setTitle(args.title);
+        this.setBody(args.body);
+
         // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
         if (args.modal !== false) {
             this.overlay = this.createOverlay();
@@ -80,18 +83,6 @@ export class Dialog {
             default:
                 container.classList.add("dialog-center");
                 break;
-        }
-
-        if (args.body instanceof HTMLElement) {
-            body.appendChild(args.body);
-        } else {
-            body.innerHTML = args.body;
-        }
-
-        if (args.title instanceof HTMLElement) {
-            title.appendChild(args.title);
-        } else {
-            title.innerHTML = args.title;
         }
 
         container.appendChild(title);
@@ -224,14 +215,22 @@ export class Dialog {
     /**
      * Change the title of the dialog.
      */
-    setTitle(title: string) {
-        this.title.innerHTML = title;
+    setTitle(content: string | HTMLElement) {
+        if (content instanceof HTMLElement) {
+            this.title.appendChild(content);
+        } else {
+            this.title.innerHTML = content;
+        }
     }
 
     /**
      * Change the body of the dialog.
      */
-    setBody(body: string) {
-        this.body.innerHTML = body;
+    setBody(content: string | HTMLElement) {
+        if (content instanceof HTMLElement) {
+            this.body.appendChild(content);
+        } else {
+            this.body.innerHTML = content;
+        }
     }
 }
