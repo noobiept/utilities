@@ -1,4 +1,4 @@
-# Javascript Utilities
+# Utilities Library
 
 Random collection of utilities functions/classes.
 
