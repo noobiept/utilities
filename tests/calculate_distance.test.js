@@ -2,27 +2,27 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.calculateDistance();
     }).toThrow();
 
     // only one argument
-    expect(function() {
+    expect(function () {
         Utilities.calculateDistance(1);
     }).toThrow();
 
     // only two arguments
-    expect(function() {
+    expect(function () {
         Utilities.calculateDistance(1, 2);
     }).toThrow();
 
     // only three arguments
-    expect(function() {
+    expect(function () {
         Utilities.calculateDistance(1, 2, 3);
     }).toThrow();
 
     // passed string arguments
-    expect(function() {
+    expect(function () {
         Utilities.calculateDistance("hi", "there");
     }).toThrow();
 });

@@ -7,12 +7,12 @@ const DAY = 24 * HOUR;
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         timeToString();
     }).toThrow();
 
     // passed a string argument
-    expect(function() {
+    expect(function () {
         timeToString("1 december");
     }).toThrow();
 

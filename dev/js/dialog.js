@@ -1,6 +1,6 @@
 import { Dialog, DialogPosition } from "../../source/dialog.js";
 
-window.onload = function() {
+window.onload = function () {
     dialogModal();
     dialogNonModal();
     dialogWithoutButtons();

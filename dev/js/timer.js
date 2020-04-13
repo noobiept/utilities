@@ -2,13 +2,13 @@ import * as Utilities from "../../build/utilities.esm.js";
 
 var MESSAGE_TIMEOUT;
 
-window.onload = function() {
+window.onload = function () {
     var timerElement = document.querySelector("#Timer");
 
-    var endCallback = function() {
+    var endCallback = function () {
         showMessage("Timer end!");
     };
-    var tickCallback = function() {
+    var tickCallback = function () {
         console.log("tick");
     };
 
@@ -26,7 +26,7 @@ window.onload = function() {
 
     var start = menu.querySelector("#Start");
 
-    start.onclick = function() {
+    start.onclick = function () {
         var end = null;
 
         if (withEndValue.checked === true) {
@@ -48,41 +48,41 @@ window.onload = function() {
 
     var restart = menu.querySelector("#Restart");
 
-    restart.onclick = function() {
+    restart.onclick = function () {
         timer.restart();
         showMessage("Restart!");
     };
 
     var resume = menu.querySelector("#Resume");
 
-    resume.onclick = function() {
+    resume.onclick = function () {
         timer.resume();
         showMessage("Resume!");
     };
 
     var stop = menu.querySelector("#Stop");
 
-    stop.onclick = function() {
+    stop.onclick = function () {
         timer.stop();
         showMessage("Stop!");
     };
 
     var reset = document.querySelector("#Reset");
 
-    reset.onclick = function() {
+    reset.onclick = function () {
         timer.reset();
         showMessage("Reset!");
     };
 
     var getTimeString = document.querySelector("#GetTimeString");
 
-    getTimeString.onclick = function() {
+    getTimeString.onclick = function () {
         showMessage(timer.getTimeString());
     };
 
     var getTimeSeconds = document.querySelector("#GetTimeSeconds");
 
-    getTimeSeconds.onclick = function() {
+    getTimeSeconds.onclick = function () {
         showMessage(timer.getTimeSeconds());
     };
 };
@@ -92,7 +92,7 @@ function showMessage(message) {
 
     messageElement.innerHTML = message;
 
-    MESSAGE_TIMEOUT.start(function() {
+    MESSAGE_TIMEOUT.start(function () {
         messageElement.innerHTML = "---";
     }, 1000);
 

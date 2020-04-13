@@ -2,12 +2,12 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.numberOfDigits();
     }).toThrow();
 
     // passed string argument
-    expect(function() {
+    expect(function () {
         Utilities.numberOfDigits("asd");
     }).toThrow();
 });

@@ -2,32 +2,32 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt();
     }).toThrow();
 
     // only one argument
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt(1);
     }).toThrow();
 
     // passed string arguments
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt("hi", "there");
     }).toThrow();
 
     // max less than min
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt(3, 2);
     }).toThrow();
 
     // passed a float value to 1st argument
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt(2.7, 3);
     }).toThrow();
 
     // passed a float to the 2nd argument
-    expect(function() {
+    expect(function () {
         Utilities.getRandomInt(1, 2.1);
     }).toThrow();
 });

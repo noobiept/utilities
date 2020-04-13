@@ -2,12 +2,12 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.createEnum();
     }).toThrow();
 
     // needs to be an array
-    expect(function() {
+    expect(function () {
         Utilities.createEnum("one");
     }).toThrow();
 });

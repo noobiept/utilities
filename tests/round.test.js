@@ -2,27 +2,27 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given.
-    expect(function() {
+    expect(function () {
         Utilities.round();
     }).toThrow();
 
     // only one argument
-    expect(function() {
+    expect(function () {
         Utilities.round(1.1);
     }).toThrow();
 
     // string arguments
-    expect(function() {
+    expect(function () {
         Utilities.round("hi", "there");
     }).toThrow();
 
     // float decimal case
-    expect(function() {
+    expect(function () {
         Utilities.round(4.22, 2.2);
     }).toThrow();
 
     // negative decimal case
-    expect(function() {
+    expect(function () {
         Utilities.round(4.22, -2);
     }).toThrow();
 });

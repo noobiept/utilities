@@ -88,7 +88,7 @@ export function timeToString(args: TimeToStringArgs) {
             { name: "second", time: secondsLeft },
         ];
 
-        const constructDate = function(dateTmp: string, numberOf: number) {
+        const constructDate = function (dateTmp: string, numberOf: number) {
             // day to days, hour to hours...
             if (numberOf !== 1) {
                 dateTmp += "s";

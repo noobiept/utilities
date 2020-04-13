@@ -2,13 +2,13 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     var timeout = new Utilities.Timeout();
-    var func = function() {};
+    var func = function () {};
 
     expect(() => {
         timeout.start();
     }).toThrow();
 
-    expect(function() {
+    expect(function () {
         timeout.start(func);
     }).toThrow();
 

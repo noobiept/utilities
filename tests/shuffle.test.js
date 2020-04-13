@@ -2,12 +2,12 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.shuffle();
     }).toThrow();
 
     // wrong argument type
-    expect(function() {
+    expect(function () {
         Utilities.shuffle(1);
     }).toThrow();
 });

@@ -13,7 +13,7 @@ test("Test type", () => {
         { value: null, expect: false },
         { value: true, expect: true },
         { value: {}, expect: false },
-        { value: function() {}, expect: false },
+        { value: function () {}, expect: false },
         { value: [], expect: false },
     ];
 

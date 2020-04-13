@@ -2,47 +2,47 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts();
     }).toThrow();
 
     // only one argument
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(1);
     }).toThrow();
 
     // only two arguments
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(1, 2);
     }).toThrow();
 
     // passed string arguments
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts("hi", "there", "!");
     }).toThrow();
 
     // max less than min
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(3, 2, 5);
     }).toThrow();
 
     // passed a float value to 1st argument
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(2.7, 6, 2);
     }).toThrow();
 
     // passed a float to the 2nd argument
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(1, 4.1, 2);
     }).toThrow();
 
     // passed a float to the 3rd argument
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(1, 4, 2.1);
     }).toThrow();
 
     // try to get more integers than the range of values provided
-    expect(function() {
+    expect(function () {
         Utilities.getSeveralRandomInts(1, 2, 3);
     }).toThrow();
 });

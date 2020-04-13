@@ -2,22 +2,22 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.saveObject();
     }).toThrow();
 
     // passed a number for the key argument
-    expect(function() {
+    expect(function () {
         Utilities.saveObject(4, 4);
     }).toThrow();
 
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.getObject();
     }).toThrow();
 
     // passed a number for the key argument
-    expect(function() {
+    expect(function () {
         Utilities.getObject(4);
     }).toThrow();
 });

@@ -2,22 +2,22 @@ import * as Utilities from "../source/utilities";
 
 test("Validate arguments.", () => {
     // no arguments given
-    expect(function() {
+    expect(function () {
         Utilities.getRandomFloat();
     }).toThrow();
 
     // only one argument
-    expect(function() {
+    expect(function () {
         Utilities.getRandomFloat(1);
     }).toThrow();
 
     // passed string arguments
-    expect(function() {
+    expect(function () {
         Utilities.getRandomFloat("asd", "dsa");
     }).toThrow();
 
     // max less than min
-    expect(function() {
+    expect(function () {
         Utilities.getRandomFloat(4.22, 2);
     }).toThrow();
 });

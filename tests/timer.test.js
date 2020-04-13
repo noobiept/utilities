@@ -5,7 +5,7 @@ test("Validate arguments.", () => {
     expect(new Timer()).toBeDefined();
 
     // not an html element
-    expect(function() {
+    expect(function () {
         new Timer(0);
     }).toThrow();
 });
