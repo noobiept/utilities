@@ -1,4 +1,4 @@
-import { Dialog, DialogPosition } from "../../source/dialog.js";
+import { Dialog, DialogPosition } from "../build/utilities.esm.js";
 
 window.onload = function () {
     dialogModal();
