@@ -5,6 +5,11 @@ export type PreloadData = {
     [id: string]: any;
 };
 
+export type ManifestData = {
+    id: string;
+    path: string;
+}[];
+
 // supported file types
 const FileInfo = {
     image: {
@@ -19,8 +24,12 @@ const FileInfo = {
         extensions: ["txt"],
         responseType: "text",
     },
-    audio: {
-        extensions: ["ogg", "mp3"],
+    audio_ogg: {
+        extensions: ["ogg"],
+        responseType: "arraybuffer",
+    },
+    audio_mp3: {
+        extensions: ["mp3"],
         responseType: "arraybuffer",
     },
 } as const;
@@ -214,71 +223,73 @@ export class Preload extends EventDispatcher {
      * @param typeId Type of the file to load. If not provided then it will try to determine the type from the file extension.
      */
     load(id: string, path: string, typeId?: FileInfoType) {
-        const type = typeId ?? getType(path);
-        const _this = this;
-
         this._total_items++;
 
+        const type = typeId ?? getType(path);
         const request = new XMLHttpRequest();
 
         request.open("get", path, true);
         request.responseType = FileInfo[type].responseType;
 
         // add the request events
-        request.addEventListener("error", function (event) {
-            _this._on_error(event, id);
+        request.addEventListener("error", (event) => {
+            this._on_error(event, id);
         });
-        request.addEventListener("abort", function (event) {
-            _this._on_abort(event, id);
+        request.addEventListener("abort", (event) => {
+            this._on_abort(event, id);
         });
-        request.addEventListener("progress", function (event) {
-            _this._on_progress(event);
+        request.addEventListener("progress", (event) => {
+            this._on_progress(event);
         });
         request.addEventListener(
             "load",
-            function () {
+            () => {
                 // failed to load
-                if (this.status !== 200) {
-                    _this._failed_to_load(id);
+                if (request.status !== 200) {
+                    this._failed_to_load(id);
                     return;
                 }
 
-                var response = this.response;
+                const response = request.response;
 
-                if (type === "image") {
-                    var image = new Image();
-                    image.src = window.URL.createObjectURL(response);
-                    image.onload = function () {
-                        _this._loaded(id, image);
-                    };
-                } else if (type === "json") {
-                    // for the browsers that don't return the object, but a string instead
-                    if (typeof response === "string") {
-                        try {
-                            response = JSON.parse(response);
-                        } catch (error) {
-                            _this._failed_to_load(id);
-                            return;
-                        }
-                    }
+                switch (type) {
+                    case "image":
+                        this.loadImage(id, response);
+                        break;
 
-                    _this._loaded(id, response);
-                } else if (type === "audio") {
-                    //HERE
-                    const extension = path.split(".").pop() as "ogg" | "mp3"; //HERE
+                    case "json":
+                        this.loadJson(id, response);
+                        break;
 
-                    _this.loadAudio(
-                        response,
-                        extension,
-                        (audio) => {
-                            _this._loaded(id, audio);
-                        },
-                        () => {
-                            _this._failed_to_load(id);
-                        }
-                    );
-                } else {
-                    _this._loaded(id, response);
+                    case "audio_mp3":
+                        this.loadAudio(
+                            response,
+                            "audio/mpeg",
+                            (audio) => {
+                                this._loaded(id, audio);
+                            },
+                            () => {
+                                this._failed_to_load(id);
+                            }
+                        );
+                        break;
+
+                    case "audio_ogg":
+                        this.loadAudio(
+                            response,
+                            "audio/ogg",
+                            (audio) => {
+                                this._loaded(id, audio);
+                            },
+                            () => {
+                                this._failed_to_load(id);
+                            }
+                        );
+                        break;
+
+                    default:
+                        this._loaded(id, response);
+                        break;
                 }
             },
             false
@@ -289,55 +300,68 @@ export class Preload extends EventDispatcher {
 
     /**
      * Load several files.
-     *
-     * @param manifest Has the information about the files.
-     * @param basePath Base path for all the files in the manifest.
      */
-    loadManifest(manifest: { id: string; path: string }[], basePath?: string) {
-        var length = manifest.length;
-
-        if (typeof basePath === "undefined") {
-            basePath = "";
-        }
-
-        for (var a = 0; a < length; a++) {
-            var file = manifest[a];
-
-            this.load(file.id, basePath + file.path);
-        }
+    loadManifest(manifest: ManifestData) {
+        manifest.forEach((info) => {
+            this.load(info.id, info.path);
+        });
     }
 
     /**
      * Get a previously loaded file.
-     *
-     * @param id The id of the file.
      */
     get(id: string) {
         return this._data[id];
     }
 
+    /**
+     * Load an audio resource.
+     */
     loadAudio(
         response: any,
-        extension: "mp3" | "ogg",
+        blobType: "audio/mpeg" | "audio/ogg",
         onLoad: (audio: HTMLAudioElement) => void,
         onError: () => void
     ) {
-        const types = {
-            mp3: "audio/mpeg",
-            ogg: "audio/ogg",
-        };
-
-        const blob = new Blob([response], { type: types[extension] });
+        const blob = new Blob([response], { type: blobType });
         const objectUrl = URL.createObjectURL(blob);
-
         const audio = new Audio();
-        audio.src = objectUrl;
 
-        // Release resource when it's loaded
+        audio.src = objectUrl;
         audio.oncanplay = () => {
+            // release resource when it's loaded
             URL.revokeObjectURL(objectUrl);
             onLoad(audio);
         };
         audio.onerror = onError;
+    }
+
+    /**
+     * Load a json resource.
+     */
+    loadJson(id: string, response: any) {
+        // for the browsers that don't return the object, but a string instead
+        if (typeof response === "string") {
+            try {
+                response = JSON.parse(response);
+            } catch (error) {
+                this._failed_to_load(id);
+                return;
+            }
+        }
+
+        this._loaded(id, response);
+    }
+
+    /**
+     * Load an image resource.
+     */
+    loadImage(id: string, response: any) {
+        const image = new Image();
+
+        image.src = window.URL.createObjectURL(response);
+        image.onload = () => {
+            this._loaded(id, image);
+        };
     }
 }
