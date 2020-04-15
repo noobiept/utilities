@@ -8,6 +8,7 @@ export type PreloadData = {
 export type ManifestData = {
     id: string;
     path: string;
+    type?: FileInfoType; // if not specified it tries to guess from from the file extension
 }[];
 
 export type PreloadEvent =
@@ -312,7 +313,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      */
     loadManifest(manifest: ManifestData) {
         manifest.forEach((info) => {
-            this.load(info.id, info.path);
+            this.load(info.id, info.path, info.type);
         });
     }
 
