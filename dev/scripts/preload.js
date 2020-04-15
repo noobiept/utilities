@@ -6,21 +6,31 @@ window.onload = () => {
         const json = preload.get("json");
         const image = preload.get("image");
         const text = preload.get("text");
-        const audio = preload.get("audio");
+        const audioMp3 = preload.get("audio-mp3");
+        const audioOgg = preload.get("audio-ogg");
 
-        audio.controls = true;
-
-        console.log(json, image, text, audio);
+        console.log(json, image, text, audioMp3, audioOgg);
 
         document.getElementById("Json").innerText = json.ok;
         document.getElementById("Image").appendChild(image);
         document.getElementById("Text").innerText = text;
-        document.getElementById("Audio").appendChild(audio);
+
+        if (audioMp3) {
+            audioMp3.controls = true;
+            document.getElementById("Audio-mp3").appendChild(audioMp3);
+        }
+
+        // not all browsers support ogg, so check if it worked before adding
+        if (audioOgg) {
+            audioOgg.controls = true;
+            document.getElementById("Audio-ogg").appendChild(audioOgg);
+        }
     });
     preload.loadManifest([
         { id: "json", path: "../assets/test.json" },
         { id: "image", path: "../assets/image.png" },
         { id: "text", path: "../assets/text.txt" },
-        { id: "audio", path: "../assets/scumm_bar.mp3" },
+        { id: "audio-mp3", path: "../assets/scumm_bar.mp3" },
+        { id: "audio-ogg", path: "../assets/space_ship_1.ogg" },
     ]);
 };
