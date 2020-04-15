@@ -10,6 +10,13 @@ export type ManifestData = {
     path: string;
 }[];
 
+export type PreloadEvent =
+    | "complete"
+    | "error"
+    | "abort"
+    | "progress"
+    | "fileload";
+
 // supported file types
 const FileInfo = {
     image: {
@@ -78,17 +85,19 @@ export interface PreloadArgs {
 
 /**
  * Basic Usage:
+ *     import { Preload } from '@drk4/utilities';
  *
- *     const preload = new Preload({ saveGlobal: true });
+ *     const preload = new Preload();
  *
- *     preload.addEventListener( 'complete', completeListener );
- *     preload.load( 'id', 'path_to_file.png' );
+ *     preload.addEventListener('complete', (loaded) => {
+ *         console.log( loaded.loaded_ids );
+ *         const image = preload.get( 'the_id' );
+ *     });
  *
- *         // or with a manifest
- *     var manifest = [
+ *     const manifest = [
  *             { id: 'the_id', path: 'path_to_file.png' }
  *         ];
- *     preload.loadManifest( manifest, '' );
+ *     preload.loadManifest( manifest );
  *
  * Events:
  *
@@ -98,7 +107,7 @@ export interface PreloadArgs {
  * - `progress` -- `listener( progress: number );`
  * - `fileload` -- `listener( data: { id: string; data: Object; } );`
  */
-export class Preload extends EventDispatcher {
+export class Preload extends EventDispatcher<PreloadEvent> {
     private save_global: boolean;
     private _data: PreloadData;
     private _total_items: number;

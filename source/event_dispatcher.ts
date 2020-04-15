@@ -1,9 +1,9 @@
 /**
  * Base class that provides a way to add/remove listeners, and dispatch events.
  */
-export default class EventDispatcher {
-    protected _listeners: {
-        [type: string]: ((data: any) => void)[];
+export default class EventDispatcher<EventType extends string> {
+    private _listeners: {
+        [E in EventType]?: ((data: any) => void)[];
     };
 
     constructor() {
@@ -18,13 +18,13 @@ export default class EventDispatcher {
      * @param listener A function to be called when the event is dispatched.
      * @return If it was successfully added.
      */
-    addEventListener(type: string, listener: (data: any) => void) {
+    addEventListener(type: EventType, listener: (data: any) => void) {
         if (!this._listeners[type]) {
             this._listeners[type] = [];
         }
 
-        if (this._listeners[type].indexOf(listener) < 0) {
-            this._listeners[type].push(listener);
+        if (this._listeners[type]!.indexOf(listener) < 0) {
+            this._listeners[type]!.push(listener);
             return true;
         }
 
@@ -38,13 +38,15 @@ export default class EventDispatcher {
      * @param listener The listener function to remove. If not provided then remove all the functions associated with the event type.
      * @return If it was successfully removed.
      */
-    removeEventListener(type: string, listener?: (data: any) => any) {
-        if (this._listeners[type]) {
+    removeEventListener(type: EventType, listener?: (data: any) => any) {
+        const listeners = this._listeners[type];
+
+        if (listeners) {
             if (typeof listener !== "undefined") {
-                var index = this._listeners[type].indexOf(listener);
+                const index = listeners.indexOf(listener);
 
                 if (index >= 0) {
-                    this._listeners[type].splice(index, 1);
+                    listeners.splice(index, 1);
                     return true;
                 }
             } else {
@@ -69,11 +71,11 @@ export default class EventDispatcher {
      * @param type Type of the event to dispatch.
      * @param data Data to be sent to every listener.
      */
-    dispatchEvent(type: string, data?: any) {
-        var listeners = this._listeners[type];
+    dispatchEvent(type: EventType, data?: any) {
+        const listeners = this._listeners[type];
 
         if (listeners) {
-            for (var a = listeners.length - 1; a >= 0; a--) {
+            for (let a = listeners.length - 1; a >= 0; a--) {
                 listeners[a](data);
             }
         }
@@ -85,8 +87,10 @@ export default class EventDispatcher {
      * @param type The event type to check.
      * @return If there are listeners or not.
      */
-    hasListeners(type: string) {
-        if (this._listeners[type] && this._listeners[type].length > 0) {
+    hasListeners(type: EventType) {
+        const listeners = this._listeners[type];
+
+        if (listeners && listeners.length > 0) {
             return true;
         }
 
