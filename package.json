@@ -67,6 +67,7 @@
         "build:rollup": "rollup --config rollup.config.js",
         "build:copy_css": "cpy ./source/**/*.css ./build",
         "test": "jest ./tests/ --coverage",
+        "test:watch": "jest ./tests/ --coverage --watch",
         "documentation": "npm-run-all --serial documentation:*",
         "documentation:clean": "rimraf docs/",
         "documentation:build": "typedoc --out docs/ source/ --name Utilities --mode file --readme none",

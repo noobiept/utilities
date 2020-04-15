@@ -219,7 +219,7 @@ export class Preload extends EventDispatcher {
 
         this._total_items++;
 
-        var request = new XMLHttpRequest();
+        const request = new XMLHttpRequest();
 
         request.open("get", path, true);
         request.responseType = FileInfo[type].responseType;
