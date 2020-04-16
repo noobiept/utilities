@@ -16,3 +16,4 @@ export * from "./collision_detection";
 export * from "./dialog";
 export * from "./events";
 export * from "./preload";
+export * from "./event_dispatcher";
