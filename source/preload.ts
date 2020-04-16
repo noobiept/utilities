@@ -8,7 +8,7 @@ export type PreloadData = {
 export type ManifestData = {
     id: string;
     path: string;
-    type?: FileInfoType; // if not specified it tries to guess from from the file extension
+    type?: FileInfoType; // if not specified it tries to guess from the file extension
 }[];
 
 export type PreloadEvent =
@@ -44,6 +44,10 @@ const FileInfo = {
 
 export type FileInfoType = keyof typeof FileInfo;
 
+export interface PreloadArgs {
+    saveGlobal?: boolean; // save to global 'data' object, or to this object's 'data'
+}
+
 // key is the 'id'
 // value is the 'data'
 const DATA: PreloadData = {};
@@ -59,7 +63,7 @@ export function get(id: string) {
 }
 
 /**
- * Determine the type of a file based on its extension.
+ * Determine the type of a file based on its extension. If it can't figure it out it defaults to type 'text'.
  *
  * @param file The file name.
  * @return The file type.
@@ -80,10 +84,6 @@ export function getType(file: string): FileInfoType {
     return "text"; // default to type 'text'
 }
 
-export interface PreloadArgs {
-    saveGlobal?: boolean; // save to global 'data' object, or to this object's 'data'
-}
-
 /**
  * Basic Usage:
  *     import { Preload } from '@drk4/utilities';
@@ -96,7 +96,8 @@ export interface PreloadArgs {
  *     });
  *
  *     const manifest = [
- *             { id: 'the_id', path: 'path_to_file.png' }
+ *             { id: 'the_id', path: 'path_to_file.png' },          // try to determine the type from the extension
+ *             { id: 'other', path: 'other_path', type: 'json' }    // or just specify it directly
  *         ];
  *     preload.loadManifest( manifest );
  *
@@ -109,27 +110,21 @@ export interface PreloadArgs {
  * - `fileload` -- `listener( data: { id: string; data: Object; } );`
  */
 export class Preload extends EventDispatcher<PreloadEvent> {
-    private save_global: boolean;
+    private _save_global: boolean;
     private _data: PreloadData;
     private _total_items: number;
     private _loaded_items: number;
     private _failed_ids: string[]; // list of the ids that failed to load
     private _loaded_ids: string[]; // list of the ids that were successfully loaded
 
-    constructor(args?: PreloadArgs) {
+    constructor(args: PreloadArgs = {}) {
         super();
-
-        var saveGlobal = false;
-
-        if (typeof args !== "undefined") {
-            if (isBoolean(args.saveGlobal)) {
-                saveGlobal = args.saveGlobal;
-            }
-        }
 
         this._total_items = 0;
         this._loaded_items = 0;
-        this.save_global = saveGlobal;
+        this._save_global = isBoolean(args.saveGlobal)
+            ? args.saveGlobal
+            : false;
         this._data = {};
         this._failed_ids = [];
         this._loaded_ids = [];
@@ -141,8 +136,8 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * @param id The id of the loaded element.
      * @param data Its data.
      */
-    protected _loaded(id: string, data: any) {
-        if (this.save_global) {
+    private _loaded(id: string, data: any) {
+        if (this._save_global) {
             DATA[id] = data;
         } else {
             this._data[id] = data;
@@ -161,7 +156,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * An element failed to load. We'll keep track of its id, to send it later on the 'complete' event.
      */
-    protected _failed_to_load(id: string) {
+    private _failed_to_load(id: string) {
         this._loaded_items++;
         this._failed_ids.push(id);
 
@@ -173,7 +168,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * All the elements were dealt with. Dispatch the `complete` event with a list of the loaded ids, and another list with the ids that failed to load as well.
      */
-    protected _loading_complete() {
+    private _loading_complete() {
         this.dispatchEvent("complete", {
             failed_ids: this._failed_ids,
             loaded_ids: this._loaded_ids,
@@ -192,7 +187,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * @param event The event to dispatch.
      * @param id The id of the element.
      */
-    protected _on_error(event: ProgressEvent, id: string) {
+    private _on_error(event: ProgressEvent, id: string) {
         this.dispatchEvent("error", { event: event, id: id });
     }
 
@@ -202,7 +197,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * @param event The event to dispatch.
      * @param id The id of the element.
      */
-    protected _on_abort(event: ProgressEvent, id: string) {
+    private _on_abort(event: ProgressEvent, id: string) {
         this.dispatchEvent("abort", { event: event, id: id });
     }
 
@@ -211,7 +206,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      *
      * @param event The event that was triggered.
      */
-    protected _on_progress(event: ProgressEvent) {
+    private _on_progress(event: ProgressEvent) {
         var fileProgress = 0;
 
         if (event.lengthComputable) {
@@ -327,7 +322,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load an audio resource.
      */
-    loadAudio(
+    private loadAudio(
         response: any,
         blobType: "audio/mpeg" | "audio/ogg",
         onLoad: (audio: HTMLAudioElement) => void,
@@ -349,7 +344,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load a json resource.
      */
-    loadJson(id: string, response: any) {
+    private loadJson(id: string, response: any) {
         // for the browsers that don't return the object, but a string instead
         if (typeof response === "string") {
             try {
@@ -366,7 +361,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load an image resource.
      */
-    loadImage(id: string, response: any) {
+    private loadImage(id: string, response: any) {
         const image = new Image();
 
         image.src = window.URL.createObjectURL(response);

@@ -1,5 +1,20 @@
 /**
  * Base class that provides a way to add/remove listeners, and dispatch events.
+ *
+ * Basic Usage:
+ *     import { EventDispatcher } from '@drk4/utilities';
+ *
+ *     type MyEvent = 'anEvent' | 'somethingElse';
+ *
+ *     class MyClass extends EventDispatcher<MyEvent> {
+ *         // (...)
+ *         onClick() {
+ *             this.dispatchEvent('anEvent', { something: 'here' });
+ *         }
+ *     }
+ *
+ *     const instance = MyClass();
+ *     instance.addEventListener('anEvent', somethingToDo);
  */
 export default class EventDispatcher<EventType extends string> {
     private _listeners: {
