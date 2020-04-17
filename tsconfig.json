@@ -8,7 +8,8 @@
         "target": "es2018",
         "module": "es2015",
         "moduleResolution": "node",
-        "declarationDir": "./build"
+        "declarationDir": "./build",
+        "allowSyntheticDefaultImports": true
     },
     "include": ["source/**/*.ts"]
 }

@@ -16,7 +16,7 @@
  *     const instance = MyClass();
  *     instance.addEventListener('anEvent', somethingToDo);
  */
-export default class EventDispatcher<EventType extends string> {
+export class EventDispatcher<EventType extends string> {
     private _listeners: {
         [E in EventType]?: ((data: any) => void)[];
     };
