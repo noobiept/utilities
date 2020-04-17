@@ -364,9 +364,12 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     private loadImage(id: string, response: any) {
         const image = new Image();
 
-        image.src = window.URL.createObjectURL(response);
         image.onload = () => {
             this._loaded(id, image);
         };
+        image.onerror = () => {
+            this._failed_to_load(id);
+        };
+        image.src = window.URL.createObjectURL(response);
     }
 }
