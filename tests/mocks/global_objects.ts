@@ -1,4 +1,4 @@
-export function mockXHR(response) {
+export function mockXHR(response, status = 200) {
     const eventListeners = {};
 
     const mock = function () {
@@ -9,8 +9,8 @@ export function mockXHR(response) {
         this.send = jest.fn(() => {
             eventListeners["load"].call(this);
         });
-        this.status = 200;
-        this.response = JSON.stringify(response ?? {});
+        this.status = status;
+        this.response = response;
     };
 
     // @ts-ignore
@@ -21,6 +21,7 @@ export function mockURL() {
     // @ts-ignore
     window.URL = {
         createObjectURL: jest.fn(() => "asd"),
+        revokeObjectURL: jest.fn(),
     };
 }
 
@@ -35,4 +36,17 @@ export function mockImage() {
 
     // @ts-ignore
     window.Image = MyImage;
+}
+
+export function mockAudio() {
+    class MyAudio {
+        oncanplay;
+
+        set src(url) {
+            this.oncanplay();
+        }
+    }
+
+    // @ts-ignore
+    window.Audio = MyAudio;
 }
