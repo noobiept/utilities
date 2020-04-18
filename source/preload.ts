@@ -53,22 +53,12 @@ export interface PreloadArgs {
 const DATA: PreloadData = {};
 
 /**
- * Get an element that was saved in the global `DATA` object.
- *
- * @param id The id of the element we're retrieving.
- * @return The preloaded element.
- */
-export function get(id: string) {
-    return DATA[id];
-}
-
-/**
  * Determine the type of a file based on its extension. If it can't figure it out it defaults to type 'text'.
  *
  * @param file The file name.
  * @return The file type.
  */
-export function getType(file: string): FileInfoType {
+function getType(file: string): FileInfoType {
     const extension = file.split(".").pop();
 
     if (extension) {
@@ -116,6 +106,16 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     private _loaded_items: number;
     private _failed_ids: string[]; // list of the ids that failed to load
     private _loaded_ids: string[]; // list of the ids that were successfully loaded
+
+    /**
+     * Get an element that was saved in the global `DATA` object.
+     *
+     * @param id The id of the element we're retrieving.
+     * @return The preloaded element.
+     */
+    static get(id: string) {
+        return DATA[id];
+    }
 
     constructor(args: PreloadArgs = {}) {
         super();
