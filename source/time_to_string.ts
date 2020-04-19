@@ -24,7 +24,8 @@ export interface TimeToStringArgs {
  *     format: string
  */
 export function timeToString(args: TimeToStringArgs) {
-    let { time, units, format } = args;
+    const { time } = args;
+    let { units, format } = args;
 
     // setup the default values if not provided
     if (!isNumber(units) || units < 1) {
@@ -93,7 +94,7 @@ export function timeToString(args: TimeToStringArgs) {
                 break;
             }
 
-            let component = theDate[i];
+            const component = theDate[i];
 
             // only show when there's something relevant to be shown
             // (for example: 0 days 2 hours 2 minutes... no point showing the days part)

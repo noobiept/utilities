@@ -18,11 +18,11 @@ export function createEnum(values: string[], start?: number) {
         start = 0;
     }
 
-    var obj: { [key: string]: string | number } = {};
-    var length = values.length;
+    const obj: { [key: string]: string | number } = {};
+    const length = values.length;
 
-    for (var a = 0; a < length; a++) {
-        let name = values[a];
+    for (let a = 0; a < length; a++) {
+        const name = values[a];
 
         obj[start!] = name;
         obj[name] = start!;

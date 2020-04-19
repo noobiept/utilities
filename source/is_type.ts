@@ -39,7 +39,7 @@ export function isInteger(value: any): value is number {
 export function isNumber(element: any): element is number {
     return (
         typeof element === "number" &&
-        !isNaN(parseFloat(<any>element)) &&
+        !isNaN(parseFloat(element as any)) &&
         isFinite(element)
     );
 }
