@@ -19,16 +19,6 @@ export class Timer {
     private html_element?: HTMLElement;
 
     constructor(htmlElement?: HTMLElement) {
-        // either don't receive an argument, or if given needs to be an HTMLElement
-        if (
-            typeof htmlElement !== "undefined" &&
-            !(htmlElement instanceof HTMLElement)
-        ) {
-            throw new Error(
-                "Utilities.Timer() -> Invalid 'htmlElement' argument. Not an HTML element."
-            );
-        }
-
         this.html_element = htmlElement;
         this.updateHtmlElement();
     }

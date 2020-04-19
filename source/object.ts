@@ -1,4 +1,4 @@
-import { isNumber, isArray } from "./is_type";
+import { isNumber } from "./is_type";
 
 /**
  * Returns a deep clone/copy of the object.
@@ -14,12 +14,6 @@ export function deepClone(obj: any) {
  * @param start Starting number for the first name. The number is incremented by one for the next name.
  */
 export function createEnum(values: string[], start?: number) {
-    if (!isArray(values)) {
-        throw new Error(
-            "Utilities.createEnum() -> Invalid 'values' argument. Needs to be an array of strings."
-        );
-    }
-
     if (!isNumber(start)) {
         start = 0;
     }
