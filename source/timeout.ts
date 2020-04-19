@@ -19,7 +19,7 @@ export class Timeout {
      * - `functionToCall` isn't a function.
      * - `interval` isn't a number.
      */
-    start(functionToCall: Function, interval: number) {
+    start(functionToCall: () => void, interval: number) {
         if (!isFunction(functionToCall) || !isNumber(interval)) {
             throw new Error("Utilities.Timeout.start() -> Invalid arguments.");
         }

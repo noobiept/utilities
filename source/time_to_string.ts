@@ -22,19 +22,9 @@ export interface TimeToStringArgs {
  * Defaults:
  *     units: 2
  *     format: string
- *
- * Throws an `Error` exception if:
- * - the `time` argument isn't a number.
  */
 export function timeToString(args: TimeToStringArgs) {
     let { time, units, format } = args;
-
-    // check if we got the required argument
-    if (!isNumber(time)) {
-        throw new Error(
-            "Utilities.timeToString() -> Invalid 'time' argument. Not a number."
-        );
-    }
 
     // setup the default values if not provided
     if (!isNumber(units) || units < 1) {

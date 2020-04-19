@@ -1,42 +1,22 @@
-import * as Utilities from "../source/utilities";
+import { getRandomFloat } from "../source/utilities";
 
-test("Validate arguments.", () => {
-    // no arguments given
-    expect(function () {
-        Utilities.getRandomFloat();
-    }).toThrow();
+describe("getRandomFloat", () => {
+    test("Test with valid arguments.", () => {
+        var ok;
 
-    // only one argument
-    expect(function () {
-        Utilities.getRandomFloat(1);
-    }).toThrow();
+        // inclusive limits
+        var result = getRandomFloat(2, 2);
+        expect(result).toBe(2);
 
-    // passed string arguments
-    expect(function () {
-        Utilities.getRandomFloat("asd", "dsa");
-    }).toThrow();
+        // a random value between the limits
+        result = getRandomFloat(-4.44, 4.44);
+        ok = result >= -4.44 && result <= 4.44;
+        expect(ok).toBe(true);
 
-    // max less than min
-    expect(function () {
-        Utilities.getRandomFloat(4.22, 2);
-    }).toThrow();
-});
+        // zero in one of the range limits
+        result = getRandomFloat(0, 4.123);
+        ok = result >= 0 && result <= 4.123;
 
-test("Test with valid arguments.", () => {
-    var ok;
-
-    // inclusive limits
-    var result = Utilities.getRandomFloat(2, 2);
-    expect(result).toBe(2);
-
-    // a random value between the limits
-    result = Utilities.getRandomFloat(-4.44, 4.44);
-    ok = result >= -4.44 && result <= 4.44;
-    expect(ok).toBe(true);
-
-    // zero in one of the range limits
-    result = Utilities.getRandomFloat(0, 4.123);
-    ok = result >= 0 && result <= 4.123;
-
-    expect(ok).toBe(true);
+        expect(ok).toBe(true);
+    });
 });
