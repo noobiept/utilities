@@ -67,7 +67,7 @@ export function numberOfDigits(theNumber: number) {
         theNumber *= -1;
     }
 
-    var numberString = theNumber.toString().replace(".", "");
+    const numberString = theNumber.toString().replace(".", "");
 
     return numberString.length;
 }

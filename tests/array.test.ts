@@ -2,8 +2,8 @@ import * as Utilities from "../source/utilities";
 
 describe("shuffle", () => {
     test("Test with valid arguments.", () => {
-        var test = [1, 2, 3, 4];
-        var length = test.length;
+        const test = [1, 2, 3, 4];
+        const length = test.length;
 
         Utilities.shuffle(test);
 

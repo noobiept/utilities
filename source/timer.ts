@@ -115,7 +115,7 @@ export class Timer {
 
             // if there's an end value defined, check if we reached it
             if (this.end_value !== undefined) {
-                var ended = false;
+                let ended = false;
 
                 if (this.count_down) {
                     if (this.time_count <= this.end_value) {

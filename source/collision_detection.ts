@@ -30,8 +30,8 @@ export function circleCircleCollision(
     y2: number,
     radius2: number
 ) {
-    var distX = x1 - x2;
-    var distY = y1 - y2;
+    const distX = x1 - x2;
+    const distY = y1 - y2;
 
     if (
         Math.pow(distX, 2) + Math.pow(distY, 2) <=
@@ -53,11 +53,11 @@ export function circlePointCollision(
     pointX: number,
     pointY: number
 ) {
-    var distanceX = circleX - pointX;
-    var distanceY = circleY - pointY;
+    const distanceX = circleX - pointX;
+    const distanceY = circleY - pointY;
 
     // pythagoras
-    var squareDistance = distanceX * distanceX + distanceY * distanceY;
+    const squareDistance = distanceX * distanceX + distanceY * distanceY;
 
     if (squareDistance <= circleRadius * circleRadius) {
         return true;

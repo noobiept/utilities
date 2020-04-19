@@ -7,15 +7,15 @@ describe("Timer", () => {
     });
 
     test("Test without an argument.", () => {
-        var timer = new Timer();
+        const timer = new Timer();
 
         expect(timer.getTimeString()).toBe("0 seconds");
         expect(timer.getTimeSeconds()).toBe(0);
     });
 
     test("Test with a given html element.", () => {
-        var htmlElement = document.createElement("div");
-        var timer = new Timer(htmlElement);
+        const htmlElement = document.createElement("div");
+        const timer = new Timer(htmlElement);
 
         // starting value of the timer (0 seconds)
         // starting time string (from the html element)

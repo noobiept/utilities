@@ -3,7 +3,7 @@ import * as Utilities from "../source/utilities";
 describe("boxBoxCollision", () => {
     test("Test with valid arguments.", () => {
         // doesn't collide
-        var result = Utilities.boxBoxCollision(0, 0, 1, 1, 2, 2, 1, 1);
+        let result = Utilities.boxBoxCollision(0, 0, 1, 1, 2, 2, 1, 1);
         expect(result).toBe(false);
 
         // boxes touching
@@ -19,7 +19,7 @@ describe("boxBoxCollision", () => {
 describe("circleCircleCollision", () => {
     test("Test with valid arguments.", () => {
         // no collision
-        var result = Utilities.circleCircleCollision(0, 0, 2, 5, 5, 2);
+        let result = Utilities.circleCircleCollision(0, 0, 2, 5, 5, 2);
         expect(result).toBe(false);
 
         // start of the collision
@@ -35,7 +35,7 @@ describe("circleCircleCollision", () => {
 describe("circlePointCollision", () => {
     test("Test with valid arguments.", () => {
         // no collision
-        var result = Utilities.circlePointCollision(0, 0, 4, 5, 5);
+        let result = Utilities.circlePointCollision(0, 0, 4, 5, 5);
         expect(result).toBe(false);
 
         // point on the border of the circle
@@ -51,7 +51,7 @@ describe("circlePointCollision", () => {
 describe("pointBoxCollision", () => {
     test("Test with valid arguments.", () => {
         // no collision
-        var result = Utilities.pointBoxCollision(0, 0, 2, 2, 10, 10);
+        let result = Utilities.pointBoxCollision(0, 0, 2, 2, 10, 10);
         expect(result).toBe(false);
 
         // point on the border of the box

@@ -3,16 +3,16 @@ import { createEnum, deepClone } from "../source/utilities";
 describe("deepClone", () => {
     test("Test with valid arguments.", () => {
         // clone of an array of numbers
-        var test = [1, 2, 3];
-        var copy = deepClone(test);
+        const test = [1, 2, 3];
+        const copy = deepClone(test);
 
         test[0] = 4;
 
         expect(copy).not.toBe(test);
 
         // clone of an object
-        var test2 = { one: 1, two: ["three", "four"] };
-        var copy2 = deepClone(test2);
+        const test2 = { one: 1, two: ["three", "four"] };
+        const copy2 = deepClone(test2);
 
         test2.two.push("five");
 

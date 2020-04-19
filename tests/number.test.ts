@@ -9,10 +9,10 @@ import {
 
 describe("getRandomFloat", () => {
     test("Test with valid arguments.", () => {
-        var ok;
+        let ok;
 
         // inclusive limits
-        var result = getRandomFloat(2, 2);
+        let result = getRandomFloat(2, 2);
         expect(result).toBe(2);
 
         // a random value between the limits
@@ -31,12 +31,12 @@ describe("getRandomFloat", () => {
 describe("getRandomInt", () => {
     test("Test with valid arguments.", () => {
         // inclusive limits
-        var result = getRandomInt(4, 4);
+        let result = getRandomInt(4, 4);
         expect(result).toBe(4);
 
         // a value between -4 and 4
         result = getRandomInt(-4, 4);
-        var within = result >= -4 && result <= 4;
+        let within = result >= -4 && result <= 4;
 
         expect(within).toBe(true);
 
@@ -50,15 +50,15 @@ describe("getRandomInt", () => {
 
 describe("getSeveralRandomInts", () => {
     test("Test with valid arguments.", () => {
-        var ok;
-        var result = getSeveralRandomInts(1, 1, 1);
+        let ok;
+        let result = getSeveralRandomInts(1, 1, 1);
 
         // range of 1 with 1 random integer needed
         expect(result).toStrictEqual([1]);
 
         // a range of 2, with 2 required integers
         result = getSeveralRandomInts(1, 2, 2);
-        var range = [1, 2];
+        const range = [1, 2];
 
         ok = true;
 
@@ -81,7 +81,7 @@ describe("getSeveralRandomInts", () => {
 
         if (result.length === 4) {
             for (let a = 0; a < result.length; a++) {
-                var value = result[a];
+                const value = result[a];
 
                 if (value < -4 || value > 4) {
                     ok = false;
@@ -114,7 +114,7 @@ describe("getSeveralRandomInts", () => {
 
 describe("numberOfDigits", () => {
     test("Test with valid arguments.", () => {
-        var result = numberOfDigits(4);
+        let result = numberOfDigits(4);
         expect(result).toBe(1);
 
         result = numberOfDigits(12);
@@ -133,7 +133,7 @@ describe("numberOfDigits", () => {
 
 describe("round", () => {
     test("Test with valid arguments.", () => {
-        var result = round(4.22, 1);
+        let result = round(4.22, 1);
         expect(result).toBe(4.2);
 
         result = round(4.25, 1);

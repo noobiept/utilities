@@ -207,13 +207,13 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * @param event The event that was triggered.
      */
     private _on_progress(event: ProgressEvent) {
-        var fileProgress = 0;
+        let fileProgress = 0;
 
         if (event.lengthComputable) {
             fileProgress = event.loaded / event.total;
         }
 
-        var progress = Math.round(
+        const progress = Math.round(
             ((fileProgress + this._loaded_items) / this._total_items) * 100
         );
 

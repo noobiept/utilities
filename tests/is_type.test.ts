@@ -2,7 +2,7 @@ import * as Utilities from "../source/utilities";
 
 describe("isArray", () => {
     test("Test type.", () => {
-        var values = [
+        const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
             { value: NaN, expect: false },
@@ -29,7 +29,7 @@ describe("isArray", () => {
 
 describe("isBoolean", () => {
     test("Test type", () => {
-        var values = [
+        const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
             { value: NaN, expect: false },
@@ -45,7 +45,7 @@ describe("isBoolean", () => {
             { value: [], expect: false },
         ];
 
-        for (var a = 0; a < values.length; a++) {
+        for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
             const result = Utilities.isBoolean(valueInfo.value);
 
@@ -56,7 +56,7 @@ describe("isBoolean", () => {
 
 describe("isFunction", () => {
     test("Test type", () => {
-        var values = [
+        const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
             { value: NaN, expect: false },
@@ -72,7 +72,7 @@ describe("isFunction", () => {
             { value: [], expect: false },
         ];
 
-        for (var a = 0; a < values.length; a++) {
+        for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
             const result = Utilities.isFunction(valueInfo.value);
 
@@ -83,7 +83,7 @@ describe("isFunction", () => {
 
 describe("isInteger", () => {
     test("Test type", () => {
-        var values = [
+        const values = [
             { value: 1, expect: true },
             { value: 1.2, expect: false },
             { value: NaN, expect: false },
@@ -99,7 +99,7 @@ describe("isInteger", () => {
             { value: [], expect: false },
         ];
 
-        for (var a = 0; a < values.length; a++) {
+        for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
             const result = Utilities.isInteger(valueInfo.value);
 
@@ -110,7 +110,7 @@ describe("isInteger", () => {
 
 describe("isNumber", () => {
     test("Test type", () => {
-        var values = [
+        const values = [
             { value: 1, expect: true },
             { value: 1.2, expect: true },
             { value: NaN, expect: false },
@@ -126,7 +126,7 @@ describe("isNumber", () => {
             { value: [], expect: false },
         ];
 
-        for (var a = 0; a < values.length; a++) {
+        for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
             const result = Utilities.isNumber(valueInfo.value);
 
@@ -137,7 +137,7 @@ describe("isNumber", () => {
 
 describe("isString", () => {
     test("Test type", () => {
-        var values = [
+        const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
             { value: NaN, expect: false },
@@ -153,7 +153,7 @@ describe("isString", () => {
             { value: [], expect: false },
         ];
 
-        for (var a = 0; a < values.length; a++) {
+        for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
             const result = Utilities.isString(valueInfo.value);
 

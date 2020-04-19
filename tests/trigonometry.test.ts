@@ -7,7 +7,7 @@ import {
 
 describe("calculateAngle", () => {
     test("Test with valid arguments.", () => {
-        var result = calculateAngle(0, 0, 4, 0);
+        let result = calculateAngle(0, 0, 4, 0);
         expect(result).toBe(0);
 
         result = calculateAngle(0, 0, 0, 4);
@@ -23,7 +23,7 @@ describe("calculateAngle", () => {
 
 describe("calculateDistance", () => {
     test("Test with valid arguments.", () => {
-        var result = calculateDistance(0, 0, 4, 0);
+        let result = calculateDistance(0, 0, 4, 0);
         expect(result).toBe(4);
 
         result = calculateDistance(0, 0, 4, 10);
@@ -36,7 +36,7 @@ describe("calculateDistance", () => {
 
 describe("toDegrees", () => {
     test("Test with valid arguments.", () => {
-        var result = toDegrees(0);
+        let result = toDegrees(0);
         expect(result).toBe(0);
 
         result = toDegrees(Math.PI / 2);
@@ -49,7 +49,7 @@ describe("toDegrees", () => {
 
 describe("toRadians", () => {
     test("Test with valid arguments.", () => {
-        var result = toRadians(0);
+        let result = toRadians(0);
         expect(result).toBe(0);
 
         result = toRadians(90);
