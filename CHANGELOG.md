@@ -11,3 +11,6 @@
 ## Changed
 
 -   Improve the build system.
+-   Remove runtime type checks from some functions.
+-   Reworked the 'getSeveralRandomInts()' function.
+-   Add new function 'range()', that creates an array with all the numbers in-between the given range.

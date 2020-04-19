@@ -24,35 +24,38 @@ export function getRandomInt(min: number, max: number) {
 
 /**
  * Returns several different random integers, in the range between `min` and `max` (inclusive).
- *
- * Throws an Error exception if:
- * - the minimum value is bigger than the maximum.
- * - the range is less than the number of integers required.
  */
 export function getSeveralRandomInts(
     min: number,
     max: number,
     howMany: number
 ): number[] {
-    if (min > max || max - min < howMany - 1) {
-        throw new Error(
-            "Utilities.getSeveralRandomInts() -> Invalid arguments."
-        );
+    if (min > max) {
+        min = max;
     }
 
+    if (howMany < 1) {
+        howMany = 1;
+    }
+
+    const picked = [];
     let count = 0;
-    const numbers: { [key: string]: number } = {};
+    let notPickedYet = range(min, max);
 
     while (count < howMany) {
-        var randomNumber = getRandomInt(min, max);
+        const randomPosition = getRandomInt(0, notPickedYet.length - 1);
+        const selected = notPickedYet.splice(randomPosition, 1)[0];
 
-        if (typeof numbers[randomNumber] === "undefined") {
-            numbers[randomNumber] = randomNumber;
-            count++;
+        picked.push(selected);
+        count++;
+
+        // we've picked all the available numbers, so reset the 'not picked' list so we can keep selecting numbers until we reach the 'howMany' value
+        if (notPickedYet.length === 0) {
+            notPickedYet = range(min, max);
         }
     }
 
-    return Object.values(numbers);
+    return picked;
 }
 
 /**
@@ -78,4 +81,17 @@ export function round(num: number, dec: number) {
     }
 
     return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+}
+
+/**
+ * Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
+ */
+export function range(start: number, end: number) {
+    const list = [];
+
+    for (let a = start; a <= end; a++) {
+        list.push(a);
+    }
+
+    return list;
 }

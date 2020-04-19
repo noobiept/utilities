@@ -1,18 +1,6 @@
-import { getSeveralRandomInts } from "../source/utilities";
+import { getSeveralRandomInts, range } from "../source/utilities";
 
 describe("getSeveralRandomInts", () => {
-    test("Validate arguments.", () => {
-        // max less than min
-        expect(function () {
-            getSeveralRandomInts(3, 2, 5);
-        }).toThrow();
-
-        // try to get more integers than the range of values provided
-        expect(function () {
-            getSeveralRandomInts(1, 2, 3);
-        }).toThrow();
-    });
-
     test("Test with valid arguments.", () => {
         var ok;
         var result = getSeveralRandomInts(1, 1, 1);
@@ -63,5 +51,15 @@ describe("getSeveralRandomInts", () => {
         ok = result[0] === 0;
 
         expect(ok).toBe(true);
+    });
+
+    test("Should include at least once each possible value, if the 'howMany' is higher than the range.", () => {
+        const result = getSeveralRandomInts(-5, 5, 20);
+
+        expect(result.length).toBe(20);
+
+        range(-5, 5).forEach((value) => {
+            expect(result.includes(value)).toBeTruthy();
+        });
     });
 });
