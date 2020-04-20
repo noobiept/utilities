@@ -7,6 +7,7 @@
 -   A changelog file.
 -   A 'Preload' class to pre-load assets (audio/images/etc).
 -   A 'EventDispatcher' class to handle events.
+-   Add a code linter (eslint).
 
 ## Changed
 

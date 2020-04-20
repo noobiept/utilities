@@ -146,4 +146,16 @@ describe("Preload", () => {
         });
         preload.loadManifest(manifest);
     });
+
+    test("On progress event.", () => {
+        expect.assertions(1);
+
+        mockXHR("test");
+
+        const preload = new Utilities.Preload();
+        preload.addEventListener("progress", (progress) => {
+            expect(typeof progress === "number").toBeTruthy();
+        });
+        preload.load("test", "test.txt");
+    });
 });

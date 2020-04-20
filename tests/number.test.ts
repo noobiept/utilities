@@ -26,6 +26,12 @@ describe("getRandomFloat", () => {
 
         expect(ok).toBe(true);
     });
+
+    test("If 'min' is higher than 'max', then it will be set to the same value of 'max'.", () => {
+        // will set min: 5, max: 5, so the result will always be that value
+        const result = getRandomFloat(10, 5);
+        expect(result).toBe(5);
+    });
 });
 
 describe("getRandomInt", () => {
@@ -45,6 +51,12 @@ describe("getRandomInt", () => {
         within = result >= 0 && result <= 2;
 
         expect(within).toBe(true);
+    });
+
+    test("If 'min' is higher than 'max', then it will be set to the same value of 'max'.", () => {
+        // will set min: 5, max: 5, so the result will always be that value
+        const result = getRandomInt(10, 5);
+        expect(result).toBe(5);
     });
 });
 
@@ -110,6 +122,17 @@ describe("getSeveralRandomInts", () => {
             expect(result.includes(value)).toBeTruthy();
         });
     });
+
+    test("If 'min' is higher than 'max', then it will be set to the same value of 'max'.", () => {
+        // will set min: 5, max: 5, so the result will always be that value
+        const result = getSeveralRandomInts(10, 5, 1);
+        expect(result[0]).toBe(5);
+    });
+
+    test("Should always return one result at least, even if 'howMany' has a value of <1.", () => {
+        const result = getSeveralRandomInts(5, 5, -10);
+        expect(result[0]).toBe(5);
+    });
 });
 
 describe("numberOfDigits", () => {
@@ -141,6 +164,11 @@ describe("round", () => {
 
         result = round(-4.5, 0);
         expect(result).toBe(-4);
+    });
+
+    test("The minimum decimal case is 0.", () => {
+        const result = round(2.123, -1);
+        expect(result).toBe(2);
     });
 });
 

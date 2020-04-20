@@ -7,6 +7,10 @@ export function mockXHR(response, status = 200) {
             eventListeners[type] = listener;
         });
         this.send = jest.fn(() => {
+            eventListeners["progress"].call(
+                this,
+                new ProgressEvent("progress")
+            );
             eventListeners["load"].call(this);
         });
         this.status = status;
