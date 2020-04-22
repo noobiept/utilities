@@ -54,7 +54,7 @@ Usage:
 
 \+ **new Dialog**(`args`: [DialogArgs](../interfaces/dialogargs.md)): *[Dialog](dialog.md)*
 
-*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L36)*
+*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L36)*
 
 **Parameters:**
 
@@ -70,7 +70,7 @@ Name | Type |
 
 • **body**: *HTMLElement*
 
-*Defined in [dialog.ts:32](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L32)*
+*Defined in [dialog.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L32)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 • **container**: *HTMLElement*
 
-*Defined in [dialog.ts:30](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L30)*
+*Defined in [dialog.ts:30](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L30)*
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 • **keyUp**? : *undefined | function*
 
-*Defined in [dialog.ts:35](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L35)*
+*Defined in [dialog.ts:35](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L35)*
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 • **onClose**? : *undefined | function*
 
-*Defined in [dialog.ts:34](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L34)*
+*Defined in [dialog.ts:34](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L34)*
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 • **opened**: *boolean*
 
-*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L36)*
+*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L36)*
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 • **overlay**? : *HTMLElement*
 
-*Defined in [dialog.ts:33](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L33)*
+*Defined in [dialog.ts:33](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L33)*
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 • **title**: *HTMLElement*
 
-*Defined in [dialog.ts:31](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L31)*
+*Defined in [dialog.ts:31](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L31)*
 
 ## Methods
 
@@ -126,7 +126,7 @@ ___
 
 ▸ **addKeyboardShortcuts**(): *void*
 
-*Defined in [dialog.ts:143](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L143)*
+*Defined in [dialog.ts:143](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L143)*
 
 **Returns:** *void*
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **close**(): *void*
 
-*Defined in [dialog.ts:175](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L175)*
+*Defined in [dialog.ts:175](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L175)*
 
 Remove the dialog from the page.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **createButtons**(): *HTMLDivElement*
 
-*Defined in [dialog.ts:107](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L107)*
+*Defined in [dialog.ts:107](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L107)*
 
 **Returns:** *HTMLDivElement*
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **createContainer**(`args`: [DialogArgs](../interfaces/dialogargs.md)): *object*
 
-*Defined in [dialog.ts:58](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L58)*
+*Defined in [dialog.ts:58](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L58)*
 
 **Parameters:**
 
@@ -180,7 +180,7 @@ ___
 
 ▸ **createHorizontalRule**(): *HTMLHRElement*
 
-*Defined in [dialog.ts:102](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L102)*
+*Defined in [dialog.ts:102](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L102)*
 
 **Returns:** *HTMLHRElement*
 
@@ -190,7 +190,7 @@ ___
 
 ▸ **createOverlay**(): *HTMLDivElement*
 
-*Defined in [dialog.ts:123](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L123)*
+*Defined in [dialog.ts:123](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L123)*
 
 **Returns:** *HTMLDivElement*
 
@@ -200,7 +200,7 @@ ___
 
 ▸ **isOpened**(): *boolean*
 
-*Defined in [dialog.ts:200](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L200)*
+*Defined in [dialog.ts:200](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L200)*
 
 Check if the dialog is opened or not.
 
@@ -212,7 +212,7 @@ ___
 
 ▸ **open**(): *void*
 
-*Defined in [dialog.ts:158](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L158)*
+*Defined in [dialog.ts:158](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L158)*
 
 Add the dialog to the page.
 
@@ -224,7 +224,7 @@ ___
 
 ▸ **removeKeyboardShortcuts**(): *void*
 
-*Defined in [dialog.ts:149](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L149)*
+*Defined in [dialog.ts:149](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L149)*
 
 **Returns:** *void*
 
@@ -234,7 +234,7 @@ ___
 
 ▸ **setBody**(`content`: string | HTMLElement): *void*
 
-*Defined in [dialog.ts:229](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L229)*
+*Defined in [dialog.ts:229](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L229)*
 
 Change the body of the dialog.
 
@@ -252,7 +252,7 @@ ___
 
 ▸ **setTitle**(`content`: string | HTMLElement): *void*
 
-*Defined in [dialog.ts:218](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L218)*
+*Defined in [dialog.ts:218](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L218)*
 
 Change the title of the dialog.
 
@@ -270,7 +270,7 @@ ___
 
 ▸ **setupKeyboardShortcuts**(): *keyUp*
 
-*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L130)*
+*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L130)*
 
 **Returns:** *keyUp*
 
@@ -280,7 +280,7 @@ ___
 
 ▸ **toggle**(): *void*
 
-*Defined in [dialog.ts:207](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L207)*
+*Defined in [dialog.ts:207](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L207)*
 
 Toggle between the open/close state.
 

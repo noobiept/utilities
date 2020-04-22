@@ -76,7 +76,7 @@ Events:
 
 *Overrides [EventDispatcher](eventdispatcher.md).[constructor](eventdispatcher.md#constructor)*
 
-*Defined in [preload.ts:118](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L118)*
+*Defined in [preload.ts:118](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L118)*
 
 **Parameters:**
 
@@ -92,7 +92,7 @@ Name | Type | Default |
 
 • **_data**: *[PreloadData](../README.md#preloaddata)*
 
-*Defined in [preload.ts:104](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L104)*
+*Defined in [preload.ts:104](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L104)*
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 • **_failed_ids**: *string[]*
 
-*Defined in [preload.ts:107](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L107)*
+*Defined in [preload.ts:107](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L107)*
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 • **_loaded_ids**: *string[]*
 
-*Defined in [preload.ts:108](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L108)*
+*Defined in [preload.ts:108](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L108)*
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 • **_loaded_items**: *number*
 
-*Defined in [preload.ts:106](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L106)*
+*Defined in [preload.ts:106](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L106)*
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 • **_save_global**: *boolean*
 
-*Defined in [preload.ts:103](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L103)*
+*Defined in [preload.ts:103](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L103)*
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 • **_total_items**: *number*
 
-*Defined in [preload.ts:105](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L105)*
+*Defined in [preload.ts:105](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L105)*
 
 ## Methods
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **_failed_to_load**(`id`: string): *void*
 
-*Defined in [preload.ts:159](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L159)*
+*Defined in [preload.ts:159](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L159)*
 
 An element failed to load. We'll keep track of its id, to send it later on the 'complete' event.
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **_loaded**(`id`: string, `data`: any): *void*
 
-*Defined in [preload.ts:139](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L139)*
+*Defined in [preload.ts:139](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L139)*
 
 An element just finished being loaded, add it to the `data` object (either the global or the object) and dispatch the relevant events.
 
@@ -177,7 +177,7 @@ ___
 
 ▸ **_loading_complete**(): *void*
 
-*Defined in [preload.ts:171](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L171)*
+*Defined in [preload.ts:171](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L171)*
 
 All the elements were dealt with. Dispatch the `complete` event with a list of the loaded ids, and another list with the ids that failed to load as well.
 
@@ -189,7 +189,7 @@ ___
 
 ▸ **_on_abort**(`event`: ProgressEvent, `id`: string): *void*
 
-*Defined in [preload.ts:200](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L200)*
+*Defined in [preload.ts:200](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L200)*
 
 Dispatch the `abort` event.
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **_on_error**(`event`: ProgressEvent, `id`: string): *void*
 
-*Defined in [preload.ts:190](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L190)*
+*Defined in [preload.ts:190](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L190)*
 
 Dispatch the `error` event.
 
@@ -227,7 +227,7 @@ ___
 
 ▸ **_on_progress**(`event`: ProgressEvent): *void*
 
-*Defined in [preload.ts:209](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L209)*
+*Defined in [preload.ts:209](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L209)*
 
 Dispatch the current progress percentage.
 
@@ -247,7 +247,7 @@ ___
 
 *Inherited from [EventDispatcher](eventdispatcher.md).[addEventListener](eventdispatcher.md#addeventlistener)*
 
-*Defined in [event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/2dab2f8/source/event_dispatcher.ts#L36)*
+*Defined in [event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/event_dispatcher.ts#L36)*
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
@@ -282,7 +282,7 @@ ___
 
 *Inherited from [EventDispatcher](eventdispatcher.md).[dispatchEvent](eventdispatcher.md#dispatchevent)*
 
-*Defined in [event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/2dab2f8/source/event_dispatcher.ts#L89)*
+*Defined in [event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/a95c65d/source/event_dispatcher.ts#L89)*
 
 Dispatches an event, which will trigger the listeners of that event.
 
@@ -301,7 +301,7 @@ ___
 
 ▸ **get**(`id`: string): *any*
 
-*Defined in [preload.ts:318](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L318)*
+*Defined in [preload.ts:318](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L318)*
 
 Get a previously loaded file.
 
@@ -321,7 +321,7 @@ ___
 
 *Inherited from [EventDispatcher](eventdispatcher.md).[hasListeners](eventdispatcher.md#haslisteners)*
 
-*Defined in [event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/2dab2f8/source/event_dispatcher.ts#L105)*
+*Defined in [event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/a95c65d/source/event_dispatcher.ts#L105)*
 
 Check if there are listeners to a particular event type.
 
@@ -341,7 +341,7 @@ ___
 
 ▸ **load**(`id`: string, `path`: string, `typeId?`: [FileInfoType](../README.md#fileinfotype)): *void*
 
-*Defined in [preload.ts:230](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L230)*
+*Defined in [preload.ts:230](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L230)*
 
 Load a file.
 
@@ -361,7 +361,7 @@ ___
 
 ▸ **loadAudio**(`response`: any, `blobType`: "audio/mpeg" | "audio/ogg", `onLoad`: function, `onError`: function): *void*
 
-*Defined in [preload.ts:325](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L325)*
+*Defined in [preload.ts:325](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L325)*
 
 Load an audio resource.
 
@@ -393,7 +393,7 @@ ___
 
 ▸ **loadImage**(`id`: string, `response`: any): *void*
 
-*Defined in [preload.ts:364](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L364)*
+*Defined in [preload.ts:364](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L364)*
 
 Load an image resource.
 
@@ -412,7 +412,7 @@ ___
 
 ▸ **loadJson**(`id`: string, `response`: any): *void*
 
-*Defined in [preload.ts:347](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L347)*
+*Defined in [preload.ts:347](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L347)*
 
 Load a json resource.
 
@@ -431,7 +431,7 @@ ___
 
 ▸ **loadManifest**(`manifest`: [ManifestData](../README.md#manifestdata)): *void*
 
-*Defined in [preload.ts:309](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L309)*
+*Defined in [preload.ts:309](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L309)*
 
 Load several files.
 
@@ -451,7 +451,7 @@ ___
 
 *Inherited from [EventDispatcher](eventdispatcher.md).[removeAllEventListeners](eventdispatcher.md#removealleventlisteners)*
 
-*Defined in [event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/2dab2f8/source/event_dispatcher.ts#L79)*
+*Defined in [event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/a95c65d/source/event_dispatcher.ts#L79)*
 
 Remove all the event listeners.
 
@@ -465,7 +465,7 @@ ___
 
 *Inherited from [EventDispatcher](eventdispatcher.md).[removeEventListener](eventdispatcher.md#removeeventlistener)*
 
-*Defined in [event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/2dab2f8/source/event_dispatcher.ts#L56)*
+*Defined in [event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/a95c65d/source/event_dispatcher.ts#L56)*
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 
@@ -486,7 +486,7 @@ ___
 
 ▸ **get**(`id`: string): *any*
 
-*Defined in [preload.ts:116](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L116)*
+*Defined in [preload.ts:116](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L116)*
 
 Get an element that was saved in the global `DATA` object.
 

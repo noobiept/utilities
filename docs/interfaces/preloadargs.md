@@ -18,4 +18,4 @@
 
 • **saveGlobal**? : *undefined | false | true*
 
-*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L48)*
+*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L48)*

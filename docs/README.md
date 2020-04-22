@@ -75,7 +75,7 @@
 
 Ƭ **FileInfoType**: *keyof typeof FileInfo*
 
-*Defined in [preload.ts:45](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L45)*
+*Defined in [preload.ts:45](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L45)*
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 Ƭ **ManifestData**: *object[]*
 
-*Defined in [preload.ts:8](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L8)*
+*Defined in [preload.ts:8](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L8)*
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 Ƭ **PreloadData**: *object*
 
-*Defined in [preload.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L4)*
+*Defined in [preload.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L4)*
 
 #### Type declaration:
 
@@ -103,7 +103,7 @@ ___
 
 Ƭ **PreloadEvent**: *"complete" | "error" | "abort" | "progress" | "fileload"*
 
-*Defined in [preload.ts:14](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L14)*
+*Defined in [preload.ts:14](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L14)*
 
 ## Variables
 
@@ -111,7 +111,7 @@ ___
 
 • **DATA**: *[PreloadData](README.md#preloaddata)*
 
-*Defined in [preload.ts:53](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L53)*
+*Defined in [preload.ts:53](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L53)*
 
 ___
 
@@ -140,7 +140,7 @@ ___
     },
 } as const
 
-*Defined in [preload.ts:22](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L22)*
+*Defined in [preload.ts:22](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L22)*
 
 #### Type declaration:
 
@@ -180,7 +180,7 @@ ___
 
 ▸ **boxBoxCollision**(`oneX`: number, `oneY`: number, `oneWidth`: number, `oneHeight`: number, `twoX`: number, `twoY`: number, `twoWidth`: number, `twoHeight`: number): *boolean*
 
-*Defined in [collision_detection.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/collision_detection.ts#L4)*
+*Defined in [collision_detection.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/collision_detection.ts#L4)*
 
 Detects collision between 2 boxes.
 
@@ -205,7 +205,7 @@ ___
 
 ▸ **calculateAngle**(`aX`: number, `aY`: number, `bX`: number, `bY`: number): *number*
 
-*Defined in [trigonometry.ts:5](https://github.com/noobiept/utilities/blob/2dab2f8/source/trigonometry.ts#L5)*
+*Defined in [trigonometry.ts:5](https://github.com/noobiept/utilities/blob/a95c65d/source/trigonometry.ts#L5)*
 
 Returns the angle between 2 points in radians.
 Positive in clockwise direction.
@@ -227,7 +227,7 @@ ___
 
 ▸ **calculateDistance**(`aX`: number, `aY`: number, `bX`: number, `bY`: number): *number*
 
-*Defined in [trigonometry.ts:17](https://github.com/noobiept/utilities/blob/2dab2f8/source/trigonometry.ts#L17)*
+*Defined in [trigonometry.ts:17](https://github.com/noobiept/utilities/blob/a95c65d/source/trigonometry.ts#L17)*
 
 Distance between 2 points.
 
@@ -248,7 +248,7 @@ ___
 
 ▸ **circleCircleCollision**(`x1`: number, `y1`: number, `radius1`: number, `x2`: number, `y2`: number, `radius2`: number): *boolean*
 
-*Defined in [collision_detection.ts:25](https://github.com/noobiept/utilities/blob/2dab2f8/source/collision_detection.ts#L25)*
+*Defined in [collision_detection.ts:25](https://github.com/noobiept/utilities/blob/a95c65d/source/collision_detection.ts#L25)*
 
 Detects collision between two circles.
 
@@ -271,7 +271,7 @@ ___
 
 ▸ **circlePointCollision**(`circleX`: number, `circleY`: number, `circleRadius`: number, `pointX`: number, `pointY`: number): *boolean*
 
-*Defined in [collision_detection.ts:49](https://github.com/noobiept/utilities/blob/2dab2f8/source/collision_detection.ts#L49)*
+*Defined in [collision_detection.ts:49](https://github.com/noobiept/utilities/blob/a95c65d/source/collision_detection.ts#L49)*
 
 Detects collision between a circle and a point.
 
@@ -293,7 +293,7 @@ ___
 
 ▸ **createEnum**(`values`: string[], `start?`: undefined | number): *object*
 
-*Defined in [object.ts:16](https://github.com/noobiept/utilities/blob/2dab2f8/source/object.ts#L16)*
+*Defined in [object.ts:16](https://github.com/noobiept/utilities/blob/a95c65d/source/object.ts#L16)*
 
 Enum - A way to associate a string name to a number.
 
@@ -314,7 +314,7 @@ ___
 
 ▸ **deepClone**(`obj`: any): *any*
 
-*Defined in [object.ts:6](https://github.com/noobiept/utilities/blob/2dab2f8/source/object.ts#L6)*
+*Defined in [object.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/object.ts#L6)*
 
 Returns a deep clone/copy of the object.
 
@@ -332,7 +332,7 @@ ___
 
 ▸ **getObject**(`key`: string): *any*
 
-*Defined in [local_storage.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/local_storage.ts#L4)*
+*Defined in [local_storage.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/local_storage.ts#L4)*
 
 Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
 
@@ -350,7 +350,7 @@ ___
 
 ▸ **getRandomFloat**(`min`: number, `max`: number): *number*
 
-*Defined in [number.ts:6](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L6)*
+*Defined in [number.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L6)*
 
 Returns a random float number between `min` and `max` (inclusive).
 
@@ -369,7 +369,7 @@ ___
 
 ▸ **getRandomInt**(`min`: number, `max`: number): *number*
 
-*Defined in [number.ts:17](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L17)*
+*Defined in [number.ts:17](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L17)*
 
 Returns a random integer number between `min` and `max` (inclusive).
 
@@ -388,7 +388,7 @@ ___
 
 ▸ **getSeveralRandomInts**(`min`: number, `max`: number, `howMany`: number): *number[]*
 
-*Defined in [number.ts:28](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L28)*
+*Defined in [number.ts:28](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L28)*
 
 Returns several different random integers, in the range between `min` and `max` (inclusive).
 
@@ -408,7 +408,7 @@ ___
 
 ▸ **getType**(`file`: string): *[FileInfoType](README.md#fileinfotype)*
 
-*Defined in [preload.ts:61](https://github.com/noobiept/utilities/blob/2dab2f8/source/preload.ts#L61)*
+*Defined in [preload.ts:61](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L61)*
 
 Determine the type of a file based on its extension. If it can't figure it out it defaults to type 'text'.
 
@@ -428,7 +428,7 @@ ___
 
 ▸ **isArray**(`element`: any): *boolean*
 
-*Defined in [is_type.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L4)*
+*Defined in [is_type.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L4)*
 
 **Parameters:**
 
@@ -446,7 +446,7 @@ ___
 
 ▸ **isBoolean**(`element`: any): *element is boolean*
 
-*Defined in [is_type.ts:11](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L11)*
+*Defined in [is_type.ts:11](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L11)*
 
 **Parameters:**
 
@@ -464,7 +464,7 @@ ___
 
 ▸ **isFunction**(`element`: any): *boolean*
 
-*Defined in [is_type.ts:22](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L22)*
+*Defined in [is_type.ts:22](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L22)*
 
 **Parameters:**
 
@@ -482,7 +482,7 @@ ___
 
 ▸ **isInteger**(`value`: any): *value is number*
 
-*Defined in [is_type.ts:32](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L32)*
+*Defined in [is_type.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L32)*
 
 **Parameters:**
 
@@ -500,7 +500,7 @@ ___
 
 ▸ **isNumber**(`element`: any): *element is number*
 
-*Defined in [is_type.ts:39](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L39)*
+*Defined in [is_type.ts:39](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L39)*
 
 **Parameters:**
 
@@ -518,7 +518,7 @@ ___
 
 ▸ **isString**(`element`: any): *element is string*
 
-*Defined in [is_type.ts:50](https://github.com/noobiept/utilities/blob/2dab2f8/source/is_type.ts#L50)*
+*Defined in [is_type.ts:50](https://github.com/noobiept/utilities/blob/a95c65d/source/is_type.ts#L50)*
 
 **Parameters:**
 
@@ -536,7 +536,7 @@ ___
 
 ▸ **numberOfDigits**(`theNumber`: number): *number*
 
-*Defined in [number.ts:65](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L65)*
+*Defined in [number.ts:65](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L65)*
 
 Returns the number of digits in a number.
 It doesn't consider the minus signal, nor the dot (in floats) as a digit.
@@ -555,7 +555,7 @@ ___
 
 ▸ **pointBoxCollision**(`pointX`: number, `pointY`: number, `boxX`: number, `boxY`: number, `boxWidth`: number, `boxHeight`: number): *boolean*
 
-*Defined in [collision_detection.ts:72](https://github.com/noobiept/utilities/blob/2dab2f8/source/collision_detection.ts#L72)*
+*Defined in [collision_detection.ts:72](https://github.com/noobiept/utilities/blob/a95c65d/source/collision_detection.ts#L72)*
 
 Detects collision between a point and a box.
 
@@ -578,7 +578,7 @@ ___
 
 ▸ **range**(`start`: number, `end`: number): *number[]*
 
-*Defined in [number.ts:89](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L89)*
+*Defined in [number.ts:89](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L89)*
 
 Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
 
@@ -597,7 +597,7 @@ ___
 
 ▸ **round**(`num`: number, `dec`: number): *number*
 
-*Defined in [number.ts:78](https://github.com/noobiept/utilities/blob/2dab2f8/source/number.ts#L78)*
+*Defined in [number.ts:78](https://github.com/noobiept/utilities/blob/a95c65d/source/number.ts#L78)*
 
 Rounds a number to a specified decimal case.
 
@@ -616,7 +616,7 @@ ___
 
 ▸ **saveObject**(`key`: string, `value`: any): *void*
 
-*Defined in [local_storage.ts:13](https://github.com/noobiept/utilities/blob/2dab2f8/source/local_storage.ts#L13)*
+*Defined in [local_storage.ts:13](https://github.com/noobiept/utilities/blob/a95c65d/source/local_storage.ts#L13)*
 
 Saves in the `localStorage` a json string representation of the `value`.
 
@@ -635,7 +635,7 @@ ___
 
 ▸ **shuffle**(`array`: any[]): *any[]*
 
-*Defined in [array.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/array.ts#L4)*
+*Defined in [array.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/array.ts#L4)*
 
 Shuffle an array.
 
@@ -653,7 +653,7 @@ ___
 
 ▸ **timeToString**(`args`: [TimeToStringArgs](interfaces/timetostringargs.md)): *string*
 
-*Defined in [time_to_string.ts:26](https://github.com/noobiept/utilities/blob/2dab2f8/source/time_to_string.ts#L26)*
+*Defined in [time_to_string.ts:26](https://github.com/noobiept/utilities/blob/a95c65d/source/time_to_string.ts#L26)*
 
 Converts a time (in milliseconds) to a string (with the number of days/hours...).
 The units available are: day/hour/minute/second.
@@ -684,7 +684,7 @@ ___
 
 ▸ **toDegrees**(`radians`: number): *number*
 
-*Defined in [trigonometry.ts:32](https://github.com/noobiept/utilities/blob/2dab2f8/source/trigonometry.ts#L32)*
+*Defined in [trigonometry.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/trigonometry.ts#L32)*
 
 Converts a number in `radians` to `degrees` and returns it.
 
@@ -702,7 +702,7 @@ ___
 
 ▸ **toRadians**(`degrees`: number): *number*
 
-*Defined in [trigonometry.ts:39](https://github.com/noobiept/utilities/blob/2dab2f8/source/trigonometry.ts#L39)*
+*Defined in [trigonometry.ts:39](https://github.com/noobiept/utilities/blob/a95c65d/source/trigonometry.ts#L39)*
 
 Converts a number in `degrees` to `radians` and returns it.
 
@@ -720,7 +720,7 @@ Name | Type |
 
 ### ▪ **KEY_CODE**: *object*
 
-*Defined in [events.ts:4](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L4)*
+*Defined in [events.ts:4](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L4)*
 
 Numeric code of each key.
 
@@ -728,361 +728,361 @@ Numeric code of each key.
 
 • **0**: *number* = 48
 
-*Defined in [events.ts:18](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L18)*
+*Defined in [events.ts:18](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L18)*
 
 ###  1
 
 • **1**: *number* = 49
 
-*Defined in [events.ts:19](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L19)*
+*Defined in [events.ts:19](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L19)*
 
 ###  2
 
 • **2**: *number* = 50
 
-*Defined in [events.ts:20](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L20)*
+*Defined in [events.ts:20](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L20)*
 
 ###  3
 
 • **3**: *number* = 51
 
-*Defined in [events.ts:21](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L21)*
+*Defined in [events.ts:21](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L21)*
 
 ###  4
 
 • **4**: *number* = 52
 
-*Defined in [events.ts:22](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L22)*
+*Defined in [events.ts:22](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L22)*
 
 ###  5
 
 • **5**: *number* = 53
 
-*Defined in [events.ts:23](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L23)*
+*Defined in [events.ts:23](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L23)*
 
 ###  6
 
 • **6**: *number* = 54
 
-*Defined in [events.ts:24](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L24)*
+*Defined in [events.ts:24](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L24)*
 
 ###  7
 
 • **7**: *number* = 55
 
-*Defined in [events.ts:25](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L25)*
+*Defined in [events.ts:25](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L25)*
 
 ###  8
 
 • **8**: *number* = 56
 
-*Defined in [events.ts:26](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L26)*
+*Defined in [events.ts:26](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L26)*
 
 ###  9
 
 • **9**: *number* = 57
 
-*Defined in [events.ts:27](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L27)*
+*Defined in [events.ts:27](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L27)*
 
 ###  a
 
 • **a**: *number* = 65
 
-*Defined in [events.ts:29](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L29)*
+*Defined in [events.ts:29](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L29)*
 
 ###  b
 
 • **b**: *number* = 66
 
-*Defined in [events.ts:30](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L30)*
+*Defined in [events.ts:30](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L30)*
 
 ###  backspace
 
 • **backspace**: *number* = 8
 
-*Defined in [events.ts:5](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L5)*
+*Defined in [events.ts:5](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L5)*
 
 ###  c
 
 • **c**: *number* = 67
 
-*Defined in [events.ts:31](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L31)*
+*Defined in [events.ts:31](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L31)*
 
 ###  d
 
 • **d**: *number* = 68
 
-*Defined in [events.ts:32](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L32)*
+*Defined in [events.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L32)*
 
 ###  del
 
 • **del**: *number* = 46
 
-*Defined in [events.ts:16](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L16)*
+*Defined in [events.ts:16](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L16)*
 
 ###  downArrow
 
 • **downArrow**: *number* = 40
 
-*Defined in [events.ts:15](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L15)*
+*Defined in [events.ts:15](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L15)*
 
 ###  e
 
 • **e**: *number* = 69
 
-*Defined in [events.ts:33](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L33)*
+*Defined in [events.ts:33](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L33)*
 
 ###  end
 
 • **end**: *number* = 35
 
-*Defined in [events.ts:10](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L10)*
+*Defined in [events.ts:10](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L10)*
 
 ###  enter
 
 • **enter**: *number* = 13
 
-*Defined in [events.ts:7](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L7)*
+*Defined in [events.ts:7](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L7)*
 
 ###  esc
 
 • **esc**: *number* = 27
 
-*Defined in [events.ts:8](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L8)*
+*Defined in [events.ts:8](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L8)*
 
 ###  f
 
 • **f**: *number* = 70
 
-*Defined in [events.ts:34](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L34)*
+*Defined in [events.ts:34](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L34)*
 
 ###  f1
 
 • **f1**: *number* = 112
 
-*Defined in [events.ts:56](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L56)*
+*Defined in [events.ts:56](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L56)*
 
 ###  f10
 
 • **f10**: *number* = 121
 
-*Defined in [events.ts:65](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L65)*
+*Defined in [events.ts:65](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L65)*
 
 ###  f11
 
 • **f11**: *number* = 122
 
-*Defined in [events.ts:66](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L66)*
+*Defined in [events.ts:66](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L66)*
 
 ###  f12
 
 • **f12**: *number* = 123
 
-*Defined in [events.ts:67](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L67)*
+*Defined in [events.ts:67](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L67)*
 
 ###  f2
 
 • **f2**: *number* = 113
 
-*Defined in [events.ts:57](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L57)*
+*Defined in [events.ts:57](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L57)*
 
 ###  f3
 
 • **f3**: *number* = 114
 
-*Defined in [events.ts:58](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L58)*
+*Defined in [events.ts:58](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L58)*
 
 ###  f4
 
 • **f4**: *number* = 115
 
-*Defined in [events.ts:59](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L59)*
+*Defined in [events.ts:59](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L59)*
 
 ###  f5
 
 • **f5**: *number* = 116
 
-*Defined in [events.ts:60](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L60)*
+*Defined in [events.ts:60](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L60)*
 
 ###  f6
 
 • **f6**: *number* = 117
 
-*Defined in [events.ts:61](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L61)*
+*Defined in [events.ts:61](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L61)*
 
 ###  f7
 
 • **f7**: *number* = 118
 
-*Defined in [events.ts:62](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L62)*
+*Defined in [events.ts:62](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L62)*
 
 ###  f8
 
 • **f8**: *number* = 119
 
-*Defined in [events.ts:63](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L63)*
+*Defined in [events.ts:63](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L63)*
 
 ###  f9
 
 • **f9**: *number* = 120
 
-*Defined in [events.ts:64](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L64)*
+*Defined in [events.ts:64](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L64)*
 
 ###  g
 
 • **g**: *number* = 71
 
-*Defined in [events.ts:35](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L35)*
+*Defined in [events.ts:35](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L35)*
 
 ###  h
 
 • **h**: *number* = 72
 
-*Defined in [events.ts:36](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L36)*
+*Defined in [events.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L36)*
 
 ###  home
 
 • **home**: *number* = 36
 
-*Defined in [events.ts:11](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L11)*
+*Defined in [events.ts:11](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L11)*
 
 ###  i
 
 • **i**: *number* = 73
 
-*Defined in [events.ts:37](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L37)*
+*Defined in [events.ts:37](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L37)*
 
 ###  j
 
 • **j**: *number* = 74
 
-*Defined in [events.ts:38](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L38)*
+*Defined in [events.ts:38](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L38)*
 
 ###  k
 
 • **k**: *number* = 75
 
-*Defined in [events.ts:39](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L39)*
+*Defined in [events.ts:39](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L39)*
 
 ###  l
 
 • **l**: *number* = 76
 
-*Defined in [events.ts:40](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L40)*
+*Defined in [events.ts:40](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L40)*
 
 ###  leftArrow
 
 • **leftArrow**: *number* = 37
 
-*Defined in [events.ts:12](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L12)*
+*Defined in [events.ts:12](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L12)*
 
 ###  m
 
 • **m**: *number* = 77
 
-*Defined in [events.ts:41](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L41)*
+*Defined in [events.ts:41](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L41)*
 
 ###  n
 
 • **n**: *number* = 78
 
-*Defined in [events.ts:42](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L42)*
+*Defined in [events.ts:42](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L42)*
 
 ###  o
 
 • **o**: *number* = 79
 
-*Defined in [events.ts:43](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L43)*
+*Defined in [events.ts:43](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L43)*
 
 ###  p
 
 • **p**: *number* = 80
 
-*Defined in [events.ts:44](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L44)*
+*Defined in [events.ts:44](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L44)*
 
 ###  q
 
 • **q**: *number* = 81
 
-*Defined in [events.ts:45](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L45)*
+*Defined in [events.ts:45](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L45)*
 
 ###  r
 
 • **r**: *number* = 82
 
-*Defined in [events.ts:46](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L46)*
+*Defined in [events.ts:46](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L46)*
 
 ###  rightArrow
 
 • **rightArrow**: *number* = 39
 
-*Defined in [events.ts:14](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L14)*
+*Defined in [events.ts:14](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L14)*
 
 ###  s
 
 • **s**: *number* = 83
 
-*Defined in [events.ts:47](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L47)*
+*Defined in [events.ts:47](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L47)*
 
 ###  space
 
 • **space**: *number* = 32
 
-*Defined in [events.ts:9](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L9)*
+*Defined in [events.ts:9](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L9)*
 
 ###  t
 
 • **t**: *number* = 84
 
-*Defined in [events.ts:48](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L48)*
+*Defined in [events.ts:48](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L48)*
 
 ###  tab
 
 • **tab**: *number* = 9
 
-*Defined in [events.ts:6](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L6)*
+*Defined in [events.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L6)*
 
 ###  u
 
 • **u**: *number* = 85
 
-*Defined in [events.ts:49](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L49)*
+*Defined in [events.ts:49](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L49)*
 
 ###  upArrow
 
 • **upArrow**: *number* = 38
 
-*Defined in [events.ts:13](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L13)*
+*Defined in [events.ts:13](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L13)*
 
 ###  v
 
 • **v**: *number* = 86
 
-*Defined in [events.ts:50](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L50)*
+*Defined in [events.ts:50](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L50)*
 
 ###  w
 
 • **w**: *number* = 87
 
-*Defined in [events.ts:51](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L51)*
+*Defined in [events.ts:51](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L51)*
 
 ###  x
 
 • **x**: *number* = 88
 
-*Defined in [events.ts:52](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L52)*
+*Defined in [events.ts:52](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L52)*
 
 ###  y
 
 • **y**: *number* = 89
 
-*Defined in [events.ts:53](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L53)*
+*Defined in [events.ts:53](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L53)*
 
 ###  z
 
 • **z**: *number* = 90
 
-*Defined in [events.ts:54](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L54)*
+*Defined in [events.ts:54](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L54)*
 
 ___
 
@@ -1090,7 +1090,7 @@ ___
 
 ### ▪ **MOUSE_CODE**: *object*
 
-*Defined in [events.ts:73](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L73)*
+*Defined in [events.ts:73](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L73)*
 
 Numeric code of each mouse button.
 
@@ -1098,16 +1098,16 @@ Numeric code of each mouse button.
 
 • **left**: *number* = 0
 
-*Defined in [events.ts:74](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L74)*
+*Defined in [events.ts:74](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L74)*
 
 ###  middle
 
 • **middle**: *number* = 1
 
-*Defined in [events.ts:75](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L75)*
+*Defined in [events.ts:75](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L75)*
 
 ###  right
 
 • **right**: *number* = 2
 
-*Defined in [events.ts:76](https://github.com/noobiept/utilities/blob/2dab2f8/source/events.ts#L76)*
+*Defined in [events.ts:76](https://github.com/noobiept/utilities/blob/a95c65d/source/events.ts#L76)*
