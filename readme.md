@@ -1,4 +1,4 @@
-# Javascript Utilities
+# Utilities Library
 
 Random collection of utilities functions/classes.
 
@@ -15,6 +15,33 @@ const timeout = new Timeout();
 timeout.start(() => {
     console.log('Done!');
 }, 1000);
+```
+
+```
+import { Preload } from '@drk4/utilities';
+
+const preload = new Preload();
+const manifest = [
+    { id: 'something', path: 'path/image.png' },
+];
+
+preload.addEventListener('complete', (loaded) => {
+    const image = preload.get('something');
+    // do something with it
+});
+preload.loadManifest(manifest);
+```
+
+```
+import { timeToString } from '@drk4/utilities';
+
+const second = 1000;
+const minute = 60 * second;
+const hour = 60 * minute;
+
+const time = 2 * hour + 30 * minute;
+const text = timeToString({ time });    // "2 hours 30 minutes"
+const daytime = timeToString({ time, format: "daytime" });  // "02:30:00"
 ```
 
 In node you can require it (some things only work on the browser though).
@@ -36,11 +63,11 @@ You can also just load directly with a `script` tag.
 
 You can read the [documentation here.](docs/README.md)
 
-# Build
+# Development
 
 -   `npm install` (install the dependencies)
--   `npm run dev` (run the typescript compiler on watch mode, useful for development)
--   `npm run dev:test` (run a local server (at `localhost:8000/`) where you can run some tests that are used while developing the library components (go to the `/dev/` directory))
+-   `npm run tsc` (run the typescript compiler on watch mode, useful during development)
+-   `npm run dev` (run a dev build and a local server where you can try out some test pages that are used while developing the library components (expects `npm run tsc` to be running))
+-   `npm run test` (run the tests (expects `npm run tsc` to be running))
 -   `npm run build` (builds into the `/build` directory)
--   `npm run test` (run the tests (expects the `/build` to exist, so run the above command first))
 -   `npm run documentation` (build the documentation into the `/docs` directory)

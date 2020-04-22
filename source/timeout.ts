@@ -1,5 +1,3 @@
-import { isFunction, isNumber } from "./is_type";
-
 /**
  * Call a function after a certain time has passed. Uses the `window.setTimeout()`.
  */
@@ -14,16 +12,8 @@ export class Timeout {
 
     /**
      * Starts the timeout. If there was an active timeout already, that one is canceled.
-     *
-     * Throws an `Error` exception if:
-     * - `functionToCall` isn't a function.
-     * - `interval` isn't a number.
      */
-    start(functionToCall: Function, interval: number) {
-        if (!isFunction(functionToCall) || !isNumber(interval)) {
-            throw new Error("Utilities.Timeout.start() -> Invalid arguments.");
-        }
-
+    start(functionToCall: () => void, interval: number) {
         if (this.is_active) {
             this.clear();
         }

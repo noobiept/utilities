@@ -1,19 +1,11 @@
-import { isNumber, isInteger } from "./is_type";
-
 // ---------- Number Utilities ---------- //
 
 /**
  * Returns a random float number between `min` and `max` (inclusive).
- *
- * Throws an `Error` exception if:
- * - either `min` or `max` is not a `number`.
- * - the minimum value is bigger than the maximum.
  */
 export function getRandomFloat(min: number, max: number) {
-    if (!isNumber(min) || !isNumber(max) || min > max) {
-        throw new Error(
-            "Utilities.getRandomFloat() -> Invalid arguments. Either 'min'/'max' are not numbers, or 'min' > 'max'."
-        );
+    if (min > max) {
+        min = max;
     }
 
     return Math.random() * (max - min) + min;
@@ -21,16 +13,10 @@ export function getRandomFloat(min: number, max: number) {
 
 /**
  * Returns a random integer number between `min` and `max` (inclusive).
- *
- * Throws an `Error` exception if:
- * - `min` or `max` isn't an integer.
- * - the minimum value is bigger than the maximum.
  */
 export function getRandomInt(min: number, max: number) {
-    if (!isInteger(min) || !isInteger(max) || min > max) {
-        throw new Error(
-            "Utilities.getRandomInt() -> Invalid arguments. Either 'min'/'max' are not integers, or 'min > 'max'."
-        );
+    if (min > max) {
+        min = max;
     }
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -38,79 +24,74 @@ export function getRandomInt(min: number, max: number) {
 
 /**
  * Returns several different random integers, in the range between `min` and `max` (inclusive).
- *
- * Throws an Error exception if:
- * - `min`, `max` or `howMany` isn't an integer.
- * - the minimum value is bigger than the maximum.
- * - the range is less than the number of integers required.
  */
 export function getSeveralRandomInts(
     min: number,
     max: number,
     howMany: number
 ): number[] {
-    if (
-        !isInteger(min) ||
-        !isInteger(max) ||
-        !isInteger(howMany) ||
-        min > max ||
-        max - min < howMany - 1
-    ) {
-        throw new Error(
-            "Utilities.getSeveralRandomInts() -> Invalid arguments."
-        );
+    if (min > max) {
+        min = max;
     }
 
+    if (howMany < 1) {
+        howMany = 1;
+    }
+
+    const picked = [];
     let count = 0;
-    const numbers: { [key: string]: number } = {};
+    let notPickedYet = range(min, max);
 
     while (count < howMany) {
-        var randomNumber = getRandomInt(min, max);
+        const randomPosition = getRandomInt(0, notPickedYet.length - 1);
+        const selected = notPickedYet.splice(randomPosition, 1)[0];
 
-        if (typeof numbers[randomNumber] === "undefined") {
-            numbers[randomNumber] = randomNumber;
-            count++;
+        picked.push(selected);
+        count++;
+
+        // we've picked all the available numbers, so reset the 'not picked' list so we can keep selecting numbers until we reach the 'howMany' value
+        if (notPickedYet.length === 0) {
+            notPickedYet = range(min, max);
         }
     }
 
-    return Object.values(numbers);
+    return picked;
 }
 
 /**
  * Returns the number of digits in a number.
  * It doesn't consider the minus signal, nor the dot (in floats) as a digit.
- *
- * Throws an `Error` exception if:
- * - the argument is not a number.
  */
 export function numberOfDigits(theNumber: number) {
-    if (!isNumber(theNumber)) {
-        throw new Error(
-            "Utilities.numberOfDigits() -> Invalid 'theNumber' argument. Not a number."
-        );
-    }
-
     if (theNumber < 0) {
         theNumber *= -1;
     }
 
-    var numberString = theNumber.toString().replace(".", "");
+    const numberString = theNumber.toString().replace(".", "");
 
     return numberString.length;
 }
 
 /**
  * Rounds a number to a specified decimal case.
- *
- * Throws an `Error` exception if:
- * - `num` isn't a number.
- * - `dec` isn't an integer.
- * - `dec` is less than 0.
  */
 export function round(num: number, dec: number) {
-    if (!isNumber(num) || !isInteger(dec) || dec < 0) {
-        throw new Error("Utilities.round() -> Invalid arguments.");
+    if (dec < 0) {
+        dec = 0;
     }
 
     return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+}
+
+/**
+ * Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
+ */
+export function range(start: number, end: number) {
+    const list = [];
+
+    for (let a = start; a <= end; a++) {
+        list.push(a);
+    }
+
+    return list;
 }

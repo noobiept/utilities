@@ -22,19 +22,10 @@ export interface TimeToStringArgs {
  * Defaults:
  *     units: 2
  *     format: string
- *
- * Throws an `Error` exception if:
- * - the `time` argument isn't a number.
  */
 export function timeToString(args: TimeToStringArgs) {
-    let { time, units, format } = args;
-
-    // check if we got the required argument
-    if (!isNumber(time)) {
-        throw new Error(
-            "Utilities.timeToString() -> Invalid 'time' argument. Not a number."
-        );
-    }
+    const { time } = args;
+    let { units, format } = args;
 
     // setup the default values if not provided
     if (!isNumber(units) || units < 1) {
@@ -88,7 +79,7 @@ export function timeToString(args: TimeToStringArgs) {
             { name: "second", time: secondsLeft },
         ];
 
-        const constructDate = function(dateTmp: string, numberOf: number) {
+        const constructDate = function (dateTmp: string, numberOf: number) {
             // day to days, hour to hours...
             if (numberOf !== 1) {
                 dateTmp += "s";
@@ -103,7 +94,7 @@ export function timeToString(args: TimeToStringArgs) {
                 break;
             }
 
-            let component = theDate[i];
+            const component = theDate[i];
 
             // only show when there's something relevant to be shown
             // (for example: 0 days 2 hours 2 minutes... no point showing the days part)

@@ -24,7 +24,7 @@
 
 • **body**: *string | HTMLElement*
 
-*Defined in [dialog.ts:10](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L10)*
+*Defined in [dialog.ts:10](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L10)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **id**? : *undefined | string*
 
-*Defined in [dialog.ts:15](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L15)*
+*Defined in [dialog.ts:15](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L15)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **modal**? : *undefined | false | true*
 
-*Defined in [dialog.ts:12](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L12)*
+*Defined in [dialog.ts:12](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L12)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **okButton**? : *undefined | false | true*
 
-*Defined in [dialog.ts:13](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L13)*
+*Defined in [dialog.ts:13](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L13)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **onClose**? : *undefined | function*
 
-*Defined in [dialog.ts:11](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L11)*
+*Defined in [dialog.ts:11](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L11)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 • **position**? : *[DialogPosition](../enums/dialogposition.md)*
 
-*Defined in [dialog.ts:14](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L14)*
+*Defined in [dialog.ts:14](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L14)*
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 • **title**: *string | HTMLElement*
 
-*Defined in [dialog.ts:9](https://github.com/noobiept/utilities/blob/01c66d5/source/dialog.ts#L9)*
+*Defined in [dialog.ts:9](https://github.com/noobiept/utilities/blob/2dab2f8/source/dialog.ts#L9)*

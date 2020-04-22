@@ -1,7 +1,7 @@
 /**
  * Numeric code of each key.
  */
-export var KEY_CODE = {
+export const KEY_CODE = {
     backspace: 8,
     tab: 9,
     enter: 13,
@@ -70,7 +70,7 @@ export var KEY_CODE = {
 /**
  * Numeric code of each mouse button.
  */
-export var MOUSE_CODE = {
+export const MOUSE_CODE = {
     left: 0,
     middle: 1,
     right: 2,
