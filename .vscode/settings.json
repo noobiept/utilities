@@ -9,6 +9,5 @@
         "build/**": true,
         "documentation/**": true,
         "coverage/**": true
-    },
-    "eslint.enable": true
+    }
 }
