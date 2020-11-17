@@ -20,16 +20,21 @@ export interface DialogArgs {
  * Can be a modal (forces user interaction) or not.
  *
  * Usage:
+ *
  *     const dialog = new Dialog({
  *         title: 'the title',
  *         body: 'the body'
  *     });
  *     dialog.open();
+ *
+ * There's some basic styling available, that you can import in case there's no need for custom styling (may require to setup a css/style loader on your build configuration).
+ *
+ *     import "@drk4/utilities/build/dialog.css";
  */
 export class Dialog {
     private container: HTMLElement;
-    private title: HTMLElement;
-    private body: HTMLElement;
+    readonly title: HTMLElement;
+    readonly body: HTMLElement;
     private overlay?: HTMLElement;
     private onClose?: () => void;
     private keyUp?: (event: KeyboardEvent) => void;
