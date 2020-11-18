@@ -1,4 +1,8 @@
-import { Dialog, DialogPosition } from "../build/utilities.esm.js";
+import {
+    Dialog,
+    DialogPosition,
+    DialogButtons,
+} from "../build/utilities.esm.js";
 
 window.onload = function () {
     dialogModal();
@@ -53,7 +57,7 @@ function dialogWithoutButtons() {
     const dialogWithout = new Dialog({
         title: "Without",
         body: "Without buttons",
-        okButton: false,
+        buttons: DialogButtons.none,
         closeOnOverlay: true,
     });
 

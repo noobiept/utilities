@@ -5,13 +5,20 @@ export enum DialogPosition {
     bottomRight,
 }
 
+export enum DialogButtons {
+    none,
+    ok,
+}
+
+export type DialogButtonsArg = DialogButtons | HTMLElement[];
+
 export interface DialogArgs {
     title: string | HTMLElement;
     body: string | HTMLElement;
     onClose?: () => void;
     modal?: boolean;
     closeOnOverlay?: boolean; // close the dialog when clicking on the overlay
-    okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
+    buttons?: DialogButtonsArg; // either one of the included options or pass your own buttons implementation (by default the 'ok' button is included)
     position?: DialogPosition;
 }
 
@@ -35,6 +42,7 @@ export class Dialog {
     readonly container: HTMLElement;
     readonly title: HTMLElement;
     readonly body: HTMLElement;
+    readonly buttons?: HTMLElement;
     private overlay?: HTMLElement;
     private onClose?: () => void;
     private keyUp?: (event: KeyboardEvent) => void;
@@ -49,6 +57,7 @@ export class Dialog {
         this.title = elements.title;
         this.body = elements.body;
         this.opened = false;
+        this.buttons = this.createButtonsList(elements.container, args.buttons);
 
         this.setTitle(args.title);
         this.setBody(args.body);
@@ -89,15 +98,28 @@ export class Dialog {
         container.appendChild(title);
         container.appendChild(body);
 
-        if (args.okButton !== false) {
-            const horizontalRule = this.createHorizontalRule();
-            const buttons = this.createButtons();
+        return { container, title, body };
+    }
 
-            container.appendChild(horizontalRule);
-            container.appendChild(buttons);
+    private createButtonsList(
+        container: HTMLElement,
+        buttonsArg?: DialogButtonsArg
+    ) {
+        if (buttonsArg === DialogButtons.none) {
+            return;
         }
 
-        return { container, title, body };
+        if (typeof buttonsArg === "undefined") {
+            buttonsArg = DialogButtons.ok;
+        }
+
+        const horizontalRule = this.createHorizontalRule();
+        const buttons = this.createButtons(buttonsArg);
+
+        container.appendChild(horizontalRule);
+        container.appendChild(buttons);
+
+        return buttons;
     }
 
     private createHorizontalRule() {
@@ -105,18 +127,23 @@ export class Dialog {
         return horizontalRule;
     }
 
-    private createButtons() {
+    private createButtons(info: DialogButtons | HTMLElement[]) {
         const buttons = document.createElement("div");
-        const ok = document.createElement("button");
 
-        buttons.className = "dialogButtons";
-        ok.className = "dialogButton";
-        ok.innerText = "Ok";
-        ok.onclick = () => {
-            this.close();
-        };
+        if (Array.isArray(info)) {
+            info.forEach((button) => buttons.appendChild(button));
+        } else if (info === DialogButtons.ok) {
+            const ok = document.createElement("button");
 
-        buttons.appendChild(ok);
+            buttons.className = "dialogButtons";
+            ok.className = "dialogButton";
+            ok.innerText = "Ok";
+            ok.onclick = () => {
+                this.close();
+            };
+
+            buttons.appendChild(ok);
+        }
 
         return buttons;
     }
