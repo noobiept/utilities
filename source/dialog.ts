@@ -10,6 +10,7 @@ export interface DialogArgs {
     body: string | HTMLElement;
     onClose?: () => void;
     modal?: boolean;
+    closeOnOverlay?: boolean; // close the dialog when clicking on the overlay
     okButton?: boolean; // if it shows the 'ok' button or not (if not then the dialog can only be closed with code)
     position?: DialogPosition;
 }
@@ -54,7 +55,7 @@ export class Dialog {
 
         // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
         if (args.modal !== false) {
-            this.overlay = this.createOverlay();
+            this.overlay = this.createOverlay(args.closeOnOverlay);
             this.keyUp = this.setupKeyboardShortcuts();
         }
     }
@@ -120,9 +121,15 @@ export class Dialog {
         return buttons;
     }
 
-    private createOverlay() {
+    private createOverlay(closeOnOverlay?: boolean) {
         const overlay = document.createElement("div");
         overlay.className = "dialogOverlay";
+
+        if (closeOnOverlay) {
+            overlay.onclick = () => {
+                this.close();
+            };
+        }
 
         return overlay;
     }

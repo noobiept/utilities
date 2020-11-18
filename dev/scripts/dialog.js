@@ -6,7 +6,8 @@ window.onload = function () {
     dialogWithoutButtons();
     dialogBottomLeft();
     dialogWithHTMLElements();
-    dialogWithID();
+    dialogWithStyling();
+    dialogOverlayClose();
 };
 
 function dialogModal() {
@@ -53,6 +54,7 @@ function dialogWithoutButtons() {
         title: "Without",
         body: "Without buttons",
         okButton: false,
+        closeOnOverlay: true,
     });
 
     openWithout.onclick = () => {
@@ -102,7 +104,7 @@ function dialogWithHTMLElements() {
     };
 }
 
-function dialogWithID() {
+function dialogWithStyling() {
     const openWithStyling = document.getElementById("OpenDialogWithStyling");
     openWithStyling.onclick = () => {
         const dialog = new Dialog({
@@ -110,6 +112,18 @@ function dialogWithID() {
             body: "body",
         });
         dialog.container.id = "Alternate";
+        dialog.open();
+    };
+}
+
+function dialogOverlayClose() {
+    const dialog = document.getElementById("OpenDialogOverlayClose");
+    dialog.onclick = () => {
+        const dialog = new Dialog({
+            title: "title",
+            body: "body",
+            closeOnOverlay: true,
+        });
         dialog.open();
     };
 }

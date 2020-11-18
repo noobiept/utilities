@@ -7,27 +7,33 @@
             #Alternate {
                 color: blue;
             }
+
+            .section {
+                display: flex;
+                margin: 20px 5px;
+                align-items: center;
+            }
+
+            .section > * {
+                margin-right: 10px;
+            }
         </style>
     </head>
     <body>
-        <button id="OpenModalDialog">Open modal dialog</button>
-        <p> Closed <span id="ModalDialogCount">0</span> times. </p>
-
-        <button id="OpenDialog">Open non-modal dialog</button>
-        <p> Closed <span id="DialogCount">0</span> times. </p>
-
-        <button id="OpenDialogWithoutButtons"
-            >Open dialog without buttons</button
-        >
-
-        <button id="OpenDialogBottomLeft"
-            >Open dialog position in the bottom left.</button
-        >
-
-        <button id="OpenDialogHTMLElement"
-            >Open dialog with HTMLElement's as title/body.</button
-        >
-
-        <button id="OpenDialogWithStyling">Open with different styling</button>
+        <div class="section">
+            <button id="OpenModalDialog">Open modal dialog</button>
+            <div>Closed <span id="ModalDialogCount">0</span> times. </div>
+        </div>
+        <div class="section">
+            <button id="OpenDialog">Open non-modal dialog</button>
+            <div>Closed <span id="DialogCount">0</span> times. </div>
+        </div>
+        <div class="section">
+            <button id="OpenDialogWithoutButtons">Open dialog without buttons</button>
+            <button id="OpenDialogBottomLeft">Open dialog position in the bottom left.</button>
+            <button id="OpenDialogHTMLElement">Open dialog with HTMLElement's as title/body.</button>
+            <button id="OpenDialogWithStyling">Open with different styling</button>
+            <button id="OpenDialogOverlayClose">Can close on overlay click</button>
+        </div>
     </body>
 </html>
