@@ -103,13 +103,13 @@ function dialogWithHTMLElements() {
 }
 
 function dialogWithID() {
-    const openWithID = document.getElementById("OpenDialogWithID");
-    openWithID.onclick = () => {
+    const openWithStyling = document.getElementById("OpenDialogWithStyling");
+    openWithStyling.onclick = () => {
         const dialog = new Dialog({
             title: "title",
             body: "body",
-            id: "Alternate",
         });
+        dialog.container.id = "Alternate";
         dialog.open();
     };
 }
