@@ -1,4 +1,4 @@
-import { Dialog, DialogPosition } from "../source/utilities";
+import { Dialog, DialogButtons, DialogPosition } from "../source/utilities";
 
 beforeEach(() => {
     document.body.innerHTML = "";
@@ -247,7 +247,7 @@ describe("Dialog", () => {
             title: "",
             body: "",
             modal: false,
-            okButton: false,
+            buttons: DialogButtons.none,
         });
         dialog.open();
 
@@ -311,8 +311,8 @@ describe("Dialog", () => {
         const dialog = new Dialog({
             title: "title",
             body: "body",
-            id,
         });
+        dialog.container.id = id;
         dialog.open();
 
         const container = document.querySelector(".dialog");
