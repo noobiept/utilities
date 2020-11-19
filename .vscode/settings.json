@@ -9,5 +9,8 @@
         "build/**": true,
         "documentation/**": true,
         "coverage/**": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }
