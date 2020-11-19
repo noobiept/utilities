@@ -70,7 +70,7 @@
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
         "build:copy_css": "cpy ./source/**/*.css ./build",
-        "test": "jest ./tests/ --coverage",
+        "test": "tsc && jest ./tests/ --coverage",
         "test:watch": "jest ./tests/ --coverage --watch",
         "lint": "eslint . --ext .js,.ts",
         "documentation": "npm-run-all --serial documentation:*",
