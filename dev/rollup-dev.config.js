@@ -1,14 +1,16 @@
+import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
 
 module.exports = {
-    input: "source/utilities.js",
+    input: "source/utilities.ts",
     output: [
         {
-            file: "dev/build/utilities.esm.js",
+            dir: "dev/build/",
             format: "esm",
         },
     ],
     plugins: [
+        typescript({ tsconfig: "./dev/tsconfig.dev.json" }),
         copy({
             targets: [{ src: "source/dialog.css", dest: "dev/build/" }],
         }),

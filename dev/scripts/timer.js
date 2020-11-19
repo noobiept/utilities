@@ -1,4 +1,4 @@
-import * as Utilities from "../build/utilities.esm.js";
+import * as Utilities from "../build/utilities.js";
 
 let MESSAGE_TIMEOUT;
 

@@ -1,4 +1,4 @@
-import { Preload } from "../build/utilities.esm.js";
+import { Preload } from "../build/utilities.js";
 
 window.onload = () => {
     const preload = new Preload();
