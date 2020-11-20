@@ -1,4 +1,6 @@
-[Utilities](../README.md) › [Dialog](dialog.md)
+**[Utilities](../README.md)**
+
+> [Globals](../README.md) / Dialog
 
 # Class: Dialog
 
@@ -6,11 +8,16 @@ Create a dialog window with the given message.
 Can be a modal (forces user interaction) or not.
 
 Usage:
+
     const dialog = new Dialog({
         title: 'the title',
         body: 'the body'
     });
     dialog.open();
+
+There's some basic styling available, that you can import in case there's no need for custom styling (may require to setup a css/style loader on your build configuration).
+
+    import "@drk4/utilities/build/dialog.css";
 
 ## Hierarchy
 
@@ -24,264 +31,303 @@ Usage:
 
 ### Properties
 
-* [body](dialog.md#private-body)
-* [container](dialog.md#private-container)
-* [keyUp](dialog.md#private-optional-keyup)
-* [onClose](dialog.md#private-optional-onclose)
-* [opened](dialog.md#private-opened)
-* [overlay](dialog.md#private-optional-overlay)
-* [title](dialog.md#private-title)
+* [body](dialog.md#body)
+* [buttons](dialog.md#buttons)
+* [container](dialog.md#container)
+* [keyUp](dialog.md#keyup)
+* [onClose](dialog.md#onclose)
+* [opened](dialog.md#opened)
+* [overlay](dialog.md#overlay)
+* [title](dialog.md#title)
 
 ### Methods
 
-* [addKeyboardShortcuts](dialog.md#private-addkeyboardshortcuts)
+* [addKeyboardShortcuts](dialog.md#addkeyboardshortcuts)
 * [close](dialog.md#close)
-* [createButtons](dialog.md#private-createbuttons)
-* [createContainer](dialog.md#private-createcontainer)
-* [createHorizontalRule](dialog.md#private-createhorizontalrule)
-* [createOverlay](dialog.md#private-createoverlay)
+* [createButtons](dialog.md#createbuttons)
+* [createButtonsList](dialog.md#createbuttonslist)
+* [createContainer](dialog.md#createcontainer)
+* [createHorizontalRule](dialog.md#createhorizontalrule)
+* [createOverlay](dialog.md#createoverlay)
 * [isOpened](dialog.md#isopened)
 * [open](dialog.md#open)
-* [removeKeyboardShortcuts](dialog.md#private-removekeyboardshortcuts)
+* [removeKeyboardShortcuts](dialog.md#removekeyboardshortcuts)
 * [setBody](dialog.md#setbody)
 * [setTitle](dialog.md#settitle)
-* [setupKeyboardShortcuts](dialog.md#private-setupkeyboardshortcuts)
+* [setupKeyboardShortcuts](dialog.md#setupkeyboardshortcuts)
 * [toggle](dialog.md#toggle)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new Dialog**(`args`: [DialogArgs](../interfaces/dialogargs.md)): *[Dialog](dialog.md)*
+\+ **new Dialog**(`args`: [DialogArgs](../interfaces/dialogargs.md)): [Dialog](dialog.md)
 
-*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L36)*
+*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L49)*
 
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
 `args` | [DialogArgs](../interfaces/dialogargs.md) |
 
-**Returns:** *[Dialog](dialog.md)*
+**Returns:** [Dialog](dialog.md)
 
 ## Properties
 
-### `Private` body
+### body
 
-• **body**: *HTMLElement*
+• `Readonly` **body**: HTMLElement
 
-*Defined in [dialog.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L32)*
-
-___
-
-### `Private` container
-
-• **container**: *HTMLElement*
-
-*Defined in [dialog.ts:30](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L30)*
+*Defined in [dialog.ts:44](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L44)*
 
 ___
 
-### `Private` `Optional` keyUp
+### buttons
 
-• **keyUp**? : *undefined | function*
+• `Optional` `Readonly` **buttons**: HTMLElement
 
-*Defined in [dialog.ts:35](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L35)*
-
-___
-
-### `Private` `Optional` onClose
-
-• **onClose**? : *undefined | function*
-
-*Defined in [dialog.ts:34](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L34)*
+*Defined in [dialog.ts:45](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L45)*
 
 ___
 
-### `Private` opened
+### container
 
-• **opened**: *boolean*
+• `Readonly` **container**: HTMLElement
 
-*Defined in [dialog.ts:36](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L36)*
-
-___
-
-### `Private` `Optional` overlay
-
-• **overlay**? : *HTMLElement*
-
-*Defined in [dialog.ts:33](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L33)*
+*Defined in [dialog.ts:42](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L42)*
 
 ___
 
-### `Private` title
+### keyUp
 
-• **title**: *HTMLElement*
+• `Private` `Optional` **keyUp**: undefined \| (event: KeyboardEvent) => void
 
-*Defined in [dialog.ts:31](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L31)*
+*Defined in [dialog.ts:48](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L48)*
+
+___
+
+### onClose
+
+• `Private` `Optional` **onClose**: undefined \| () => void
+
+*Defined in [dialog.ts:47](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L47)*
+
+___
+
+### opened
+
+• `Private` **opened**: boolean
+
+*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L49)*
+
+___
+
+### overlay
+
+• `Private` `Optional` **overlay**: HTMLElement
+
+*Defined in [dialog.ts:46](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L46)*
+
+___
+
+### title
+
+• `Readonly` **title**: HTMLElement
+
+*Defined in [dialog.ts:43](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L43)*
 
 ## Methods
 
-### `Private` addKeyboardShortcuts
+### addKeyboardShortcuts
 
-▸ **addKeyboardShortcuts**(): *void*
+▸ `Private`**addKeyboardShortcuts**(): void
 
-*Defined in [dialog.ts:143](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L143)*
+*Defined in [dialog.ts:177](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L177)*
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-###  close
+### close
 
-▸ **close**(): *void*
+▸ **close**(): void
 
-*Defined in [dialog.ts:175](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L175)*
+*Defined in [dialog.ts:209](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L209)*
 
 Remove the dialog from the page.
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-### `Private` createButtons
+### createButtons
 
-▸ **createButtons**(): *HTMLDivElement*
+▸ `Private`**createButtons**(`info`: [DialogButtons](../enums/dialogbuttons.md) \| HTMLElement[]): HTMLDivElement
 
-*Defined in [dialog.ts:107](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L107)*
+*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L130)*
 
-**Returns:** *HTMLDivElement*
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`info` | [DialogButtons](../enums/dialogbuttons.md) \| HTMLElement[] |
+
+**Returns:** HTMLDivElement
 
 ___
 
-### `Private` createContainer
+### createButtonsList
 
-▸ **createContainer**(`args`: [DialogArgs](../interfaces/dialogargs.md)): *object*
+▸ `Private`**createButtonsList**(`container`: HTMLElement, `buttonsArg?`: [DialogButtonsArg](../README.md#dialogbuttonsarg)): undefined \| HTMLDivElement
 
-*Defined in [dialog.ts:58](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L58)*
+*Defined in [dialog.ts:104](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L104)*
 
-**Parameters:**
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`container` | HTMLElement |
+`buttonsArg?` | [DialogButtonsArg](../README.md#dialogbuttonsarg) |
+
+**Returns:** undefined \| HTMLDivElement
+
+___
+
+### createContainer
+
+▸ `Private`**createContainer**(`args`: [DialogArgs](../interfaces/dialogargs.md)): object
+
+*Defined in [dialog.ts:72](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L72)*
+
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
 `args` | [DialogArgs](../interfaces/dialogargs.md) |
 
-**Returns:** *object*
+**Returns:** object
 
-* **body**: *HTMLDivElement*
-
-* **container**: *HTMLDivElement*
-
-* **title**: *HTMLDivElement*
-
-___
-
-### `Private` createHorizontalRule
-
-▸ **createHorizontalRule**(): *HTMLHRElement*
-
-*Defined in [dialog.ts:102](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L102)*
-
-**Returns:** *HTMLHRElement*
+Name | Type |
+------ | ------ |
+`body` | HTMLDivElement |
+`container` | HTMLDivElement |
+`title` | HTMLDivElement |
 
 ___
 
-### `Private` createOverlay
+### createHorizontalRule
 
-▸ **createOverlay**(): *HTMLDivElement*
+▸ `Private`**createHorizontalRule**(): HTMLHRElement
 
-*Defined in [dialog.ts:123](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L123)*
+*Defined in [dialog.ts:125](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L125)*
 
-**Returns:** *HTMLDivElement*
+**Returns:** HTMLHRElement
 
 ___
 
-###  isOpened
+### createOverlay
 
-▸ **isOpened**(): *boolean*
+▸ `Private`**createOverlay**(`closeOnOverlay?`: undefined \| false \| true): HTMLDivElement
 
-*Defined in [dialog.ts:200](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L200)*
+*Defined in [dialog.ts:151](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L151)*
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`closeOnOverlay?` | undefined \| false \| true |
+
+**Returns:** HTMLDivElement
+
+___
+
+### isOpened
+
+▸ **isOpened**(): boolean
+
+*Defined in [dialog.ts:234](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L234)*
 
 Check if the dialog is opened or not.
 
-**Returns:** *boolean*
+**Returns:** boolean
 
 ___
 
-###  open
+### open
 
-▸ **open**(): *void*
+▸ **open**(): void
 
-*Defined in [dialog.ts:158](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L158)*
+*Defined in [dialog.ts:192](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L192)*
 
 Add the dialog to the page.
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-### `Private` removeKeyboardShortcuts
+### removeKeyboardShortcuts
 
-▸ **removeKeyboardShortcuts**(): *void*
+▸ `Private`**removeKeyboardShortcuts**(): void
 
-*Defined in [dialog.ts:149](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L149)*
+*Defined in [dialog.ts:183](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L183)*
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-###  setBody
+### setBody
 
-▸ **setBody**(`content`: string | HTMLElement): *void*
+▸ **setBody**(`content`: string \| HTMLElement): void
 
-*Defined in [dialog.ts:229](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L229)*
+*Defined in [dialog.ts:264](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L264)*
 
 Change the body of the dialog.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`content` | string &#124; HTMLElement |
+`content` | string \| HTMLElement |
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-###  setTitle
+### setTitle
 
-▸ **setTitle**(`content`: string | HTMLElement): *void*
+▸ **setTitle**(`content`: string \| HTMLElement): void
 
-*Defined in [dialog.ts:218](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L218)*
+*Defined in [dialog.ts:252](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L252)*
 
 Change the title of the dialog.
 
-**Parameters:**
+#### Parameters:
 
 Name | Type |
 ------ | ------ |
-`content` | string &#124; HTMLElement |
+`content` | string \| HTMLElement |
 
-**Returns:** *void*
-
-___
-
-### `Private` setupKeyboardShortcuts
-
-▸ **setupKeyboardShortcuts**(): *keyUp*
-
-*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L130)*
-
-**Returns:** *keyUp*
+**Returns:** void
 
 ___
 
-###  toggle
+### setupKeyboardShortcuts
 
-▸ **toggle**(): *void*
+▸ `Private`**setupKeyboardShortcuts**(): keyUp
 
-*Defined in [dialog.ts:207](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L207)*
+*Defined in [dialog.ts:164](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L164)*
+
+**Returns:** keyUp
+
+___
+
+### toggle
+
+▸ **toggle**(): void
+
+*Defined in [dialog.ts:241](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L241)*
 
 Toggle between the open/close state.
 
-**Returns:** *void*
+**Returns:** void

@@ -1,4 +1,6 @@
-[Utilities](../README.md) › [DialogArgs](dialogargs.md)
+**[Utilities](../README.md)**
+
+> [Globals](../README.md) / DialogArgs
 
 # Interface: DialogArgs
 
@@ -11,65 +13,65 @@
 ### Properties
 
 * [body](dialogargs.md#body)
-* [id](dialogargs.md#optional-id)
-* [modal](dialogargs.md#optional-modal)
-* [okButton](dialogargs.md#optional-okbutton)
-* [onClose](dialogargs.md#optional-onclose)
-* [position](dialogargs.md#optional-position)
+* [buttons](dialogargs.md#buttons)
+* [closeOnOverlay](dialogargs.md#closeonoverlay)
+* [modal](dialogargs.md#modal)
+* [onClose](dialogargs.md#onclose)
+* [position](dialogargs.md#position)
 * [title](dialogargs.md#title)
 
 ## Properties
 
-###  body
+### body
 
-• **body**: *string | HTMLElement*
+•  **body**: string \| HTMLElement
 
-*Defined in [dialog.ts:10](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L10)*
-
-___
-
-### `Optional` id
-
-• **id**? : *undefined | string*
-
-*Defined in [dialog.ts:15](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L15)*
+*Defined in [dialog.ts:17](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L17)*
 
 ___
 
-### `Optional` modal
+### buttons
 
-• **modal**? : *undefined | false | true*
+• `Optional` **buttons**: [DialogButtonsArg](../README.md#dialogbuttonsarg)
 
-*Defined in [dialog.ts:12](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L12)*
-
-___
-
-### `Optional` okButton
-
-• **okButton**? : *undefined | false | true*
-
-*Defined in [dialog.ts:13](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L13)*
+*Defined in [dialog.ts:21](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L21)*
 
 ___
 
-### `Optional` onClose
+### closeOnOverlay
 
-• **onClose**? : *undefined | function*
+• `Optional` **closeOnOverlay**: undefined \| false \| true
 
-*Defined in [dialog.ts:11](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L11)*
-
-___
-
-### `Optional` position
-
-• **position**? : *[DialogPosition](../enums/dialogposition.md)*
-
-*Defined in [dialog.ts:14](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L14)*
+*Defined in [dialog.ts:20](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L20)*
 
 ___
 
-###  title
+### modal
 
-• **title**: *string | HTMLElement*
+• `Optional` **modal**: undefined \| false \| true
 
-*Defined in [dialog.ts:9](https://github.com/noobiept/utilities/blob/a95c65d/source/dialog.ts#L9)*
+*Defined in [dialog.ts:19](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L19)*
+
+___
+
+### onClose
+
+• `Optional` **onClose**: undefined \| () => void
+
+*Defined in [dialog.ts:18](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L18)*
+
+___
+
+### position
+
+• `Optional` **position**: [DialogPosition](../enums/dialogposition.md)
+
+*Defined in [dialog.ts:22](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L22)*
+
+___
+
+### title
+
+•  **title**: string \| HTMLElement
+
+*Defined in [dialog.ts:16](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L16)*

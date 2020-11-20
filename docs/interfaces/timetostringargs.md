@@ -1,4 +1,6 @@
-[Utilities](../README.md) › [TimeToStringArgs](timetostringargs.md)
+**[Utilities](../README.md)**
+
+> [Globals](../README.md) / TimeToStringArgs
 
 # Interface: TimeToStringArgs
 
@@ -10,30 +12,30 @@
 
 ### Properties
 
-* [format](timetostringargs.md#optional-format)
+* [format](timetostringargs.md#format)
 * [time](timetostringargs.md#time)
-* [units](timetostringargs.md#optional-units)
+* [units](timetostringargs.md#units)
 
 ## Properties
 
-### `Optional` format
+### format
 
-• **format**? : *"daytime" | "string"*
+• `Optional` **format**: \"daytime\" \| \"string\"
 
-*Defined in [time_to_string.ts:7](https://github.com/noobiept/utilities/blob/a95c65d/source/time_to_string.ts#L7)*
-
-___
-
-###  time
-
-• **time**: *number*
-
-*Defined in [time_to_string.ts:5](https://github.com/noobiept/utilities/blob/a95c65d/source/time_to_string.ts#L5)*
+*Defined in [time_to_string.ts:7](https://github.com/noobiept/utilities/blob/22280e5/source/time_to_string.ts#L7)*
 
 ___
 
-### `Optional` units
+### time
 
-• **units**? : *undefined | number*
+•  **time**: number
 
-*Defined in [time_to_string.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/time_to_string.ts#L6)*
+*Defined in [time_to_string.ts:5](https://github.com/noobiept/utilities/blob/22280e5/source/time_to_string.ts#L5)*
+
+___
+
+### units
+
+• `Optional` **units**: undefined \| number
+
+*Defined in [time_to_string.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/time_to_string.ts#L6)*

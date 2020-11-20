@@ -1,4 +1,6 @@
-[Utilities](../README.md) › [PreloadArgs](preloadargs.md)
+**[Utilities](../README.md)**
+
+> [Globals](../README.md) / PreloadArgs
 
 # Interface: PreloadArgs
 
@@ -10,12 +12,12 @@
 
 ### Properties
 
-* [saveGlobal](preloadargs.md#optional-saveglobal)
+* [saveGlobal](preloadargs.md#saveglobal)
 
 ## Properties
 
-### `Optional` saveGlobal
+### saveGlobal
 
-• **saveGlobal**? : *undefined | false | true*
+• `Optional` **saveGlobal**: undefined \| false \| true
 
-*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/a95c65d/source/preload.ts#L48)*
+*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L48)*

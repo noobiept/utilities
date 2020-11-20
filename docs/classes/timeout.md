@@ -1,4 +1,6 @@
-[Utilities](../README.md) › [Timeout](timeout.md)
+**[Utilities](../README.md)**
+
+> [Globals](../README.md) / Timeout
 
 # Class: Timeout
 
@@ -16,8 +18,8 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 ### Properties
 
-* [id](timeout.md#private-id)
-* [is_active](timeout.md#private-is_active)
+* [id](timeout.md#id)
+* [is\_active](timeout.md#is_active)
 
 ### Methods
 
@@ -27,70 +29,69 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new Timeout**(): *[Timeout](timeout.md)*
+\+ **new Timeout**(): [Timeout](timeout.md)
 
-*Defined in [timeout.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L6)*
+*Defined in [timeout.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L6)*
 
-**Returns:** *[Timeout](timeout.md)*
+**Returns:** [Timeout](timeout.md)
 
 ## Properties
 
-### `Private` id
+### id
 
-• **id**: *number*
+• `Private` **id**: number
 
-*Defined in [timeout.ts:6](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L6)*
+*Defined in [timeout.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L6)*
 
 ___
 
-### `Private` is_active
+### is\_active
 
-• **is_active**: *boolean*
+• `Private` **is\_active**: boolean
 
-*Defined in [timeout.ts:5](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L5)*
+*Defined in [timeout.ts:5](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L5)*
 
 ## Methods
 
-###  clear
+### clear
 
-▸ **clear**(): *void*
+▸ **clear**(): void
 
-*Defined in [timeout.ts:32](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L32)*
+*Defined in [timeout.ts:32](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L32)*
 
 Cancels the timeout.
 
-**Returns:** *void*
+**Returns:** void
 
 ___
 
-###  isActive
+### isActive
 
-▸ **isActive**(): *boolean*
+▸ **isActive**(): boolean
 
-*Defined in [timeout.ts:40](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L40)*
+*Defined in [timeout.ts:40](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L40)*
 
 Returns whether the timeout is active or not.
 
-**Returns:** *boolean*
+**Returns:** boolean
 
 ___
 
-###  start
+### start
 
-▸ **start**(`functionToCall`: function, `interval`: number): *void*
+▸ **start**(`functionToCall`: () => void, `interval`: number): void
 
-*Defined in [timeout.ts:16](https://github.com/noobiept/utilities/blob/a95c65d/source/timeout.ts#L16)*
+*Defined in [timeout.ts:16](https://github.com/noobiept/utilities/blob/22280e5/source/timeout.ts#L16)*
 
 Starts the timeout. If there was an active timeout already, that one is canceled.
 
-**Parameters:**
+#### Parameters:
 
-▪ **functionToCall**: *function*
+Name | Type |
+------ | ------ |
+`functionToCall` | () => void |
+`interval` | number |
 
-▸ (): *void*
-
-▪ **interval**: *number*
-
-**Returns:** *void*
+**Returns:** void
