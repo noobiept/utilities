@@ -44,6 +44,20 @@ const text = timeToString({ time });    // "2 hours 30 minutes"
 const daytime = timeToString({ time, format: "daytime" });  // "02:30:00"
 ```
 
+```
+import { Dialog } from '@drk4/utilities';
+import "@drk4/utilities/build/dialog.css";  // optional styling
+
+const body = document.createElement('div');
+body.innerHTML = "Some HTML elements here";
+
+const dialog = new Dialog({
+    title: 'The Title', // title/body can be either a string or an HTMLElement
+    body,
+});
+dialog.open();
+```
+
 In node you can require it (some things only work on the browser though).
 
 ```
