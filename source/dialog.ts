@@ -251,6 +251,7 @@ export class Dialog {
      */
     setTitle(content: string | HTMLElement) {
         if (content instanceof HTMLElement) {
+            this.title.innerHTML = "";
             this.title.appendChild(content);
         } else {
             this.title.innerHTML = content;
@@ -262,6 +263,7 @@ export class Dialog {
      */
     setBody(content: string | HTMLElement) {
         if (content instanceof HTMLElement) {
+            this.body.innerHTML = "";
             this.body.appendChild(content);
         } else {
             this.body.innerHTML = content;
