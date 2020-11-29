@@ -318,48 +318,4 @@ describe("Dialog", () => {
         const container = document.querySelector(".dialog");
         expect(container.id).toBe(id);
     });
-
-    /*
-    test("If the dialog is correctly removed after pressing the 'enter' key.", (done) => {
-        expect.assertions(3);
-
-        const onClose = jest.fn(() => {
-            expect(onClose).toBeCalled();
-            expect(document.body.innerHTML).toBe("");
-            done();
-        });
-
-        // test the 'enter' key
-        createDialog({
-            title: "",
-            body: "",
-            onClose,
-        });
-        expect(document.body.innerHTML).not.toBe("");
-
-        const escape = new KeyboardEvent("keyup", { key: "Enter" });
-        document.dispatchEvent(escape);
-    });
-
-    test("If the dialog is correctly removed after pressing the 'escape' key.", (done) => {
-        expect.assertions(3);
-
-        const onClose = jest.fn(() => {
-            expect(onClose).toBeCalled();
-            expect(document.body.innerHTML).toBe("");
-            done();
-        });
-
-        // test the 'escape' key
-        createDialog({
-            title: "",
-            body: "",
-            onClose,
-        });
-        expect(document.body.innerHTML).not.toBe("");
-
-        const escape = new KeyboardEvent("keyup", { key: "Escape" });
-        document.dispatchEvent(escape);
-    });
-    */
 });
