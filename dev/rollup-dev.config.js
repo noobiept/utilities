@@ -12,7 +12,7 @@ module.exports = {
     plugins: [
         typescript({ tsconfig: "./dev/tsconfig.dev.json" }),
         copy({
-            targets: [{ src: "source/dialog.css", dest: "dev/build/" }],
+            targets: [{ src: "source/**/*.css", dest: "dev/build/" }],
         }),
     ],
 };

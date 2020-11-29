@@ -1,4 +1,5 @@
 import { terser } from "rollup-plugin-terser";
+import copy from "rollup-plugin-copy";
 
 module.exports = {
     input: "source/utilities.js",
@@ -17,5 +18,10 @@ module.exports = {
             format: "esm",
         },
     ],
-    plugins: [terser()],
+    plugins: [
+        terser(),
+        copy({
+            targets: [{ src: "source/**/*.css", dest: "build/" }],
+        }),
+    ],
 };
