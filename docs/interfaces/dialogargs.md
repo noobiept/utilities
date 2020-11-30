@@ -26,7 +26,7 @@
 
 •  **body**: string \| HTMLElement
 
-*Defined in [dialog.ts:17](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L17)*
+*Defined in [dialog.ts:17](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L17)*
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • `Optional` **buttons**: [DialogButtonsArg](../README.md#dialogbuttonsarg)
 
-*Defined in [dialog.ts:21](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L21)*
+*Defined in [dialog.ts:21](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L21)*
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 • `Optional` **closeOnOverlay**: undefined \| false \| true
 
-*Defined in [dialog.ts:20](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L20)*
+*Defined in [dialog.ts:20](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L20)*
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 • `Optional` **modal**: undefined \| false \| true
 
-*Defined in [dialog.ts:19](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L19)*
+*Defined in [dialog.ts:19](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L19)*
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 • `Optional` **onClose**: undefined \| () => void
 
-*Defined in [dialog.ts:18](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L18)*
+*Defined in [dialog.ts:18](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L18)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • `Optional` **position**: [DialogPosition](../enums/dialogposition.md)
 
-*Defined in [dialog.ts:22](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L22)*
+*Defined in [dialog.ts:22](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L22)*
 
 ___
 
@@ -74,4 +74,4 @@ ___
 
 •  **title**: string \| HTMLElement
 
-*Defined in [dialog.ts:16](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L16)*
+*Defined in [dialog.ts:16](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L16)*

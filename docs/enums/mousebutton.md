@@ -22,7 +22,7 @@ Numeric code of each mouse button.
 
 •  **back**:  = 3
 
-*Defined in [events.ts:8](https://github.com/noobiept/utilities/blob/22280e5/source/events.ts#L8)*
+*Defined in [events.ts:8](https://github.com/noobiept/utilities/blob/4235ba9/source/events.ts#L8)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 •  **forward**:  = 4
 
-*Defined in [events.ts:9](https://github.com/noobiept/utilities/blob/22280e5/source/events.ts#L9)*
+*Defined in [events.ts:9](https://github.com/noobiept/utilities/blob/4235ba9/source/events.ts#L9)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 •  **left**:  = 0
 
-*Defined in [events.ts:5](https://github.com/noobiept/utilities/blob/22280e5/source/events.ts#L5)*
+*Defined in [events.ts:5](https://github.com/noobiept/utilities/blob/4235ba9/source/events.ts#L5)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 •  **middle**:  = 1
 
-*Defined in [events.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/events.ts#L6)*
+*Defined in [events.ts:6](https://github.com/noobiept/utilities/blob/4235ba9/source/events.ts#L6)*
 
 ___
 
@@ -54,4 +54,4 @@ ___
 
 •  **right**:  = 2
 
-*Defined in [events.ts:7](https://github.com/noobiept/utilities/blob/22280e5/source/events.ts#L7)*
+*Defined in [events.ts:7](https://github.com/noobiept/utilities/blob/4235ba9/source/events.ts#L7)*

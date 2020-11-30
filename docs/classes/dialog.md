@@ -63,7 +63,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 \+ **new Dialog**(`args`: [DialogArgs](../interfaces/dialogargs.md)): [Dialog](dialog.md)
 
-*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L49)*
+*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L49)*
 
 #### Parameters:
 
@@ -79,7 +79,7 @@ Name | Type |
 
 • `Readonly` **body**: HTMLElement
 
-*Defined in [dialog.ts:44](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L44)*
+*Defined in [dialog.ts:44](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L44)*
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • `Optional` `Readonly` **buttons**: HTMLElement
 
-*Defined in [dialog.ts:45](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L45)*
+*Defined in [dialog.ts:45](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L45)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • `Readonly` **container**: HTMLElement
 
-*Defined in [dialog.ts:42](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L42)*
+*Defined in [dialog.ts:42](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L42)*
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 • `Private` `Optional` **keyUp**: undefined \| (event: KeyboardEvent) => void
 
-*Defined in [dialog.ts:48](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L48)*
+*Defined in [dialog.ts:48](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L48)*
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 • `Private` `Optional` **onClose**: undefined \| () => void
 
-*Defined in [dialog.ts:47](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L47)*
+*Defined in [dialog.ts:47](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L47)*
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 • `Private` **opened**: boolean
 
-*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L49)*
+*Defined in [dialog.ts:49](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L49)*
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 • `Private` `Optional` **overlay**: HTMLElement
 
-*Defined in [dialog.ts:46](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L46)*
+*Defined in [dialog.ts:46](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L46)*
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 • `Readonly` **title**: HTMLElement
 
-*Defined in [dialog.ts:43](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L43)*
+*Defined in [dialog.ts:43](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L43)*
 
 ## Methods
 
@@ -143,7 +143,7 @@ ___
 
 ▸ `Private`**addKeyboardShortcuts**(): void
 
-*Defined in [dialog.ts:177](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L177)*
+*Defined in [dialog.ts:177](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L177)*
 
 **Returns:** void
 
@@ -153,7 +153,7 @@ ___
 
 ▸ **close**(): void
 
-*Defined in [dialog.ts:209](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L209)*
+*Defined in [dialog.ts:209](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L209)*
 
 Remove the dialog from the page.
 
@@ -165,7 +165,7 @@ ___
 
 ▸ `Private`**createButtons**(`info`: [DialogButtons](../enums/dialogbuttons.md) \| HTMLElement[]): HTMLDivElement
 
-*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L130)*
+*Defined in [dialog.ts:130](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L130)*
 
 #### Parameters:
 
@@ -181,7 +181,7 @@ ___
 
 ▸ `Private`**createButtonsList**(`container`: HTMLElement, `buttonsArg?`: [DialogButtonsArg](../README.md#dialogbuttonsarg)): undefined \| HTMLDivElement
 
-*Defined in [dialog.ts:104](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L104)*
+*Defined in [dialog.ts:104](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L104)*
 
 #### Parameters:
 
@@ -198,7 +198,7 @@ ___
 
 ▸ `Private`**createContainer**(`args`: [DialogArgs](../interfaces/dialogargs.md)): object
 
-*Defined in [dialog.ts:72](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L72)*
+*Defined in [dialog.ts:72](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L72)*
 
 #### Parameters:
 
@@ -220,7 +220,7 @@ ___
 
 ▸ `Private`**createHorizontalRule**(): HTMLHRElement
 
-*Defined in [dialog.ts:125](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L125)*
+*Defined in [dialog.ts:125](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L125)*
 
 **Returns:** HTMLHRElement
 
@@ -230,7 +230,7 @@ ___
 
 ▸ `Private`**createOverlay**(`closeOnOverlay?`: undefined \| false \| true): HTMLDivElement
 
-*Defined in [dialog.ts:151](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L151)*
+*Defined in [dialog.ts:151](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L151)*
 
 #### Parameters:
 
@@ -246,7 +246,7 @@ ___
 
 ▸ **isOpened**(): boolean
 
-*Defined in [dialog.ts:234](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L234)*
+*Defined in [dialog.ts:234](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L234)*
 
 Check if the dialog is opened or not.
 
@@ -258,7 +258,7 @@ ___
 
 ▸ **open**(): void
 
-*Defined in [dialog.ts:192](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L192)*
+*Defined in [dialog.ts:192](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L192)*
 
 Add the dialog to the page.
 
@@ -270,7 +270,7 @@ ___
 
 ▸ `Private`**removeKeyboardShortcuts**(): void
 
-*Defined in [dialog.ts:183](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L183)*
+*Defined in [dialog.ts:183](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L183)*
 
 **Returns:** void
 
@@ -280,7 +280,7 @@ ___
 
 ▸ **setBody**(`content`: string \| HTMLElement): void
 
-*Defined in [dialog.ts:264](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L264)*
+*Defined in [dialog.ts:264](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L264)*
 
 Change the body of the dialog.
 
@@ -298,7 +298,7 @@ ___
 
 ▸ **setTitle**(`content`: string \| HTMLElement): void
 
-*Defined in [dialog.ts:252](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L252)*
+*Defined in [dialog.ts:252](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L252)*
 
 Change the title of the dialog.
 
@@ -316,7 +316,7 @@ ___
 
 ▸ `Private`**setupKeyboardShortcuts**(): keyUp
 
-*Defined in [dialog.ts:164](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L164)*
+*Defined in [dialog.ts:164](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L164)*
 
 **Returns:** keyUp
 
@@ -326,7 +326,7 @@ ___
 
 ▸ **toggle**(): void
 
-*Defined in [dialog.ts:241](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L241)*
+*Defined in [dialog.ts:241](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L241)*
 
 Toggle between the open/close state.
 

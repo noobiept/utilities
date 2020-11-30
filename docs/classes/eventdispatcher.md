@@ -57,7 +57,7 @@ Name | Type |
 
 \+ **new EventDispatcher**(): [EventDispatcher](eventdispatcher.md)
 
-*Defined in [event_dispatcher.ts:22](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L22)*
+*Defined in [event_dispatcher.ts:22](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L22)*
 
 **Returns:** [EventDispatcher](eventdispatcher.md)
 
@@ -67,7 +67,7 @@ Name | Type |
 
 • `Private` **\_listeners**: {}
 
-*Defined in [event_dispatcher.ts:20](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L20)*
+*Defined in [event_dispatcher.ts:20](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L20)*
 
 ## Methods
 
@@ -75,7 +75,7 @@ Name | Type |
 
 ▸ **addEventListener**(`type`: EventType, `listener`: (data: any) => void): boolean
 
-*Defined in [event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L36)*
+*Defined in [event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L36)*
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
@@ -97,7 +97,7 @@ ___
 
 ▸ **dispatchEvent**(`type`: EventType, `data?`: any): void
 
-*Defined in [event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L89)*
+*Defined in [event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L89)*
 
 Dispatches an event, which will trigger the listeners of that event.
 
@@ -116,7 +116,7 @@ ___
 
 ▸ **hasListeners**(`type`: EventType): boolean
 
-*Defined in [event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L105)*
+*Defined in [event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L105)*
 
 Check if there are listeners to a particular event type.
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **removeAllEventListeners**(): void
 
-*Defined in [event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L79)*
+*Defined in [event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L79)*
 
 Remove all the event listeners.
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **removeEventListener**(`type`: EventType, `listener?`: undefined \| (data: any) => any): boolean
 
-*Defined in [event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/22280e5/source/event_dispatcher.ts#L56)*
+*Defined in [event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/4235ba9/source/event_dispatcher.ts#L56)*
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 

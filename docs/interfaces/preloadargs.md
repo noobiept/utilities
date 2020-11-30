@@ -20,4 +20,4 @@
 
 • `Optional` **saveGlobal**: undefined \| false \| true
 
-*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L48)*
+*Defined in [preload.ts:48](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L48)*

@@ -75,7 +75,7 @@
 
 Ƭ  **DialogButtonsArg**: [DialogButtons](enums/dialogbuttons.md) \| HTMLElement[]
 
-*Defined in [dialog.ts:13](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L13)*
+*Defined in [dialog.ts:13](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L13)*
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 Ƭ  **FileInfoType**: keyof *typeof* [FileInfo](README.md#fileinfo)
 
-*Defined in [preload.ts:45](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L45)*
+*Defined in [preload.ts:45](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L45)*
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 Ƭ  **ManifestData**: { id: string ; path: string ; type?: [FileInfoType](README.md#fileinfotype)  }[]
 
-*Defined in [preload.ts:8](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L8)*
+*Defined in [preload.ts:8](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L8)*
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 Ƭ  **PreloadData**: { [id:string]: any;  }
 
-*Defined in [preload.ts:4](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L4)*
+*Defined in [preload.ts:4](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L4)*
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 Ƭ  **PreloadEvent**: \"complete\" \| \"error\" \| \"abort\" \| \"progress\" \| \"fileload\"
 
-*Defined in [preload.ts:14](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L14)*
+*Defined in [preload.ts:14](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L14)*
 
 ## Variables
 
@@ -115,7 +115,7 @@ ___
 
 • `Const` **DATA**: [PreloadData](README.md#preloaddata)
 
-*Defined in [preload.ts:53](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L53)*
+*Defined in [preload.ts:53](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L53)*
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 • `Const` **FileInfo**: object = { image: { extensions: ["png", "jpg", "jpeg"], responseType: "blob", }, json: { extensions: ["json"], responseType: "json", }, text: { extensions: ["txt"], responseType: "text", }, audio\_ogg: { extensions: ["ogg"], responseType: "arraybuffer", }, audio\_mp3: { extensions: ["mp3"], responseType: "arraybuffer", },} as const
 
-*Defined in [preload.ts:22](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L22)*
+*Defined in [preload.ts:22](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L22)*
 
 #### Type declaration:
 
@@ -141,7 +141,7 @@ Name | Type |
 
 ▸ **boxBoxCollision**(`oneX`: number, `oneY`: number, `oneWidth`: number, `oneHeight`: number, `twoX`: number, `twoY`: number, `twoWidth`: number, `twoHeight`: number): boolean
 
-*Defined in [collision_detection.ts:4](https://github.com/noobiept/utilities/blob/22280e5/source/collision_detection.ts#L4)*
+*Defined in [collision_detection.ts:4](https://github.com/noobiept/utilities/blob/4235ba9/source/collision_detection.ts#L4)*
 
 Detects collision between 2 boxes.
 
@@ -166,7 +166,7 @@ ___
 
 ▸ **calculateAngle**(`aX`: number, `aY`: number, `bX`: number, `bY`: number): number
 
-*Defined in [trigonometry.ts:5](https://github.com/noobiept/utilities/blob/22280e5/source/trigonometry.ts#L5)*
+*Defined in [trigonometry.ts:5](https://github.com/noobiept/utilities/blob/4235ba9/source/trigonometry.ts#L5)*
 
 Returns the angle between 2 points in radians.
 Positive in clockwise direction.
@@ -188,7 +188,7 @@ ___
 
 ▸ **calculateDistance**(`aX`: number, `aY`: number, `bX`: number, `bY`: number): number
 
-*Defined in [trigonometry.ts:17](https://github.com/noobiept/utilities/blob/22280e5/source/trigonometry.ts#L17)*
+*Defined in [trigonometry.ts:17](https://github.com/noobiept/utilities/blob/4235ba9/source/trigonometry.ts#L17)*
 
 Distance between 2 points.
 
@@ -209,7 +209,7 @@ ___
 
 ▸ **circleCircleCollision**(`x1`: number, `y1`: number, `radius1`: number, `x2`: number, `y2`: number, `radius2`: number): boolean
 
-*Defined in [collision_detection.ts:25](https://github.com/noobiept/utilities/blob/22280e5/source/collision_detection.ts#L25)*
+*Defined in [collision_detection.ts:25](https://github.com/noobiept/utilities/blob/4235ba9/source/collision_detection.ts#L25)*
 
 Detects collision between two circles.
 
@@ -232,7 +232,7 @@ ___
 
 ▸ **circlePointCollision**(`circleX`: number, `circleY`: number, `circleRadius`: number, `pointX`: number, `pointY`: number): boolean
 
-*Defined in [collision_detection.ts:49](https://github.com/noobiept/utilities/blob/22280e5/source/collision_detection.ts#L49)*
+*Defined in [collision_detection.ts:49](https://github.com/noobiept/utilities/blob/4235ba9/source/collision_detection.ts#L49)*
 
 Detects collision between a circle and a point.
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **createEnum**(`values`: string[], `start?`: undefined \| number): object
 
-*Defined in [object.ts:16](https://github.com/noobiept/utilities/blob/22280e5/source/object.ts#L16)*
+*Defined in [object.ts:16](https://github.com/noobiept/utilities/blob/4235ba9/source/object.ts#L16)*
 
 Enum - A way to associate a string name to a number.
 
@@ -273,7 +273,7 @@ ___
 
 ▸ **deepClone**(`obj`: any): any
 
-*Defined in [object.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/object.ts#L6)*
+*Defined in [object.ts:6](https://github.com/noobiept/utilities/blob/4235ba9/source/object.ts#L6)*
 
 Returns a deep clone/copy of the object.
 
@@ -291,7 +291,7 @@ ___
 
 ▸ **getObject**(`key`: string): any
 
-*Defined in [local_storage.ts:4](https://github.com/noobiept/utilities/blob/22280e5/source/local_storage.ts#L4)*
+*Defined in [local_storage.ts:4](https://github.com/noobiept/utilities/blob/4235ba9/source/local_storage.ts#L4)*
 
 Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
 
@@ -309,7 +309,7 @@ ___
 
 ▸ **getRandomFloat**(`min`: number, `max`: number): number
 
-*Defined in [number.ts:6](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L6)*
+*Defined in [number.ts:6](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L6)*
 
 Returns a random float number between `min` and `max` (inclusive).
 
@@ -328,7 +328,7 @@ ___
 
 ▸ **getRandomInt**(`min`: number, `max`: number): number
 
-*Defined in [number.ts:17](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L17)*
+*Defined in [number.ts:17](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L17)*
 
 Returns a random integer number between `min` and `max` (inclusive).
 
@@ -347,7 +347,7 @@ ___
 
 ▸ **getSeveralRandomInts**(`min`: number, `max`: number, `howMany`: number): number[]
 
-*Defined in [number.ts:28](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L28)*
+*Defined in [number.ts:28](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L28)*
 
 Returns several different random integers, in the range between `min` and `max` (inclusive).
 
@@ -367,7 +367,7 @@ ___
 
 ▸ **getType**(`file`: string): [FileInfoType](README.md#fileinfotype)
 
-*Defined in [preload.ts:61](https://github.com/noobiept/utilities/blob/22280e5/source/preload.ts#L61)*
+*Defined in [preload.ts:61](https://github.com/noobiept/utilities/blob/4235ba9/source/preload.ts#L61)*
 
 Determine the type of a file based on its extension. If it can't figure it out it defaults to type 'text'.
 
@@ -387,7 +387,7 @@ ___
 
 ▸ **isArray**(`element`: any): boolean
 
-*Defined in [is_type.ts:4](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L4)*
+*Defined in [is_type.ts:4](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L4)*
 
 #### Parameters:
 
@@ -405,7 +405,7 @@ ___
 
 ▸ **isBoolean**(`element`: any): element is boolean
 
-*Defined in [is_type.ts:11](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L11)*
+*Defined in [is_type.ts:11](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L11)*
 
 #### Parameters:
 
@@ -423,7 +423,7 @@ ___
 
 ▸ **isFunction**(`element`: any): boolean
 
-*Defined in [is_type.ts:22](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L22)*
+*Defined in [is_type.ts:22](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L22)*
 
 #### Parameters:
 
@@ -441,7 +441,7 @@ ___
 
 ▸ **isInteger**(`value`: any): value is number
 
-*Defined in [is_type.ts:32](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L32)*
+*Defined in [is_type.ts:32](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L32)*
 
 #### Parameters:
 
@@ -459,7 +459,7 @@ ___
 
 ▸ **isNumber**(`element`: any): element is number
 
-*Defined in [is_type.ts:39](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L39)*
+*Defined in [is_type.ts:39](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L39)*
 
 #### Parameters:
 
@@ -477,7 +477,7 @@ ___
 
 ▸ **isString**(`element`: any): element is string
 
-*Defined in [is_type.ts:50](https://github.com/noobiept/utilities/blob/22280e5/source/is_type.ts#L50)*
+*Defined in [is_type.ts:50](https://github.com/noobiept/utilities/blob/4235ba9/source/is_type.ts#L50)*
 
 #### Parameters:
 
@@ -495,7 +495,7 @@ ___
 
 ▸ **numberOfDigits**(`theNumber`: number): number
 
-*Defined in [number.ts:65](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L65)*
+*Defined in [number.ts:65](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L65)*
 
 Returns the number of digits in a number.
 It doesn't consider the minus signal, nor the dot (in floats) as a digit.
@@ -514,7 +514,7 @@ ___
 
 ▸ **pointBoxCollision**(`pointX`: number, `pointY`: number, `boxX`: number, `boxY`: number, `boxWidth`: number, `boxHeight`: number): boolean
 
-*Defined in [collision_detection.ts:72](https://github.com/noobiept/utilities/blob/22280e5/source/collision_detection.ts#L72)*
+*Defined in [collision_detection.ts:72](https://github.com/noobiept/utilities/blob/4235ba9/source/collision_detection.ts#L72)*
 
 Detects collision between a point and a box.
 
@@ -537,7 +537,7 @@ ___
 
 ▸ **range**(`start`: number, `end`: number): number[]
 
-*Defined in [number.ts:89](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L89)*
+*Defined in [number.ts:89](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L89)*
 
 Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
 
@@ -556,7 +556,7 @@ ___
 
 ▸ **round**(`num`: number, `dec`: number): number
 
-*Defined in [number.ts:78](https://github.com/noobiept/utilities/blob/22280e5/source/number.ts#L78)*
+*Defined in [number.ts:78](https://github.com/noobiept/utilities/blob/4235ba9/source/number.ts#L78)*
 
 Rounds a number to a specified decimal case.
 
@@ -575,7 +575,7 @@ ___
 
 ▸ **saveObject**(`key`: string, `value`: any): void
 
-*Defined in [local_storage.ts:13](https://github.com/noobiept/utilities/blob/22280e5/source/local_storage.ts#L13)*
+*Defined in [local_storage.ts:13](https://github.com/noobiept/utilities/blob/4235ba9/source/local_storage.ts#L13)*
 
 Saves in the `localStorage` a json string representation of the `value`.
 
@@ -594,7 +594,7 @@ ___
 
 ▸ **shuffle**(`array`: any[]): any[]
 
-*Defined in [array.ts:4](https://github.com/noobiept/utilities/blob/22280e5/source/array.ts#L4)*
+*Defined in [array.ts:4](https://github.com/noobiept/utilities/blob/4235ba9/source/array.ts#L4)*
 
 Shuffle an array.
 
@@ -612,7 +612,7 @@ ___
 
 ▸ **timeToString**(`args`: [TimeToStringArgs](interfaces/timetostringargs.md)): string
 
-*Defined in [time_to_string.ts:26](https://github.com/noobiept/utilities/blob/22280e5/source/time_to_string.ts#L26)*
+*Defined in [time_to_string.ts:26](https://github.com/noobiept/utilities/blob/4235ba9/source/time_to_string.ts#L26)*
 
 Converts a time (in milliseconds) to a string (with the number of days/hours...).
 The units available are: day/hour/minute/second.
@@ -643,7 +643,7 @@ ___
 
 ▸ **toDegrees**(`radians`: number): number
 
-*Defined in [trigonometry.ts:32](https://github.com/noobiept/utilities/blob/22280e5/source/trigonometry.ts#L32)*
+*Defined in [trigonometry.ts:32](https://github.com/noobiept/utilities/blob/4235ba9/source/trigonometry.ts#L32)*
 
 Converts a number in `radians` to `degrees` and returns it.
 
@@ -661,7 +661,7 @@ ___
 
 ▸ **toRadians**(`degrees`: number): number
 
-*Defined in [trigonometry.ts:39](https://github.com/noobiept/utilities/blob/22280e5/source/trigonometry.ts#L39)*
+*Defined in [trigonometry.ts:39](https://github.com/noobiept/utilities/blob/4235ba9/source/trigonometry.ts#L39)*
 
 Converts a number in `degrees` to `radians` and returns it.
 

@@ -17,7 +17,7 @@
 
 •  **none**: 
 
-*Defined in [dialog.ts:9](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L9)*
+*Defined in [dialog.ts:9](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L9)*
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 •  **ok**: 
 
-*Defined in [dialog.ts:10](https://github.com/noobiept/utilities/blob/22280e5/source/dialog.ts#L10)*
+*Defined in [dialog.ts:10](https://github.com/noobiept/utilities/blob/4235ba9/source/dialog.ts#L10)*
