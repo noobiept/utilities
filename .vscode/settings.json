@@ -10,7 +10,5 @@
         "documentation/**": true,
         "coverage/**": true
     },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

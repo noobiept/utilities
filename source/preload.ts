@@ -63,7 +63,7 @@ function getType(file: string): FileInfoType {
 
     if (extension) {
         const type = Object.entries(FileInfo).find(([_, value]) =>
-            ((value.extensions as unknown) as string[]).includes(extension)
+            (value.extensions as unknown as string[]).includes(extension)
         );
 
         if (type) {
