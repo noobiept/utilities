@@ -1,5 +1,12 @@
 # Unreleased
 
+# v5.1.0 - 15/08/2021
+
+## Changed
+
+-   Updated NodeJS and dependencies to latest versions.
+-   Improve some npm scripts.
+
 # v5.0.0 - 30/11/2020
 
 ## Added
