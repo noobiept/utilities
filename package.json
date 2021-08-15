@@ -1,7 +1,7 @@
 {
     "name": "@drk4/utilities",
     "displayName": "utilities",
-    "version": "5.0.0",
+    "version": "5.1.0",
     "description": "Random collection of utilities functions/classes.",
     "author": {
         "name": "Pedro Ferreira",
@@ -19,7 +19,10 @@
         "url": "https://github.com/noobiept/utilities"
     },
     "keywords": [
-        "utilities"
+        "utilities",
+        "dialog",
+        "preload",
+        "timer"
     ],
     "license": "MIT",
     "publishConfig": {
@@ -70,8 +73,9 @@
         "build:clean": "rimraf build/",
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.js",
-        "test": "tsc && jest ./tests/ --coverage",
-        "test:watch": "jest ./tests/ --coverage --watch",
+        "test": "npm-run-all --serial build:tsc format:check lint unit e2e",
+        "unit": "jest ./tests/ --coverage",
+        "unit:w": "jest ./tests/ --coverage --watch",
         "e2e": "start-server-and-test e2e:run http://localhost:8080 cy:run",
         "e2e:run": "npm run e2e:build && npm run e2e:server",
         "e2e:build": "rollup --config ./dev/rollup-dev.config.js",
@@ -84,7 +88,7 @@
         "documentation:build": "typedoc --out docs/ source/ --name Utilities --readme none",
         "format:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "format:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\"",
-        "everything": "npm-run-all --serial format:check lint test e2e build documentation",
+        "everything": "npm-run-all --serial test build documentation",
         "prepublishOnly": "npm run everything"
     }
 }

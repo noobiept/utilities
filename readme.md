@@ -80,8 +80,9 @@ You can read the [documentation here.](docs/README.md)
 # Development
 
 -   `npm install` (install the dependencies)
--   `npm run tsc` (run the typescript compiler on watch mode, useful during development)
 -   `npm run dev` (run a dev build and a local server where you can try out some test pages that are used while developing the library components)
 -   `npm run test` (run the tests)
 -   `npm run build` (builds into the `/build` directory)
 -   `npm run documentation` (build the documentation into the `/docs` directory)
+
+Check `package.json` scripts section for more information.
