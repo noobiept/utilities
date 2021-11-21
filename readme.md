@@ -1,6 +1,5 @@
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/noobiept/utilities) ![Workflow](https://github.com/noobiept/utilities/actions/workflows/build.yml/badge.svg)
 
-
 # Utilities Library
 
 Random collection of utilities functions/classes.
