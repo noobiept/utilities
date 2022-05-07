@@ -19,7 +19,8 @@ export function isBoolean(element: any): element is boolean {
 /**
  * @return If it is a function.
  */
-export function isFunction(element: any) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function isFunction(element: any): element is Function {
     return (
         typeof element === "function" &&
         Object.prototype.toString.call(element) === "[object Function]"

@@ -1,5 +1,27 @@
-import { timeToString } from "./time_to_string";
+import { timeToString, TimeToStringArgs } from "./time_to_string";
 import { isNumber, isFunction } from "./is_type";
+
+export type UpdateFormat =
+    | Omit<TimeToStringArgs, "time">
+    | ((timer: Timer) => string);
+
+export type UpdateElement = {
+    element: HTMLElement;
+    format?: UpdateFormat;
+};
+
+export interface TimerArgs {
+    updateElement?: UpdateElement;
+}
+
+export interface TimerStartArgs {
+    startValue?: number;
+    endValue?: number;
+    onEnd?: () => void;
+    onTick?: () => void;
+    countDown?: boolean;
+    interval?: number;
+}
 
 /**
  * Count-up or count-down timer. Can optionally update an html element.
@@ -11,15 +33,21 @@ export class Timer {
     private time_count = 0;
     private interval = 1000;
 
-    // these can have the 'undefined' value (which means they aren't set)
     private end_value?: number;
     private end_callback?: () => any;
     private tick_callback?: () => any;
     private interval_f?: number;
-    private html_element?: HTMLElement;
+    private element?: HTMLElement;
+    private update_html?: (timer: Timer) => string;
 
-    constructor(htmlElement?: HTMLElement) {
-        this.html_element = htmlElement;
+    constructor(args?: TimerArgs) {
+        const updateElement = args?.updateElement;
+
+        if (updateElement) {
+            this.element = updateElement.element;
+            this.setUpdateFormat(updateElement.format);
+        }
+
         this.updateHtmlElement();
     }
 
@@ -34,14 +62,7 @@ export class Timer {
      * `countDown` if it counts up or down (default is count up).
      * `interval` time in between each tick (default is 1000 milliseconds).
      */
-    start(args?: {
-        startValue?: number;
-        endValue?: number;
-        onEnd?: () => void;
-        onTick?: () => void;
-        countDown?: boolean;
-        interval?: number;
-    }) {
+    start(args?: TimerStartArgs) {
         if (typeof args === "undefined") {
             args = {};
         }
@@ -175,12 +196,25 @@ export class Timer {
         });
     }
 
+    setUpdateFormat(format?: UpdateFormat) {
+        if (isFunction(format)) {
+            this.update_html = format;
+        } else {
+            this.update_html = (timer: Timer) => {
+                return timeToString({
+                    time: timer.time_count,
+                    ...format,
+                });
+            };
+        }
+    }
+
     /**
      * Updates the associated html element (if was given) with the current time value.
      */
     updateHtmlElement() {
-        if (this.html_element) {
-            this.html_element.innerHTML = this.getTimeString();
+        if (this.element && this.update_html) {
+            this.element.innerText = this.update_html(this);
         }
     }
 

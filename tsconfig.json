@@ -7,7 +7,7 @@
         "noUnusedParameters": true,
         "target": "es2018",
         "module": "es2015",
-        "moduleResolution": "node",
+        "moduleResolution": "Node",
         "declarationDir": "./build",
         "allowSyntheticDefaultImports": true
     },

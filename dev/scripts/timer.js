@@ -12,7 +12,11 @@ window.onload = function () {
         console.log("tick");
     };
 
-    const timer = new Utilities.Timer(timerElement);
+    const timer = new Utilities.Timer({
+        updateElement: {
+            element: timerElement,
+        },
+    });
 
     MESSAGE_TIMEOUT = new Utilities.Timeout();
 
@@ -84,6 +88,29 @@ window.onload = function () {
 
     getTimeSeconds.onclick = function () {
         showMessage(timer.getTimeSeconds());
+    };
+
+    const timerFormat = document.getElementById("TimerFormat");
+    timerFormat.onchange = (e) => {
+        switch (e.target.value) {
+            case "string":
+                timer.setUpdateFormat({
+                    format: "string",
+                });
+                break;
+
+            case "daytime":
+                timer.setUpdateFormat({
+                    format: "daytime",
+                });
+                break;
+
+            case "custom":
+                timer.setUpdateFormat((timer) => {
+                    return timer.getTimeMilliseconds() + " ms";
+                });
+                break;
+        }
     };
 };
 
