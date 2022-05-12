@@ -214,7 +214,7 @@ export class Timer {
      */
     updateHtmlElement() {
         if (this.element && this.update_html) {
-            this.element.innerText = this.update_html(this);
+            this.element.textContent = this.update_html(this);
         }
     }
 

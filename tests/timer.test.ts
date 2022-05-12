@@ -15,11 +15,15 @@ describe("Timer", () => {
 
     test("Test with a given html element.", () => {
         const htmlElement = document.createElement("div");
-        const timer = new Timer(htmlElement);
+        const timer = new Timer({
+            updateElement: {
+                element: htmlElement,
+            },
+        });
 
         // starting value of the timer (0 seconds)
         // starting time string (from the html element)
-        expect(htmlElement.innerHTML).toBe("0 seconds");
+        expect(htmlElement.textContent).toBe("0 seconds");
 
         // starting time (from the timer object)
         expect(timer.getTimeString()).toBe("0 seconds");
@@ -146,9 +150,13 @@ describe("Timer", () => {
 
     test("Reset a timer.", (done) => {
         expect.assertions(5);
-        document.body.innerHTML = "";
+        document.body.textContent = "";
 
-        const timer = new Timer(document.body);
+        const timer = new Timer({
+            updateElement: {
+                element: document.body,
+            },
+        });
         const onEnd = jest.fn();
 
         timer.start({
@@ -157,14 +165,14 @@ describe("Timer", () => {
             onEnd: onEnd,
             onTick: () => {
                 expect(timer.getTimeMilliseconds()).toBe(2000);
-                expect(document.body.innerHTML).toBe("2 seconds");
+                expect(document.body.textContent).toBe("2 seconds");
 
                 // we reset the timer before it reaches the end value
                 timer.reset();
 
                 expect(onEnd).not.toBeCalled();
                 expect(timer.getTimeMilliseconds()).toBe(1000); // should go back to initial value
-                expect(document.body.innerHTML).toBe("1 second");
+                expect(document.body.textContent).toBe("1 second");
                 done();
             },
         });

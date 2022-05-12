@@ -4,7 +4,6 @@ let MESSAGE_TIMEOUT;
 
 window.onload = function () {
     const timerElement = document.querySelector("#Timer");
-
     const endCallback = function () {
         showMessage("Timer end!");
     };

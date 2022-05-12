@@ -4,16 +4,18 @@ import { isNumber } from "./is_type";
 export interface TimeToStringArgs {
     time: number;
     units?: number;
-    format?: "daytime" | "string";
+    format?: "daytime" | "partial_daytime" | "string";
 }
 
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
  * The units available are: day/hour/minute/second.
  *
- * There's 2 possible display formats.
+ * There's 3 possible display formats.
  * daytime:
- *     `dd hh:mm:ss` (where d=day, h=hour, m=minute, s=second)
+ *     `dd hh:mm:ss` or `hh:mm:ss` (where d=day, h=hour, m=minute, s=second)
+ * partial_daytime:
+ *      `ss`, `mm:ss`, `hh:mm:ss` or "dd hh:mm:ss", depending on the time value.
  * string:
  *     `(d) days (h) hours (m) minutes (s) seconds`
  *
@@ -32,7 +34,7 @@ export function timeToString(args: TimeToStringArgs) {
         units = 2;
     }
 
-    if (format !== "daytime") {
+    if (!format) {
         format = "string";
     }
 
@@ -71,6 +73,42 @@ export function timeToString(args: TimeToStringArgs) {
         const secondsString = secondsLeft.toString().padStart(2, "0");
 
         date += `${hoursString}:${minutesString}:${secondsString}`;
+    } else if (format === "partial_daytime") {
+        const values = [
+            {
+                value: daysLeft,
+                separator: "",
+            },
+            {
+                value: hoursLeft,
+                separator: " ",
+            },
+            {
+                value: minutesLeft,
+                separator: ":",
+            },
+            {
+                value: secondsLeft,
+                separator: ":",
+            },
+        ];
+
+        // first value isn't padded
+        let foundFirst = false;
+        for (let a = 0; a < values.length; a++) {
+            const item = values[a];
+
+            if (foundFirst) {
+                date += item.separator + item.value.toString().padStart(2, "0");
+            } else if (item.value > 0) {
+                foundFirst = true;
+                date += item.value.toString();
+            }
+        }
+
+        if (date === "") {
+            date = "0";
+        }
     } else {
         const theDate = [
             { name: "day", time: daysLeft },
