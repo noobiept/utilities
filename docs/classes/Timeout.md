@@ -1,8 +1,6 @@
-[Utilities](../README.md) / [timeout](../modules/timeout.md) / Timeout
+[Utilities](../README.md) / Timeout
 
 # Class: Timeout
-
-[timeout](../modules/timeout.md).Timeout
 
 Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
@@ -10,18 +8,18 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 ### Constructors
 
-- [constructor](timeout.Timeout.md#constructor)
+- [constructor](Timeout.md#constructor)
 
 ### Properties
 
-- [id](timeout.Timeout.md#id)
-- [is\_active](timeout.Timeout.md#is_active)
+- [id](Timeout.md#id)
+- [is\_active](Timeout.md#is_active)
 
 ### Methods
 
-- [clear](timeout.Timeout.md#clear)
-- [isActive](timeout.Timeout.md#isactive)
-- [start](timeout.Timeout.md#start)
+- [clear](Timeout.md#clear)
+- [isActive](Timeout.md#isactive)
+- [start](Timeout.md#start)
 
 ## Constructors
 
@@ -31,7 +29,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 #### Defined in
 
-[timeout.ts:8](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L8)
+[timeout.ts:8](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L8)
 
 ## Properties
 
@@ -41,7 +39,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 #### Defined in
 
-[timeout.ts:6](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L6)
+[timeout.ts:6](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L6)
 
 ___
 
@@ -51,7 +49,7 @@ ___
 
 #### Defined in
 
-[timeout.ts:5](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L5)
+[timeout.ts:5](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L5)
 
 ## Methods
 
@@ -67,7 +65,7 @@ Cancels the timeout.
 
 #### Defined in
 
-[timeout.ts:32](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L32)
+[timeout.ts:32](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L32)
 
 ___
 
@@ -83,7 +81,7 @@ Returns whether the timeout is active or not.
 
 #### Defined in
 
-[timeout.ts:40](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L40)
+[timeout.ts:40](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L40)
 
 ___
 
@@ -106,4 +104,4 @@ Starts the timeout. If there was an active timeout already, that one is canceled
 
 #### Defined in
 
-[timeout.ts:16](https://github.com/noobiept/utilities/blob/03a3e48/source/timeout.ts#L16)
+[timeout.ts:16](https://github.com/noobiept/utilities/blob/6610913/source/timeout.ts#L16)

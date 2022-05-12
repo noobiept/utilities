@@ -86,7 +86,7 @@
         "lint": "eslint . --ext .js,.ts",
         "documentation": "npm-run-all --serial documentation:*",
         "documentation:clean": "rimraf docs/",
-        "documentation:build": "typedoc --out docs/ source/ --name Utilities --readme none",
+        "documentation:build": "typedoc --out docs/ source/utilities.ts --name Utilities --readme none",
         "format:check": "prettier --check \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "format:run": "prettier --write \"**/*.{html,css,json,js,ts,tsx,md}\"",
         "everything": "npm-run-all --serial test build documentation",

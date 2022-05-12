@@ -1,8 +1,6 @@
-[Utilities](../README.md) / [dialog](../modules/dialog.md) / Dialog
+[Utilities](../README.md) / Dialog
 
 # Class: Dialog
-
-[dialog](../modules/dialog.md).Dialog
 
 Create a dialog window with the given message.
 Can be a modal (forces user interaction) or not.
@@ -23,35 +21,35 @@ There's some basic styling available, that you can import in case there's no nee
 
 ### Constructors
 
-- [constructor](dialog.Dialog.md#constructor)
+- [constructor](Dialog.md#constructor)
 
 ### Properties
 
-- [body](dialog.Dialog.md#body)
-- [buttons](dialog.Dialog.md#buttons)
-- [container](dialog.Dialog.md#container)
-- [keyUp](dialog.Dialog.md#keyup)
-- [onClose](dialog.Dialog.md#onclose)
-- [opened](dialog.Dialog.md#opened)
-- [overlay](dialog.Dialog.md#overlay)
-- [title](dialog.Dialog.md#title)
+- [body](Dialog.md#body)
+- [buttons](Dialog.md#buttons)
+- [container](Dialog.md#container)
+- [keyUp](Dialog.md#keyup)
+- [onClose](Dialog.md#onclose)
+- [opened](Dialog.md#opened)
+- [overlay](Dialog.md#overlay)
+- [title](Dialog.md#title)
 
 ### Methods
 
-- [addKeyboardShortcuts](dialog.Dialog.md#addkeyboardshortcuts)
-- [close](dialog.Dialog.md#close)
-- [createButtons](dialog.Dialog.md#createbuttons)
-- [createButtonsList](dialog.Dialog.md#createbuttonslist)
-- [createContainer](dialog.Dialog.md#createcontainer)
-- [createHorizontalRule](dialog.Dialog.md#createhorizontalrule)
-- [createOverlay](dialog.Dialog.md#createoverlay)
-- [isOpened](dialog.Dialog.md#isopened)
-- [open](dialog.Dialog.md#open)
-- [removeKeyboardShortcuts](dialog.Dialog.md#removekeyboardshortcuts)
-- [setBody](dialog.Dialog.md#setbody)
-- [setTitle](dialog.Dialog.md#settitle)
-- [setupKeyboardShortcuts](dialog.Dialog.md#setupkeyboardshortcuts)
-- [toggle](dialog.Dialog.md#toggle)
+- [addKeyboardShortcuts](Dialog.md#addkeyboardshortcuts)
+- [close](Dialog.md#close)
+- [createButtons](Dialog.md#createbuttons)
+- [createButtonsList](Dialog.md#createbuttonslist)
+- [createContainer](Dialog.md#createcontainer)
+- [createHorizontalRule](Dialog.md#createhorizontalrule)
+- [createOverlay](Dialog.md#createoverlay)
+- [isOpened](Dialog.md#isopened)
+- [open](Dialog.md#open)
+- [removeKeyboardShortcuts](Dialog.md#removekeyboardshortcuts)
+- [setBody](Dialog.md#setbody)
+- [setTitle](Dialog.md#settitle)
+- [setupKeyboardShortcuts](Dialog.md#setupkeyboardshortcuts)
+- [toggle](Dialog.md#toggle)
 
 ## Constructors
 
@@ -63,11 +61,11 @@ There's some basic styling available, that you can import in case there's no nee
 
 | Name | Type |
 | :------ | :------ |
-| `args` | [`DialogArgs`](../interfaces/dialog.DialogArgs.md) |
+| `args` | [`DialogArgs`](../interfaces/DialogArgs.md) |
 
 #### Defined in
 
-[dialog.ts:51](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L51)
+[dialog.ts:51](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L51)
 
 ## Properties
 
@@ -77,7 +75,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog.ts:44](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L44)
+[dialog.ts:44](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L44)
 
 ___
 
@@ -87,7 +85,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:45](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L45)
+[dialog.ts:45](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L45)
 
 ___
 
@@ -97,7 +95,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:42](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L42)
+[dialog.ts:42](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L42)
 
 ___
 
@@ -121,7 +119,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:48](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L48)
+[dialog.ts:48](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L48)
 
 ___
 
@@ -139,7 +137,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:47](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L47)
+[dialog.ts:47](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L47)
 
 ___
 
@@ -149,7 +147,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:49](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L49)
+[dialog.ts:49](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L49)
 
 ___
 
@@ -159,7 +157,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:46](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L46)
+[dialog.ts:46](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L46)
 
 ___
 
@@ -169,7 +167,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:43](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L43)
+[dialog.ts:43](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L43)
 
 ## Methods
 
@@ -183,7 +181,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:177](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L177)
+[dialog.ts:177](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L177)
 
 ___
 
@@ -199,7 +197,7 @@ Remove the dialog from the page.
 
 #### Defined in
 
-[dialog.ts:209](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L209)
+[dialog.ts:209](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L209)
 
 ___
 
@@ -211,7 +209,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `info` | [`DialogButtons`](../enums/dialog.DialogButtons.md) \| `HTMLElement`[] |
+| `info` | [`DialogButtons`](../enums/DialogButtons.md) \| `HTMLElement`[] |
 
 #### Returns
 
@@ -219,7 +217,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:130](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L130)
+[dialog.ts:130](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L130)
 
 ___
 
@@ -232,7 +230,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `container` | `HTMLElement` |
-| `buttonsArg?` | [`DialogButtonsArg`](../modules/dialog.md#dialogbuttonsarg) |
+| `buttonsArg?` | [`DialogButtonsArg`](../README.md#dialogbuttonsarg) |
 
 #### Returns
 
@@ -240,7 +238,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:104](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L104)
+[dialog.ts:104](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L104)
 
 ___
 
@@ -252,7 +250,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `args` | [`DialogArgs`](../interfaces/dialog.DialogArgs.md) |
+| `args` | [`DialogArgs`](../interfaces/DialogArgs.md) |
 
 #### Returns
 
@@ -266,7 +264,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:72](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L72)
+[dialog.ts:72](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L72)
 
 ___
 
@@ -280,7 +278,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:125](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L125)
+[dialog.ts:125](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L125)
 
 ___
 
@@ -300,7 +298,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:151](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L151)
+[dialog.ts:151](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L151)
 
 ___
 
@@ -316,7 +314,7 @@ Check if the dialog is opened or not.
 
 #### Defined in
 
-[dialog.ts:234](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L234)
+[dialog.ts:234](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L234)
 
 ___
 
@@ -332,7 +330,7 @@ Add the dialog to the page.
 
 #### Defined in
 
-[dialog.ts:192](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L192)
+[dialog.ts:192](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L192)
 
 ___
 
@@ -346,7 +344,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:183](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L183)
+[dialog.ts:183](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L183)
 
 ___
 
@@ -368,7 +366,7 @@ Change the body of the dialog.
 
 #### Defined in
 
-[dialog.ts:264](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L264)
+[dialog.ts:264](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L264)
 
 ___
 
@@ -390,7 +388,7 @@ Change the title of the dialog.
 
 #### Defined in
 
-[dialog.ts:252](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L252)
+[dialog.ts:252](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L252)
 
 ___
 
@@ -416,7 +414,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:164](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L164)
+[dialog.ts:164](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L164)
 
 ___
 
@@ -432,4 +430,4 @@ Toggle between the open/close state.
 
 #### Defined in
 
-[dialog.ts:241](https://github.com/noobiept/utilities/blob/03a3e48/source/dialog.ts#L241)
+[dialog.ts:241](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L241)
