@@ -63,7 +63,7 @@ Basic Usage:
 
 #### Defined in
 
-[event_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L24)
+[event_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L24)
 
 ## Properties
 
@@ -73,7 +73,7 @@ Basic Usage:
 
 #### Defined in
 
-[event_dispatcher.ts:20](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L20)
+[event_dispatcher.ts:20](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L20)
 
 ## Methods
 
@@ -99,7 +99,7 @@ If it was successfully added.
 
 #### Defined in
 
-[event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L36)
+[event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L36)
 
 ___
 
@@ -122,7 +122,7 @@ Dispatches an event, which will trigger the listeners of that event.
 
 #### Defined in
 
-[event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L89)
+[event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L89)
 
 ___
 
@@ -146,7 +146,7 @@ If there are listeners or not.
 
 #### Defined in
 
-[event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L105)
+[event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L105)
 
 ___
 
@@ -162,7 +162,7 @@ Remove all the event listeners.
 
 #### Defined in
 
-[event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L79)
+[event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L79)
 
 ___
 
@@ -187,4 +187,4 @@ If it was successfully removed.
 
 #### Defined in
 
-[event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L56)
+[event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L56)

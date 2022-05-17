@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[timer.ts:14](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L14)
+[timer.ts:14](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L14)

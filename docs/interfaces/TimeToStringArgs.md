@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[time_to_string.ts:7](https://github.com/noobiept/utilities/blob/6610913/source/time_to_string.ts#L7)
+[time_to_string.ts:7](https://github.com/noobiept/utilities/blob/66bf665/source/time_to_string.ts#L7)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[time_to_string.ts:5](https://github.com/noobiept/utilities/blob/6610913/source/time_to_string.ts#L5)
+[time_to_string.ts:5](https://github.com/noobiept/utilities/blob/66bf665/source/time_to_string.ts#L5)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[time_to_string.ts:6](https://github.com/noobiept/utilities/blob/6610913/source/time_to_string.ts#L6)
+[time_to_string.ts:6](https://github.com/noobiept/utilities/blob/66bf665/source/time_to_string.ts#L6)

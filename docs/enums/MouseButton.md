@@ -22,7 +22,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[events.ts:8](https://github.com/noobiept/utilities/blob/6610913/source/events.ts#L8)
+[events.ts:8](https://github.com/noobiept/utilities/blob/66bf665/source/events.ts#L8)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[events.ts:9](https://github.com/noobiept/utilities/blob/6610913/source/events.ts#L9)
+[events.ts:9](https://github.com/noobiept/utilities/blob/66bf665/source/events.ts#L9)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[events.ts:5](https://github.com/noobiept/utilities/blob/6610913/source/events.ts#L5)
+[events.ts:5](https://github.com/noobiept/utilities/blob/66bf665/source/events.ts#L5)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[events.ts:6](https://github.com/noobiept/utilities/blob/6610913/source/events.ts#L6)
+[events.ts:6](https://github.com/noobiept/utilities/blob/66bf665/source/events.ts#L6)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[events.ts:7](https://github.com/noobiept/utilities/blob/6610913/source/events.ts#L7)
+[events.ts:7](https://github.com/noobiept/utilities/blob/66bf665/source/events.ts#L7)

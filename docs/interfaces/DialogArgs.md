@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[dialog.ts:17](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L17)
+[dialog.ts:17](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L17)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:21](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L21)
+[dialog.ts:21](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L21)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:20](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L20)
+[dialog.ts:20](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L20)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:19](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L19)
+[dialog.ts:19](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L19)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:22](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L22)
+[dialog.ts:22](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L22)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:16](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L16)
+[dialog.ts:16](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L16)
 
 ## Methods
 
@@ -89,4 +89,4 @@ ___
 
 #### Defined in
 
-[dialog.ts:18](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L18)
+[dialog.ts:18](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L18)

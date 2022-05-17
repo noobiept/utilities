@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[dialog.ts:4](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L4)
+[dialog.ts:4](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L4)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:3](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L3)
+[dialog.ts:3](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L3)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[dialog.ts:5](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L5)
+[dialog.ts:5](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L5)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[dialog.ts:2](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L2)
+[dialog.ts:2](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L2)

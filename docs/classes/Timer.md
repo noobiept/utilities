@@ -53,7 +53,7 @@ Count-up or count-down timer. Can optionally update an html element.
 
 #### Defined in
 
-[timer.ts:43](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L43)
+[timer.ts:43](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L43)
 
 ## Properties
 
@@ -63,7 +63,7 @@ Count-up or count-down timer. Can optionally update an html element.
 
 #### Defined in
 
-[timer.ts:32](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L32)
+[timer.ts:32](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L32)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[timer.ts:40](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L40)
+[timer.ts:40](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L40)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-[timer.ts:37](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L37)
+[timer.ts:37](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L37)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[timer.ts:36](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L36)
+[timer.ts:36](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L36)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[timer.ts:34](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L34)
+[timer.ts:34](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L34)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[timer.ts:39](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L39)
+[timer.ts:39](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L39)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 #### Defined in
 
-[timer.ts:30](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L30)
+[timer.ts:30](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L30)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[timer.ts:31](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L31)
+[timer.ts:31](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L31)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[timer.ts:38](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L38)
+[timer.ts:38](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L38)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-[timer.ts:33](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L33)
+[timer.ts:33](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L33)
 
 ___
 
@@ -193,7 +193,7 @@ ___
 
 #### Defined in
 
-[timer.ts:41](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L41)
+[timer.ts:41](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L41)
 
 ## Methods
 
@@ -215,7 +215,7 @@ Adds time to the current value in the timer. So for example, if the timer is rig
 
 #### Defined in
 
-[timer.ts:226](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L226)
+[timer.ts:226](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L226)
 
 ___
 
@@ -231,7 +231,7 @@ Returns the time it has passed so far, in milliseconds.
 
 #### Defined in
 
-[timer.ts:247](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L247)
+[timer.ts:247](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L247)
 
 ___
 
@@ -247,7 +247,7 @@ Returns the time it has passed so far, in seconds.
 
 #### Defined in
 
-[timer.ts:240](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L240)
+[timer.ts:240](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L240)
 
 ___
 
@@ -263,7 +263,7 @@ Returns a string with the time passed so far.
 
 #### Defined in
 
-[timer.ts:233](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L233)
+[timer.ts:233](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L233)
 
 ___
 
@@ -279,7 +279,7 @@ Returns whether the timer is currently active or not.
 
 #### Defined in
 
-[timer.ts:254](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L254)
+[timer.ts:254](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L254)
 
 ___
 
@@ -295,7 +295,7 @@ Stops and resets the count.
 
 #### Defined in
 
-[timer.ts:177](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L177)
+[timer.ts:177](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L177)
 
 ___
 
@@ -311,7 +311,7 @@ Restart the timer.
 
 #### Defined in
 
-[timer.ts:187](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L187)
+[timer.ts:187](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L187)
 
 ___
 
@@ -327,7 +327,7 @@ Resumes the timer with the same settings/values that were set before it was stop
 
 #### Defined in
 
-[timer.ts:113](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L113)
+[timer.ts:113](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L113)
 
 ___
 
@@ -347,7 +347,7 @@ ___
 
 #### Defined in
 
-[timer.ts:199](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L199)
+[timer.ts:199](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L199)
 
 ___
 
@@ -377,7 +377,7 @@ If no endValue is given, it never stops counting.
 
 #### Defined in
 
-[timer.ts:65](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L65)
+[timer.ts:65](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L65)
 
 ___
 
@@ -393,7 +393,7 @@ Stop counting.
 
 #### Defined in
 
-[timer.ts:165](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L165)
+[timer.ts:165](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L165)
 
 ___
 
@@ -409,4 +409,4 @@ Updates the associated html element (if was given) with the current time value.
 
 #### Defined in
 
-[timer.ts:215](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L215)
+[timer.ts:215](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L215)

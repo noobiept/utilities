@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[preload.ts:48](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L48)
+[preload.ts:48](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L48)

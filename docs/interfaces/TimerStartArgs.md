@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[timer.ts:22](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L22)
+[timer.ts:22](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L22)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-[timer.ts:19](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L19)
+[timer.ts:19](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L19)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[timer.ts:23](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L23)
+[timer.ts:23](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L23)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[timer.ts:18](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L18)
+[timer.ts:18](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L18)
 
 ## Methods
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[timer.ts:20](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L20)
+[timer.ts:20](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L20)
 
 ___
 
@@ -82,4 +82,4 @@ ___
 
 #### Defined in
 
-[timer.ts:21](https://github.com/noobiept/utilities/blob/6610913/source/timer.ts#L21)
+[timer.ts:21](https://github.com/noobiept/utilities/blob/66bf665/source/timer.ts#L21)

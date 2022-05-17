@@ -86,7 +86,7 @@ Events:
 
 #### Defined in
 
-[preload.ts:120](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L120)
+[preload.ts:120](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L120)
 
 ## Properties
 
@@ -96,7 +96,7 @@ Events:
 
 #### Defined in
 
-[preload.ts:104](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L104)
+[preload.ts:104](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L104)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[preload.ts:107](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L107)
+[preload.ts:107](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L107)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[preload.ts:108](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L108)
+[preload.ts:108](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L108)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[preload.ts:106](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L106)
+[preload.ts:106](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L106)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[preload.ts:103](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L103)
+[preload.ts:103](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L103)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-[preload.ts:105](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L105)
+[preload.ts:105](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L105)
 
 ## Methods
 
@@ -168,7 +168,7 @@ An element failed to load. We'll keep track of its id, to send it later on the '
 
 #### Defined in
 
-[preload.ts:159](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L159)
+[preload.ts:159](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L159)
 
 ___
 
@@ -191,7 +191,7 @@ An element just finished being loaded, add it to the `data` object (either the g
 
 #### Defined in
 
-[preload.ts:139](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L139)
+[preload.ts:139](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L139)
 
 ___
 
@@ -207,7 +207,7 @@ All the elements were dealt with. Dispatch the `complete` event with a list of t
 
 #### Defined in
 
-[preload.ts:171](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L171)
+[preload.ts:171](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L171)
 
 ___
 
@@ -230,7 +230,7 @@ Dispatch the `abort` event.
 
 #### Defined in
 
-[preload.ts:200](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L200)
+[preload.ts:200](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L200)
 
 ___
 
@@ -253,7 +253,7 @@ Dispatch the `error` event.
 
 #### Defined in
 
-[preload.ts:190](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L190)
+[preload.ts:190](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L190)
 
 ___
 
@@ -275,7 +275,7 @@ Dispatch the current progress percentage.
 
 #### Defined in
 
-[preload.ts:209](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L209)
+[preload.ts:209](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L209)
 
 ___
 
@@ -305,7 +305,7 @@ If it was successfully added.
 
 #### Defined in
 
-[event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L36)
+[event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L36)
 
 ___
 
@@ -332,7 +332,7 @@ Dispatches an event, which will trigger the listeners of that event.
 
 #### Defined in
 
-[event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L89)
+[event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L89)
 
 ___
 
@@ -354,7 +354,7 @@ Get a previously loaded file.
 
 #### Defined in
 
-[preload.ts:318](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L318)
+[preload.ts:318](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L318)
 
 ___
 
@@ -382,7 +382,7 @@ If there are listeners or not.
 
 #### Defined in
 
-[event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L105)
+[event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L105)
 
 ___
 
@@ -406,7 +406,7 @@ Load a file.
 
 #### Defined in
 
-[preload.ts:230](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L230)
+[preload.ts:230](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L230)
 
 ___
 
@@ -431,7 +431,7 @@ Load an audio resource.
 
 #### Defined in
 
-[preload.ts:325](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L325)
+[preload.ts:325](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L325)
 
 ___
 
@@ -454,7 +454,7 @@ Load an image resource.
 
 #### Defined in
 
-[preload.ts:364](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L364)
+[preload.ts:364](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L364)
 
 ___
 
@@ -477,7 +477,7 @@ Load a json resource.
 
 #### Defined in
 
-[preload.ts:347](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L347)
+[preload.ts:347](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L347)
 
 ___
 
@@ -499,7 +499,7 @@ Load several files.
 
 #### Defined in
 
-[preload.ts:309](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L309)
+[preload.ts:309](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L309)
 
 ___
 
@@ -519,7 +519,7 @@ Remove all the event listeners.
 
 #### Defined in
 
-[event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L79)
+[event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L79)
 
 ___
 
@@ -548,7 +548,7 @@ If it was successfully removed.
 
 #### Defined in
 
-[event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/6610913/source/event_dispatcher.ts#L56)
+[event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/66bf665/source/event_dispatcher.ts#L56)
 
 ___
 
@@ -572,4 +572,4 @@ The preloaded element.
 
 #### Defined in
 
-[preload.ts:116](https://github.com/noobiept/utilities/blob/6610913/source/preload.ts#L116)
+[preload.ts:116](https://github.com/noobiept/utilities/blob/66bf665/source/preload.ts#L116)

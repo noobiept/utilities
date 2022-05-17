@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[dialog.ts:9](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L9)
+[dialog.ts:9](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L9)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[dialog.ts:10](https://github.com/noobiept/utilities/blob/6610913/source/dialog.ts#L10)
+[dialog.ts:10](https://github.com/noobiept/utilities/blob/66bf665/source/dialog.ts#L10)
