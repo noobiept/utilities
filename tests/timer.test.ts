@@ -330,4 +330,18 @@ describe("Timer", () => {
             },
         });
     });
+
+    test("custom format function.", () => {
+        const element = document.createElement("div");
+        const timer = new Timer({
+            updateElement: {
+                element,
+                format: (timer) => {
+                    return `# ${timer.getTimeSeconds()} #`;
+                },
+            },
+        });
+
+        expect(element.textContent).toBe("# 0 #");
+    });
 });

@@ -104,6 +104,12 @@ window.onload = function () {
                 });
                 break;
 
+            case "partial_daytime":
+                timer.setUpdateFormat({
+                    format: "partial_daytime",
+                });
+                break;
+
             case "custom":
                 timer.setUpdateFormat((timer) => {
                     return timer.getTimeMilliseconds() + " ms";
