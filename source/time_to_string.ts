@@ -19,10 +19,10 @@ export interface TimeToStringArgs {
  * string:
  *     `(d) days (h) hours (m) minutes (s) seconds`
  *
- * The number of `units` can limit the number of units shown in the string format (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
+ * The number of `units` can limit the number of units shown only in the string format (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
  *
  * Defaults:
- *     units: 2
+ *     units: undefined (shows all non-zero if format is type `string`)
  *     format: string
  */
 export function timeToString(args: TimeToStringArgs) {
@@ -31,7 +31,7 @@ export function timeToString(args: TimeToStringArgs) {
 
     // setup the default values if not provided
     if (!isNumber(units) || units < 1) {
-        units = 2;
+        units = -1; // means it shows all non-zero units
     }
 
     if (!format) {
@@ -117,15 +117,6 @@ export function timeToString(args: TimeToStringArgs) {
             { name: "second", time: secondsLeft },
         ];
 
-        const constructDate = function (dateTmp: string, numberOf: number) {
-            // day to days, hour to hours...
-            if (numberOf !== 1) {
-                dateTmp += "s";
-            }
-
-            return numberOf + " " + dateTmp;
-        };
-
         for (let i = 0; i < theDate.length; i++) {
             // reached the limit of the units
             if (units === 0) {
@@ -153,4 +144,13 @@ export function timeToString(args: TimeToStringArgs) {
     }
 
     return date;
+}
+
+function constructDate(dateTmp: string, numberOf: number) {
+    // day to days, hour to hours...
+    if (numberOf !== 1) {
+        dateTmp += "s";
+    }
+
+    return numberOf + " " + dateTmp;
 }

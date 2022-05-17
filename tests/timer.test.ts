@@ -309,4 +309,25 @@ describe("Timer", () => {
             onEnd: end,
         });
     });
+
+    test("Different format options.", (done) => {
+        expect.assertions(1);
+
+        const element = document.createElement("div");
+        const timer = new Timer({
+            updateElement: {
+                element,
+                format: {
+                    format: "daytime",
+                },
+            },
+        });
+        timer.start({
+            endValue: 1,
+            onEnd: () => {
+                expect(element.textContent).toBe("00:00:01");
+                done();
+            },
+        });
+    });
 });

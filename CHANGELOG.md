@@ -1,4 +1,21 @@
+# Legend
+
+❗ = breaking change
+
 # Unreleased
+
+# v6.0.0 - 18/05/2022
+
+## Added
+
+-   New format type `partial_daytime` added to the `timeToString` function.
+
+## Changed
+
+-   `Timer` class arguments was adjusted. ❗
+-   In the `timeToString` function, `units` now default to `undefined` instead of `2`, which makes it show all non-zero units (if `format` has value `string`). ❗
+-   Updated NodeJS and dependencies.
+-   `Timer` class now accepts the same arguments as in the `timeToString` function to control how the time is displayed on the html element (also allows a custom function instead).
 
 # v5.1.0 - 15/08/2021
 

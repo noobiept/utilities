@@ -70,6 +70,12 @@ describe("timeToString", () => {
                 partial: "2:30:00",
             },
             {
+                time: 10 * HOUR + 7 * MINUTE + 21 * SECOND,
+                string: "10 hours 7 minutes 21 seconds",
+                daytime: "10:07:21",
+                partial: "10:07:21",
+            },
+            {
                 time: DAY,
                 string: "1 day",
                 daytime: "1 00:00:00",
@@ -108,6 +114,21 @@ describe("timeToString", () => {
     });
 
     test("The 'units' argument.", () => {
+        // test default value (undefined, should show all non-zero units)
+        expect(timeToString({ time: DAY + HOUR + MINUTE + SECOND })).toBe(
+            "1 day 1 hour 1 minute 1 second"
+        );
+        expect(timeToString({ time: DAY + MINUTE + SECOND })).toBe(
+            "1 day 1 minute 1 second"
+        );
+
+        expect(
+            timeToString({
+                time: DAY + HOUR + MINUTE + SECOND,
+                units: undefined,
+            })
+        ).toBe("1 day 1 hour 1 minute 1 second");
+
         // test with 3 units
         expect(
             timeToString({ time: DAY + 30 * MINUTE + SECOND, units: 3 })
@@ -122,8 +143,17 @@ describe("timeToString", () => {
         ).toBe("1 day");
 
         // test with <1 unit (should go to the default units value)
-        expect(timeToString({ time: DAY + HOUR, units: 0 })).toBe(
-            "1 day 1 hour"
+        expect(timeToString({ time: DAY + HOUR + SECOND, units: 0 })).toBe(
+            "1 day 1 hour 1 second"
         );
+
+        // doesn't have an impact when it has a different format than `string`
+        expect(
+            timeToString({
+                time: DAY + HOUR + MINUTE + SECOND,
+                units: 2,
+                format: "daytime",
+            })
+        ).toBe("1 01:01:01");
     });
 });
