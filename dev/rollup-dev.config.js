@@ -1,7 +1,7 @@
 import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
 
-module.exports = {
+export default {
     input: "source/utilities.ts",
     output: [
         {
