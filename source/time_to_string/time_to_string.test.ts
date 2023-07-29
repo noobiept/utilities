@@ -210,4 +210,49 @@ describe("timeToString", () => {
             })
         ).toBe("1 01:01:01");
     });
+
+    test("Different display values for the day/hour/minute/second units.", () => {
+        const internationalization = {
+            day: {
+                single: "tag",
+                plural: "tage",
+            },
+            hour: {
+                single: "stunde",
+                plural: "stunden",
+            },
+            minute: {
+                single: "minute",
+                plural: "minuten",
+            },
+            second: {
+                single: "sekunde",
+                plural: "sekunden",
+            },
+        };
+
+        expect(
+            timeToString({
+                time: DAY + HOUR + MINUTE + SECOND,
+                format: "string",
+                internationalization,
+            })
+        ).toBe("1 tag 1 stunde 1 minute 1 sekunde");
+
+        expect(
+            timeToString({
+                time: 2 * DAY + 2 * HOUR + 2 * MINUTE + 2 * SECOND,
+                format: "string",
+                internationalization,
+            })
+        ).toBe("2 tage 2 stunden 2 minuten 2 sekunden");
+
+        expect(
+            timeToString({
+                time: DAY + HOUR + MINUTE + SECOND,
+                format: "short_string",
+                internationalization,
+            })
+        ).toBe("1t 1s 1m 1s");
+    });
 });

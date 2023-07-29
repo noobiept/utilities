@@ -1,18 +1,50 @@
 import { round } from "../number/number";
 import { isNumber } from "../is_type/is_type";
 
-type SeparatedTime = {
+export type SeparatedTime = {
     days: number;
     hours: number;
     minutes: number;
     seconds: number;
 };
 
+export type UnitDescription = {
+    single: string;
+    plural: string;
+};
+
+export type InternationalizationConfig = {
+    day: UnitDescription;
+    hour: UnitDescription;
+    minute: UnitDescription;
+    second: UnitDescription;
+};
+
 export interface TimeToStringArgs {
     time: number;
     units?: number;
     format?: "daytime" | "partial_daytime" | "string" | "short_string";
+    internationalization?: InternationalizationConfig;
 }
+
+const defaultInternationalization: InternationalizationConfig = {
+    day: {
+        single: "day",
+        plural: "days",
+    },
+    hour: {
+        single: "hour",
+        plural: "hours",
+    },
+    minute: {
+        single: "minute",
+        plural: "minutes",
+    },
+    second: {
+        single: "second",
+        plural: "seconds",
+    },
+};
 
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
@@ -34,13 +66,15 @@ export interface TimeToStringArgs {
  *
  * The number of `units` can limit the number of units shown in the string/short_string formats (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
  *
+ * The display string can be internationalized with the `internationalization` argument (when using the `string` or `short_string`).
+ *
  * Defaults:
  *     units: undefined (shows all non-zero if format is type `string` or `short_string`)
  *     format: string
  */
 export function timeToString(args: TimeToStringArgs) {
     const { time } = args;
-    let { units, format } = args;
+    let { units, format, internationalization } = args;
 
     // setup the default values if not provided
     if (!isNumber(units) || units < 1) {
@@ -49,6 +83,10 @@ export function timeToString(args: TimeToStringArgs) {
 
     if (!format) {
         format = "string";
+    }
+
+    if (!internationalization) {
+        internationalization = defaultInternationalization;
     }
 
     // :: convert to days/hours :: //
@@ -83,7 +121,7 @@ export function timeToString(args: TimeToStringArgs) {
     // :: construct the string :: //
     switch (format) {
         case "short_string":
-            return formatShortString(separated, units);
+            return formatShortString(separated, units, internationalization);
 
         case "daytime":
             return formatDaytime(separated);
@@ -92,7 +130,7 @@ export function timeToString(args: TimeToStringArgs) {
             return formatPartialDaytime(separated);
 
         case "string":
-            return formatString(separated, units);
+            return formatString(separated, units, internationalization);
     }
 }
 
@@ -154,12 +192,32 @@ function formatPartialDaytime(time: SeparatedTime): string {
     return date;
 }
 
-function formatString(time: SeparatedTime, units: number): string {
+function formatString(
+    time: SeparatedTime,
+    units: number,
+    { day, hour, minute, second }: InternationalizationConfig
+): string {
     const names = [
-        { name: " day", time: time.days },
-        { name: " hour", time: time.hours },
-        { name: " minute", time: time.minutes },
-        { name: " second", time: time.seconds },
+        {
+            single: " " + day.single,
+            plural: " " + day.plural,
+            time: time.days,
+        },
+        {
+            single: " " + hour.single,
+            plural: " " + hour.plural,
+            time: time.hours,
+        },
+        {
+            single: " " + minute.single,
+            plural: " " + minute.plural,
+            time: time.minutes,
+        },
+        {
+            single: " " + second.single,
+            plural: " " + second.plural,
+            time: time.seconds,
+        },
     ];
 
     let result = "";
@@ -172,7 +230,10 @@ function formatString(time: SeparatedTime, units: number): string {
                 result += " ";
             }
 
-            result += constructDate(item.name, item.time);
+            result +=
+                item.time === 1
+                    ? item.time + item.single
+                    : item.time + item.plural;
             units--;
 
             // reached the limit of the units that we want to display
@@ -185,12 +246,16 @@ function formatString(time: SeparatedTime, units: number): string {
     return result !== "" ? result : "0 seconds";
 }
 
-function formatShortString(time: SeparatedTime, units: number): string {
+function formatShortString(
+    time: SeparatedTime,
+    units: number,
+    { day, hour, minute, second }: InternationalizationConfig
+): string {
     const names = [
-        { name: "d", time: time.days },
-        { name: "h", time: time.hours },
-        { name: "m", time: time.minutes },
-        { name: "s", time: time.seconds },
+        { name: day.single.charAt(0), time: time.days },
+        { name: hour.single.charAt(0), time: time.hours },
+        { name: minute.single.charAt(0), time: time.minutes },
+        { name: second.single.charAt(0), time: time.seconds },
     ];
 
     let result = "";
@@ -215,13 +280,4 @@ function formatShortString(time: SeparatedTime, units: number): string {
     }
 
     return result !== "" ? result : "0s";
-}
-
-function constructDate(dateTmp: string, numberOf: number) {
-    // day to days, hour to hours...
-    if (numberOf !== 1) {
-        dateTmp += "s";
-    }
-
-    return numberOf + dateTmp;
 }
