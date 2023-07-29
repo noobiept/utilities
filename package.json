@@ -74,7 +74,7 @@
         "build": "npm-run-all --serial build:*",
         "build:clean": "rimraf build/",
         "build:tsc": "tsc",
-        "build:rollup": "rollup --config rollup.config.js",
+        "build:rollup": "rollup --config rollup.config.mjs",
         "test": "npm-run-all --serial build:tsc format:check lint unit e2e",
         "unit": "jest ./source/**/*.ts --coverage",
         "unit:w": "jest ./source/**/*.ts --coverage --watch",

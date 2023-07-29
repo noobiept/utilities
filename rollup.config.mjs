@@ -1,7 +1,7 @@
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import copy from "rollup-plugin-copy";
 
-module.exports = {
+export default {
     input: "source/utilities.js",
     output: [
         {
