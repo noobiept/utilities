@@ -2,7 +2,7 @@ import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
 
 export default {
-    input: "source/utilities.ts",
+    input: "source/index.ts",
     output: [
         {
             dir: "dev/build/",

@@ -3,7 +3,7 @@ import {
     calculateDistance,
     toDegrees,
     toRadians,
-} from "../source/utilities";
+} from "./trigonometry";
 
 describe("calculateAngle", () => {
     test("Test with valid arguments.", () => {

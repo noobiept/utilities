@@ -1,9 +1,14 @@
-import * as Utilities from "../source/utilities";
-import { mockXHR, mockURL, mockImage, mockAudio } from "./mocks/global_objects";
+import {
+    mockXHR,
+    mockURL,
+    mockImage,
+    mockAudio,
+} from "../tests/mocks/global_objects";
 import {
     generateFakeImageResponse,
     generateFakeAudioResponse,
-} from "./mocks/generate_data";
+} from "../tests/mocks/generate_data";
+import { Preload } from "./preload";
 
 describe("Preload", () => {
     const nativeXMLHttpRequest = window.XMLHttpRequest;
@@ -27,7 +32,7 @@ describe("Preload", () => {
             })
         );
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id: "json", path: "test.json" }];
 
         preload.addEventListener("complete", (data) => {
@@ -48,10 +53,10 @@ describe("Preload", () => {
         mockURL();
         mockImage();
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id: "image", path: "test.png" }];
 
-        preload.addEventListener("complete", (data) => {
+        preload.addEventListener("complete", (_data) => {
             const image = preload.get("image");
             expect(image instanceof Image).toBe(true);
         });
@@ -64,10 +69,10 @@ describe("Preload", () => {
         const textContent = "test test";
         mockXHR(textContent);
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id: "text", path: "text.txt" }];
 
-        preload.addEventListener("complete", (data) => {
+        preload.addEventListener("complete", (_data) => {
             const text = preload.get("text");
             expect(text).toBe(textContent);
         });
@@ -81,10 +86,10 @@ describe("Preload", () => {
         mockURL();
         mockAudio();
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id: "ogg", path: "test.ogg" }];
 
-        preload.addEventListener("complete", (data) => {
+        preload.addEventListener("complete", (_data) => {
             const audio = preload.get("ogg");
             expect(audio instanceof Audio).toBe(true);
         });
@@ -98,10 +103,10 @@ describe("Preload", () => {
         mockURL();
         mockAudio();
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id: "mp3", path: "test.mp3" }];
 
-        preload.addEventListener("complete", (data) => {
+        preload.addEventListener("complete", (_data) => {
             const audio = preload.get("mp3");
             expect(audio instanceof Audio).toBe(true);
         });
@@ -115,16 +120,16 @@ describe("Preload", () => {
         const id = "text";
         mockXHR(textContent);
 
-        const preload = new Utilities.Preload({ saveGlobal: true });
+        const preload = new Preload({ saveGlobal: true });
         const manifest = [{ id, path: "text.txt" }];
 
-        preload.addEventListener("complete", (data) => {
+        preload.addEventListener("complete", (_data) => {
             // shouldn't be in the instance
             const text = preload.get(id);
             expect(text).toBeUndefined();
 
             // but in the global state
-            const globalText = Utilities.Preload.get(id);
+            const globalText = Preload.get(id);
             expect(globalText).toBe(textContent);
         });
         preload.loadManifest(manifest);
@@ -137,7 +142,7 @@ describe("Preload", () => {
         const id = "text";
         mockXHR(textContent, 500);
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         const manifest = [{ id, path: "text.txt" }];
 
         preload.addEventListener("complete", (data) => {
@@ -152,7 +157,7 @@ describe("Preload", () => {
 
         mockXHR("test");
 
-        const preload = new Utilities.Preload();
+        const preload = new Preload();
         preload.addEventListener("progress", (progress) => {
             expect(typeof progress === "number").toBeTruthy();
         });

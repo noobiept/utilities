@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-export function mockXHR(response, status = 200) {
-    const eventListeners = {};
+export function mockXHR(response: any, status = 200) {
+    const eventListeners: {
+        [key: string]: (args?: any) => unknown;
+    } = {};
 
-    const mock = function () {
+    const mock = function (this: XMLHttpRequest) {
         this.open = jest.fn();
         this.addEventListener = jest.fn((type, listener) => {
-            eventListeners[type] = listener;
+            eventListeners[type] = listener as (args?: any) => unknown;
         });
         this.send = jest.fn(() => {
             eventListeners["progress"].call(
@@ -14,8 +16,15 @@ export function mockXHR(response, status = 200) {
             );
             eventListeners["load"].call(this);
         });
-        this.status = status;
-        this.response = response;
+        Object.defineProperty(this, "status", {
+            writable: true,
+            value: status,
+        });
+
+        Object.defineProperty(this, "response", {
+            writable: true,
+            value: response,
+        });
     };
 
     // @ts-ignore
@@ -32,9 +41,9 @@ export function mockURL() {
 
 export function mockImage() {
     class MyImage {
-        onload;
+        onload: () => void = () => {};
 
-        set src(url) {
+        set src(_url: string) {
             this.onload();
         }
     }
@@ -45,9 +54,9 @@ export function mockImage() {
 
 export function mockAudio() {
     class MyAudio {
-        oncanplay;
+        oncanplay: () => void = () => {};
 
-        set src(url) {
+        set src(_url: string) {
             this.oncanplay();
         }
     }

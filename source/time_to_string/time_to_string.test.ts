@@ -1,4 +1,4 @@
-import { timeToString } from "../source/utilities";
+import { timeToString } from "./time_to_string";
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;

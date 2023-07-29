@@ -1,5 +1,5 @@
-import { EventDispatcher } from "./event_dispatcher";
-import { isBoolean } from "./is_type";
+import { EventDispatcher } from "../event_dispatcher/event_dispatcher";
+import { isBoolean } from "../is_type/is_type";
 
 export type PreloadData = {
     [id: string]: any;

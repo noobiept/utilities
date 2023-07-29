@@ -1,4 +1,4 @@
-import { Dialog, DialogButtons, DialogPosition } from "../source/utilities";
+import { Dialog, DialogButtons, DialogPosition } from "./dialog";
 
 beforeEach(() => {
     document.body.innerHTML = "";
@@ -31,9 +31,11 @@ describe("Dialog", () => {
         });
         dialog.open();
 
-        expect(document.querySelector(".dialogTitle").innerHTML).toBe(title);
-        expect(document.querySelector(".dialogBody").innerHTML).toBe(body);
-        expect(document.querySelector(".dialogButton").innerText).toBe("Ok");
+        expect(document.querySelector(".dialogTitle")?.innerHTML).toBe(title);
+        expect(document.querySelector(".dialogBody")?.innerHTML).toBe(body);
+        expect(
+            (document.querySelector(".dialogButton") as HTMLElement).innerText
+        ).toBe("Ok");
     });
 
     test("If the dialog is correctly removed after pressing the button.", () => {
@@ -45,7 +47,10 @@ describe("Dialog", () => {
 
         expect(document.body.innerHTML).not.toBe("");
 
-        document.querySelector(".dialogButton").click();
+        const dialogButton = document.querySelector(
+            ".dialogButton"
+        ) as HTMLElement;
+        dialogButton?.click();
         expect(document.body.innerHTML).toBe("");
     });
 
@@ -64,11 +69,14 @@ describe("Dialog", () => {
         });
         dialog.open();
 
-        document.querySelector(".dialogButton").click();
+        (document.querySelector(".dialogButton") as HTMLElement).click();
     });
 
     test("The 'position' argument.", () => {
-        const testDialogPosition = (position, dialogCss) => {
+        const testDialogPosition = (
+            position: DialogPosition | undefined,
+            dialogCss: string
+        ) => {
             const dialog = new Dialog({
                 title: "a",
                 body: "b",
@@ -77,7 +85,7 @@ describe("Dialog", () => {
             dialog.open();
 
             const dialogElement = document.querySelector(".dialog");
-            expect(dialogElement.classList.contains(dialogCss)).toBe(true);
+            expect(dialogElement?.classList.contains(dialogCss)).toBe(true);
 
             // clear the previous dialog
             document.body.innerHTML = "";
@@ -210,10 +218,12 @@ describe("Dialog", () => {
             body: "",
         });
         dialog.open();
-        expect(document.querySelector(".dialogTitle").innerHTML).toBe("First.");
+        expect(document.querySelector(".dialogTitle")?.innerHTML).toBe(
+            "First."
+        );
 
         dialog.setTitle("Second.");
-        expect(document.querySelector(".dialogTitle").innerHTML).toBe(
+        expect(document.querySelector(".dialogTitle")?.innerHTML).toBe(
             "Second."
         );
     });
@@ -224,10 +234,12 @@ describe("Dialog", () => {
             body: "First.",
         });
         dialog.open();
-        expect(document.querySelector(".dialogBody").innerHTML).toBe("First.");
+        expect(document.querySelector(".dialogBody")?.innerHTML).toBe("First.");
 
         dialog.setBody("Second.");
-        expect(document.querySelector(".dialogBody").innerHTML).toBe("Second.");
+        expect(document.querySelector(".dialogBody")?.innerHTML).toBe(
+            "Second."
+        );
     });
 
     test("Creating a non-modal dialog.", () => {
@@ -275,10 +287,10 @@ describe("Dialog", () => {
         });
         dialog.open();
 
-        expect(document.querySelector(".dialogTitle").innerHTML).toBe(
+        expect(document.querySelector(".dialogTitle")?.innerHTML).toBe(
             '<div class="something">title <button>a button</button></div>'
         );
-        expect(document.querySelector(".dialogBody").innerHTML).toBe(
+        expect(document.querySelector(".dialogBody")?.innerHTML).toBe(
             "The body"
         );
     });
@@ -300,8 +312,8 @@ describe("Dialog", () => {
         });
         dialog.open();
 
-        expect(document.querySelector(".dialogTitle").innerHTML).toBe("title");
-        expect(document.querySelector(".dialogBody").innerHTML).toBe(
+        expect(document.querySelector(".dialogTitle")?.innerHTML).toBe("title");
+        expect(document.querySelector(".dialogBody")?.innerHTML).toBe(
             '<div class="cool">body<hr><div>yay</div></div>'
         );
     });
@@ -316,6 +328,6 @@ describe("Dialog", () => {
         dialog.open();
 
         const container = document.querySelector(".dialog");
-        expect(container.id).toBe(id);
+        expect(container?.id).toBe(id);
     });
 });

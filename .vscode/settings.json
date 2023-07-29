@@ -3,7 +3,7 @@
     "files.exclude": {
         "**/.hg": true,
         "**/.DS_Store": true,
-        "source/*.js": true
+        "source/**/*.js": true
     },
     "search.exclude": {
         "build/**": true,

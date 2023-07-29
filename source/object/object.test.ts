@@ -1,4 +1,4 @@
-import { createEnum, deepClone } from "../source/utilities";
+import { createEnum, deepClone } from "./object";
 
 describe("deepClone", () => {
     test("Test with valid arguments.", () => {

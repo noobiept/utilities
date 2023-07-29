@@ -1,4 +1,4 @@
-import { saveObject, getObject } from "../source/utilities";
+import { getObject, saveObject } from "./local_storage";
 
 describe("Local Storage", () => {
     test("Trying to get a key that doesn't exist should return null.", () => {

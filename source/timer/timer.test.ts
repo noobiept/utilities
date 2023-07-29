@@ -1,4 +1,4 @@
-import { Timer } from "../source/utilities";
+import { Timer } from "./timer";
 
 describe("Timer", () => {
     test("Validate arguments.", () => {
@@ -333,7 +333,7 @@ describe("Timer", () => {
 
     test("custom format function.", () => {
         const element = document.createElement("div");
-        const timer = new Timer({
+        new Timer({
             updateElement: {
                 element,
                 format: (timer) => {

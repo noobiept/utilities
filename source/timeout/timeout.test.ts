@@ -1,4 +1,4 @@
-import { Timeout } from "../source/utilities";
+import { Timeout } from "./timeout";
 
 describe("Timeout", () => {
     test("Test with valid arguments.", (done) => {

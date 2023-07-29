@@ -1,4 +1,4 @@
-import { EventDispatcher } from "../source/utilities";
+import { EventDispatcher } from "./event_dispatcher";
 
 describe("EventDispatcher", () => {
     test("Basic functionality.", () => {

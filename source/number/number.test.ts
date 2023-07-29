@@ -5,7 +5,7 @@ import {
     getSeveralRandomInts,
     numberOfDigits,
     round,
-} from "../source/utilities";
+} from "./number";
 
 describe("getRandomFloat", () => {
     test("Test with valid arguments.", () => {

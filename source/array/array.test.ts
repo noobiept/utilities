@@ -1,11 +1,11 @@
-import * as Utilities from "../source/utilities";
+import { shuffle } from "./array";
 
 describe("shuffle", () => {
     test("Test with valid arguments.", () => {
         const test = [1, 2, 3, 4];
         const length = test.length;
 
-        Utilities.shuffle(test);
+        shuffle(test);
 
         // should still have the same length
         expect(test.length).toBe(length);

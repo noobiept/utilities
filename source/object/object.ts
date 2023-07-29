@@ -1,4 +1,4 @@
-import { isNumber } from "./is_type";
+import { isNumber } from "../is_type/is_type";
 
 /**
  * Returns a deep clone/copy of the object.

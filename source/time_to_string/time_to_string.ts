@@ -1,5 +1,5 @@
-import { round } from "./number";
-import { isNumber } from "./is_type";
+import { round } from "../number/number";
+import { isNumber } from "../is_type/is_type";
 
 export interface TimeToStringArgs {
     time: number;

@@ -1,4 +1,11 @@
-import * as Utilities from "../source/utilities";
+import {
+    isArray,
+    isBoolean,
+    isFunction,
+    isInteger,
+    isNumber,
+    isString,
+} from "./is_type";
 
 describe("isArray", () => {
     test("Test type.", () => {
@@ -20,7 +27,7 @@ describe("isArray", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isArray(valueInfo.value);
+            const result = isArray(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
@@ -47,7 +54,7 @@ describe("isBoolean", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isBoolean(valueInfo.value);
+            const result = isBoolean(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
@@ -74,7 +81,7 @@ describe("isFunction", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isFunction(valueInfo.value);
+            const result = isFunction(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
@@ -101,7 +108,7 @@ describe("isInteger", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isInteger(valueInfo.value);
+            const result = isInteger(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
@@ -128,7 +135,7 @@ describe("isNumber", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isNumber(valueInfo.value);
+            const result = isNumber(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
@@ -155,7 +162,7 @@ describe("isString", () => {
 
         for (let a = 0; a < values.length; a++) {
             const valueInfo = values[a];
-            const result = Utilities.isString(valueInfo.value);
+            const result = isString(valueInfo.value);
 
             expect(result).toBe(valueInfo.expect);
         }
