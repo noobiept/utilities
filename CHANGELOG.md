@@ -4,6 +4,14 @@
 
 # Unreleased
 
+# v6.1.0 - 30/07/2023
+
+## Changed
+
+-   Changes in `timeToString`.
+    -   Add `short_string` format.
+    -   Add `internationalization` argument to replace the display value of the result (when using the `string` or `short_string` formats).
+
 # v6.0.0 - 18/05/2022
 
 ## Added
