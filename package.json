@@ -84,6 +84,7 @@
         "e2e:server": "light-server --serve ./dev/ --port 8080 --quiet",
         "cy:open": "cypress open",
         "cy:run": "cypress run",
+        "cy:verify": "cypress verify",
         "lint": "eslint . --ext .js,.ts",
         "documentation": "npm-run-all --serial documentation:*",
         "documentation:clean": "rimraf docs/",
