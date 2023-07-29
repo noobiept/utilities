@@ -1,28 +1,41 @@
 import { round } from "../number/number";
 import { isNumber } from "../is_type/is_type";
 
+type SeparatedTime = {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+};
+
 export interface TimeToStringArgs {
     time: number;
     units?: number;
-    format?: "daytime" | "partial_daytime" | "string";
+    format?: "daytime" | "partial_daytime" | "string" | "short_string";
 }
 
 /**
  * Converts a time (in milliseconds) to a string (with the number of days/hours...).
  * The units available are: day/hour/minute/second.
  *
- * There's 3 possible display formats.
- * daytime:
+ * There's 4 possible display formats.
+ *
+ * - daytime:
  *     `dd hh:mm:ss` or `hh:mm:ss` (where d=day, h=hour, m=minute, s=second)
- * partial_daytime:
+ *
+ * - partial_daytime:
  *      `ss`, `mm:ss`, `hh:mm:ss` or "dd hh:mm:ss", depending on the time value.
- * string:
+ *
+ * - string:
  *     `(d) days (h) hours (m) minutes (s) seconds`
  *
- * The number of `units` can limit the number of units shown only in the string format (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
+ * - short_string:
+ *    `(d)d (h)h (m)m (s)s`
+ *
+ * The number of `units` can limit the number of units shown in the string/short_string formats (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
  *
  * Defaults:
- *     units: undefined (shows all non-zero if format is type `string`)
+ *     units: undefined (shows all non-zero if format is type `string` or `short_string`)
  *     format: string
  */
 export function timeToString(args: TimeToStringArgs) {
@@ -60,90 +73,148 @@ export function timeToString(args: TimeToStringArgs) {
 
     const secondsLeft = round(remainder / second, 2);
 
+    const separated = {
+        days: daysLeft,
+        hours: hoursLeft,
+        minutes: minutesLeft,
+        seconds: secondsLeft,
+    };
+
     // :: construct the string :: //
+    switch (format) {
+        case "short_string":
+            return formatShortString(separated, units);
+
+        case "daytime":
+            return formatDaytime(separated);
+
+        case "partial_daytime":
+            return formatPartialDaytime(separated);
+
+        case "string":
+            return formatString(separated, units);
+    }
+}
+
+function formatDaytime(time: SeparatedTime): string {
     let date = "";
 
-    if (format === "daytime") {
-        if (daysLeft > 0) {
-            date += `${daysLeft} `;
-        }
+    if (time.days > 0) {
+        date += `${time.days} `;
+    }
 
-        const hoursString = hoursLeft.toString().padStart(2, "0");
-        const minutesString = minutesLeft.toString().padStart(2, "0");
-        const secondsString = secondsLeft.toString().padStart(2, "0");
+    const hoursString = time.hours.toString().padStart(2, "0");
+    const minutesString = time.minutes.toString().padStart(2, "0");
+    const secondsString = time.seconds.toString().padStart(2, "0");
 
-        date += `${hoursString}:${minutesString}:${secondsString}`;
-    } else if (format === "partial_daytime") {
-        const values = [
-            {
-                value: daysLeft,
-                separator: "",
-            },
-            {
-                value: hoursLeft,
-                separator: " ",
-            },
-            {
-                value: minutesLeft,
-                separator: ":",
-            },
-            {
-                value: secondsLeft,
-                separator: ":",
-            },
-        ];
+    date += `${hoursString}:${minutesString}:${secondsString}`;
 
-        // first value isn't padded
-        let foundFirst = false;
-        for (let a = 0; a < values.length; a++) {
-            const item = values[a];
+    return date;
+}
 
-            if (foundFirst) {
-                date += item.separator + item.value.toString().padStart(2, "0");
-            } else if (item.value > 0) {
-                foundFirst = true;
-                date += item.value.toString();
-            }
-        }
+function formatPartialDaytime(time: SeparatedTime): string {
+    const values = [
+        {
+            value: time.days,
+            separator: "",
+        },
+        {
+            value: time.hours,
+            separator: " ",
+        },
+        {
+            value: time.minutes,
+            separator: ":",
+        },
+        {
+            value: time.seconds,
+            separator: ":",
+        },
+    ];
 
-        if (date === "") {
-            date = "0";
-        }
-    } else {
-        const theDate = [
-            { name: "day", time: daysLeft },
-            { name: "hour", time: hoursLeft },
-            { name: "minute", time: minutesLeft },
-            { name: "second", time: secondsLeft },
-        ];
+    let date = "";
 
-        for (let i = 0; i < theDate.length; i++) {
-            // reached the limit of the units
-            if (units === 0) {
-                break;
-            }
+    // first value isn't padded
+    let foundFirst = false;
+    for (let a = 0; a < values.length; a++) {
+        const item = values[a];
 
-            const component = theDate[i];
-
-            // only show when there's something relevant to be shown
-            // (for example: 0 days 2 hours 2 minutes... no point showing the days part)
-            if (component.time !== 0) {
-                // add spacing between the units apart from the first one
-                if (date !== "") {
-                    date += " ";
-                }
-
-                date += constructDate(component.name, component.time);
-                units--;
-            }
-        }
-
-        if (date === "") {
-            date = "0 seconds";
+        if (foundFirst) {
+            date += item.separator + item.value.toString().padStart(2, "0");
+        } else if (item.value > 0) {
+            foundFirst = true;
+            date += item.value.toString();
         }
     }
 
+    if (date === "") {
+        date = "0";
+    }
+
     return date;
+}
+
+function formatString(time: SeparatedTime, units: number): string {
+    const names = [
+        { name: " day", time: time.days },
+        { name: " hour", time: time.hours },
+        { name: " minute", time: time.minutes },
+        { name: " second", time: time.seconds },
+    ];
+
+    let result = "";
+
+    for (let a = 0; a < names.length; a++) {
+        const item = names[a];
+
+        if (item.time > 0) {
+            if (result !== "") {
+                result += " ";
+            }
+
+            result += constructDate(item.name, item.time);
+            units--;
+
+            // reached the limit of the units that we want to display
+            if (units === 0) {
+                break;
+            }
+        }
+    }
+
+    return result !== "" ? result : "0 seconds";
+}
+
+function formatShortString(time: SeparatedTime, units: number): string {
+    const names = [
+        { name: "d", time: time.days },
+        { name: "h", time: time.hours },
+        { name: "m", time: time.minutes },
+        { name: "s", time: time.seconds },
+    ];
+
+    let result = "";
+
+    for (let a = 0; a < names.length; a++) {
+        const item = names[a];
+
+        if (item.time > 0) {
+            if (result !== "") {
+                result += ` ${item.time}${item.name}`;
+            } else {
+                result += `${item.time}${item.name}`;
+            }
+
+            units--;
+
+            // reached the limit of the units that we want to display
+            if (units === 0) {
+                break;
+            }
+        }
+    }
+
+    return result !== "" ? result : "0s";
 }
 
 function constructDate(dateTmp: string, numberOf: number) {
@@ -152,5 +223,5 @@ function constructDate(dateTmp: string, numberOf: number) {
         dateTmp += "s";
     }
 
-    return numberOf + " " + dateTmp;
+    return numberOf + dateTmp;
 }
