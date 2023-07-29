@@ -8,6 +8,7 @@ window.onload = function () {
     dialogWithHTMLElements();
     dialogWithStyling();
     dialogOverlayClose();
+    dialogWithCustomButtons();
 };
 
 function dialogModal() {
@@ -68,7 +69,6 @@ function dialogBottomLeft() {
         const dialog = new Dialog({
             title: "Bottom-left",
             body: "Positioned in the bottom left.",
-            okButton: false,
             position: DialogPosition.bottomLeft,
         });
         dialog.open();
@@ -123,6 +123,24 @@ function dialogOverlayClose() {
             title: "title",
             body: "body",
             closeOnOverlay: true,
+        });
+        dialog.open();
+    };
+}
+
+function dialogWithCustomButtons() {
+    const button1 = document.createElement("button");
+    button1.innerText = "Button 1";
+
+    const button2 = document.createElement("button");
+    button2.innerText = "Button 2";
+
+    const button = document.getElementById("OpenDialogWithCustomButtons");
+    button.onclick = () => {
+        const dialog = new Dialog({
+            title: "title",
+            body: "body",
+            buttons: [button1, button2],
         });
         dialog.open();
     };
