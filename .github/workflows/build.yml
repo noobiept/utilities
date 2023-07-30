@@ -15,9 +15,10 @@ jobs:
                   node-version: "18.x"
 
             - run: npm ci
-            - run: npm run cy:verify
-            - run: npm run test
             - run: npm run build
+            - run: npm run format:check
+            - run: npm run lint
+            - run: npm run unit
 
             - uses: actions/upload-artifact@master
               with:
