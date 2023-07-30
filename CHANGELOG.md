@@ -4,6 +4,13 @@
 
 # Unreleased
 
+# v6.1.1 - 30/07/2023
+
+## Fixed
+
+-   Build issue.
+-   Generate documentation as markdown.
+
 # v6.1.0 - 30/07/2023
 
 ## Changed
