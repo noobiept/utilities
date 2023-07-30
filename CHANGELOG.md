@@ -4,6 +4,12 @@
 
 # Unreleased
 
+# V6.1.2 - 30/07/2023
+
+## Fixed
+
+-   Type definitions not being loaded correctly.
+
 # v6.1.1 - 30/07/2023
 
 ## Fixed
