@@ -2,7 +2,7 @@ import terser from "@rollup/plugin-terser";
 import copy from "rollup-plugin-copy";
 
 export default {
-    input: "source/utilities.js",
+    input: "source/index.js",
     output: [
         {
             file: "build/utilities.cjs.js",
