@@ -22,7 +22,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:8](https://github.com/noobiept/utilities/blob/1ba3532/source/types.ts#L8)
+[types.ts:8](https://github.com/noobiept/utilities/blob/f980c9b/source/types.ts#L8)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[types.ts:9](https://github.com/noobiept/utilities/blob/1ba3532/source/types.ts#L9)
+[types.ts:9](https://github.com/noobiept/utilities/blob/f980c9b/source/types.ts#L9)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[types.ts:5](https://github.com/noobiept/utilities/blob/1ba3532/source/types.ts#L5)
+[types.ts:5](https://github.com/noobiept/utilities/blob/f980c9b/source/types.ts#L5)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[types.ts:6](https://github.com/noobiept/utilities/blob/1ba3532/source/types.ts#L6)
+[types.ts:6](https://github.com/noobiept/utilities/blob/f980c9b/source/types.ts#L6)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[types.ts:7](https://github.com/noobiept/utilities/blob/1ba3532/source/types.ts#L7)
+[types.ts:7](https://github.com/noobiept/utilities/blob/f980c9b/source/types.ts#L7)

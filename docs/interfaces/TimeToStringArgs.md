@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:26](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L26)
+[time_to_string/time_to_string.ts:26](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L26)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:27](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L27)
+[time_to_string/time_to_string.ts:27](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L27)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:24](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L24)
+[time_to_string/time_to_string.ts:24](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L24)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:25](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L25)
+[time_to_string/time_to_string.ts:25](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L25)

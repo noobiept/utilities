@@ -29,7 +29,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 #### Defined in
 
-[timeout/timeout.ts:8](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L8)
+[timeout/timeout.ts:8](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L8)
 
 ## Properties
 
@@ -39,7 +39,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 #### Defined in
 
-[timeout/timeout.ts:6](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L6)
+[timeout/timeout.ts:6](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L6)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[timeout/timeout.ts:5](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L5)
+[timeout/timeout.ts:5](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L5)
 
 ## Methods
 
@@ -65,7 +65,7 @@ Cancels the timeout.
 
 #### Defined in
 
-[timeout/timeout.ts:32](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L32)
+[timeout/timeout.ts:32](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L32)
 
 ___
 
@@ -81,7 +81,7 @@ Returns whether the timeout is active or not.
 
 #### Defined in
 
-[timeout/timeout.ts:40](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L40)
+[timeout/timeout.ts:40](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L40)
 
 ___
 
@@ -104,4 +104,4 @@ Starts the timeout. If there was an active timeout already, that one is canceled
 
 #### Defined in
 
-[timeout/timeout.ts:16](https://github.com/noobiept/utilities/blob/1ba3532/source/timeout/timeout.ts#L16)
+[timeout/timeout.ts:16](https://github.com/noobiept/utilities/blob/f980c9b/source/timeout/timeout.ts#L16)

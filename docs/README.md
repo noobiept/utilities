@@ -76,7 +76,7 @@ Utilities
 
 #### Defined in
 
-[dialog/dialog.ts:13](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L13)
+[dialog/dialog.ts:13](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L13)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[preload/preload.ts:45](https://github.com/noobiept/utilities/blob/1ba3532/source/preload/preload.ts#L45)
+[preload/preload.ts:45](https://github.com/noobiept/utilities/blob/f980c9b/source/preload/preload.ts#L45)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:16](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L16)
+[time_to_string/time_to_string.ts:16](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L16)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[preload/preload.ts:8](https://github.com/noobiept/utilities/blob/1ba3532/source/preload/preload.ts#L8)
+[preload/preload.ts:8](https://github.com/noobiept/utilities/blob/f980c9b/source/preload/preload.ts#L8)
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-[preload/preload.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/preload/preload.ts#L4)
+[preload/preload.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/preload/preload.ts#L4)
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 #### Defined in
 
-[preload/preload.ts:14](https://github.com/noobiept/utilities/blob/1ba3532/source/preload/preload.ts#L14)
+[preload/preload.ts:14](https://github.com/noobiept/utilities/blob/f980c9b/source/preload/preload.ts#L14)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L4)
+[time_to_string/time_to_string.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L4)
 
 ___
 
@@ -175,7 +175,7 @@ ___
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:11](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L11)
+[time_to_string/time_to_string.ts:11](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L11)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:11](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L11)
+[timer/timer.ts:11](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L11)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:7](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L7)
+[timer/timer.ts:7](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L7)
 
 ## Functions
 
@@ -231,7 +231,7 @@ Detects collision between 2 boxes.
 
 #### Defined in
 
-[collision_detection/collision_detection.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/collision_detection/collision_detection.ts#L4)
+[collision_detection/collision_detection.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/collision_detection/collision_detection.ts#L4)
 
 ___
 
@@ -257,7 +257,7 @@ Positive in clockwise direction.
 
 #### Defined in
 
-[trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/1ba3532/source/trigonometry/trigonometry.ts#L5)
+[trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/f980c9b/source/trigonometry/trigonometry.ts#L5)
 
 ___
 
@@ -282,7 +282,7 @@ Distance between 2 points.
 
 #### Defined in
 
-[trigonometry/trigonometry.ts:17](https://github.com/noobiept/utilities/blob/1ba3532/source/trigonometry/trigonometry.ts#L17)
+[trigonometry/trigonometry.ts:17](https://github.com/noobiept/utilities/blob/f980c9b/source/trigonometry/trigonometry.ts#L17)
 
 ___
 
@@ -309,7 +309,7 @@ Detects collision between two circles.
 
 #### Defined in
 
-[collision_detection/collision_detection.ts:25](https://github.com/noobiept/utilities/blob/1ba3532/source/collision_detection/collision_detection.ts#L25)
+[collision_detection/collision_detection.ts:25](https://github.com/noobiept/utilities/blob/f980c9b/source/collision_detection/collision_detection.ts#L25)
 
 ___
 
@@ -335,7 +335,7 @@ Detects collision between a circle and a point.
 
 #### Defined in
 
-[collision_detection/collision_detection.ts:49](https://github.com/noobiept/utilities/blob/1ba3532/source/collision_detection/collision_detection.ts#L49)
+[collision_detection/collision_detection.ts:49](https://github.com/noobiept/utilities/blob/f980c9b/source/collision_detection/collision_detection.ts#L49)
 
 ___
 
@@ -358,7 +358,7 @@ Enum - A way to associate a string name to a number.
 
 #### Defined in
 
-[object/object.ts:16](https://github.com/noobiept/utilities/blob/1ba3532/source/object/object.ts#L16)
+[object/object.ts:16](https://github.com/noobiept/utilities/blob/f980c9b/source/object/object.ts#L16)
 
 ___
 
@@ -380,7 +380,7 @@ Returns a deep clone/copy of the object.
 
 #### Defined in
 
-[object/object.ts:6](https://github.com/noobiept/utilities/blob/1ba3532/source/object/object.ts#L6)
+[object/object.ts:6](https://github.com/noobiept/utilities/blob/f980c9b/source/object/object.ts#L6)
 
 ___
 
@@ -402,7 +402,7 @@ Returns an object that was obtained by parsing (with json) some data that was sa
 
 #### Defined in
 
-[local_storage/local_storage.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/local_storage/local_storage.ts#L4)
+[local_storage/local_storage.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/local_storage/local_storage.ts#L4)
 
 ___
 
@@ -425,7 +425,7 @@ Returns a random float number between `min` and `max` (inclusive).
 
 #### Defined in
 
-[number/number.ts:6](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L6)
+[number/number.ts:6](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L6)
 
 ___
 
@@ -448,7 +448,7 @@ Returns a random integer number between `min` and `max` (inclusive).
 
 #### Defined in
 
-[number/number.ts:17](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L17)
+[number/number.ts:17](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L17)
 
 ___
 
@@ -472,7 +472,7 @@ Returns several different random integers, in the range between `min` and `max` 
 
 #### Defined in
 
-[number/number.ts:28](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L28)
+[number/number.ts:28](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L28)
 
 ___
 
@@ -494,7 +494,7 @@ If it is an array or not.
 
 #### Defined in
 
-[is_type/is_type.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L4)
+[is_type/is_type.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L4)
 
 ___
 
@@ -516,7 +516,7 @@ If it is a boolean.
 
 #### Defined in
 
-[is_type/is_type.ts:11](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L11)
+[is_type/is_type.ts:11](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L11)
 
 ___
 
@@ -538,7 +538,7 @@ If it is a function.
 
 #### Defined in
 
-[is_type/is_type.ts:23](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L23)
+[is_type/is_type.ts:23](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L23)
 
 ___
 
@@ -560,7 +560,7 @@ If it is an integer.
 
 #### Defined in
 
-[is_type/is_type.ts:33](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L33)
+[is_type/is_type.ts:33](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L33)
 
 ___
 
@@ -582,7 +582,7 @@ If it is a number.
 
 #### Defined in
 
-[is_type/is_type.ts:40](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L40)
+[is_type/is_type.ts:40](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L40)
 
 ___
 
@@ -604,7 +604,7 @@ If it is a string.
 
 #### Defined in
 
-[is_type/is_type.ts:51](https://github.com/noobiept/utilities/blob/1ba3532/source/is_type/is_type.ts#L51)
+[is_type/is_type.ts:51](https://github.com/noobiept/utilities/blob/f980c9b/source/is_type/is_type.ts#L51)
 
 ___
 
@@ -627,7 +627,7 @@ It doesn't consider the minus signal, nor the dot (in floats) as a digit.
 
 #### Defined in
 
-[number/number.ts:65](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L65)
+[number/number.ts:65](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L65)
 
 ___
 
@@ -654,7 +654,7 @@ Detects collision between a point and a box.
 
 #### Defined in
 
-[collision_detection/collision_detection.ts:72](https://github.com/noobiept/utilities/blob/1ba3532/source/collision_detection/collision_detection.ts#L72)
+[collision_detection/collision_detection.ts:72](https://github.com/noobiept/utilities/blob/f980c9b/source/collision_detection/collision_detection.ts#L72)
 
 ___
 
@@ -677,7 +677,7 @@ Create an array with all the numbers in-between the 'start' and 'end' (inclusive
 
 #### Defined in
 
-[number/number.ts:89](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L89)
+[number/number.ts:89](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L89)
 
 ___
 
@@ -700,7 +700,7 @@ Rounds a number to a specified decimal case.
 
 #### Defined in
 
-[number/number.ts:78](https://github.com/noobiept/utilities/blob/1ba3532/source/number/number.ts#L78)
+[number/number.ts:78](https://github.com/noobiept/utilities/blob/f980c9b/source/number/number.ts#L78)
 
 ___
 
@@ -723,7 +723,7 @@ Saves in the `localStorage` a json string representation of the `value`.
 
 #### Defined in
 
-[local_storage/local_storage.ts:13](https://github.com/noobiept/utilities/blob/1ba3532/source/local_storage/local_storage.ts#L13)
+[local_storage/local_storage.ts:13](https://github.com/noobiept/utilities/blob/f980c9b/source/local_storage/local_storage.ts#L13)
 
 ___
 
@@ -745,7 +745,7 @@ Shuffle an array.
 
 #### Defined in
 
-[array/array.ts:4](https://github.com/noobiept/utilities/blob/1ba3532/source/array/array.ts#L4)
+[array/array.ts:4](https://github.com/noobiept/utilities/blob/f980c9b/source/array/array.ts#L4)
 
 ___
 
@@ -790,7 +790,7 @@ Defaults:
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:75](https://github.com/noobiept/utilities/blob/1ba3532/source/time_to_string/time_to_string.ts#L75)
+[time_to_string/time_to_string.ts:75](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L75)
 
 ___
 
@@ -812,7 +812,7 @@ Converts a number in `radians` to `degrees` and returns it.
 
 #### Defined in
 
-[trigonometry/trigonometry.ts:32](https://github.com/noobiept/utilities/blob/1ba3532/source/trigonometry/trigonometry.ts#L32)
+[trigonometry/trigonometry.ts:32](https://github.com/noobiept/utilities/blob/f980c9b/source/trigonometry/trigonometry.ts#L32)
 
 ___
 
@@ -834,4 +834,4 @@ Converts a number in `degrees` to `radians` and returns it.
 
 #### Defined in
 
-[trigonometry/trigonometry.ts:39](https://github.com/noobiept/utilities/blob/1ba3532/source/trigonometry/trigonometry.ts#L39)
+[trigonometry/trigonometry.ts:39](https://github.com/noobiept/utilities/blob/f980c9b/source/trigonometry/trigonometry.ts#L39)

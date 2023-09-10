@@ -4,6 +4,12 @@
 
 # Unreleased
 
+# v6.1.3 - 10/09/2023
+
+## Fixed
+
+-   Fix issue in `timeToString` where when time was `0` it didn't respected the internationalization.
+
 # V6.1.2 - 30/07/2023
 
 ## Fixed

@@ -65,7 +65,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:51](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L51)
+[dialog/dialog.ts:51](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L51)
 
 ## Properties
 
@@ -75,7 +75,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:44](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L44)
+[dialog/dialog.ts:44](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L44)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:45](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L45)
+[dialog/dialog.ts:45](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L45)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:42](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L42)
+[dialog/dialog.ts:42](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L42)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:48](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L48)
+[dialog/dialog.ts:48](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L48)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:47](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L47)
+[dialog/dialog.ts:47](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L47)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:49](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L49)
+[dialog/dialog.ts:49](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L49)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:46](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L46)
+[dialog/dialog.ts:46](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L46)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:43](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L43)
+[dialog/dialog.ts:43](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L43)
 
 ## Methods
 
@@ -181,7 +181,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:177](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L177)
+[dialog/dialog.ts:177](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L177)
 
 ___
 
@@ -197,7 +197,7 @@ Remove the dialog from the page.
 
 #### Defined in
 
-[dialog/dialog.ts:209](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L209)
+[dialog/dialog.ts:209](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L209)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:130](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L130)
+[dialog/dialog.ts:130](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L130)
 
 ___
 
@@ -238,7 +238,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:104](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L104)
+[dialog/dialog.ts:104](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L104)
 
 ___
 
@@ -264,7 +264,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:72](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L72)
+[dialog/dialog.ts:72](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L72)
 
 ___
 
@@ -278,7 +278,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:125](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L125)
+[dialog/dialog.ts:125](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L125)
 
 ___
 
@@ -298,7 +298,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:151](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L151)
+[dialog/dialog.ts:151](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L151)
 
 ___
 
@@ -314,7 +314,7 @@ Check if the dialog is opened or not.
 
 #### Defined in
 
-[dialog/dialog.ts:234](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L234)
+[dialog/dialog.ts:234](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L234)
 
 ___
 
@@ -330,7 +330,7 @@ Add the dialog to the page.
 
 #### Defined in
 
-[dialog/dialog.ts:192](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L192)
+[dialog/dialog.ts:192](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L192)
 
 ___
 
@@ -344,7 +344,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:183](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L183)
+[dialog/dialog.ts:183](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L183)
 
 ___
 
@@ -366,7 +366,7 @@ Change the body of the dialog.
 
 #### Defined in
 
-[dialog/dialog.ts:264](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L264)
+[dialog/dialog.ts:264](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L264)
 
 ___
 
@@ -388,7 +388,7 @@ Change the title of the dialog.
 
 #### Defined in
 
-[dialog/dialog.ts:252](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L252)
+[dialog/dialog.ts:252](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L252)
 
 ___
 
@@ -414,7 +414,7 @@ ___
 
 #### Defined in
 
-[dialog/dialog.ts:164](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L164)
+[dialog/dialog.ts:164](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L164)
 
 ___
 
@@ -430,4 +430,4 @@ Toggle between the open/close state.
 
 #### Defined in
 
-[dialog/dialog.ts:241](https://github.com/noobiept/utilities/blob/1ba3532/source/dialog/dialog.ts#L241)
+[dialog/dialog.ts:241](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L241)

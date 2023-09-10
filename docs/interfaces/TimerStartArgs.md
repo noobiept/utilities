@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[timer/timer.ts:25](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L25)
+[timer/timer.ts:25](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L25)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:22](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L22)
+[timer/timer.ts:22](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L22)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:26](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L26)
+[timer/timer.ts:26](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L26)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:23](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L23)
+[timer/timer.ts:23](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L23)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:24](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L24)
+[timer/timer.ts:24](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L24)
 
 ___
 
@@ -87,4 +87,4 @@ ___
 
 #### Defined in
 
-[timer/timer.ts:21](https://github.com/noobiept/utilities/blob/1ba3532/source/timer/timer.ts#L21)
+[timer/timer.ts:21](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L21)
