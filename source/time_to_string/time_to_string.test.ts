@@ -214,20 +214,20 @@ describe("timeToString", () => {
     test("Different display values for the day/hour/minute/second units.", () => {
         const internationalization = {
             day: {
-                single: "tag",
-                plural: "tage",
+                single: "Tag",
+                plural: "Tage",
             },
             hour: {
-                single: "stunde",
-                plural: "stunden",
+                single: "Stunde",
+                plural: "Stunden",
             },
             minute: {
-                single: "minute",
-                plural: "minuten",
+                single: "Minute",
+                plural: "Minuten",
             },
             second: {
-                single: "sekunde",
-                plural: "sekunden",
+                single: "Sekunde",
+                plural: "Sekunden",
             },
         };
 
@@ -237,7 +237,7 @@ describe("timeToString", () => {
                 format: "string",
                 internationalization,
             })
-        ).toBe("1 tag 1 stunde 1 minute 1 sekunde");
+        ).toBe("1 Tag 1 Stunde 1 Minute 1 Sekunde");
 
         expect(
             timeToString({
@@ -245,7 +245,15 @@ describe("timeToString", () => {
                 format: "string",
                 internationalization,
             })
-        ).toBe("2 tage 2 stunden 2 minuten 2 sekunden");
+        ).toBe("2 Tage 2 Stunden 2 Minuten 2 Sekunden");
+
+        expect(
+            timeToString({
+                time: 0,
+                format: "string",
+                internationalization,
+            })
+        ).toBe("0 Sekunden");
 
         expect(
             timeToString({
@@ -253,6 +261,14 @@ describe("timeToString", () => {
                 format: "short_string",
                 internationalization,
             })
-        ).toBe("1t 1s 1m 1s");
+        ).toBe("1T 1S 1M 1S");
+
+        expect(
+            timeToString({
+                time: 0,
+                format: "short_string",
+                internationalization,
+            })
+        ).toBe("0S");
     });
 });

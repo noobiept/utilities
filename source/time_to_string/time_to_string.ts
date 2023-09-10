@@ -243,7 +243,7 @@ function formatString(
         }
     }
 
-    return result !== "" ? result : "0 seconds";
+    return result !== "" ? result : `0 ${second.plural}`;
 }
 
 function formatShortString(
@@ -251,11 +251,12 @@ function formatShortString(
     units: number,
     { day, hour, minute, second }: InternationalizationConfig
 ): string {
+    const secondChar = second.single.charAt(0);
     const names = [
         { name: day.single.charAt(0), time: time.days },
         { name: hour.single.charAt(0), time: time.hours },
         { name: minute.single.charAt(0), time: time.minutes },
-        { name: second.single.charAt(0), time: time.seconds },
+        { name: secondChar, time: time.seconds },
     ];
 
     let result = "";
@@ -279,5 +280,5 @@ function formatShortString(
         }
     }
 
-    return result !== "" ? result : "0s";
+    return result !== "" ? result : `0${secondChar}`;
 }
