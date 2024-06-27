@@ -1,90 +1,75 @@
+[**Utilities**](../README.md) • **Docs**
+
+***
+
 [Utilities](../README.md) / TimerStartArgs
 
 # Interface: TimerStartArgs
 
-## Table of contents
-
-### Properties
-
-- [countDown](TimerStartArgs.md#countdown)
-- [endValue](TimerStartArgs.md#endvalue)
-- [interval](TimerStartArgs.md#interval)
-- [onEnd](TimerStartArgs.md#onend)
-- [onTick](TimerStartArgs.md#ontick)
-- [startValue](TimerStartArgs.md#startvalue)
-
 ## Properties
 
-### countDown
+### countDown?
 
-• `Optional` **countDown**: `boolean`
-
-#### Defined in
-
-[timer/timer.ts:25](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L25)
-
-___
-
-### endValue
-
-• `Optional` **endValue**: `number`
+> `optional` **countDown**: `boolean`
 
 #### Defined in
 
-[timer/timer.ts:22](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L22)
+[timer/timer.ts:25](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L25)
 
-___
+***
 
-### interval
+### endValue?
 
-• `Optional` **interval**: `number`
+> `optional` **endValue**: `number`
 
 #### Defined in
 
-[timer/timer.ts:26](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L26)
+[timer/timer.ts:22](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L22)
 
-___
+***
 
-### onEnd
+### interval?
 
-• `Optional` **onEnd**: () => `void`
+> `optional` **interval**: `number`
 
-#### Type declaration
+#### Defined in
 
-▸ (): `void`
+[timer/timer.ts:26](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L26)
 
-##### Returns
+***
+
+### onEnd()?
+
+> `optional` **onEnd**: () => `void`
+
+#### Returns
 
 `void`
 
 #### Defined in
 
-[timer/timer.ts:23](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L23)
+[timer/timer.ts:23](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L23)
 
-___
+***
 
-### onTick
+### onTick()?
 
-• `Optional` **onTick**: () => `void`
+> `optional` **onTick**: () => `void`
 
-#### Type declaration
-
-▸ (): `void`
-
-##### Returns
+#### Returns
 
 `void`
 
 #### Defined in
 
-[timer/timer.ts:24](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L24)
+[timer/timer.ts:24](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L24)
 
-___
+***
 
-### startValue
+### startValue?
 
-• `Optional` **startValue**: `number`
+> `optional` **startValue**: `number`
 
 #### Defined in
 
-[timer/timer.ts:21](https://github.com/noobiept/utilities/blob/f980c9b/source/timer/timer.ts#L21)
+[timer/timer.ts:21](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L21)

@@ -1,93 +1,81 @@
+[**Utilities**](../README.md) • **Docs**
+
+***
+
 [Utilities](../README.md) / DialogArgs
 
 # Interface: DialogArgs
-
-## Table of contents
-
-### Properties
-
-- [body](DialogArgs.md#body)
-- [buttons](DialogArgs.md#buttons)
-- [closeOnOverlay](DialogArgs.md#closeonoverlay)
-- [modal](DialogArgs.md#modal)
-- [onClose](DialogArgs.md#onclose)
-- [position](DialogArgs.md#position)
-- [title](DialogArgs.md#title)
 
 ## Properties
 
 ### body
 
-• **body**: `string` \| `HTMLElement`
+> **body**: `string` \| `HTMLElement`
 
 #### Defined in
 
-[dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L17)
+[dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L17)
 
-___
+***
 
-### buttons
+### buttons?
 
-• `Optional` **buttons**: [`DialogButtonsArg`](../README.md#dialogbuttonsarg)
-
-#### Defined in
-
-[dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L21)
-
-___
-
-### closeOnOverlay
-
-• `Optional` **closeOnOverlay**: `boolean`
+> `optional` **buttons**: [`DialogButtonsArg`](../type-aliases/DialogButtonsArg.md)
 
 #### Defined in
 
-[dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L20)
+[dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L21)
 
-___
+***
 
-### modal
+### closeOnOverlay?
 
-• `Optional` **modal**: `boolean`
+> `optional` **closeOnOverlay**: `boolean`
 
 #### Defined in
 
-[dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L19)
+[dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L20)
 
-___
+***
 
-### onClose
+### modal?
 
-• `Optional` **onClose**: () => `void`
+> `optional` **modal**: `boolean`
 
-#### Type declaration
+#### Defined in
 
-▸ (): `void`
+[dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L19)
 
-##### Returns
+***
+
+### onClose()?
+
+> `optional` **onClose**: () => `void`
+
+#### Returns
 
 `void`
 
 #### Defined in
 
-[dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L18)
+[dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L18)
 
-___
+***
 
-### position
+### position?
 
-• `Optional` **position**: [`DialogPosition`](../enums/DialogPosition.md)
+> `optional` **position**: [`DialogPosition`](../enumerations/DialogPosition.md)
 
 #### Defined in
 
-[dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L22)
+[dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L22)
 
-___
+***
 
 ### title
 
-• **title**: `string` \| `HTMLElement`
+> **title**: `string` \| `HTMLElement`
 
 #### Defined in
 
-[dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/f980c9b/source/dialog/dialog.ts#L16)
+[dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L16)

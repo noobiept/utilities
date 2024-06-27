@@ -1,52 +1,47 @@
+[**Utilities**](../README.md) • **Docs**
+
+***
+
 [Utilities](../README.md) / TimeToStringArgs
 
 # Interface: TimeToStringArgs
 
-## Table of contents
-
-### Properties
-
-- [format](TimeToStringArgs.md#format)
-- [internationalization](TimeToStringArgs.md#internationalization)
-- [time](TimeToStringArgs.md#time)
-- [units](TimeToStringArgs.md#units)
-
 ## Properties
 
-### format
+### format?
 
-• `Optional` **format**: ``"string"`` \| ``"daytime"`` \| ``"partial_daytime"`` \| ``"short_string"``
-
-#### Defined in
-
-[time_to_string/time_to_string.ts:26](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L26)
-
-___
-
-### internationalization
-
-• `Optional` **internationalization**: [`InternationalizationConfig`](../README.md#internationalizationconfig)
+> `optional` **format**: `"string"` \| `"daytime"` \| `"partial_daytime"` \| `"short_string"`
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:27](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L27)
+[time\_to\_string/time\_to\_string.ts:26](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/time_to_string/time_to_string.ts#L26)
 
-___
+***
+
+### internationalization?
+
+> `optional` **internationalization**: [`InternationalizationConfig`](../type-aliases/InternationalizationConfig.md)
+
+#### Defined in
+
+[time\_to\_string/time\_to\_string.ts:27](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/time_to_string/time_to_string.ts#L27)
+
+***
 
 ### time
 
-• **time**: `number`
+> **time**: `number`
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:24](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L24)
+[time\_to\_string/time\_to\_string.ts:24](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/time_to_string/time_to_string.ts#L24)
 
-___
+***
 
-### units
+### units?
 
-• `Optional` **units**: `number`
+> `optional` **units**: `number`
 
 #### Defined in
 
-[time_to_string/time_to_string.ts:25](https://github.com/noobiept/utilities/blob/f980c9b/source/time_to_string/time_to_string.ts#L25)
+[time\_to\_string/time\_to\_string.ts:25](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/time_to_string/time_to_string.ts#L25)

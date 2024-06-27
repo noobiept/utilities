@@ -1,6 +1,10 @@
+[**Utilities**](../README.md) • **Docs**
+
+***
+
 [Utilities](../README.md) / EventDispatcher
 
-# Class: EventDispatcher<EventType\>
+# Class: EventDispatcher\<EventType\>
 
 Base class that provides a way to add/remove listeners, and dispatch events.
 
@@ -19,77 +23,46 @@ Basic Usage:
     const instance = MyClass();
     instance.addEventListener('anEvent', somethingToDo);
 
-## Type parameters
+## Extended by
 
-| Name | Type |
-| :------ | :------ |
-| `EventType` | extends `string` |
+- [`Preload`](Preload.md)
 
-## Hierarchy
+## Type Parameters
 
-- **`EventDispatcher`**
-
-  ↳ [`Preload`](Preload.md)
-
-## Table of contents
-
-### Constructors
-
-- [constructor](EventDispatcher.md#constructor)
-
-### Properties
-
-- [\_listeners](EventDispatcher.md#_listeners)
-
-### Methods
-
-- [addEventListener](EventDispatcher.md#addeventlistener)
-- [dispatchEvent](EventDispatcher.md#dispatchevent)
-- [hasListeners](EventDispatcher.md#haslisteners)
-- [removeAllEventListeners](EventDispatcher.md#removealleventlisteners)
-- [removeEventListener](EventDispatcher.md#removeeventlistener)
+• **EventType** *extends* `string`
 
 ## Constructors
 
-### constructor
+### new EventDispatcher()
 
-• **new EventDispatcher**<`EventType`\>()
+> **new EventDispatcher**\<`EventType`\>(): [`EventDispatcher`](EventDispatcher.md)\<`EventType`\>
 
-#### Type parameters
+#### Returns
 
-| Name | Type |
-| :------ | :------ |
-| `EventType` | extends `string` |
+[`EventDispatcher`](EventDispatcher.md)\<`EventType`\>
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L24)
-
-## Properties
-
-### \_listeners
-
-• `Private` **\_listeners**: { [E in string]?: Function[] }
-
-#### Defined in
-
-[event_dispatcher/event_dispatcher.ts:20](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L20)
+[event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L24)
 
 ## Methods
 
-### addEventListener
+### addEventListener()
 
-▸ **addEventListener**(`type`, `listener`): `boolean`
+> **addEventListener**(`type`, `listener`): `boolean`
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `EventType` | Type of the event. |
-| `listener` | (`data`: `any`) => `void` | A function to be called when the event is dispatched. |
+• **type**: `EventType`
+
+Type of the event.
+
+• **listener**
+
+A function to be called when the event is dispatched.
 
 #### Returns
 
@@ -99,22 +72,25 @@ If it was successfully added.
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L36)
+[event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L36)
 
-___
+***
 
-### dispatchEvent
+### dispatchEvent()
 
-▸ **dispatchEvent**(`type`, `data?`): `void`
+> **dispatchEvent**(`type`, `data`?): `void`
 
 Dispatches an event, which will trigger the listeners of that event.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `EventType` | Type of the event to dispatch. |
-| `data?` | `any` | Data to be sent to every listener. |
+• **type**: `EventType`
+
+Type of the event to dispatch.
+
+• **data?**: `any`
+
+Data to be sent to every listener.
 
 #### Returns
 
@@ -122,21 +98,21 @@ Dispatches an event, which will trigger the listeners of that event.
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L89)
+[event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L89)
 
-___
+***
 
-### hasListeners
+### hasListeners()
 
-▸ **hasListeners**(`type`): `boolean`
+> **hasListeners**(`type`): `boolean`
 
 Check if there are listeners to a particular event type.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `EventType` | The event type to check. |
+• **type**: `EventType`
+
+The event type to check.
 
 #### Returns
 
@@ -146,13 +122,13 @@ If there are listeners or not.
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L105)
+[event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L105)
 
-___
+***
 
-### removeAllEventListeners
+### removeAllEventListeners()
 
-▸ **removeAllEventListeners**(): `void`
+> **removeAllEventListeners**(): `void`
 
 Remove all the event listeners.
 
@@ -162,22 +138,25 @@ Remove all the event listeners.
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L79)
+[event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L79)
 
-___
+***
 
-### removeEventListener
+### removeEventListener()
 
-▸ **removeEventListener**(`type`, `listener?`): `boolean`
+> **removeEventListener**(`type`, `listener`?): `boolean`
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `EventType` | The event type. |
-| `listener?` | (`data`: `any`) => `any` | The listener function to remove. If not provided then remove all the functions associated with the event type. |
+• **type**: `EventType`
+
+The event type.
+
+• **listener?**
+
+The listener function to remove. If not provided then remove all the functions associated with the event type.
 
 #### Returns
 
@@ -187,4 +166,4 @@ If it was successfully removed.
 
 #### Defined in
 
-[event_dispatcher/event_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/f980c9b/source/event_dispatcher/event_dispatcher.ts#L56)
+[event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L56)

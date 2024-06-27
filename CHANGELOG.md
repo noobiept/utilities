@@ -4,6 +4,12 @@
 
 # Unreleased
 
+# v6.2.0 - 27/06/2024
+
+## Changed
+
+-   Updated node and package dependencies.
+
 # v6.1.3 - 10/09/2023
 
 ## Fixed
