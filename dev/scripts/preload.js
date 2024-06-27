@@ -12,9 +12,8 @@ window.onload = () => {
 
         console.log(json, json2, image, text, audioMp3, audioOgg);
 
-        document.getElementById(
-            "Json"
-        ).innerText = `${json.ok} / ${json2.nice}`;
+        document.getElementById("Json").innerText =
+            `${json.ok} / ${json2.nice}`;
         document.getElementById("Image").appendChild(image);
         document.getElementById("Text").innerText = text;
 
