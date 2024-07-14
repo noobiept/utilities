@@ -37,7 +37,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:51](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L51)
+[dialog/dialog.ts:51](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L51)
 
 ## Properties
 
@@ -47,7 +47,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:44](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L44)
+[dialog/dialog.ts:44](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L44)
 
 ***
 
@@ -57,7 +57,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:45](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L45)
+[dialog/dialog.ts:45](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L45)
 
 ***
 
@@ -67,7 +67,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:42](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L42)
+[dialog/dialog.ts:42](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L42)
 
 ***
 
@@ -77,7 +77,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 #### Defined in
 
-[dialog/dialog.ts:43](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L43)
+[dialog/dialog.ts:43](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L43)
 
 ## Methods
 
@@ -93,7 +93,7 @@ Remove the dialog from the page.
 
 #### Defined in
 
-[dialog/dialog.ts:209](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L209)
+[dialog/dialog.ts:209](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L209)
 
 ***
 
@@ -109,7 +109,7 @@ Check if the dialog is opened or not.
 
 #### Defined in
 
-[dialog/dialog.ts:234](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L234)
+[dialog/dialog.ts:234](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L234)
 
 ***
 
@@ -125,7 +125,7 @@ Add the dialog to the page.
 
 #### Defined in
 
-[dialog/dialog.ts:192](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L192)
+[dialog/dialog.ts:192](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L192)
 
 ***
 
@@ -145,7 +145,7 @@ Change the body of the dialog.
 
 #### Defined in
 
-[dialog/dialog.ts:264](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L264)
+[dialog/dialog.ts:264](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L264)
 
 ***
 
@@ -165,7 +165,7 @@ Change the title of the dialog.
 
 #### Defined in
 
-[dialog/dialog.ts:252](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L252)
+[dialog/dialog.ts:252](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L252)
 
 ***
 
@@ -181,4 +181,4 @@ Toggle between the open/close state.
 
 #### Defined in
 
-[dialog/dialog.ts:241](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L241)
+[dialog/dialog.ts:241](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L241)

@@ -22,4 +22,4 @@ Saves in the `localStorage` a json string representation of the `value`.
 
 ## Defined in
 
-[local\_storage/local\_storage.ts:13](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/local_storage/local_storage.ts#L13)
+[local\_storage/local\_storage.ts:13](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/local_storage/local_storage.ts#L13)

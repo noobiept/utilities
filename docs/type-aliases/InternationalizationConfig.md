@@ -28,4 +28,4 @@
 
 ## Defined in
 
-[time\_to\_string/time\_to\_string.ts:16](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/time_to_string/time_to_string.ts#L16)
+[time\_to\_string/time\_to\_string.ts:16](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/time_to_string/time_to_string.ts#L16)

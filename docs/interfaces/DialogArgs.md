@@ -14,7 +14,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L17)
+[dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L17)
 
 ***
 
@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L21)
+[dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L21)
 
 ***
 
@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L20)
+[dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L20)
 
 ***
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L19)
+[dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L19)
 
 ***
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L18)
+[dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L18)
 
 ***
 
@@ -68,7 +68,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L22)
+[dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L22)
 
 ***
 
@@ -78,4 +78,4 @@
 
 #### Defined in
 
-[dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L16)
+[dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L16)

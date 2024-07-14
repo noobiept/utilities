@@ -4,6 +4,12 @@
 
 # Unreleased
 
+# v6.2.1 - 14/07/2024
+
+## Fixed
+
+-   Import issue due to file extensions.
+
 # v6.2.0 - 27/06/2024
 
 ## Changed

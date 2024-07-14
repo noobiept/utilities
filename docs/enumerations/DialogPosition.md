@@ -14,7 +14,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L4)
+[dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L4)
 
 ***
 
@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L3)
+[dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L3)
 
 ***
 
@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L5)
+[dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L5)
 
 ***
 
@@ -44,4 +44,4 @@
 
 #### Defined in
 
-[dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L2)
+[dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L2)

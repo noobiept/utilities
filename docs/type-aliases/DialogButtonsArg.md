@@ -10,4 +10,4 @@
 
 ## Defined in
 
-[dialog/dialog.ts:13](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/dialog/dialog.ts#L13)
+[dialog/dialog.ts:13](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L13)

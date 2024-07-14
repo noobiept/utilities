@@ -54,7 +54,7 @@ Events:
 
 #### Defined in
 
-[preload/preload.ts:120](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/preload/preload.ts#L120)
+[preload/preload.ts:120](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L120)
 
 ## Methods
 
@@ -87,7 +87,7 @@ If it was successfully added.
 
 #### Defined in
 
-[event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L36)
+[event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L36)
 
 ***
 
@@ -117,7 +117,7 @@ Data to be sent to every listener.
 
 #### Defined in
 
-[event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L89)
+[event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L89)
 
 ***
 
@@ -137,7 +137,7 @@ Get a previously loaded file.
 
 #### Defined in
 
-[preload/preload.ts:318](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/preload/preload.ts#L318)
+[preload/preload.ts:318](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L318)
 
 ***
 
@@ -165,7 +165,7 @@ If there are listeners or not.
 
 #### Defined in
 
-[event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L105)
+[event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L105)
 
 ***
 
@@ -195,7 +195,7 @@ Type of the file to load. If not provided then it will try to determine the type
 
 #### Defined in
 
-[preload/preload.ts:230](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/preload/preload.ts#L230)
+[preload/preload.ts:230](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L230)
 
 ***
 
@@ -215,7 +215,7 @@ Load several files.
 
 #### Defined in
 
-[preload/preload.ts:309](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/preload/preload.ts#L309)
+[preload/preload.ts:309](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L309)
 
 ***
 
@@ -235,7 +235,7 @@ Remove all the event listeners.
 
 #### Defined in
 
-[event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L79)
+[event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L79)
 
 ***
 
@@ -267,7 +267,7 @@ If it was successfully removed.
 
 #### Defined in
 
-[event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/event_dispatcher/event_dispatcher.ts#L56)
+[event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L56)
 
 ***
 
@@ -291,4 +291,4 @@ The preloaded element.
 
 #### Defined in
 
-[preload/preload.ts:116](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/preload/preload.ts#L116)
+[preload/preload.ts:116](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L116)

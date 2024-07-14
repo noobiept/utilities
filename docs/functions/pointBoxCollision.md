@@ -30,4 +30,4 @@ Detects collision between a point and a box.
 
 ## Defined in
 
-[collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/collision_detection/collision_detection.ts#L72)
+[collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L72)

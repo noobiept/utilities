@@ -26,4 +26,4 @@ Starting number for the first name. The number is incremented by one for the nex
 
 ## Defined in
 
-[object/object.ts:16](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/object/object.ts#L16)
+[object/object.ts:16](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/object/object.ts#L16)

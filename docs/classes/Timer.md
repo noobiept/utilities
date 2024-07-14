@@ -24,7 +24,7 @@ Count-up or count-down timer. Can optionally update an html element.
 
 #### Defined in
 
-[timer/timer.ts:46](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L46)
+[timer/timer.ts:46](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L46)
 
 ## Methods
 
@@ -46,7 +46,7 @@ In milliseconds.
 
 #### Defined in
 
-[timer/timer.ts:229](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L229)
+[timer/timer.ts:229](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L229)
 
 ***
 
@@ -62,7 +62,7 @@ Returns the time it has passed so far, in milliseconds.
 
 #### Defined in
 
-[timer/timer.ts:250](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L250)
+[timer/timer.ts:250](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L250)
 
 ***
 
@@ -78,7 +78,7 @@ Returns the time it has passed so far, in seconds.
 
 #### Defined in
 
-[timer/timer.ts:243](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L243)
+[timer/timer.ts:243](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L243)
 
 ***
 
@@ -94,7 +94,7 @@ Returns a string with the time passed so far.
 
 #### Defined in
 
-[timer/timer.ts:236](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L236)
+[timer/timer.ts:236](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L236)
 
 ***
 
@@ -110,7 +110,7 @@ Returns whether the timer is currently active or not.
 
 #### Defined in
 
-[timer/timer.ts:257](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L257)
+[timer/timer.ts:257](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L257)
 
 ***
 
@@ -126,7 +126,7 @@ Stops and resets the count.
 
 #### Defined in
 
-[timer/timer.ts:180](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L180)
+[timer/timer.ts:180](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L180)
 
 ***
 
@@ -142,7 +142,7 @@ Restart the timer.
 
 #### Defined in
 
-[timer/timer.ts:190](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L190)
+[timer/timer.ts:190](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L190)
 
 ***
 
@@ -158,7 +158,7 @@ Resumes the timer with the same settings/values that were set before it was stop
 
 #### Defined in
 
-[timer/timer.ts:116](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L116)
+[timer/timer.ts:116](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L116)
 
 ***
 
@@ -176,7 +176,7 @@ Resumes the timer with the same settings/values that were set before it was stop
 
 #### Defined in
 
-[timer/timer.ts:202](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L202)
+[timer/timer.ts:202](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L202)
 
 ***
 
@@ -204,7 +204,7 @@ If no endValue is given, it never stops counting.
 
 #### Defined in
 
-[timer/timer.ts:68](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L68)
+[timer/timer.ts:68](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L68)
 
 ***
 
@@ -220,7 +220,7 @@ Stop counting.
 
 #### Defined in
 
-[timer/timer.ts:168](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L168)
+[timer/timer.ts:168](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L168)
 
 ***
 
@@ -236,4 +236,4 @@ Updates the associated html element (if was given) with the current time value.
 
 #### Defined in
 
-[timer/timer.ts:218](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/timer/timer.ts#L218)
+[timer/timer.ts:218](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L218)

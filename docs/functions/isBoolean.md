@@ -20,4 +20,4 @@ If it is a boolean.
 
 ## Defined in
 
-[is\_type/is\_type.ts:11](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/is_type/is_type.ts#L11)
+[is\_type/is\_type.ts:11](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/is_type/is_type.ts#L11)

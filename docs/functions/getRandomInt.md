@@ -22,4 +22,4 @@ Returns a random integer number between `min` and `max` (inclusive).
 
 ## Defined in
 
-[number/number.ts:17](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/number/number.ts#L17)
+[number/number.ts:17](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/number/number.ts#L17)

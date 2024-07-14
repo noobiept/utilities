@@ -27,4 +27,4 @@ Positive in clockwise direction.
 
 ## Defined in
 
-[trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/trigonometry/trigonometry.ts#L5)
+[trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/trigonometry/trigonometry.ts#L5)

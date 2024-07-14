@@ -16,7 +16,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:8](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/types.ts#L8)
+[types.ts:8](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L8)
 
 ***
 
@@ -26,7 +26,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:9](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/types.ts#L9)
+[types.ts:9](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L9)
 
 ***
 
@@ -36,7 +36,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:5](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/types.ts#L5)
+[types.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L5)
 
 ***
 
@@ -46,7 +46,7 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:6](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/types.ts#L6)
+[types.ts:6](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L6)
 
 ***
 
@@ -56,4 +56,4 @@ Numeric code of each mouse button.
 
 #### Defined in
 
-[types.ts:7](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/types.ts#L7)
+[types.ts:7](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L7)

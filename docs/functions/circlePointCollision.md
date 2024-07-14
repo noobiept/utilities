@@ -28,4 +28,4 @@ Detects collision between a circle and a point.
 
 ## Defined in
 
-[collision\_detection/collision\_detection.ts:49](https://github.com/noobiept/utilities/blob/18352a8077ed8c48acd60199e66f10ece023322d/source/collision_detection/collision_detection.ts#L49)
+[collision\_detection/collision\_detection.ts:49](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L49)
