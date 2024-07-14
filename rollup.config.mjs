@@ -5,7 +5,7 @@ export default {
     input: "source/index.js",
     output: [
         {
-            file: "build/utilities.cjs.js",
+            file: "build/utilities.cjs",
             format: "cjs",
         },
         {
@@ -14,7 +14,7 @@ export default {
             name: "Utilities",
         },
         {
-            file: "build/utilities.esm.js",
+            file: "build/utilities.mjs",
             format: "esm",
         },
     ],
