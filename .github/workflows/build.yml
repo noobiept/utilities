@@ -17,7 +17,9 @@ jobs:
             - run: npm ci
             - run: npm run e2e:install
             - run: npm run build
-            - run: npm run test
+            - run: npm run format:check
+            - run: npm run lint
+            - run: npm run unit
 
             - uses: actions/upload-artifact@v4
               with:
