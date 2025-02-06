@@ -1,7 +1,7 @@
 {
     "name": "@drk4/utilities",
     "displayName": "utilities",
-    "version": "6.2.1",
+    "version": "6.3.0",
     "description": "Random collection of utilities functions/classes.",
     "author": {
         "name": "Pedro Ferreira",
@@ -12,7 +12,7 @@
         "build"
     ],
     "type": "module",
-    "packageManager": "npm@10.7.0",
+    "packageManager": "npm@10.9.2",
     "main": "build/utilities.cjs",
     "module": "build/utilities.mjs",
     "types": "build/index.d.ts",
