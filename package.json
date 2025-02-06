@@ -83,7 +83,7 @@
         "e2e:run": "npm run e2e:build && npm run e2e:server",
         "e2e:build": "rollup --config ./dev/rollup-dev.config.mjs",
         "e2e:server": "light-server --serve ./dev/ --port 8080 --quiet",
-        "e2e:install": "playwright install",
+        "e2e:install": "playwright install --with-deps",
         "e2e:test": "playwright test tests",
         "e2e:ui": "playwright test tests --ui",
         "lint": "eslint . --ext .js,.ts",
