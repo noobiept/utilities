@@ -15,7 +15,7 @@ jobs:
                   node-version: "22.x"
 
             - run: npm ci
-            - run: npm e2e:install
+            - run: npm run e2e:install
             - run: npm run build
             - run: npm run test
 
