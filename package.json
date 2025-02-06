@@ -63,7 +63,6 @@
         "rimraf": "^6",
         "rollup": "^4.34",
         "rollup-plugin-copy": "^3.5.0",
-        "start-server-and-test": "^2.0.10",
         "typedoc": "^0.26",
         "typedoc-plugin-markdown": "^4",
         "typescript": "^5.5"
@@ -79,8 +78,7 @@
         "test": "npm-run-all --serial build:tsc format:check lint unit e2e",
         "unit": "jest ./source/**/*.ts --coverage",
         "unit:w": "jest ./source/**/*.ts --coverage --watch",
-        "e2e": "start-server-and-test e2e:run http://localhost:8080 e2e:test",
-        "e2e:run": "npm run e2e:build && npm run e2e:server",
+        "e2e": "npm-run-all --serial e2e:build e2e:test",
         "e2e:build": "rollup --config ./dev/rollup-dev.config.mjs",
         "e2e:server": "light-server --serve ./dev/ --port 8080 --quiet",
         "e2e:install": "playwright install --with-deps",
