@@ -4,12 +4,8 @@ module.exports = {
     parserOptions: {
         sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "cypress"],
-    extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:cypress/recommended",
-    ],
+    plugins: ["@typescript-eslint"],
+    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
     env: {
         browser: true,
         node: true,

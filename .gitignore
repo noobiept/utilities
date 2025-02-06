@@ -4,3 +4,9 @@ build/
 coverage/
 .DS_Store
 source/**/*.js
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
