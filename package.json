@@ -12,7 +12,7 @@
         "build"
     ],
     "type": "module",
-    "packageManager": "npm@10.9.2",
+    "packageManager": "pnpm@10.2.1",
     "main": "build/utilities.cjs",
     "module": "build/utilities.mjs",
     "types": "build/index.d.ts",
@@ -62,6 +62,7 @@
         "rimraf": "^6",
         "rollup": "^4.34",
         "rollup-plugin-copy": "^3.5.0",
+        "tslib": "^2.8.1",
         "typedoc": "^0.26",
         "typedoc-plugin-markdown": "^4",
         "typescript": "^5.5",
