@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -43,7 +43,7 @@ export default defineConfig({
     /* Run your local dev server before starting the tests */
     webServer: {
         command: "npm run e2e:server",
-        url: "http://127.0.0.1:8080",
+        url: "http://localhost:8080/",
         reuseExistingServer: !process.env.CI,
     },
 });
