@@ -1,10 +1,12 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
 [Utilities](../README.md) / MouseButton
 
 # Enumeration: MouseButton
+
+Defined in: [types.ts:4](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L4)
 
 Numeric code of each mouse button.
 
@@ -14,9 +16,7 @@ Numeric code of each mouse button.
 
 > **back**: `3`
 
-#### Defined in
-
-[types.ts:8](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L8)
+Defined in: [types.ts:8](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L8)
 
 ***
 
@@ -24,9 +24,7 @@ Numeric code of each mouse button.
 
 > **forward**: `4`
 
-#### Defined in
-
-[types.ts:9](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L9)
+Defined in: [types.ts:9](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L9)
 
 ***
 
@@ -34,9 +32,7 @@ Numeric code of each mouse button.
 
 > **left**: `0`
 
-#### Defined in
-
-[types.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L5)
+Defined in: [types.ts:5](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L5)
 
 ***
 
@@ -44,9 +40,7 @@ Numeric code of each mouse button.
 
 > **middle**: `1`
 
-#### Defined in
-
-[types.ts:6](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L6)
+Defined in: [types.ts:6](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L6)
 
 ***
 
@@ -54,6 +48,4 @@ Numeric code of each mouse button.
 
 > **right**: `2`
 
-#### Defined in
-
-[types.ts:7](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/types.ts#L7)
+Defined in: [types.ts:7](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/types.ts#L7)

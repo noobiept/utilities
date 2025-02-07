@@ -1,4 +1,4 @@
-**Utilities** • **Docs**
+**Utilities**
 
 ***
 
@@ -22,9 +22,9 @@
 
 - [DialogArgs](interfaces/DialogArgs.md)
 - [PreloadArgs](interfaces/PreloadArgs.md)
-- [TimeToStringArgs](interfaces/TimeToStringArgs.md)
 - [TimerArgs](interfaces/TimerArgs.md)
 - [TimerStartArgs](interfaces/TimerStartArgs.md)
+- [TimeToStringArgs](interfaces/TimeToStringArgs.md)
 
 ## Type Aliases
 

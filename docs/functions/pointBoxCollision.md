@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,26 +8,36 @@
 
 > **pointBoxCollision**(`pointX`, `pointY`, `boxX`, `boxY`, `boxWidth`, `boxHeight`): `boolean`
 
+Defined in: [collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/collision_detection/collision_detection.ts#L72)
+
 Detects collision between a point and a box.
 
 ## Parameters
 
-• **pointX**: `number`
+### pointX
 
-• **pointY**: `number`
+`number`
 
-• **boxX**: `number`
+### pointY
 
-• **boxY**: `number`
+`number`
 
-• **boxWidth**: `number`
+### boxX
 
-• **boxHeight**: `number`
+`number`
+
+### boxY
+
+`number`
+
+### boxWidth
+
+`number`
+
+### boxHeight
+
+`number`
 
 ## Returns
 
 `boolean`
-
-## Defined in
-
-[collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L72)

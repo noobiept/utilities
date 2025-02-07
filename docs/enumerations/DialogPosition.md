@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -6,15 +6,15 @@
 
 # Enumeration: DialogPosition
 
+Defined in: [dialog/dialog.ts:1](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/dialog/dialog.ts#L1)
+
 ## Enumeration Members
 
 ### bottom
 
 > **bottom**: `2`
 
-#### Defined in
-
-[dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L4)
+Defined in: [dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/dialog/dialog.ts#L4)
 
 ***
 
@@ -22,9 +22,7 @@
 
 > **bottomLeft**: `1`
 
-#### Defined in
-
-[dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L3)
+Defined in: [dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/dialog/dialog.ts#L3)
 
 ***
 
@@ -32,9 +30,7 @@
 
 > **bottomRight**: `3`
 
-#### Defined in
-
-[dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L5)
+Defined in: [dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/dialog/dialog.ts#L5)
 
 ***
 
@@ -42,6 +38,4 @@
 
 > **center**: `0`
 
-#### Defined in
-
-[dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/dialog/dialog.ts#L2)
+Defined in: [dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/dialog/dialog.ts#L2)

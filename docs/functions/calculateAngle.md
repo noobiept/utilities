@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,23 +8,29 @@
 
 > **calculateAngle**(`aX`, `aY`, `bX`, `bY`): `number`
 
+Defined in: [trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/trigonometry/trigonometry.ts#L5)
+
 Returns the angle between 2 points in radians.
 Positive in clockwise direction.
 
 ## Parameters
 
-• **aX**: `number`
+### aX
 
-• **aY**: `number`
+`number`
 
-• **bX**: `number`
+### aY
 
-• **bY**: `number`
+`number`
+
+### bX
+
+`number`
+
+### bY
+
+`number`
 
 ## Returns
 
 `number`
-
-## Defined in
-
-[trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/trigonometry/trigonometry.ts#L5)

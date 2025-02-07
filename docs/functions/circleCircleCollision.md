@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,26 +8,36 @@
 
 > **circleCircleCollision**(`x1`, `y1`, `radius1`, `x2`, `y2`, `radius2`): `boolean`
 
+Defined in: [collision\_detection/collision\_detection.ts:25](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/collision_detection/collision_detection.ts#L25)
+
 Detects collision between two circles.
 
 ## Parameters
 
-• **x1**: `number`
+### x1
 
-• **y1**: `number`
+`number`
 
-• **radius1**: `number`
+### y1
 
-• **x2**: `number`
+`number`
 
-• **y2**: `number`
+### radius1
 
-• **radius2**: `number`
+`number`
+
+### x2
+
+`number`
+
+### y2
+
+`number`
+
+### radius2
+
+`number`
 
 ## Returns
 
 `boolean`
-
-## Defined in
-
-[collision\_detection/collision\_detection.ts:25](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L25)

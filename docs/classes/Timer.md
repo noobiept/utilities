@@ -1,10 +1,12 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
 [Utilities](../README.md) / Timer
 
 # Class: Timer
+
+Defined in: [timer/timer.ts:32](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L32)
 
 Count-up or count-down timer. Can optionally update an html element.
 
@@ -14,17 +16,17 @@ Count-up or count-down timer. Can optionally update an html element.
 
 > **new Timer**(`args`?): [`Timer`](Timer.md)
 
+Defined in: [timer/timer.ts:46](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L46)
+
 #### Parameters
 
-• **args?**: [`TimerArgs`](../interfaces/TimerArgs.md)
+##### args?
+
+[`TimerArgs`](../interfaces/TimerArgs.md)
 
 #### Returns
 
 [`Timer`](Timer.md)
-
-#### Defined in
-
-[timer/timer.ts:46](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L46)
 
 ## Methods
 
@@ -32,11 +34,15 @@ Count-up or count-down timer. Can optionally update an html element.
 
 > **add**(`time`): `void`
 
+Defined in: [timer/timer.ts:229](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L229)
+
 Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
 
 #### Parameters
 
-• **time**: `number`
+##### time
+
+`number`
 
 In milliseconds.
 
@@ -44,15 +50,13 @@ In milliseconds.
 
 `void`
 
-#### Defined in
-
-[timer/timer.ts:229](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L229)
-
 ***
 
 ### getTimeMilliseconds()
 
 > **getTimeMilliseconds**(): `number`
+
+Defined in: [timer/timer.ts:250](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L250)
 
 Returns the time it has passed so far, in milliseconds.
 
@@ -60,15 +64,13 @@ Returns the time it has passed so far, in milliseconds.
 
 `number`
 
-#### Defined in
-
-[timer/timer.ts:250](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L250)
-
 ***
 
 ### getTimeSeconds()
 
 > **getTimeSeconds**(): `number`
+
+Defined in: [timer/timer.ts:243](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L243)
 
 Returns the time it has passed so far, in seconds.
 
@@ -76,15 +78,13 @@ Returns the time it has passed so far, in seconds.
 
 `number`
 
-#### Defined in
-
-[timer/timer.ts:243](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L243)
-
 ***
 
 ### getTimeString()
 
 > **getTimeString**(): `string`
+
+Defined in: [timer/timer.ts:236](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L236)
 
 Returns a string with the time passed so far.
 
@@ -92,15 +92,13 @@ Returns a string with the time passed so far.
 
 `string`
 
-#### Defined in
-
-[timer/timer.ts:236](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L236)
-
 ***
 
 ### isActive()
 
 > **isActive**(): `boolean`
+
+Defined in: [timer/timer.ts:257](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L257)
 
 Returns whether the timer is currently active or not.
 
@@ -108,15 +106,13 @@ Returns whether the timer is currently active or not.
 
 `boolean`
 
-#### Defined in
-
-[timer/timer.ts:257](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L257)
-
 ***
 
 ### reset()
 
 > **reset**(): `void`
+
+Defined in: [timer/timer.ts:180](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L180)
 
 Stops and resets the count.
 
@@ -124,15 +120,13 @@ Stops and resets the count.
 
 `void`
 
-#### Defined in
-
-[timer/timer.ts:180](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L180)
-
 ***
 
 ### restart()
 
 > **restart**(): `void`
+
+Defined in: [timer/timer.ts:190](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L190)
 
 Restart the timer.
 
@@ -140,15 +134,13 @@ Restart the timer.
 
 `void`
 
-#### Defined in
-
-[timer/timer.ts:190](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L190)
-
 ***
 
 ### resume()
 
 > **resume**(): `void`
+
+Defined in: [timer/timer.ts:116](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L116)
 
 Resumes the timer with the same settings/values that were set before it was stopped.
 
@@ -156,33 +148,31 @@ Resumes the timer with the same settings/values that were set before it was stop
 
 `void`
 
-#### Defined in
-
-[timer/timer.ts:116](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L116)
-
 ***
 
 ### setUpdateFormat()
 
 > **setUpdateFormat**(`format`?): `void`
 
+Defined in: [timer/timer.ts:202](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L202)
+
 #### Parameters
 
-• **format?**: [`UpdateFormat`](../type-aliases/UpdateFormat.md)
+##### format?
+
+[`UpdateFormat`](../type-aliases/UpdateFormat.md)
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[timer/timer.ts:202](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L202)
 
 ***
 
 ### start()
 
 > **start**(`args`?): `void`
+
+Defined in: [timer/timer.ts:68](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L68)
 
 Start counting.
 If no endValue is given, it never stops counting.
@@ -196,15 +186,13 @@ If no endValue is given, it never stops counting.
 
 #### Parameters
 
-• **args?**: [`TimerStartArgs`](../interfaces/TimerStartArgs.md)
+##### args?
+
+[`TimerStartArgs`](../interfaces/TimerStartArgs.md)
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[timer/timer.ts:68](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L68)
 
 ***
 
@@ -212,15 +200,13 @@ If no endValue is given, it never stops counting.
 
 > **stop**(): `void`
 
+Defined in: [timer/timer.ts:168](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L168)
+
 Stop counting.
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[timer/timer.ts:168](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L168)
 
 ***
 
@@ -228,12 +214,10 @@ Stop counting.
 
 > **updateHtmlElement**(): `void`
 
+Defined in: [timer/timer.ts:218](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L218)
+
 Updates the associated html element (if was given) with the current time value.
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[timer/timer.ts:218](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L218)

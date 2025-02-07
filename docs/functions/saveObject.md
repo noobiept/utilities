@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,18 +8,20 @@
 
 > **saveObject**(`key`, `value`): `void`
 
+Defined in: [local\_storage/local\_storage.ts:13](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/local_storage/local_storage.ts#L13)
+
 Saves in the `localStorage` a json string representation of the `value`.
 
 ## Parameters
 
-• **key**: `string`
+### key
 
-• **value**: `any`
+`string`
+
+### value
+
+`any`
 
 ## Returns
 
 `void`
-
-## Defined in
-
-[local\_storage/local\_storage.ts:13](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/local_storage/local_storage.ts#L13)

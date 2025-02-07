@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,18 +8,20 @@
 
 > **range**(`start`, `end`): `number`[]
 
+Defined in: [number/number.ts:89](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/number/number.ts#L89)
+
 Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
 
 ## Parameters
 
-• **start**: `number`
+### start
 
-• **end**: `number`
+`number`
+
+### end
+
+`number`
 
 ## Returns
 
 `number`[]
-
-## Defined in
-
-[number/number.ts:89](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/number/number.ts#L89)

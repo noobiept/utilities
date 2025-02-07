@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Type Alias: UpdateElement
 
 > **UpdateElement**: `object`
+
+Defined in: [timer/timer.ts:11](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L11)
 
 ## Type declaration
 
@@ -17,7 +19,3 @@
 ### format?
 
 > `optional` **format**: [`UpdateFormat`](UpdateFormat.md)
-
-## Defined in
-
-[timer/timer.ts:11](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/timer/timer.ts#L11)

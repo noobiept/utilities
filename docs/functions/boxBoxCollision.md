@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,30 +8,44 @@
 
 > **boxBoxCollision**(`oneX`, `oneY`, `oneWidth`, `oneHeight`, `twoX`, `twoY`, `twoWidth`, `twoHeight`): `boolean`
 
+Defined in: [collision\_detection/collision\_detection.ts:4](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/collision_detection/collision_detection.ts#L4)
+
 Detects collision between 2 boxes.
 
 ## Parameters
 
-• **oneX**: `number`
+### oneX
 
-• **oneY**: `number`
+`number`
 
-• **oneWidth**: `number`
+### oneY
 
-• **oneHeight**: `number`
+`number`
 
-• **twoX**: `number`
+### oneWidth
 
-• **twoY**: `number`
+`number`
 
-• **twoWidth**: `number`
+### oneHeight
 
-• **twoHeight**: `number`
+`number`
+
+### twoX
+
+`number`
+
+### twoY
+
+`number`
+
+### twoWidth
+
+`number`
+
+### twoHeight
+
+`number`
 
 ## Returns
 
 `boolean`
-
-## Defined in
-
-[collision\_detection/collision\_detection.ts:4](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L4)

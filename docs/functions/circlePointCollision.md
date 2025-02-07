@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,24 +8,32 @@
 
 > **circlePointCollision**(`circleX`, `circleY`, `circleRadius`, `pointX`, `pointY`): `boolean`
 
+Defined in: [collision\_detection/collision\_detection.ts:49](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/collision_detection/collision_detection.ts#L49)
+
 Detects collision between a circle and a point.
 
 ## Parameters
 
-• **circleX**: `number`
+### circleX
 
-• **circleY**: `number`
+`number`
 
-• **circleRadius**: `number`
+### circleY
 
-• **pointX**: `number`
+`number`
 
-• **pointY**: `number`
+### circleRadius
+
+`number`
+
+### pointX
+
+`number`
+
+### pointY
+
+`number`
 
 ## Returns
 
 `boolean`
-
-## Defined in
-
-[collision\_detection/collision\_detection.ts:49](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/collision_detection/collision_detection.ts#L49)

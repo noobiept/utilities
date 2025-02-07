@@ -1,4 +1,4 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
@@ -8,16 +8,16 @@
 
 > **toRadians**(`degrees`): `number`
 
+Defined in: [trigonometry/trigonometry.ts:39](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/trigonometry/trigonometry.ts#L39)
+
 Converts a number in `degrees` to `radians` and returns it.
 
 ## Parameters
 
-• **degrees**: `number`
+### degrees
+
+`number`
 
 ## Returns
 
 `number`
-
-## Defined in
-
-[trigonometry/trigonometry.ts:39](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/trigonometry/trigonometry.ts#L39)

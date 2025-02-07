@@ -1,10 +1,12 @@
-[**Utilities**](../README.md) • **Docs**
+[**Utilities**](../README.md)
 
 ***
 
 [Utilities](../README.md) / Preload
 
 # Class: Preload
+
+Defined in: [preload/preload.ts:102](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L102)
 
 Basic Usage:
     import { Preload } from '@drk4/utilities';
@@ -40,9 +42,13 @@ Events:
 
 > **new Preload**(`args`): [`Preload`](Preload.md)
 
+Defined in: [preload/preload.ts:120](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L120)
+
 #### Parameters
 
-• **args**: [`PreloadArgs`](../interfaces/PreloadArgs.md) = `{}`
+##### args
+
+[`PreloadArgs`](../interfaces/PreloadArgs.md) = `{}`
 
 #### Returns
 
@@ -52,26 +58,28 @@ Events:
 
 [`EventDispatcher`](EventDispatcher.md).[`constructor`](EventDispatcher.md#constructors)
 
-#### Defined in
-
-[preload/preload.ts:120](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L120)
-
 ## Methods
 
 ### addEventListener()
 
 > **addEventListener**(`type`, `listener`): `boolean`
 
+Defined in: [event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/event_dispatcher/event_dispatcher.ts#L36)
+
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
 
 #### Parameters
 
-• **type**: [`PreloadEvent`](../type-aliases/PreloadEvent.md)
+##### type
+
+[`PreloadEvent`](../type-aliases/PreloadEvent.md)
 
 Type of the event.
 
-• **listener**
+##### listener
+
+(`data`) => `void`
 
 A function to be called when the event is dispatched.
 
@@ -85,25 +93,27 @@ If it was successfully added.
 
 [`EventDispatcher`](EventDispatcher.md).[`addEventListener`](EventDispatcher.md#addeventlistener)
 
-#### Defined in
-
-[event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L36)
-
 ***
 
 ### dispatchEvent()
 
 > **dispatchEvent**(`type`, `data`?): `void`
 
+Defined in: [event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/event_dispatcher/event_dispatcher.ts#L89)
+
 Dispatches an event, which will trigger the listeners of that event.
 
 #### Parameters
 
-• **type**: [`PreloadEvent`](../type-aliases/PreloadEvent.md)
+##### type
+
+[`PreloadEvent`](../type-aliases/PreloadEvent.md)
 
 Type of the event to dispatch.
 
-• **data?**: `any`
+##### data?
+
+`any`
 
 Data to be sent to every listener.
 
@@ -115,29 +125,25 @@ Data to be sent to every listener.
 
 [`EventDispatcher`](EventDispatcher.md).[`dispatchEvent`](EventDispatcher.md#dispatchevent)
 
-#### Defined in
-
-[event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L89)
-
 ***
 
 ### get()
 
 > **get**(`id`): `any`
 
+Defined in: [preload/preload.ts:318](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L318)
+
 Get a previously loaded file.
 
 #### Parameters
 
-• **id**: `string`
+##### id
+
+`string`
 
 #### Returns
 
 `any`
-
-#### Defined in
-
-[preload/preload.ts:318](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L318)
 
 ***
 
@@ -145,11 +151,15 @@ Get a previously loaded file.
 
 > **hasListeners**(`type`): `boolean`
 
+Defined in: [event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/event_dispatcher/event_dispatcher.ts#L105)
+
 Check if there are listeners to a particular event type.
 
 #### Parameters
 
-• **type**: [`PreloadEvent`](../type-aliases/PreloadEvent.md)
+##### type
+
+[`PreloadEvent`](../type-aliases/PreloadEvent.md)
 
 The event type to check.
 
@@ -163,39 +173,39 @@ If there are listeners or not.
 
 [`EventDispatcher`](EventDispatcher.md).[`hasListeners`](EventDispatcher.md#haslisteners)
 
-#### Defined in
-
-[event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L105)
-
 ***
 
 ### load()
 
 > **load**(`id`, `path`, `typeId`?): `void`
 
+Defined in: [preload/preload.ts:230](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L230)
+
 Load a file.
 
 #### Parameters
 
-• **id**: `string`
+##### id
+
+`string`
 
 The id to be used later on to get the element.
 
-• **path**: `string`
+##### path
+
+`string`
 
 Path to the file.
 
-• **typeId?**: `"image"` \| `"text"` \| `"json"` \| `"audio_ogg"` \| `"audio_mp3"`
+##### typeId?
 
 Type of the file to load. If not provided then it will try to determine the type from the file extension.
+
+`"image"` | `"text"` | `"json"` | `"audio_ogg"` | `"audio_mp3"`
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[preload/preload.ts:230](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L230)
 
 ***
 
@@ -203,25 +213,27 @@ Type of the file to load. If not provided then it will try to determine the type
 
 > **loadManifest**(`manifest`): `void`
 
+Defined in: [preload/preload.ts:309](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L309)
+
 Load several files.
 
 #### Parameters
 
-• **manifest**: [`ManifestData`](../type-aliases/ManifestData.md)
+##### manifest
+
+[`ManifestData`](../type-aliases/ManifestData.md)
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[preload/preload.ts:309](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L309)
 
 ***
 
 ### removeAllEventListeners()
 
 > **removeAllEventListeners**(): `void`
+
+Defined in: [event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/event_dispatcher/event_dispatcher.ts#L79)
 
 Remove all the event listeners.
 
@@ -233,25 +245,27 @@ Remove all the event listeners.
 
 [`EventDispatcher`](EventDispatcher.md).[`removeAllEventListeners`](EventDispatcher.md#removealleventlisteners)
 
-#### Defined in
-
-[event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L79)
-
 ***
 
 ### removeEventListener()
 
 > **removeEventListener**(`type`, `listener`?): `boolean`
 
+Defined in: [event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/event_dispatcher/event_dispatcher.ts#L56)
+
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 
 #### Parameters
 
-• **type**: [`PreloadEvent`](../type-aliases/PreloadEvent.md)
+##### type
+
+[`PreloadEvent`](../type-aliases/PreloadEvent.md)
 
 The event type.
 
-• **listener?**
+##### listener?
+
+(`data`) => `any`
 
 The listener function to remove. If not provided then remove all the functions associated with the event type.
 
@@ -265,21 +279,21 @@ If it was successfully removed.
 
 [`EventDispatcher`](EventDispatcher.md).[`removeEventListener`](EventDispatcher.md#removeeventlistener)
 
-#### Defined in
-
-[event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/event_dispatcher/event_dispatcher.ts#L56)
-
 ***
 
 ### get()
 
 > `static` **get**(`id`): `any`
 
+Defined in: [preload/preload.ts:116](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L116)
+
 Get an element that was saved in the global `DATA` object.
 
 #### Parameters
 
-• **id**: `string`
+##### id
+
+`string`
 
 The id of the element we're retrieving.
 
@@ -288,7 +302,3 @@ The id of the element we're retrieving.
 `any`
 
 The preloaded element.
-
-#### Defined in
-
-[preload/preload.ts:116](https://github.com/noobiept/utilities/blob/1d2cee23362dcff5c0b5fdf27f21e257e8f3dc9e/source/preload/preload.ts#L116)
