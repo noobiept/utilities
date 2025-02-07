@@ -10,16 +10,21 @@ jobs:
         runs-on: ubuntu-24.04
         steps:
             - uses: actions/checkout@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                version: 10
             - uses: actions/setup-node@v4
               with:
-                  node-version: "22.x"
+                node-version: "22.x"
+                cache: 'pnpm'
 
-            - run: npm ci
-            - run: npm run e2e:install
-            - run: npm run build
-            - run: npm run format:check
-            - run: npm run lint
-            - run: npm run unit
+            - run: pnpm install
+            - run: pnpm run e2e:install
+            - run: pnpm run build
+            - run: pnpm run format:check
+            - run: pnpm run lint
+            - run: pnpm run unit
 
             - uses: actions/upload-artifact@v4
               with:
