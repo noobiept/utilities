@@ -6,7 +6,7 @@ describe("Local Storage", () => {
         expect(value).toBeFalsy();
     });
 
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         const key = "test";
         const testValues = [4, "hi there", { one: 2, three: [4, 5] }];
 

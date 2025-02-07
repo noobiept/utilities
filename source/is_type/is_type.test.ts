@@ -8,7 +8,7 @@ import {
 } from "./is_type";
 
 describe("isArray", () => {
-    test("Test type.", () => {
+    test("type.", () => {
         const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
@@ -35,7 +35,7 @@ describe("isArray", () => {
 });
 
 describe("isBoolean", () => {
-    test("Test type", () => {
+    test("type", () => {
         const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
@@ -62,7 +62,7 @@ describe("isBoolean", () => {
 });
 
 describe("isFunction", () => {
-    test("Test type", () => {
+    test("type", () => {
         const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },
@@ -89,7 +89,7 @@ describe("isFunction", () => {
 });
 
 describe("isInteger", () => {
-    test("Test type", () => {
+    test("type", () => {
         const values = [
             { value: 1, expect: true },
             { value: 1.2, expect: false },
@@ -116,7 +116,7 @@ describe("isInteger", () => {
 });
 
 describe("isNumber", () => {
-    test("Test type", () => {
+    test("type", () => {
         const values = [
             { value: 1, expect: true },
             { value: 1.2, expect: true },
@@ -143,7 +143,7 @@ describe("isNumber", () => {
 });
 
 describe("isString", () => {
-    test("Test type", () => {
+    test("type", () => {
         const values = [
             { value: 1, expect: false },
             { value: 1.2, expect: false },

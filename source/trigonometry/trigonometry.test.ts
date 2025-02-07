@@ -6,7 +6,7 @@ import {
 } from "./trigonometry";
 
 describe("calculateAngle", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = calculateAngle(0, 0, 4, 0);
         expect(result).toBe(0);
 
@@ -22,7 +22,7 @@ describe("calculateAngle", () => {
 });
 
 describe("calculateDistance", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = calculateDistance(0, 0, 4, 0);
         expect(result).toBe(4);
 
@@ -35,7 +35,7 @@ describe("calculateDistance", () => {
 });
 
 describe("toDegrees", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = toDegrees(0);
         expect(result).toBe(0);
 
@@ -48,7 +48,7 @@ describe("toDegrees", () => {
 });
 
 describe("toRadians", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = toRadians(0);
         expect(result).toBe(0);
 

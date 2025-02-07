@@ -1,7 +1,7 @@
 import { createEnum, deepClone } from "./object";
 
 describe("deepClone", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // clone of an array of numbers
         const test = [1, 2, 3];
         const copy = deepClone(test);
@@ -21,7 +21,7 @@ describe("deepClone", () => {
 });
 
 describe("createEnum", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         const obj1 = createEnum(["one", "two"]);
 
         expect(obj1[0]).toBe("one");

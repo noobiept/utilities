@@ -58,7 +58,7 @@ describe("Dialog", () => {
         expect.assertions(1);
 
         const onClose = jest.fn(() => {
-            expect(onClose).toBeCalled();
+            expect(onClose).toHaveBeenCalled();
             done();
         });
 

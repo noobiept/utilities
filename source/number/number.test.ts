@@ -8,7 +8,7 @@ import {
 } from "./number";
 
 describe("getRandomFloat", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let ok;
 
         // inclusive limits
@@ -35,7 +35,7 @@ describe("getRandomFloat", () => {
 });
 
 describe("getRandomInt", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // inclusive limits
         let result = getRandomInt(4, 4);
         expect(result).toBe(4);
@@ -61,7 +61,7 @@ describe("getRandomInt", () => {
 });
 
 describe("getSeveralRandomInts", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let ok;
         let result = getSeveralRandomInts(1, 1, 1);
 
@@ -136,7 +136,7 @@ describe("getSeveralRandomInts", () => {
 });
 
 describe("numberOfDigits", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = numberOfDigits(4);
         expect(result).toBe(1);
 
@@ -155,7 +155,7 @@ describe("numberOfDigits", () => {
 });
 
 describe("round", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         let result = round(4.22, 1);
         expect(result).toBe(4.2);
 

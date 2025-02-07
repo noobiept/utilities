@@ -1,19 +1,19 @@
 import { Timeout } from "./timeout";
 
 describe("Timeout", () => {
-    test("Test with valid arguments.", (done) => {
+    test("with valid arguments.", (done) => {
         expect.assertions(1);
 
         const timeout = new Timeout();
         const func = jest.fn(() => {
-            expect(func).toBeCalled();
+            expect(func).toHaveBeenCalled();
             done();
         });
 
         timeout.start(func, 10);
     });
 
-    test("Test the 'isActive()' method.", (done) => {
+    test("the 'isActive()' method.", (done) => {
         expect.assertions(3);
         const timeout = new Timeout();
 
@@ -30,14 +30,14 @@ describe("Timeout", () => {
         expect(timeout.isActive()).toBe(true);
     });
 
-    test("Test '.start()' on an already active timeout.", (done) => {
+    test("'.start()' on an already active timeout.", (done) => {
         expect.assertions(2);
 
         const timeout = new Timeout();
         const first = jest.fn();
         const second = jest.fn(() => {
-            expect(first).not.toBeCalled();
-            expect(second).toBeCalled();
+            expect(first).not.toHaveBeenCalled();
+            expect(second).toHaveBeenCalled();
             done();
         });
 

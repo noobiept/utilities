@@ -6,7 +6,7 @@ import {
 } from "./collision_detection";
 
 describe("boxBoxCollision", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // doesn't collide
         let result = boxBoxCollision(0, 0, 1, 1, 2, 2, 1, 1);
         expect(result).toBe(false);
@@ -22,7 +22,7 @@ describe("boxBoxCollision", () => {
 });
 
 describe("circleCircleCollision", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // no collision
         let result = circleCircleCollision(0, 0, 2, 5, 5, 2);
         expect(result).toBe(false);
@@ -38,7 +38,7 @@ describe("circleCircleCollision", () => {
 });
 
 describe("circlePointCollision", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // no collision
         let result = circlePointCollision(0, 0, 4, 5, 5);
         expect(result).toBe(false);
@@ -54,7 +54,7 @@ describe("circlePointCollision", () => {
 });
 
 describe("pointBoxCollision", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         // no collision
         let result = pointBoxCollision(0, 0, 2, 2, 10, 10);
         expect(result).toBe(false);

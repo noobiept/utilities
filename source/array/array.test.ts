@@ -1,7 +1,7 @@
 import { shuffle } from "./array";
 
 describe("shuffle", () => {
-    test("Test with valid arguments.", () => {
+    test("with valid arguments.", () => {
         const test = [1, 2, 3, 4];
         const length = test.length;
 

@@ -6,14 +6,14 @@ describe("Timer", () => {
         expect(new Timer()).toBeDefined();
     });
 
-    test("Test without an argument.", () => {
+    test("without an argument.", () => {
         const timer = new Timer();
 
         expect(timer.getTimeString()).toBe("0 seconds");
         expect(timer.getTimeSeconds()).toBe(0);
     });
 
-    test("Test with a given html element.", () => {
+    test("with a given html element.", () => {
         const htmlElement = document.createElement("div");
         const timer = new Timer({
             updateElement: {
@@ -32,7 +32,7 @@ describe("Timer", () => {
         expect(timer.getTimeSeconds()).toBe(0);
     });
 
-    test("Test the default timer.", (done) => {
+    test("the default timer.", (done) => {
         expect.assertions(1);
         const timer = new Timer();
         timer.start();
@@ -46,7 +46,7 @@ describe("Timer", () => {
         }, timeout);
     });
 
-    test("Test with a start value.", () => {
+    test("with a start value.", () => {
         const timer = new Timer();
         timer.start({ startValue: 5000 });
 
@@ -54,7 +54,7 @@ describe("Timer", () => {
         expect(timer.getTimeString()).toBe("5 seconds");
     });
 
-    test("Test with an end value.", (done) => {
+    test("with an end value.", (done) => {
         expect.assertions(1);
 
         const timer = new Timer();
@@ -67,7 +67,7 @@ describe("Timer", () => {
         });
     });
 
-    test("Test the 'tick' callback.", (done) => {
+    test("the 'tick' callback.", (done) => {
         expect.assertions(3);
 
         let count = 2;
@@ -90,7 +90,7 @@ describe("Timer", () => {
         });
     });
 
-    test("Test a count down timer.", (done) => {
+    test("a count down timer.", (done) => {
         expect.assertions(1);
         const timer = new Timer();
 
@@ -106,7 +106,7 @@ describe("Timer", () => {
         });
     });
 
-    test("Test the 'add' method.", () => {
+    test("the 'add' method.", () => {
         const timer = new Timer();
 
         timer.start({ startValue: 5000 });
@@ -126,8 +126,8 @@ describe("Timer", () => {
         const timer = new Timer();
         const notCalled = jest.fn();
         const called = jest.fn(() => {
-            expect(notCalled).not.toBeCalled();
-            expect(called).toBeCalled();
+            expect(notCalled).not.toHaveBeenCalled();
+            expect(called).toHaveBeenCalled();
             done();
         });
 
@@ -140,7 +140,7 @@ describe("Timer", () => {
 
         const timer = new Timer();
         const called = jest.fn(() => {
-            expect(called).toBeCalled();
+            expect(called).toHaveBeenCalled();
             done();
         });
 
@@ -170,7 +170,7 @@ describe("Timer", () => {
                 // we reset the timer before it reaches the end value
                 timer.reset();
 
-                expect(onEnd).not.toBeCalled();
+                expect(onEnd).not.toHaveBeenCalled();
                 expect(timer.getTimeMilliseconds()).toBe(1000); // should go back to initial value
                 expect(document.body.textContent).toBe("1 second");
                 done();
@@ -184,8 +184,8 @@ describe("Timer", () => {
         const timer = new Timer();
         const onTick = jest.fn();
         const onEnd = jest.fn(() => {
-            expect(onTick).toBeCalledTimes(2);
-            expect(onEnd).toBeCalled();
+            expect(onTick).toHaveBeenCalledTimes(2);
+            expect(onEnd).toHaveBeenCalled();
             expect(timer.getTimeSeconds()).toBe(0.3);
 
             done();
@@ -254,7 +254,7 @@ describe("Timer", () => {
         timer.start({ onTick: tick });
         timer.stop();
 
-        expect(tick).not.toBeCalled();
+        expect(tick).not.toHaveBeenCalled();
         expect(timer.isActive()).toBe(false);
     });
 
@@ -297,7 +297,7 @@ describe("Timer", () => {
 
         const timer = new Timer();
         const end = jest.fn(() => {
-            expect(end).toBeCalled();
+            expect(end).toHaveBeenCalled();
             done();
         });
 
