@@ -4,6 +4,14 @@
 
 # Unreleased
 
+# v6.3.0 - 08/02/2025
+
+## Changed
+
+- Replaced cypress with playwright for e2e tests.
+- Replaced npm with pnpm for package manager.
+- Upgraded package dependencies to latest versions.
+
 # v6.2.1 - 14/07/2024
 
 ## Fixed
