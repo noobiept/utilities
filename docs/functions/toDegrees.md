@@ -8,7 +8,7 @@
 
 > **toDegrees**(`radians`): `number`
 
-Defined in: [trigonometry/trigonometry.ts:32](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/trigonometry/trigonometry.ts#L32)
+Defined in: [trigonometry/trigonometry.ts:32](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/trigonometry/trigonometry.ts#L32)
 
 Converts a number in `radians` to `degrees` and returns it.
 

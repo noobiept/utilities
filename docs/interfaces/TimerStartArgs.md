@@ -6,7 +6,7 @@
 
 # Interface: TimerStartArgs
 
-Defined in: [timer/timer.ts:20](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L20)
+Defined in: [timer/timer.ts:20](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L20)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [timer/timer.ts:20](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **countDown**: `boolean`
 
-Defined in: [timer/timer.ts:25](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L25)
+Defined in: [timer/timer.ts:25](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L25)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [timer/timer.ts:25](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **endValue**: `number`
 
-Defined in: [timer/timer.ts:22](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L22)
+Defined in: [timer/timer.ts:22](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L22)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [timer/timer.ts:22](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **interval**: `number`
 
-Defined in: [timer/timer.ts:26](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L26)
+Defined in: [timer/timer.ts:26](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L26)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [timer/timer.ts:26](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **onEnd**: () => `void`
 
-Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L23)
+Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L23)
 
 #### Returns
 
@@ -50,7 +50,7 @@ Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **onTick**: () => `void`
 
-Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L24)
+Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L24)
 
 #### Returns
 
@@ -62,4 +62,4 @@ Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/fa81d
 
 > `optional` **startValue**: `number`
 
-Defined in: [timer/timer.ts:21](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L21)
+Defined in: [timer/timer.ts:21](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L21)

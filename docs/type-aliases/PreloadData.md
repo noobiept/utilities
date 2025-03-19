@@ -6,9 +6,9 @@
 
 # Type Alias: PreloadData
 
-> **PreloadData**: `object`
+> **PreloadData** = `object`
 
-Defined in: [preload/preload.ts:4](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/preload/preload.ts#L4)
+Defined in: [preload/preload.ts:4](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/preload/preload.ts#L4)
 
 ## Index Signature
 

@@ -8,7 +8,7 @@
 
 > **boxBoxCollision**(`oneX`, `oneY`, `oneWidth`, `oneHeight`, `twoX`, `twoY`, `twoWidth`, `twoHeight`): `boolean`
 
-Defined in: [collision\_detection/collision\_detection.ts:4](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/collision_detection/collision_detection.ts#L4)
+Defined in: [collision\_detection/collision\_detection.ts:4](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/collision_detection/collision_detection.ts#L4)
 
 Detects collision between 2 boxes.
 

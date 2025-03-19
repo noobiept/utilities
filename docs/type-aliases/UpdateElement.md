@@ -6,16 +6,22 @@
 
 # Type Alias: UpdateElement
 
-> **UpdateElement**: `object`
+> **UpdateElement** = `object`
 
-Defined in: [timer/timer.ts:11](https://github.com/noobiept/utilities/blob/fa81d9116003a677f25866bee864bc30213a9352/source/timer/timer.ts#L11)
+Defined in: [timer/timer.ts:11](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L11)
 
-## Type declaration
+## Properties
 
 ### element
 
 > **element**: `HTMLElement`
 
+Defined in: [timer/timer.ts:12](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L12)
+
+***
+
 ### format?
 
 > `optional` **format**: [`UpdateFormat`](UpdateFormat.md)
+
+Defined in: [timer/timer.ts:13](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L13)
