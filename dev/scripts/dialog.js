@@ -1,4 +1,4 @@
-import { Dialog, DialogPosition, DialogButtons } from "../build/utilities.js";
+import { Dialog, DialogPosition, DialogButtons } from "../build/index.js";
 
 window.onload = function () {
     dialogModal();

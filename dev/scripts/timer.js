@@ -1,4 +1,4 @@
-import * as Utilities from "../build/utilities.js";
+import * as Utilities from "../build/index.js";
 
 let MESSAGE_TIMEOUT;
 

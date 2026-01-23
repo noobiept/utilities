@@ -333,12 +333,15 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         const audio = new Audio();
 
         audio.oncanplay = () => {
-            // release resource when it's loaded
-            URL.revokeObjectURL(objectUrl);
             onLoad(audio);
         };
-        audio.onerror = onError;
+        audio.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            onError();
+        };
         audio.src = objectUrl;
+
+        audio.load();
     }
 
     /**

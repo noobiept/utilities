@@ -1,4 +1,4 @@
-import { Preload } from "../build/utilities.js";
+import { Preload } from "../build/index.js";
 
 window.onload = () => {
     const preload = new Preload();
