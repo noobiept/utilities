@@ -238,9 +238,11 @@ export class Preload extends EventDispatcher<PreloadEvent> {
 
         // add the request events
         request.addEventListener("error", (event) => {
+            this._failed_to_load(id);
             this._on_error(event, id);
         });
         request.addEventListener("abort", (event) => {
+            this._failed_to_load(id);
             this._on_abort(event, id);
         });
         request.addEventListener("progress", (event) => {
