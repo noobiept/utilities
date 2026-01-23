@@ -8,4 +8,4 @@
 
 > **UpdateFormat** = `Omit`\<[`TimeToStringArgs`](../interfaces/TimeToStringArgs.md), `"time"`\> \| (`timer`) => `string`
 
-Defined in: [timer/timer.ts:7](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/timer/timer.ts#L7)
+Defined in: [timer/timer.ts:7](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L7)

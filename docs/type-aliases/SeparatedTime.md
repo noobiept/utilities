@@ -8,7 +8,7 @@
 
 > **SeparatedTime** = `object`
 
-Defined in: [time\_to\_string/time\_to\_string.ts:4](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/time_to_string/time_to_string.ts#L4)
+Defined in: [time\_to\_string/time\_to\_string.ts:4](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/time_to_string/time_to_string.ts#L4)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [time\_to\_string/time\_to\_string.ts:4](https://github.com/noobiept
 
 > **days**: `number`
 
-Defined in: [time\_to\_string/time\_to\_string.ts:5](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/time_to_string/time_to_string.ts#L5)
+Defined in: [time\_to\_string/time\_to\_string.ts:5](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/time_to_string/time_to_string.ts#L5)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [time\_to\_string/time\_to\_string.ts:5](https://github.com/noobiept
 
 > **hours**: `number`
 
-Defined in: [time\_to\_string/time\_to\_string.ts:6](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/time_to_string/time_to_string.ts#L6)
+Defined in: [time\_to\_string/time\_to\_string.ts:6](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/time_to_string/time_to_string.ts#L6)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [time\_to\_string/time\_to\_string.ts:6](https://github.com/noobiept
 
 > **minutes**: `number`
 
-Defined in: [time\_to\_string/time\_to\_string.ts:7](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/time_to_string/time_to_string.ts#L7)
+Defined in: [time\_to\_string/time\_to\_string.ts:7](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/time_to_string/time_to_string.ts#L7)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [time\_to\_string/time\_to\_string.ts:7](https://github.com/noobiept
 
 > **seconds**: `number`
 
-Defined in: [time\_to\_string/time\_to\_string.ts:8](https://github.com/noobiept/utilities/blob/786efe35015e1a6c21914057e8b0d5fc10429d8e/source/time_to_string/time_to_string.ts#L8)
+Defined in: [time\_to\_string/time\_to\_string.ts:8](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/time_to_string/time_to_string.ts#L8)
