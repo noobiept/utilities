@@ -4,6 +4,17 @@
 
 # Unreleased
 
+# v6.3.2 - 23/01/2026
+
+## Changed
+
+- Updated dependencies.
+
+## Fixed
+
+- Audio loading issue in `Preload`.
+- Failed IDs tracking on error/abort in `Preload`.
+
 # v6.3.0 - 08/02/2025
 
 ## Changed
