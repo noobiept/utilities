@@ -84,7 +84,7 @@
         "e2e": "npm-run-all --serial e2e:build e2e:test",
         "e2e:build": "rollup --config ./dev/rollup-dev.config.mjs",
         "e2e:server": "vite preview --outDir ./dev/ --port 8080 --logLevel silent",
-        "e2e:install": "playwright install --with-deps",
+        "e2e:install": "playwright install chromium --with-deps",
         "e2e:test": "playwright test tests",
         "e2e:ui": "playwright test tests --ui",
         "lint": "eslint source tests dev",
