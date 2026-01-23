@@ -163,4 +163,16 @@ describe("Preload", () => {
         });
         preload.load("test", "test.txt");
     });
+
+    test("On error event.", () => {
+        expect.assertions(1);
+
+        mockXHR("test", 500); // Mock a failed request
+
+        const preload = new Preload();
+        preload.addEventListener("error", (e) => {
+            expect(e).toBeTruthy();
+        });
+        preload.load("test", "test.txt");
+    });
 });

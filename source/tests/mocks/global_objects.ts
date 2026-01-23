@@ -14,7 +14,13 @@ export function mockXHR(response: any, status = 200) {
                 this,
                 new ProgressEvent("progress")
             );
-            eventListeners["load"].call(this);
+            
+            // Trigger error event if status is not 200
+            if (status !== 200 && eventListeners["error"]) {
+                eventListeners["error"].call(this, new ProgressEvent("error"));
+            } else {
+                eventListeners["load"].call(this);
+            }
         });
         Object.defineProperty(this, "status", {
             writable: true,
@@ -55,9 +61,18 @@ export function mockImage() {
 export function mockAudio() {
     class MyAudio {
         oncanplay: () => void = () => {};
+        private _hasCalledOnCanPlay = false;
 
         set src(_url: string) {
-            this.oncanplay();
+            this.load();
+        }
+
+        load() {
+            // Mock the load method - it should trigger oncanplay
+            if (!this._hasCalledOnCanPlay) {
+                this.oncanplay();
+                this._hasCalledOnCanPlay = true;
+            }
         }
     }
 
