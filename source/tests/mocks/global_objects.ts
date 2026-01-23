@@ -14,7 +14,7 @@ export function mockXHR(response: any, status = 200) {
                 this,
                 new ProgressEvent("progress")
             );
-            
+
             // Trigger error event if status is not 200
             if (status !== 200 && eventListeners["error"]) {
                 eventListeners["error"].call(this, new ProgressEvent("error"));
