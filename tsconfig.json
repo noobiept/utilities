@@ -13,5 +13,6 @@
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true
     },
-    "include": ["source/**/*.ts"]
+    "include": ["source/**/*.ts"],
+    "exclude": ["source/**/*.test.ts", "source/tests/**"]
 }

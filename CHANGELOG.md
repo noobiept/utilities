@@ -4,6 +4,23 @@
 
 # Unreleased
 
+# v6.4.0 - 14/05/2026
+
+## Changed
+
+- Replaced jest with vitest as the test runner.
+- Modernized the TypeScript config (`moduleResolution: bundler`, `module: esnext`, explicit `rootDir`).
+- Updated package dependencies.
+
+## Added
+
+- `exports` field in `package.json` with conditional exports (types/import/require).
+
+## Fixed
+
+- Test files (`*.test.d.ts`) are no longer published to npm.
+- Re-added e2e tests to the CI pipeline.
+
 # v6.3.2 - 23/01/2026
 
 ## Changed

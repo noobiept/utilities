@@ -6,7 +6,7 @@
 
 # Class: EventDispatcher\<EventType\>
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:19](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L19)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:19](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L19)
 
 Base class that provides a way to add/remove listeners, and dispatch events.
 
@@ -41,7 +41,7 @@ Basic Usage:
 
 > **new EventDispatcher**\<`EventType`\>(): `EventDispatcher`\<`EventType`\>
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L24)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L24)
 
 #### Returns
 
@@ -53,7 +53,7 @@ Defined in: [event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobi
 
 > **addEventListener**(`type`, `listener`): `boolean`
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L36)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L36)
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
@@ -84,7 +84,7 @@ If it was successfully added.
 
 > **dispatchEvent**(`type`, `data?`): `void`
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L89)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L89)
 
 Dispatches an event, which will trigger the listeners of that event.
 
@@ -112,7 +112,7 @@ Data to be sent to every listener.
 
 > **hasListeners**(`type`): `boolean`
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L105)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L105)
 
 Check if there are listeners to a particular event type.
 
@@ -136,7 +136,7 @@ If there are listeners or not.
 
 > **removeAllEventListeners**(): `void`
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L79)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L79)
 
 Remove all the event listeners.
 
@@ -150,7 +150,7 @@ Remove all the event listeners.
 
 > **removeEventListener**(`type`, `listener?`): `boolean`
 
-Defined in: [event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/event_dispatcher/event_dispatcher.ts#L56)
+Defined in: [event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/event_dispatcher/event_dispatcher.ts#L56)
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 

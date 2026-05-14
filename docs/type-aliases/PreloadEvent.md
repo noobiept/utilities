@@ -8,4 +8,4 @@
 
 > **PreloadEvent** = `"complete"` \| `"error"` \| `"abort"` \| `"progress"` \| `"fileload"`
 
-Defined in: [preload/preload.ts:14](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/preload/preload.ts#L14)
+Defined in: [preload/preload.ts:14](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/preload/preload.ts#L14)

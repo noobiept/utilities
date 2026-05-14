@@ -6,39 +6,39 @@
 
 # Interface: TimerStartArgs
 
-Defined in: [timer/timer.ts:20](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L20)
+Defined in: [timer/timer.ts:20](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L20)
 
 ## Properties
 
 ### countDown?
 
-> `optional` **countDown**: `boolean`
+> `optional` **countDown?**: `boolean`
 
-Defined in: [timer/timer.ts:25](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L25)
+Defined in: [timer/timer.ts:25](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L25)
 
 ***
 
 ### endValue?
 
-> `optional` **endValue**: `number`
+> `optional` **endValue?**: `number`
 
-Defined in: [timer/timer.ts:22](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L22)
+Defined in: [timer/timer.ts:22](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L22)
 
 ***
 
 ### interval?
 
-> `optional` **interval**: `number`
+> `optional` **interval?**: `number`
 
-Defined in: [timer/timer.ts:26](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L26)
+Defined in: [timer/timer.ts:26](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L26)
 
 ***
 
-### onEnd()?
+### onEnd?
 
-> `optional` **onEnd**: () => `void`
+> `optional` **onEnd?**: () => `void`
 
-Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L23)
+Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L23)
 
 #### Returns
 
@@ -46,11 +46,11 @@ Defined in: [timer/timer.ts:23](https://github.com/noobiept/utilities/blob/bc265
 
 ***
 
-### onTick()?
+### onTick?
 
-> `optional` **onTick**: () => `void`
+> `optional` **onTick?**: () => `void`
 
-Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L24)
+Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L24)
 
 #### Returns
 
@@ -60,6 +60,6 @@ Defined in: [timer/timer.ts:24](https://github.com/noobiept/utilities/blob/bc265
 
 ### startValue?
 
-> `optional` **startValue**: `number`
+> `optional` **startValue?**: `number`
 
-Defined in: [timer/timer.ts:21](https://github.com/noobiept/utilities/blob/bc26592570d62d7c5bbfa61511c18a6ca9083647/source/timer/timer.ts#L21)
+Defined in: [timer/timer.ts:21](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/timer/timer.ts#L21)
