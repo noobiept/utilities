@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { timeToString } from "./time_to_string";
 
 const SECOND = 1000;

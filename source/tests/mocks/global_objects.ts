@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { vi } from "vitest";
+
 export function mockXHR(response: any, status = 200) {
     const eventListeners: {
         [key: string]: (args?: any) => unknown;
     } = {};
 
     const mock = function (this: XMLHttpRequest) {
-        this.open = jest.fn();
-        this.addEventListener = jest.fn((type, listener) => {
+        this.open = vi.fn();
+        this.addEventListener = vi.fn((type, listener) => {
             eventListeners[type] = listener as (args?: any) => unknown;
         });
-        this.send = jest.fn(() => {
+        this.send = vi.fn(() => {
             eventListeners["progress"].call(
                 this,
                 new ProgressEvent("progress")
@@ -40,8 +42,8 @@ export function mockXHR(response: any, status = 200) {
 export function mockURL() {
     // @ts-ignore
     window.URL = {
-        createObjectURL: jest.fn(() => "asd"),
-        revokeObjectURL: jest.fn(),
+        createObjectURL: vi.fn(() => "asd"),
+        revokeObjectURL: vi.fn(),
     };
 }
 

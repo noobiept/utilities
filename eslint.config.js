@@ -1,23 +1,27 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tsEslint from "typescript-eslint";
-import jest from "eslint-plugin-jest";
 
 export default [
     {
         files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     },
     {
-        ignores: ["**/node_modules/**", "dev/build/**", "source/**/*.test.js"],
+        ignores: [
+            "**/node_modules/**",
+            "dev/build/**",
+            "build/**",
+            "coverage/**",
+            "source/**/*.js",
+        ],
     },
     {
         languageOptions: {
-            globals: { ...globals.browser, ...globals.node, ...globals.jest },
+            globals: { ...globals.browser, ...globals.node },
         },
     },
     pluginJs.configs.recommended,
     ...tsEslint.configs.recommended,
-    jest.configs["flat/recommended"],
     {
         rules: {
             "@typescript-eslint/ban-ts-ignore": "off",
@@ -29,7 +33,6 @@ export default [
             "@typescript-eslint/no-non-null-assertion": "off",
             "@typescript-eslint/no-use-before-define": "off",
             "@typescript-eslint/explicit-module-boundary-types": "off",
-            "jest/no-done-callback": "off",
         },
     },
 ];

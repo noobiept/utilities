@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeEach, vi } from "vitest";
 import { Dialog, DialogButtons, DialogPosition } from "./dialog";
 
 beforeEach(() => {
@@ -54,13 +55,8 @@ describe("Dialog", () => {
         expect(document.body.innerHTML).toBe("");
     });
 
-    test("If the callback is called.", (done) => {
-        expect.assertions(1);
-
-        const onClose = jest.fn(() => {
-            expect(onClose).toHaveBeenCalled();
-            done();
-        });
+    test("If the callback is called.", () => {
+        const onClose = vi.fn();
 
         const dialog = new Dialog({
             title: "",
@@ -70,6 +66,8 @@ describe("Dialog", () => {
         dialog.open();
 
         (document.querySelector(".dialogButton") as HTMLElement).click();
+
+        expect(onClose).toHaveBeenCalled();
     });
 
     test("The 'position' argument.", () => {

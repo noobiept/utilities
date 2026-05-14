@@ -9,7 +9,8 @@
         "module": "es2015",
         "moduleResolution": "Node",
         "declarationDir": "./build",
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
     },
     "include": ["source/**/*.ts"]
 }

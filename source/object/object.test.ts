@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { createEnum, deepClone } from "./object";
 
 describe("deepClone", () => {

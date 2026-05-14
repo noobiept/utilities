@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { getObject, saveObject } from "./local_storage";
 
 describe("Local Storage", () => {

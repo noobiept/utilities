@@ -1,50 +1,58 @@
+import { describe, test, expect, vi } from "vitest";
 import { Timeout } from "./timeout";
 
 describe("Timeout", () => {
-    test("with valid arguments.", (done) => {
+    test("with valid arguments.", () => {
         expect.assertions(1);
 
-        const timeout = new Timeout();
-        const func = jest.fn(() => {
-            expect(func).toHaveBeenCalled();
-            done();
+        return new Promise<void>((resolve) => {
+            const timeout = new Timeout();
+            const func = vi.fn(() => {
+                expect(func).toHaveBeenCalled();
+                resolve();
+            });
+
+            timeout.start(func, 10);
         });
-
-        timeout.start(func, 10);
     });
 
-    test("the 'isActive()' method.", (done) => {
+    test("the 'isActive()' method.", () => {
         expect.assertions(3);
-        const timeout = new Timeout();
 
-        // not active yet
-        expect(timeout.isActive()).toBe(false);
+        return new Promise<void>((resolve) => {
+            const timeout = new Timeout();
 
-        timeout.start(() => {
-            // not active anymore
+            // not active yet
             expect(timeout.isActive()).toBe(false);
-            done();
-        }, 10);
 
-        // active during this time
-        expect(timeout.isActive()).toBe(true);
+            timeout.start(() => {
+                // not active anymore
+                expect(timeout.isActive()).toBe(false);
+                resolve();
+            }, 10);
+
+            // active during this time
+            expect(timeout.isActive()).toBe(true);
+        });
     });
 
-    test("'.start()' on an already active timeout.", (done) => {
+    test("'.start()' on an already active timeout.", () => {
         expect.assertions(2);
 
-        const timeout = new Timeout();
-        const first = jest.fn();
-        const second = jest.fn(() => {
-            expect(first).not.toHaveBeenCalled();
-            expect(second).toHaveBeenCalled();
-            done();
+        return new Promise<void>((resolve) => {
+            const timeout = new Timeout();
+            const first = vi.fn();
+            const second = vi.fn(() => {
+                expect(first).not.toHaveBeenCalled();
+                expect(second).toHaveBeenCalled();
+                resolve();
+            });
+
+            // this won't be called
+            timeout.start(first, 10);
+
+            // starting the timeout should reset the previous one
+            timeout.start(second, 100);
         });
-
-        // this won't be called
-        timeout.start(first, 10);
-
-        // starting the timeout should reset the previous one
-        timeout.start(second, 100);
     });
 });

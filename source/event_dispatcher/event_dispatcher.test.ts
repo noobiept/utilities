@@ -1,11 +1,12 @@
+import { describe, test, expect, vi } from "vitest";
 import { EventDispatcher } from "./event_dispatcher";
 
 describe("EventDispatcher", () => {
     test("Basic functionality.", () => {
         const dispatcher = new EventDispatcher();
         const event = "test";
-        const listener1 = jest.fn();
-        const listener2 = jest.fn();
+        const listener1 = vi.fn();
+        const listener2 = vi.fn();
 
         // not listeners yet
         expect(dispatcher.hasListeners(event)).toBe(false);
@@ -34,7 +35,7 @@ describe("EventDispatcher", () => {
     test("Don't add the same listener more than once.", () => {
         const dispatcher = new EventDispatcher();
         const event = "test";
-        const listener = jest.fn();
+        const listener = vi.fn();
 
         // try to add 2 times the same listener
         const added1 = dispatcher.addEventListener(event, listener);
@@ -60,8 +61,8 @@ describe("EventDispatcher", () => {
     test("Should remove all listeners when removing an event without specifying any listener.", () => {
         const dispatcher = new EventDispatcher();
         const event = "test";
-        const listener1 = jest.fn();
-        const listener2 = jest.fn();
+        const listener1 = vi.fn();
+        const listener2 = vi.fn();
 
         dispatcher.addEventListener(event, listener1);
         dispatcher.addEventListener(event, listener2);
@@ -80,8 +81,8 @@ describe("EventDispatcher", () => {
         const dispatcher = new EventDispatcher();
         const event = "test";
 
-        const listener1 = jest.fn();
-        const listener2 = jest.fn();
+        const listener1 = vi.fn();
+        const listener2 = vi.fn();
 
         // only add the first one
         dispatcher.addEventListener(event, listener1);
@@ -94,8 +95,8 @@ describe("EventDispatcher", () => {
         const dispatcher = new EventDispatcher();
         const event1 = "test1";
         const event2 = "test2";
-        const listener1 = jest.fn();
-        const listener2 = jest.fn();
+        const listener1 = vi.fn();
+        const listener2 = vi.fn();
 
         dispatcher.addEventListener(event1, listener1);
         dispatcher.addEventListener(event2, listener2);

@@ -4,6 +4,7 @@ docs/
 node_modules/
 coverage/
 release/
+.claude
 source/**/*.js
 package-lock.json
 *.yml
