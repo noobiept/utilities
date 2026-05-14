@@ -23,6 +23,7 @@ jobs:
             - run: pnpm run format:check
             - run: pnpm run lint
             - run: pnpm run unit
+            - run: pnpm run e2e
 
             - uses: actions/upload-artifact@v4
               with:
