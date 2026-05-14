@@ -6,8 +6,9 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "target": "es2018",
-        "module": "es2015",
-        "moduleResolution": "Node",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "rootDir": "./source",
         "declarationDir": "./build",
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true
