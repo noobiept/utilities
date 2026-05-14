@@ -16,6 +16,14 @@
     "main": "build/utilities.cjs",
     "module": "build/utilities.mjs",
     "types": "build/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./build/index.d.ts",
+            "import": "./build/utilities.mjs",
+            "require": "./build/utilities.cjs"
+        },
+        "./package.json": "./package.json"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/noobiept/utilities"
