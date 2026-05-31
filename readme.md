@@ -2,117 +2,129 @@
 
 # Utilities Library
 
-Random collection of utilities functions/classes.
+A small, dependency-free collection of TypeScript utility functions and classes for the browser and Node.js — async/control-flow helpers, randomness, strings, type guards, math, timers, and a few DOM helpers.
 
 # Installation
 
 - `npm install @drk4/utilities`
 
-# Usage
+# What's included
 
-```
-import { Timeout } from '@drk4/utilities';
+| Category            | Functions / classes                                                                                 |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
+| **Async**           | `sleep` · `retry` · `debounce` · `throttle` · `withTimeout` · `pollUntil` · `deferred`              |
+| **Random**          | `pickOne` · `pickN` · `weightedPick` · `seededRandom` · `shuffle`                                   |
+| **String**          | `slugify` · `truncate` · `template` · `capitalize` · `escapeHtml` · `escapeRegExp` · `randomString` |
+| **Type guards**     | `isString` · `isNumber` · `isInteger` · `isBoolean` · `isArray` · `isFunction`                      |
+| **Number**          | `getRandomInt` · `getRandomFloat` · `getSeveralRandomInts` · `range` · `round` · `numberOfDigits`   |
+| **Math / geometry** | `calculateAngle` · `calculateDistance` · `toRadians` · `toDegrees` · box/circle/point collisions    |
+| **Object**          | `deepClone` · `createEnum`                                                                          |
+| **Time**            | `Timer` · `Timeout` · `timeToString`                                                                |
+| **DOM**             | `Dialog` · `Preload`                                                                                |
+| **Storage**         | `saveObject` · `getObject`                                                                          |
+| **Events**          | `EventDispatcher`                                                                                   |
 
-const timeout = new Timeout();
-timeout.start(() => {
-    console.log('Done!');
-}, 1000);
-```
+See the [full documentation](docs/README.md) for every function and its signature.
 
-```
-import { Preload } from '@drk4/utilities';
+# Examples
 
-const preload = new Preload();
-const manifest = [
-    { id: 'something', path: 'path/image.png' },
-];
+```ts
+import { sleep, debounce, retry } from "@drk4/utilities";
 
-preload.addEventListener('complete', (loaded) => {
-    const image = preload.get('something');
-    // do something with it
+// only fire the search once the user pauses typing for 200ms
+const onInput = debounce((query) => search(query), 200);
+
+// retry a flaky operation up to 3 times with exponential backoff
+const data = await retry(() => fetch("/api/data").then((r) => r.json()), {
+    attempts: 3,
+    delay: 100,
+    backoff: 2,
 });
-preload.loadManifest(manifest);
+
+await sleep(500); // promise-based delay
 ```
 
+```ts
+import { slugify, template } from "@drk4/utilities";
+
+slugify("Olá, World!"); // "ola-world"
+template("Hello, {{name}}!", { name: "World" }); // "Hello, World!"
 ```
-import { timeToString } from '@drk4/utilities';
+
+```ts
+import { seededRandom, weightedPick } from "@drk4/utilities";
+
+// reproducible random sequence for a given seed
+const rng = seededRandom(42);
+rng.int(1, 6); // dice roll
+rng.shuffle(["a", "b", "c", "d"]);
+
+// pick by weight — "common" wins ~99% of the time
+weightedPick(["rare", "common"], [1, 99]);
+```
+
+```ts
+import { timeToString } from "@drk4/utilities";
 
 const second = 1000;
 const minute = 60 * second;
 const hour = 60 * minute;
 
 const time = 2 * hour + 30 * minute;
-const text = timeToString({ time });    // "2 hours 30 minutes"
-const daytime = timeToString({ time, format: "daytime" });  // "02:30:00"
+const text = timeToString({ time }); // "2 hours 30 minutes"
+const daytime = timeToString({ time, format: "daytime" }); // "02:30:00"
 ```
 
-```
-import { Dialog } from '@drk4/utilities';
-import "@drk4/utilities/build/dialog.css";  // optional styling
+```ts
+import { Timeout } from "@drk4/utilities";
 
-const body = document.createElement('div');
+const timeout = new Timeout();
+timeout.start(() => {
+    console.log("Done!");
+}, 1000);
+```
+
+```ts
+import { Preload } from "@drk4/utilities";
+
+const preload = new Preload();
+const manifest = [{ id: "something", path: "path/image.png" }];
+
+preload.addEventListener("complete", (loaded) => {
+    const image = preload.get("something");
+    // do something with it
+});
+preload.loadManifest(manifest);
+```
+
+```ts
+import { Dialog } from "@drk4/utilities";
+import "@drk4/utilities/build/dialog.css"; // optional styling
+
+const body = document.createElement("div");
 body.innerHTML = "Some HTML elements here";
 
 const dialog = new Dialog({
-    title: 'The Title', // title/body can be either a string or an HTMLElement
+    title: "The Title", // title/body can be either a string or an HTMLElement
     body,
 });
 dialog.open();
 ```
 
-```
-import { debounce, retry, sleep } from '@drk4/utilities';
+In Node you can require it (some things only work in the browser though):
 
-// only fire the search once the user pauses typing for 200ms
-const onInput = debounce((query) => search(query), 200);
-
-// retry a flaky operation up to 3 times with exponential backoff
-const data = await retry(() => fetch('/api/data').then(r => r.json()), {
-    attempts: 3,
-    delay: 100,
-    backoff: 2,
-});
-
-await sleep(500);   // promise-based delay
-```
-
-```
-import { slugify, template } from '@drk4/utilities';
-
-slugify("Olá, World!");                            // "ola-world"
-template("Hello, {{name}}!", { name: "World" });   // "Hello, World!"
-```
-
-```
-import { seededRandom, weightedPick } from '@drk4/utilities';
-
-// reproducible random sequence for a given seed
-const rng = seededRandom(42);
-rng.int(1, 6);                       // dice roll
-rng.shuffle(['a', 'b', 'c', 'd']);
-
-// pick by weight — "common" wins ~99% of the time
-weightedPick(['rare', 'common'], [1, 99]);
-```
-
-In node you can require it (some things only work on the browser though).
-
-```
-const Utilities = require('@drk4/utilities');
+```js
+const Utilities = require("@drk4/utilities");
 
 const values = [1, 2, 3];
 Utilities.shuffle(values);
 ```
 
-You can also just load directly with a `script` tag.
+Or load it directly with a `script` tag:
 
-```
+```html
 <script src="path/to/library/utilities.iife.js"></script>
 ```
-
-# Documentation
-
-You can read the [documentation here.](docs/README.md)
 
 # Development
 
