@@ -23,6 +23,7 @@ describe("isArray", () => {
             { value: true, expect: false },
             { value: {}, expect: false },
             { value: function () {}, expect: false },
+            { value: new Int8Array(2), expect: false },
             { value: [], expect: true },
         ];
 
@@ -48,6 +49,9 @@ describe("isBoolean", () => {
             { value: undefined, expect: false },
             { value: null, expect: false },
             { value: true, expect: true },
+            { value: false, expect: true },
+            { value: new Boolean(true), expect: false },
+            { value: new Boolean(false), expect: false },
             { value: {}, expect: false },
             { value: function () {}, expect: false },
             { value: [], expect: false },
@@ -77,6 +81,12 @@ describe("isFunction", () => {
             { value: true, expect: false },
             { value: {}, expect: false },
             { value: function () {}, expect: true },
+            { value: () => {}, expect: true },
+            { value: async function () {}, expect: true },
+            { value: async () => {}, expect: true },
+            { value: function* () {}, expect: true },
+            { value: async function* () {}, expect: true },
+            { value: class {}, expect: true },
             { value: [], expect: false },
         ];
 
@@ -93,7 +103,11 @@ describe("isInteger", () => {
     test("type", () => {
         const values = [
             { value: 1, expect: true },
+            { value: 0, expect: true },
+            { value: -5, expect: true },
+            { value: Number.MAX_SAFE_INTEGER, expect: true },
             { value: 1.2, expect: false },
+            { value: -5.5, expect: false },
             { value: NaN, expect: false },
             { value: Infinity, expect: false },
             { value: "1.3", expect: false },
@@ -120,7 +134,11 @@ describe("isNumber", () => {
     test("type", () => {
         const values = [
             { value: 1, expect: true },
+            { value: 0, expect: true },
+            { value: -5.5, expect: true },
+            { value: -0, expect: true },
             { value: 1.2, expect: true },
+            { value: new Number(5), expect: false },
             { value: NaN, expect: false },
             { value: Infinity, expect: false },
             { value: "1.3", expect: false },
@@ -153,6 +171,8 @@ describe("isString", () => {
             { value: "1.3", expect: true },
             { value: "a", expect: true },
             { value: "", expect: true },
+            { value: new String("a"), expect: false },
+            { value: new String(""), expect: false },
             { value: undefined, expect: false },
             { value: null, expect: false },
             { value: true, expect: false },

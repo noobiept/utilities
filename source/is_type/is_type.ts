@@ -1,7 +1,7 @@
 /**
  * @return If it is an array or not.
  */
-export function isArray(element: any) {
+export function isArray(element: any): element is any[] {
     return Object.prototype.toString.call(element) === "[object Array]";
 }
 
@@ -9,21 +9,14 @@ export function isArray(element: any) {
  * @return If it is a boolean.
  */
 export function isBoolean(element: any): element is boolean {
-    return (
-        element === true ||
-        element === false ||
-        Object.prototype.toString.call(element) === "[object Boolean]"
-    );
+    return typeof element === "boolean";
 }
 
 /**
  * @return If it is a function.
  */
 export function isFunction(element: any): element is (...args: any[]) => any {
-    return (
-        typeof element === "function" &&
-        Object.prototype.toString.call(element) === "[object Function]"
-    );
+    return typeof element === "function";
 }
 
 /**
@@ -37,16 +30,12 @@ export function isInteger(value: any): value is number {
  * @return If it is a number.
  */
 export function isNumber(element: any): element is number {
-    return (
-        typeof element === "number" &&
-        !isNaN(parseFloat(element as any)) &&
-        isFinite(element)
-    );
+    return typeof element === "number" && isFinite(element);
 }
 
 /**
  * @return If it is a string.
  */
 export function isString(element: any): element is string {
-    return typeof element === "string" || element instanceof String;
+    return typeof element === "string";
 }
