@@ -10,6 +10,7 @@ export * from "./is_type/is_type";
 export * from "./number/number";
 export * from "./array/array";
 export * from "./random/random";
+export * from "./string/string";
 export * from "./async/async";
 export * from "./local_storage/local_storage";
 export * from "./object/object";
