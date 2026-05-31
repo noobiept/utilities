@@ -6,7 +6,7 @@
 
 # Enumeration: MouseButton
 
-Defined in: [types.ts:4](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L4)
+Defined in: [source/types.ts:4](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L4)
 
 Numeric code of each mouse button.
 
@@ -16,7 +16,7 @@ Numeric code of each mouse button.
 
 > **back**: `3`
 
-Defined in: [types.ts:8](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L8)
+Defined in: [source/types.ts:8](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L8)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types.ts:8](https://github.com/noobiept/utilities/blob/8e5faa7eac7a
 
 > **forward**: `4`
 
-Defined in: [types.ts:9](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L9)
+Defined in: [source/types.ts:9](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L9)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types.ts:9](https://github.com/noobiept/utilities/blob/8e5faa7eac7a
 
 > **left**: `0`
 
-Defined in: [types.ts:5](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L5)
+Defined in: [source/types.ts:5](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L5)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [types.ts:5](https://github.com/noobiept/utilities/blob/8e5faa7eac7a
 
 > **middle**: `1`
 
-Defined in: [types.ts:6](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L6)
+Defined in: [source/types.ts:6](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L6)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [types.ts:6](https://github.com/noobiept/utilities/blob/8e5faa7eac7a
 
 > **right**: `2`
 
-Defined in: [types.ts:7](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/types.ts#L7)
+Defined in: [source/types.ts:7](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/types.ts#L7)

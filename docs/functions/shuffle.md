@@ -8,7 +8,7 @@
 
 > **shuffle**(`array`): `any`[]
 
-Defined in: [array/array.ts:4](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/array/array.ts#L4)
+Defined in: [source/array/array.ts:4](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/array/array.ts#L4)
 
 Shuffle an array.
 

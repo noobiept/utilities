@@ -6,9 +6,9 @@
 
 # Function: isArray()
 
-> **isArray**(`element`): `boolean`
+> **isArray**(`element`): `element is any[]`
 
-Defined in: [is\_type/is\_type.ts:4](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/is_type/is_type.ts#L4)
+Defined in: [source/is\_type/is\_type.ts:4](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/is_type/is_type.ts#L4)
 
 ## Parameters
 
@@ -18,6 +18,6 @@ Defined in: [is\_type/is\_type.ts:4](https://github.com/noobiept/utilities/blob/
 
 ## Returns
 
-`boolean`
+`element is any[]`
 
 If it is an array or not.

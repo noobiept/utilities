@@ -8,7 +8,7 @@
 
 > **numberOfDigits**(`theNumber`): `number`
 
-Defined in: [number/number.ts:65](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/number/number.ts#L65)
+Defined in: [source/number/number.ts:65](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/number/number.ts#L65)
 
 Returns the number of digits in a number.
 It doesn't consider the minus signal, nor the dot (in floats) as a digit.

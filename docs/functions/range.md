@@ -8,7 +8,7 @@
 
 > **range**(`start`, `end`): `number`[]
 
-Defined in: [number/number.ts:89](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/number/number.ts#L89)
+Defined in: [source/number/number.ts:89](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/number/number.ts#L89)
 
 Create an array with all the numbers in-between the 'start' and 'end' (inclusive).
 

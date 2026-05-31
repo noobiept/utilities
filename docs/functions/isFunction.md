@@ -8,7 +8,7 @@
 
 > **isFunction**(`element`): `element is (args: any[]) => any`
 
-Defined in: [is\_type/is\_type.ts:22](https://github.com/noobiept/utilities/blob/8e5faa7eac7a48bcbe059751c29ba4f4e76a6352/source/is_type/is_type.ts#L22)
+Defined in: [source/is\_type/is\_type.ts:18](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/is_type/is_type.ts#L18)
 
 ## Parameters
 
