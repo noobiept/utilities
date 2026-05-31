@@ -38,4 +38,20 @@ test.describe("Dialog", () => {
         await page.keyboard.press("Enter");
         await expect(page.locator(".dialog")).not.toBeVisible();
     });
+
+    test("Should apply the dialog stylesheet.", async ({ page }) => {
+        await page.locator("#OpenModalDialog").click();
+        const dialog = page.locator(".dialog");
+        await expect(dialog).toBeVisible();
+
+        // These values come only from dialog.css — an unstyled <div> would be
+        // position:static / z-index:auto, and the title would not be bold. So
+        // if the stylesheet failed to load, these assertions fail.
+        await expect(dialog).toHaveCSS("position", "fixed");
+        await expect(dialog).toHaveCSS("z-index", "101");
+        await expect(page.locator(".dialogTitle")).toHaveCSS(
+            "font-weight",
+            "700"
+        );
+    });
 });

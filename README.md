@@ -99,7 +99,7 @@ preload.loadManifest(manifest);
 
 ```ts
 import { Dialog } from "@drk4/utilities";
-import "@drk4/utilities/build/dialog.css"; // optional styling
+import "@drk4/utilities/dialog.css"; // optional styling
 
 const body = document.createElement("div");
 body.innerHTML = "Some HTML elements here";

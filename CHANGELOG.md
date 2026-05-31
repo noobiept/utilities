@@ -11,6 +11,7 @@
 - ❗ `isString` and `isBoolean` no longer accept boxed wrapper objects (`new String(...)` / `new Boolean(...)`); they now only match primitives, consistent with `isNumber`.
 - `isArray` now narrows its argument with a TypeScript type guard (`element is any[]`).
 - Simplified `isNumber`'s implementation (removed a redundant `parseFloat` check); behavior is unchanged.
+- Updated the runtimes and package dependencies to their latest versions.
 
 ## Added
 
@@ -21,6 +22,7 @@
 ## Fixed
 
 - `isFunction` now returns `true` for `async`, generator, and async-generator functions (it previously returned `false` for them).
+- The `dialog.css` stylesheet can now be imported as `@drk4/utilities/dialog.css`; it was previously unreachable through the package `exports` map.
 
 # v6.4.0 - 14/05/2026
 
