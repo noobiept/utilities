@@ -4,6 +4,24 @@
 
 # Unreleased
 
+# v7.0.0 - 31/05/2026
+
+## Changed
+
+- ❗ `isString` and `isBoolean` no longer accept boxed wrapper objects (`new String(...)` / `new Boolean(...)`); they now only match primitives, consistent with `isNumber`.
+- `isArray` now narrows its argument with a TypeScript type guard (`element is any[]`).
+- Simplified `isNumber`'s implementation (removed a redundant `parseFloat` check); behavior is unchanged.
+
+## Added
+
+- `async` module: `sleep`, `withTimeout`, `deferred`, `retry`, `pollUntil`, `debounce`, `throttle`, and a `TimeoutError` class.
+- `random` module: `pickOne`, `pickN`, `weightedPick`, and a seedable `seededRandom` generator.
+- `string` module: `slugify`, `truncate`, `capitalize`, `escapeHtml`, `escapeRegExp`, `randomString`, and `template`.
+
+## Fixed
+
+- `isFunction` now returns `true` for `async`, generator, and async-generator functions (it previously returned `false` for them).
+
 # v6.4.0 - 14/05/2026
 
 ## Changed

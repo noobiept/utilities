@@ -60,6 +60,41 @@ const dialog = new Dialog({
 dialog.open();
 ```
 
+```
+import { debounce, retry, sleep } from '@drk4/utilities';
+
+// only fire the search once the user pauses typing for 200ms
+const onInput = debounce((query) => search(query), 200);
+
+// retry a flaky operation up to 3 times with exponential backoff
+const data = await retry(() => fetch('/api/data').then(r => r.json()), {
+    attempts: 3,
+    delay: 100,
+    backoff: 2,
+});
+
+await sleep(500);   // promise-based delay
+```
+
+```
+import { slugify, template } from '@drk4/utilities';
+
+slugify("Olá, World!");                            // "ola-world"
+template("Hello, {{name}}!", { name: "World" });   // "Hello, World!"
+```
+
+```
+import { seededRandom, weightedPick } from '@drk4/utilities';
+
+// reproducible random sequence for a given seed
+const rng = seededRandom(42);
+rng.int(1, 6);                       // dice roll
+rng.shuffle(['a', 'b', 'c', 'd']);
+
+// pick by weight — "common" wins ~99% of the time
+weightedPick(['rare', 'common'], [1, 99]);
+```
+
 In node you can require it (some things only work on the browser though).
 
 ```
