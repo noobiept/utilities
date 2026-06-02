@@ -7,22 +7,26 @@ A small, dependency-free collection of TypeScript utility functions and classes 
 # Installation
 
 - `npm install @drk4/utilities`
+- `pnpm add @drk4/utilities`
 
 # What's included
 
-| Category            | Functions / classes                                                                                 |
-| ------------------- | --------------------------------------------------------------------------------------------------- |
-| **Async**           | `sleep` · `retry` · `debounce` · `throttle` · `withTimeout` · `pollUntil` · `deferred`              |
-| **Random**          | `pickOne` · `pickN` · `weightedPick` · `seededRandom` · `shuffle`                                   |
-| **String**          | `slugify` · `truncate` · `template` · `capitalize` · `escapeHtml` · `escapeRegExp` · `randomString` |
-| **Type guards**     | `isString` · `isNumber` · `isInteger` · `isBoolean` · `isArray` · `isFunction`                      |
-| **Number**          | `getRandomInt` · `getRandomFloat` · `getSeveralRandomInts` · `range` · `round` · `numberOfDigits`   |
-| **Math / geometry** | `calculateAngle` · `calculateDistance` · `toRadians` · `toDegrees` · box/circle/point collisions    |
-| **Object**          | `deepClone` · `createEnum`                                                                          |
-| **Time**            | `Timer` · `Timeout` · `timeToString`                                                                |
-| **DOM**             | `Dialog` · `Preload`                                                                                |
-| **Storage**         | `saveObject` · `getObject`                                                                          |
-| **Events**          | `EventDispatcher`                                                                                   |
+| Category                | Functions / classes                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| **Async**               | `sleep` · `retry` · `debounce` · `throttle` · `withTimeout` · `pollUntil` · `deferred`              |
+| **Random**              | `pickOne` · `pickN` · `weightedPick` · `seededRandom`                                               |
+| **Array**               | `shuffle`                                                                                           |
+| **String**              | `slugify` · `truncate` · `template` · `capitalize` · `escapeHtml` · `escapeRegExp` · `randomString` |
+| **Type guards**         | `isString` · `isNumber` · `isInteger` · `isBoolean` · `isArray` · `isFunction`                      |
+| **Number**              | `getRandomInt` · `getRandomFloat` · `getSeveralRandomInts` · `range` · `round` · `numberOfDigits`   |
+| **Trigonometry**        | `calculateAngle` · `calculateDistance` · `toRadians` · `toDegrees`                                  |
+| **Collision detection** | `boxBoxCollision` · `circleCircleCollision` · `circlePointCollision` · `pointBoxCollision`          |
+| **Object**              | `deepClone` · `createEnum`                                                                          |
+| **Time**                | `timeToString` · `Timer` · `Timeout`                                                                |
+| **Dialog**              | `Dialog`                                                                                            |
+| **Preload**             | `Preload`                                                                                           |
+| **Storage**             | `saveObject` · `getObject`                                                                          |
+| **Events**              | `EventDispatcher`                                                                                   |
 
 See the [full documentation](docs/README.md) for every function and its signature.
 
@@ -42,6 +46,15 @@ const data = await retry(() => fetch("/api/data").then((r) => r.json()), {
 });
 
 await sleep(500); // promise-based delay
+```
+
+```ts
+import { deferred } from "@drk4/utilities";
+
+// a promise you can resolve/reject from the outside
+const ready = deferred<string>();
+socket.on("ready", (value) => ready.resolve(value));
+const value = await ready.promise;
 ```
 
 ```ts
@@ -120,10 +133,13 @@ const values = [1, 2, 3];
 Utilities.shuffle(values);
 ```
 
-Or load it directly with a `script` tag:
+Or load it directly with a `script` tag — everything is exposed under the global `Utilities`:
 
 ```html
 <script src="path/to/library/utilities.iife.js"></script>
+<script>
+    Utilities.shuffle([1, 2, 3]);
+</script>
 ```
 
 # Development

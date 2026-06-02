@@ -4,6 +4,13 @@
 
 # Unreleased
 
+# v7.0.1 - 02/06/2026
+
+## Documentation
+
+- Restructured the "What's included" table to follow the source module layout (split out `Array`, `Trigonometry`, and `Collision detection`; gave `Dialog` and `Preload` their own rows).
+- Added `pnpm` install instructions, a `deferred` example, and documented the `Utilities` global exposed by the `script`-tag (IIFE) build.
+
 # v7.0.0 - 31/05/2026
 
 ## Changed
