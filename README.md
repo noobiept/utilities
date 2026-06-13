@@ -118,7 +118,7 @@ const body = document.createElement("div");
 body.innerHTML = "Some HTML elements here";
 
 const dialog = new Dialog({
-    title: "The Title", // title/body can be either a string or an HTMLElement
+    title: "The Title", // title/body can be either a string (set as plain text) or an HTMLElement
     body,
 });
 dialog.open();

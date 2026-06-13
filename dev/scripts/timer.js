@@ -122,10 +122,10 @@ window.onload = function () {
 function showMessage(message) {
     const messageElement = document.querySelector("#Message");
 
-    messageElement.innerHTML = message;
+    messageElement.textContent = message;
 
     MESSAGE_TIMEOUT.start(function () {
-        messageElement.innerHTML = "---";
+        messageElement.textContent = "---";
     }, 1000);
 
     console.log(message);

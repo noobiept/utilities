@@ -100,16 +100,32 @@ export function timeToString(args: TimeToStringArgs) {
     // count the number of days/hours/minutes/seconds
     let remainder = time;
 
-    const daysLeft = Math.floor(remainder / day);
+    let daysLeft = Math.floor(remainder / day);
     remainder = remainder % day;
 
-    const hoursLeft = Math.floor(remainder / hour);
+    let hoursLeft = Math.floor(remainder / hour);
     remainder = remainder % hour;
 
-    const minutesLeft = Math.floor(remainder / minute);
+    let minutesLeft = Math.floor(remainder / minute);
     remainder = remainder % minute;
 
-    const secondsLeft = round(remainder / second, 2);
+    let secondsLeft = round(remainder / second, 2);
+
+    // the seconds rounding can hit 60 (for example 59999 milliseconds), carry it over to the higher units so we don't end up with '59 minutes 60 seconds' instead of '1 hour'
+    if (secondsLeft >= 60) {
+        secondsLeft = 0;
+        minutesLeft++;
+
+        if (minutesLeft >= 60) {
+            minutesLeft = 0;
+            hoursLeft++;
+
+            if (hoursLeft >= 24) {
+                hoursLeft = 0;
+                daysLeft++;
+            }
+        }
+    }
 
     const separated = {
         days: daysLeft,
@@ -134,6 +150,17 @@ export function timeToString(args: TimeToStringArgs) {
     }
 }
 
+/**
+ * Pad a time value to 2 digits, while keeping the decimal part intact (if there's one).
+ * Seconds can be fractional (for example `1.5`), and padding the whole string would skip the leading zero (we want `01.5` instead of `1.5`).
+ */
+function padTimeValue(value: number): string {
+    const [integerPart, decimalPart] = value.toString().split(".");
+    const padded = integerPart.padStart(2, "0");
+
+    return decimalPart ? `${padded}.${decimalPart}` : padded;
+}
+
 function formatDaytime(time: SeparatedTime): string {
     let date = "";
 
@@ -141,9 +168,9 @@ function formatDaytime(time: SeparatedTime): string {
         date += `${time.days} `;
     }
 
-    const hoursString = time.hours.toString().padStart(2, "0");
-    const minutesString = time.minutes.toString().padStart(2, "0");
-    const secondsString = time.seconds.toString().padStart(2, "0");
+    const hoursString = padTimeValue(time.hours);
+    const minutesString = padTimeValue(time.minutes);
+    const secondsString = padTimeValue(time.seconds);
 
     date += `${hoursString}:${minutesString}:${secondsString}`;
 
@@ -178,7 +205,7 @@ function formatPartialDaytime(time: SeparatedTime): string {
         const item = values[a];
 
         if (foundFirst) {
-            date += item.separator + item.value.toString().padStart(2, "0");
+            date += item.separator + padTimeValue(item.value);
         } else if (item.value > 0) {
             foundFirst = true;
             date += item.value.toString();

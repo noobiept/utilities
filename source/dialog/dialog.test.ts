@@ -2,7 +2,7 @@ import { describe, test, expect, beforeEach, vi } from "vitest";
 import { Dialog, DialogButtons, DialogPosition } from "./dialog";
 
 beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
 });
 
 describe("Dialog", () => {
@@ -86,7 +86,7 @@ describe("Dialog", () => {
             expect(dialogElement?.classList.contains(dialogCss)).toBe(true);
 
             // clear the previous dialog
-            document.body.innerHTML = "";
+            document.body.replaceChildren();
         };
 
         // default is 'center'
@@ -270,13 +270,50 @@ describe("Dialog", () => {
         expect(document.querySelector(".dialogButton")).not.toBeTruthy();
     });
 
+    test("Strings are set as plain text, not parsed as HTML.", () => {
+        const dialog = new Dialog({
+            title: "<b>a title</b>",
+            body: '<img src="x" onerror="alert(1)">',
+        });
+        dialog.open();
+
+        // no elements should have been created from the strings
+        expect(document.querySelector(".dialogTitle b")).toBeNull();
+        expect(document.querySelector(".dialogBody img")).toBeNull();
+
+        // the markup shows up as literal text instead
+        expect(document.querySelector(".dialogTitle")?.textContent).toBe(
+            "<b>a title</b>"
+        );
+        expect(document.querySelector(".dialogBody")?.textContent).toBe(
+            '<img src="x" onerror="alert(1)">'
+        );
+    });
+
+    test("Creating a dialog with custom buttons.", () => {
+        const custom = document.createElement("button");
+        custom.innerText = "Custom";
+
+        const dialog = new Dialog({
+            title: "",
+            body: "",
+            buttons: [custom],
+        });
+        dialog.open();
+
+        // the buttons container should have the styling class as well
+        const buttons = document.querySelector(".dialogButtons");
+        expect(buttons).toBeTruthy();
+        expect(buttons?.children[0]).toBe(custom);
+    });
+
     test("A dialog with HTMLElement's as the title.", () => {
         const title = document.createElement("div");
         const titleButton = document.createElement("button");
 
-        titleButton.innerHTML = "a button";
+        titleButton.textContent = "a button";
         title.className = "something";
-        title.innerHTML = "title ";
+        title.textContent = "title ";
         title.appendChild(titleButton);
 
         const dialog = new Dialog({
@@ -298,9 +335,9 @@ describe("Dialog", () => {
         const bodyHr = document.createElement("hr");
         const bodyText = document.createElement("div");
 
-        bodyText.innerHTML = "yay";
+        bodyText.textContent = "yay";
         body.className = "cool";
-        body.innerHTML = "body";
+        body.textContent = "body";
         body.appendChild(bodyHr);
         body.appendChild(bodyText);
 

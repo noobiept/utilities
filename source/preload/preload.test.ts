@@ -64,6 +64,22 @@ describe("Preload", () => {
         preload.loadManifest(manifest);
     });
 
+    test("The image object URL is revoked after the image loads.", () => {
+        expect.assertions(2);
+
+        mockXHR(generateFakeImageResponse());
+        mockURL();
+        mockImage();
+
+        const preload = new Preload();
+
+        preload.addEventListener("complete", (_data) => {
+            expect(window.URL.createObjectURL).toHaveBeenCalled();
+            expect(window.URL.revokeObjectURL).toHaveBeenCalledWith("asd");
+        });
+        preload.load("image", "test.png");
+    });
+
     test("Loading a text file.", () => {
         expect.assertions(1);
 

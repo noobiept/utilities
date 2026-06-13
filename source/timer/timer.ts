@@ -35,6 +35,8 @@ export class Timer {
     private count_down = false;
     private time_count = 0;
     private interval = 1000;
+    private tick_base = 0; // 'time_count' value when the timer was last resumed
+    private resumed_at = 0; // monotonic timestamp of the last resume
 
     private end_value?: number;
     private end_callback?: () => any;
@@ -65,46 +67,26 @@ export class Timer {
      * `countDown` if it counts up or down (default is count up).
      * `interval` time in between each tick (default is 1000 milliseconds).
      */
-    start(args?: TimerStartArgs) {
-        if (typeof args === "undefined") {
-            args = {};
-        }
-
-        if (!isNumber(args.startValue)) {
-            args.startValue = 0;
-        }
-
-        if (!isNumber(args.endValue)) {
-            args.endValue = undefined;
-        }
-
-        if (!isFunction(args.onEnd)) {
-            args.onEnd = undefined;
-        }
-
-        if (!isFunction(args.onTick)) {
-            args.onTick = undefined;
-        }
-
-        if (args.countDown !== true) {
-            args.countDown = false;
-        }
-
-        if (!isNumber(args.interval)) {
-            args.interval = 1000;
-        }
+    start(args: TimerStartArgs = {}) {
+        // setup the default values (without mutating the caller's 'args' object)
+        const startValue = isNumber(args.startValue) ? args.startValue : 0;
+        const endValue = isNumber(args.endValue) ? args.endValue : undefined;
+        const onEnd = isFunction(args.onEnd) ? args.onEnd : undefined;
+        const onTick = isFunction(args.onTick) ? args.onTick : undefined;
+        const countDown = args.countDown === true;
+        const interval = isNumber(args.interval) ? args.interval : 1000;
 
         if (this.is_active) {
             this.stop();
         }
 
-        this.count_down = args.countDown;
-        this.time_count = args.startValue;
-        this.start_value = args.startValue;
-        this.end_value = args.endValue;
-        this.interval = args.interval;
-        this.end_callback = args.onEnd;
-        this.tick_callback = args.onTick;
+        this.count_down = countDown;
+        this.time_count = startValue;
+        this.start_value = startValue;
+        this.end_value = endValue;
+        this.interval = interval;
+        this.end_callback = onEnd;
+        this.tick_callback = onTick;
 
         this.updateHtmlElement();
         this.resume();
@@ -121,13 +103,29 @@ export class Timer {
         const interval = this.interval;
 
         this.is_active = true;
+        this.tick_base = this.time_count;
+        this.resumed_at = performance.now();
+
         this.interval_f = window.setInterval(() => {
-            // update the counter
-            if (this.count_down) {
-                this.time_count -= interval;
-            } else {
-                this.time_count += interval;
-            }
+            // count the ticks from a monotonic clock, so the counter doesn't drift away from elapsed time (intervals aren't exact, and browsers throttle timers on background tabs)
+            const elapsed = performance.now() - this.resumed_at;
+            const total = Math.round(elapsed / interval) * interval;
+            const nextTimeCount = this.count_down
+                ? this.tick_base - total
+                : this.tick_base + total;
+            const endValue = this.end_value;
+            const crossedEnd =
+                endValue !== undefined &&
+                (this.count_down
+                    ? this.time_count > endValue && nextTimeCount <= endValue
+                    : this.time_count < endValue && nextTimeCount >= endValue);
+            const ended =
+                endValue !== undefined &&
+                (this.count_down
+                    ? nextTimeCount <= endValue
+                    : nextTimeCount >= endValue);
+
+            this.time_count = crossedEnd ? endValue : nextTimeCount;
 
             // update the html element with the current time
             this.updateHtmlElement();
@@ -138,25 +136,11 @@ export class Timer {
             }
 
             // if there's an end value defined, check if we reached it
-            if (this.end_value !== undefined) {
-                let ended = false;
+            if (ended) {
+                this.stop();
 
-                if (this.count_down) {
-                    if (this.time_count <= this.end_value) {
-                        ended = true;
-                    }
-                } else {
-                    if (this.time_count >= this.end_value) {
-                        ended = true;
-                    }
-                }
-
-                if (ended) {
-                    this.stop();
-
-                    if (this.end_callback !== undefined) {
-                        this.end_callback();
-                    }
+                if (this.end_callback !== undefined) {
+                    this.end_callback();
                 }
             }
         }, interval);
@@ -228,6 +212,7 @@ export class Timer {
      */
     add(time: number) {
         this.time_count += time;
+        this.tick_base += time; // keep the active tick computation in sync
     }
 
     /**

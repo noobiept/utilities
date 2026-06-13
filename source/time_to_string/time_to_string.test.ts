@@ -139,6 +139,36 @@ describe("timeToString", () => {
         }
     });
 
+    test("Seconds that round up to 60 carry over to the higher units.", () => {
+        // 59999ms rounds to 60 seconds, which should carry over to '1 minute'
+        expect(timeToString({ time: MINUTE - 1 })).toBe("1 minute");
+        expect(timeToString({ time: MINUTE - 1, format: "daytime" })).toBe(
+            "00:01:00"
+        );
+
+        // cascades all the way up (59:59.999 -> 1 hour, 23:59:59.999 -> 1 day)
+        expect(timeToString({ time: HOUR - 1 })).toBe("1 hour");
+        expect(timeToString({ time: DAY - 1, format: "daytime" })).toBe(
+            "1 00:00:00"
+        );
+
+        // below the rounding threshold it still shows the fractional seconds
+        expect(timeToString({ time: MINUTE - 10 })).toBe("59.99 seconds");
+    });
+
+    test("Fractional seconds keep the padding on the 'daytime' formats.", () => {
+        expect(timeToString({ time: 1500, format: "daytime" })).toBe(
+            "00:00:01.5"
+        );
+        expect(timeToString({ time: 1500, format: "partial_daytime" })).toBe(
+            "1.5"
+        );
+        expect(
+            timeToString({ time: MINUTE + 1500, format: "partial_daytime" })
+        ).toBe("1:01.5");
+        expect(timeToString({ time: 1500 })).toBe("1.5 seconds");
+    });
+
     test("The 'units' argument.", () => {
         const values = [
             // test default value (undefined, should show all non-zero units)

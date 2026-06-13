@@ -7,6 +7,13 @@ describe("Local Storage", () => {
         expect(value).toBeFalsy();
     });
 
+    test("Corrupted data (invalid json) should return null instead of throwing.", () => {
+        const key = "corrupted";
+        localStorage.setItem(key, "{ not valid json");
+
+        expect(getObject(key)).toBeNull();
+    });
+
     test("with valid arguments.", () => {
         const key = "test";
         const testValues = [4, "hi there", { one: 2, three: [4, 5] }];

@@ -13,8 +13,8 @@ export enum DialogButtons {
 export type DialogButtonsArg = DialogButtons | HTMLElement[];
 
 export interface DialogArgs {
-    title: string | HTMLElement;
-    body: string | HTMLElement;
+    title: string | HTMLElement; // a string is set as plain text, pass an HTMLElement if you need HTML content
+    body: string | HTMLElement; // same as 'title', a string is set as plain text
     onClose?: () => void;
     modal?: boolean;
     closeOnOverlay?: boolean; // close the dialog when clicking on the overlay
@@ -129,13 +129,13 @@ export class Dialog {
 
     private createButtons(info: DialogButtons | HTMLElement[]) {
         const buttons = document.createElement("div");
+        buttons.className = "dialogButtons";
 
         if (Array.isArray(info)) {
             info.forEach((button) => buttons.appendChild(button));
         } else if (info === DialogButtons.ok) {
             const ok = document.createElement("button");
 
-            buttons.className = "dialogButtons";
             ok.className = "dialogButton";
             ok.innerText = "Ok";
             ok.onclick = () => {
@@ -248,25 +248,27 @@ export class Dialog {
 
     /**
      * Change the title of the dialog.
+     * A string is set as plain text — pass an `HTMLElement` if you need HTML content.
      */
     setTitle(content: string | HTMLElement) {
         if (content instanceof HTMLElement) {
-            this.title.innerHTML = "";
+            this.title.textContent = "";
             this.title.appendChild(content);
         } else {
-            this.title.innerHTML = content;
+            this.title.textContent = content;
         }
     }
 
     /**
      * Change the body of the dialog.
+     * A string is set as plain text — pass an `HTMLElement` if you need HTML content.
      */
     setBody(content: string | HTMLElement) {
         if (content instanceof HTMLElement) {
-            this.body.innerHTML = "";
+            this.body.textContent = "";
             this.body.appendChild(content);
         } else {
-            this.body.innerHTML = content;
+            this.body.textContent = content;
         }
     }
 }

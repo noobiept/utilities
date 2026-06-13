@@ -64,7 +64,7 @@ describe("Timer", () => {
         return new Promise<void>((resolve) => {
             const timer = new Timer();
             timer.start({
-                endValue: 1,
+                endValue: 1000,
                 onEnd: () => {
                     expect(timer.getTimeSeconds()).toBe(1);
                     resolve();
@@ -338,6 +338,123 @@ describe("Timer", () => {
         });
     });
 
+    test("Catches up with elapsed time (throttled/delayed ticks).", () => {
+        vi.useFakeTimers();
+
+        try {
+            let now = 0;
+            const performanceNow = vi
+                .spyOn(performance, "now")
+                .mockImplementation(() => now);
+            try {
+                const timer = new Timer();
+                timer.start(); // default 1 second interval
+
+                // simulate delayed ticks: the elapsed time moves further than the timer callback schedule
+                now = 2000;
+                vi.advanceTimersByTime(1000);
+                expect(timer.getTimeMilliseconds()).toBe(2000);
+
+                now = 13000;
+                vi.advanceTimersByTime(1000);
+                expect(timer.getTimeMilliseconds()).toBe(13000);
+
+                timer.stop();
+            } finally {
+                performanceNow.mockRestore();
+            }
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
+    test("The timer uses a monotonic clock, not the system clock.", () => {
+        vi.useFakeTimers();
+
+        try {
+            const timer = new Timer();
+            timer.start(); // default 1 second interval
+
+            vi.advanceTimersByTime(2000);
+            expect(timer.getTimeMilliseconds()).toBe(2000);
+
+            // changing the system clock shouldn't change elapsed timer duration
+            vi.setSystemTime(Date.now() + 10000);
+            vi.advanceTimersByTime(1000);
+            expect(timer.getTimeMilliseconds()).toBe(3000);
+
+            timer.stop();
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
+    test("Delayed ticks clamp to the end value before updating/callbacks.", () => {
+        vi.useFakeTimers();
+
+        try {
+            let now = 0;
+            const performanceNow = vi
+                .spyOn(performance, "now")
+                .mockImplementation(() => now);
+            try {
+                const element = document.createElement("div");
+                const timer = new Timer({
+                    updateElement: {
+                        element,
+                    },
+                });
+                const onTick = vi.fn(() => {
+                    expect(timer.getTimeMilliseconds()).toBe(5000);
+                    expect(element.textContent).toBe("5 seconds");
+                });
+                const onEnd = vi.fn(() => {
+                    expect(timer.getTimeMilliseconds()).toBe(5000);
+                    expect(element.textContent).toBe("5 seconds");
+                });
+
+                timer.start({
+                    endValue: 5000,
+                    onTick,
+                    onEnd,
+                });
+
+                now = 12000;
+                vi.advanceTimersByTime(1000);
+
+                expect(onTick).toHaveBeenCalledTimes(1);
+                expect(onEnd).toHaveBeenCalledTimes(1);
+                expect(timer.isActive()).toBe(false);
+            } finally {
+                performanceNow.mockRestore();
+            }
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
+    test("The '.add()' method keeps working while the timer is active.", () => {
+        vi.useFakeTimers();
+
+        try {
+            const timer = new Timer();
+            timer.start();
+
+            vi.advanceTimersByTime(1000);
+            expect(timer.getTimeMilliseconds()).toBe(1000);
+
+            // the added time shouldn't be lost on the next tick
+            timer.add(5000);
+            expect(timer.getTimeMilliseconds()).toBe(6000);
+
+            vi.advanceTimersByTime(1000);
+            expect(timer.getTimeMilliseconds()).toBe(7000);
+            timer.stop();
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
     test("Different format options.", () => {
         expect.assertions(1);
 
@@ -352,7 +469,7 @@ describe("Timer", () => {
                 },
             });
             timer.start({
-                endValue: 1,
+                endValue: 1000,
                 onEnd: () => {
                     expect(element.textContent).toBe("00:00:01");
                     resolve();

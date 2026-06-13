@@ -106,6 +106,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     private _loaded_items: number;
     private _failed_ids: string[]; // list of the ids that failed to load
     private _loaded_ids: string[]; // list of the ids that were successfully loaded
+    private _file_progress: Map<string, number>; // loaded fraction (0 to 1) of each file that is still in flight
 
     /**
      * Get an element that was saved in the global `DATA` object.
@@ -128,6 +129,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         this._data = {};
         this._failed_ids = [];
         this._loaded_ids = [];
+        this._file_progress = new Map();
     }
 
     /**
@@ -143,6 +145,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
             this._data[id] = data;
         }
 
+        this._file_progress.delete(id);
         this.dispatchEvent("fileload", { id: id, data: data });
 
         this._loaded_items++;
@@ -157,6 +160,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * An element failed to load. We'll keep track of its id, to send it later on the 'complete' event.
      */
     private _failed_to_load(id: string) {
+        this._file_progress.delete(id);
         this._loaded_items++;
         this._failed_ids.push(id);
 
@@ -179,6 +183,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         this._loaded_ids.length = 0;
         this._loaded_items = 0;
         this._total_items = 0;
+        this._file_progress.clear();
     }
 
     /**
@@ -205,16 +210,21 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * Dispatch the current progress percentage.
      *
      * @param event The event that was triggered.
+     * @param id The id of the file the event refers to.
      */
-    private _on_progress(event: ProgressEvent) {
-        let fileProgress = 0;
-
+    private _on_progress(event: ProgressEvent, id: string) {
         if (event.lengthComputable) {
-            fileProgress = event.loaded / event.total;
+            this._file_progress.set(id, event.loaded / event.total);
         }
 
+        // count every file that is still in flight by its loaded fraction (several files can be loading in parallel)
+        let inFlight = 0;
+        this._file_progress.forEach((fraction) => {
+            inFlight += fraction;
+        });
+
         const progress = Math.round(
-            ((fileProgress + this._loaded_items) / this._total_items) * 100
+            ((this._loaded_items + inFlight) / this._total_items) * 100
         );
 
         this.dispatchEvent("progress", progress);
@@ -246,13 +256,19 @@ export class Preload extends EventDispatcher<PreloadEvent> {
             this._on_abort(event, id);
         });
         request.addEventListener("progress", (event) => {
-            this._on_progress(event);
+            this._on_progress(event, id);
         });
         request.addEventListener(
             "load",
             () => {
-                // failed to load
-                if (request.status !== 200) {
+                // failed to load (accept any 2xx status, plus 304 from cache and 0 for the 'file://' protocol)
+                const status = request.status;
+                const success =
+                    (status >= 200 && status < 300) ||
+                    status === 304 ||
+                    status === 0;
+
+                if (!success) {
                     this._failed_to_load(id);
                     return;
                 }
@@ -331,6 +347,8 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         onError: () => void
     ) {
         const blob = new Blob([response], { type: blobType });
+
+        // the object url needs to outlive this function — the audio element keeps streaming from it (on replay/seek), so it's only revoked on error
         const objectUrl = URL.createObjectURL(blob);
         const audio = new Audio();
 
@@ -368,13 +386,17 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      */
     private loadImage(id: string, response: any) {
         const image = new Image();
+        const objectUrl = window.URL.createObjectURL(response);
 
+        // once the image is decoded the object url is no longer needed, revoke it so the blob can be garbage collected
         image.onload = () => {
+            window.URL.revokeObjectURL(objectUrl);
             this._loaded(id, image);
         };
         image.onerror = () => {
+            window.URL.revokeObjectURL(objectUrl);
             this._failed_to_load(id);
         };
-        image.src = window.URL.createObjectURL(response);
+        image.src = objectUrl;
     }
 }

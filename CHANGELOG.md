@@ -4,6 +4,22 @@
 
 # Unreleased
 
+## Changed
+
+- ❗ `Dialog` titles/bodies given as strings are now set as plain text instead of being parsed as HTML (avoids markup/script injection from untrusted strings). Pass an `HTMLElement` when you need HTML content.
+- `Timer` now counts from monotonic elapsed time instead of assuming exact intervals, so it no longer drifts away from real elapsed time (inexact intervals, throttled background tabs, etc.).
+- `Timer.start()` no longer mutates the given arguments object.
+
+## Fixed
+
+- `timeToString` no longer shows 60 seconds when the seconds round up — `59999` now gives `1 minute` instead of `60 seconds` (and `00:01:00` instead of `00:00:60` with the `daytime` format).
+- `timeToString` now pads fractional seconds correctly on the `daytime`/`partial_daytime` formats (`00:00:01.5` instead of `00:00:1.5`).
+- `Dialog` custom buttons (your own `HTMLElement[]`) now get the `dialogButtons` class on their container, so the included styling applies to them as well.
+- `Preload` now revokes the image object URLs once the images load, so the blobs can be garbage collected.
+- `Preload` now reports a correct `progress` percentage when several files are loading in parallel.
+- `Preload` now accepts any 2xx response status, plus `304` (cache) and `0` (`file://` protocol), instead of only `200`.
+- `getObject` (local storage) now returns `null` when the saved data isn't valid json, instead of throwing.
+
 # v7.0.1 - 02/06/2026
 
 ## Documentation
