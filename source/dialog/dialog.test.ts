@@ -252,6 +252,24 @@ describe("Dialog", () => {
         expect(document.querySelector(".dialogOverlay")).not.toBeTruthy();
     });
 
+    test("Clicking the overlay closes the dialog when enabled.", () => {
+        const onClose = vi.fn();
+        const dialog = new Dialog({
+            title: "",
+            body: "",
+            closeOnOverlay: true,
+            onClose,
+        });
+        dialog.open();
+
+        const overlay = document.querySelector(".dialogOverlay") as HTMLElement;
+        overlay.click();
+
+        expect(dialog.isOpened()).toBe(false);
+        expect(document.querySelector(".dialog")).toBeNull();
+        expect(onClose).toHaveBeenCalled();
+    });
+
     test("Creating a dialog without the 'ok' button.", () => {
         const dialog = new Dialog({
             title: "",

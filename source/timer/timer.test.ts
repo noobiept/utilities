@@ -433,6 +433,40 @@ describe("Timer", () => {
         }
     });
 
+    test("Delayed countdown ticks clamp to the end value.", () => {
+        vi.useFakeTimers();
+
+        try {
+            let now = 0;
+            const performanceNow = vi
+                .spyOn(performance, "now")
+                .mockImplementation(() => now);
+            try {
+                const timer = new Timer();
+                const onEnd = vi.fn(() => {
+                    expect(timer.getTimeMilliseconds()).toBe(0);
+                });
+
+                timer.start({
+                    startValue: 5000,
+                    endValue: 0,
+                    countDown: true,
+                    onEnd,
+                });
+
+                now = 12000;
+                vi.advanceTimersByTime(1000);
+
+                expect(onEnd).toHaveBeenCalledTimes(1);
+                expect(timer.getTimeMilliseconds()).toBe(0);
+            } finally {
+                performanceNow.mockRestore();
+            }
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
     test("The '.add()' method keeps working while the timer is active.", () => {
         vi.useFakeTimers();
 

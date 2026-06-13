@@ -1,4 +1,4 @@
-import { describe, test, expect, afterEach } from "vitest";
+import { describe, test, expect, afterEach, vi } from "vitest";
 import {
     mockXHR,
     mockURL,
@@ -10,6 +10,51 @@ import {
     generateFakeAudioResponse,
 } from "../tests/mocks/generate_data";
 import { Preload } from "./preload";
+
+type XhrListener = (event: ProgressEvent) => void;
+
+type ControlledXhr = {
+    status: number;
+    response: any;
+    responseType: XMLHttpRequestResponseType;
+    trigger: (type: string, event?: ProgressEvent) => void;
+};
+
+function mockControlledXHR() {
+    const requests: ControlledXhr[] = [];
+
+    class MockXHR {
+        status = 200;
+        response: any = "";
+        responseType: XMLHttpRequestResponseType = "";
+        private listeners: Record<string, XhrListener[]> = {};
+
+        constructor() {
+            requests.push(this);
+        }
+
+        open = vi.fn();
+        send = vi.fn();
+
+        addEventListener(type: string, listener: XhrListener) {
+            if (!this.listeners[type]) {
+                this.listeners[type] = [];
+            }
+
+            this.listeners[type].push(listener);
+        }
+
+        trigger(type: string, event = new ProgressEvent(type)) {
+            this.listeners[type]?.forEach((listener) => {
+                listener.call(this, event);
+            });
+        }
+    }
+
+    window.XMLHttpRequest = MockXHR as any;
+
+    return requests;
+}
 
 describe("Preload", () => {
     const nativeXMLHttpRequest = window.XMLHttpRequest;
@@ -80,6 +125,33 @@ describe("Preload", () => {
         preload.load("image", "test.png");
     });
 
+    test("The image object URL is revoked after the image fails.", () => {
+        expect.assertions(3);
+
+        mockXHR(generateFakeImageResponse());
+        mockURL();
+
+        class ErrorImage {
+            onload: () => void = () => {};
+            onerror: () => void = () => {};
+
+            set src(_url: string) {
+                this.onerror();
+            }
+        }
+
+        window.Image = ErrorImage as any;
+
+        const preload = new Preload();
+
+        preload.addEventListener("complete", (data) => {
+            expect(data.loaded_ids).toEqual([]);
+            expect(data.failed_ids).toEqual(["image"]);
+            expect(window.URL.revokeObjectURL).toHaveBeenCalledWith("asd");
+        });
+        preload.load("image", "test.png");
+    });
+
     test("Loading a text file.", () => {
         expect.assertions(1);
 
@@ -130,6 +202,35 @@ describe("Preload", () => {
         preload.loadManifest(manifest);
     });
 
+    test("Audio object URLs are revoked when the audio fails.", () => {
+        expect.assertions(3);
+
+        mockXHR(generateFakeAudioResponse());
+        mockURL();
+
+        class ErrorAudio {
+            oncanplay: () => void = () => {};
+            onerror: () => void = () => {};
+
+            set src(_url: string) {}
+
+            load() {
+                this.onerror();
+            }
+        }
+
+        window.Audio = ErrorAudio as any;
+
+        const preload = new Preload();
+
+        preload.addEventListener("complete", (data) => {
+            expect(data.loaded_ids).toEqual([]);
+            expect(data.failed_ids).toEqual(["mp3"]);
+            expect(window.URL.revokeObjectURL).toHaveBeenCalledWith("asd");
+        });
+        preload.load("mp3", "test.mp3");
+    });
+
     test("Saving in a global object instead of on the preload instance.", () => {
         expect.assertions(2);
 
@@ -169,6 +270,79 @@ describe("Preload", () => {
         preload.loadManifest(manifest);
     });
 
+    test("A failed load event is tracked as a failed asset.", () => {
+        expect.assertions(2);
+
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+
+        preload.addEventListener("complete", (data) => {
+            expect(data.loaded_ids).toEqual([]);
+            expect(data.failed_ids).toEqual(["text"]);
+        });
+
+        preload.load("text", "text.txt");
+        requests[0].status = 500;
+        requests[0].trigger("load");
+    });
+
+    test("Non-200 successful statuses are accepted.", () => {
+        expect.assertions(2);
+
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+        const statuses = [204, 304, 0];
+
+        preload.addEventListener("complete", (data) => {
+            expect(data.failed_ids).toEqual([]);
+            expect(data.loaded_ids).toEqual(["created", "cached", "local"]);
+        });
+
+        preload.loadManifest([
+            { id: "created", path: "created.txt" },
+            { id: "cached", path: "cached.txt" },
+            { id: "local", path: "local.txt" },
+        ]);
+
+        requests.forEach((request, index) => {
+            request.status = statuses[index];
+            request.response = request.status.toString();
+            request.trigger("load");
+        });
+    });
+
+    test("Invalid json responses fail the asset.", () => {
+        expect.assertions(2);
+
+        mockXHR("{ not valid json");
+
+        const preload = new Preload();
+
+        preload.addEventListener("complete", (data) => {
+            expect(data.loaded_ids).toEqual([]);
+            expect(data.failed_ids).toEqual(["json"]);
+        });
+        preload.load("json", "test.json");
+    });
+
+    test("On abort event.", () => {
+        expect.assertions(3);
+
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+
+        preload.addEventListener("abort", (event) => {
+            expect(event.id).toBe("test");
+        });
+        preload.addEventListener("complete", (data) => {
+            expect(data.loaded_ids).toEqual([]);
+            expect(data.failed_ids).toEqual(["test"]);
+        });
+
+        preload.load("test", "test.txt");
+        requests[0].trigger("abort");
+    });
+
     test("On progress event.", () => {
         expect.assertions(1);
 
@@ -179,6 +353,54 @@ describe("Preload", () => {
             expect(typeof progress === "number").toBeTruthy();
         });
         preload.load("test", "test.txt");
+    });
+
+    test("Progress includes all files loading in parallel.", () => {
+        expect.assertions(1);
+
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+        const progressValues: number[] = [];
+
+        preload.addEventListener("progress", (progress) => {
+            progressValues.push(progress);
+        });
+
+        preload.loadManifest([
+            { id: "one", path: "one.txt" },
+            { id: "two", path: "two.txt" },
+        ]);
+
+        requests[0].trigger(
+            "progress",
+            new ProgressEvent("progress", {
+                lengthComputable: true,
+                loaded: 50,
+                total: 100,
+            })
+        );
+        requests[1].trigger(
+            "progress",
+            new ProgressEvent("progress", {
+                lengthComputable: true,
+                loaded: 25,
+                total: 100,
+            })
+        );
+
+        requests[0].response = "one";
+        requests[0].trigger("load");
+
+        requests[1].trigger(
+            "progress",
+            new ProgressEvent("progress", {
+                lengthComputable: true,
+                loaded: 50,
+                total: 100,
+            })
+        );
+
+        expect(progressValues).toEqual([25, 38, 75]);
     });
 
     test("On error event.", () => {
