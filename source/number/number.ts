@@ -1,7 +1,7 @@
 // ---------- Number Utilities ---------- //
 
 /**
- * Returns a random float number between `min` and `max` (inclusive).
+ * Returns a random float number between `min` (inclusive) and `max` (exclusive).
  */
 export function getRandomFloat(min: number, max: number) {
     if (min > max) {

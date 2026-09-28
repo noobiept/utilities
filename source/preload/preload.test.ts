@@ -329,6 +329,68 @@ describe("Preload", () => {
         requests[0].trigger("load");
     });
 
+    test("An HTTP error status dispatches the 'error' event, before the 'complete' event.", () => {
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+        const events: string[] = [];
+
+        preload.addEventListener("error", (data) => {
+            events.push(`error ${data.id}`);
+        });
+        preload.addEventListener("complete", (data) => {
+            events.push(`complete ${data.failed_ids}`);
+        });
+
+        preload.load("missing", "missing.txt");
+        requests[0].status = 404;
+        requests[0].trigger("load");
+
+        expect(events).toEqual(["error missing", "complete missing"]);
+    });
+
+    test("The 'error'/'abort' events are dispatched before the 'complete' event (regression: 'complete' came first).", () => {
+        ["error", "abort"].forEach((type) => {
+            const requests = mockControlledXHR();
+            const preload = new Preload();
+            const events: string[] = [];
+
+            preload.addEventListener(type as "error" | "abort", () => {
+                events.push(type);
+            });
+            preload.addEventListener("complete", () => {
+                events.push("complete");
+            });
+
+            preload.load("file", "file.txt");
+            requests[0].trigger(type);
+
+            expect(events).toEqual([type, "complete"]);
+        });
+    });
+
+    test("The file type comes from the file name, ignoring the case and the url's query/hash (regression: 'Image.PNG' or 'data.json?v=2' loaded as text).", () => {
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+
+        preload.load("image", "assets/Image.PNG?v=2");
+        preload.load("json", "assets/data.JSON#top");
+        preload.load("text", "assets.v2/file");
+
+        expect(requests.map((request) => request.responseType)).toEqual([
+            "blob",
+            "text",
+            "text",
+        ]);
+
+        requests[1].response = '{ "ok": true }';
+        requests[1].trigger("load");
+        expect(preload.get("json")).toEqual({ ok: true });
+
+        requests[2].response = "some text";
+        requests[2].trigger("load");
+        expect(preload.get("text")).toBe("some text");
+    });
+
     test("Non-200 successful statuses are accepted.", () => {
         expect.assertions(2);
 

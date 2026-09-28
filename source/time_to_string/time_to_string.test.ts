@@ -156,6 +156,25 @@ describe("timeToString", () => {
         expect(timeToString({ time: MINUTE - 10 })).toBe("59.99 seconds");
     });
 
+    test("Negative times get a minus sign (regression: they gave values like '-1:-1:-1.5').", () => {
+        const time = -(MINUTE + 30 * SECOND);
+
+        expect(timeToString({ time })).toBe("-1 minute 30 seconds");
+        expect(timeToString({ time, format: "short_string" })).toBe("-1m 30s");
+        expect(timeToString({ time, format: "daytime" })).toBe("-00:01:30");
+        expect(timeToString({ time, format: "partial_daytime" })).toBe("-1:30");
+        expect(timeToString({ time: -1500, format: "daytime" })).toBe(
+            "-00:00:01.5"
+        );
+
+        // the rounding carries over the same way as with positive times
+        expect(timeToString({ time: -(MINUTE - 1) })).toBe("-1 minute");
+
+        // no sign when it rounds to zero
+        expect(timeToString({ time: -4 })).toBe("0 seconds");
+        expect(timeToString({ time: -4, format: "daytime" })).toBe("00:00:00");
+    });
+
     test("Fractional seconds keep the padding on the 'daytime' formats.", () => {
         expect(timeToString({ time: 1500, format: "daytime" })).toBe(
             "00:00:01.5"

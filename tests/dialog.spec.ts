@@ -68,5 +68,11 @@ test.describe("Dialog", () => {
             "font-weight",
             "700"
         );
+
+        // blurs the page behind the modal (regression: it blurred the overlay itself, which had no visible effect)
+        await expect(page.locator(".dialogOverlay")).toHaveCSS(
+            "backdrop-filter",
+            "blur(5px)"
+        );
     });
 });

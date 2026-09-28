@@ -1,13 +1,16 @@
 import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
 import { Dialog, DialogButtons, DialogPosition } from "./dialog";
 
+// keeps track of the opened dialogs ('clearMocks' resets it before each test)
+const openSpy = vi.spyOn(Dialog.prototype, "open");
+
 beforeEach(() => {
     document.body.replaceChildren();
 });
 
 afterEach(() => {
-    // close the modal dialogs a test left opened, otherwise their keyboard listeners (on the document) react to the next tests' key events
-    pressKey(document, "Escape");
+    // close the dialogs a test left opened, otherwise their keyboard listeners (on the document) react to the next tests' key events
+    openSpy.mock.contexts.forEach((dialog) => dialog.close());
 });
 
 function keyboardEvent(
@@ -488,5 +491,35 @@ describe("Dialog", () => {
         pressKey(document.body, "Escape");
         pressKey(document.body, "Enter");
         expect(dialog.isOpened()).toBe(true);
+    });
+
+    test("A key press only closes the modal dialog on top (regression: it closed all of them).", () => {
+        const first = new Dialog({ title: "", body: "" });
+        const second = new Dialog({ title: "", body: "" });
+        first.open();
+        second.open();
+
+        pressKey(document.body, "Escape");
+        expect(second.isOpened()).toBe(false);
+        expect(first.isOpened()).toBe(true);
+
+        pressKey(document.body, "Escape");
+        expect(first.isOpened()).toBe(false);
+    });
+
+    test("Closing a dialog that was already taken out of the page (regression: it threw).", () => {
+        const onClose = vi.fn();
+        const dialog = new Dialog({ title: "", body: "", onClose });
+        dialog.open();
+
+        document.body.replaceChildren();
+
+        expect(() => dialog.close()).not.toThrow();
+        expect(dialog.isOpened()).toBe(false);
+        expect(onClose).toHaveBeenCalledTimes(1);
+
+        // its keyboard listeners were removed as well
+        pressKey(document.body, "Escape");
+        expect(onClose).toHaveBeenCalledTimes(1);
     });
 });

@@ -11,9 +11,18 @@
 - `Timer.start()` no longer mutates the given arguments object.
 - ❗ `EventDispatcher` now calls the listeners in the order they were added (it used to call them in reverse order).
 - `Dialog` leaves the 'enter' key to the controls inside it (buttons, links, form fields), and a modal dialog doesn't let the 'enter' key reach the page behind it.
+- `Preload` now dispatches the `error` event for HTTP error statuses too (404, 500, etc.), not only for network errors.
+- The included `dialog.css` now blurs the page behind a modal dialog (it was blurring the overlay itself, with no visible effect), and the line above the buttons is visible.
 
 ## Fixed
 
+- `timeToString` now shows negative times with a minus sign (`-00:01:30`), instead of values like `-1:-1:-1.5`.
+- `pollUntil` now times out even when a `check` never settles (it waited forever).
+- `throttle` no longer runs a late trailing call (with outdated arguments) after a newer call.
+- `Dialog` keyboard shortcuts only close the dialog on top when several modal dialogs are opened (a single key press closed all of them).
+- `Dialog.close()` no longer throws when its elements were already taken out of the page.
+- `Preload` now gets the file type from the file name only, ignoring the case and the url's query/hash (`image.PNG` or `data.json?v=2` were loaded as text).
+- `Preload` now dispatches the `error`/`abort` events before the `complete` event.
 - The type declarations now work with `moduleResolution` `node16`/`nodenext` (the re-exports were missing the file extensions, so no exports were visible).
 - `Dialog` opened with the 'enter' key no longer closes right away (it was closing on the release of that same key).
 - `EventDispatcher` no longer skips or repeats listeners when one is removed during a dispatch.
@@ -27,6 +36,10 @@
 - `Preload` now reports a correct `progress` percentage when several files are loading in parallel.
 - `Preload` now accepts any 2xx response status, plus `304` (cache) and `0` (`file://` protocol), instead of only `200`.
 - `getObject` (local storage) now returns `null` when the saved data isn't valid json, instead of throwing.
+
+## Documentation
+
+- Fixed the stylesheet import path in the `Dialog` docs (`@drk4/utilities/dialog.css`), the `EventDispatcher` usage example, and the `getRandomFloat` (`max` is exclusive) and `Timer` `onTick` (called every `interval`) descriptions.
 
 # v7.0.1 - 02/06/2026
 

@@ -22,6 +22,9 @@ export interface DialogArgs {
     position?: DialogPosition;
 }
 
+// the modal dialogs that are opened, the last one is on top (and it's the only one that reacts to the keyboard shortcuts)
+const OPENED_MODALS: Dialog[] = [];
+
 /**
  * Whether the element does something itself on the 'enter' key (activates a button/link, submits a form, adds a new line, etc).
  */
@@ -47,7 +50,7 @@ function handlesEnter(element: Node) {
  *
  * There's some basic styling available, that you can import in case there's no need for custom styling (may require to setup a css/style loader on your build configuration).
  *
- *     import "@drk4/utilities/build/dialog.css";
+ *     import "@drk4/utilities/dialog.css";
  */
 export class Dialog {
     readonly container: HTMLElement;
@@ -178,6 +181,11 @@ export class Dialog {
 
     private setupKeyboardShortcuts() {
         const keyDown = (event: KeyboardEvent) => {
+            // only the dialog on top reacts, otherwise a single key press would close all the opened dialogs
+            if (OPENED_MODALS[OPENED_MODALS.length - 1] !== this) {
+                return;
+            }
+
             switch (event.key) {
                 case "Escape":
                     this.pressedKey = event.key;
@@ -214,6 +222,7 @@ export class Dialog {
     private addKeyboardShortcuts() {
         if (this.keyboardShortcuts) {
             this.pressedKey = undefined;
+            OPENED_MODALS.push(this);
             document.addEventListener(
                 "keydown",
                 this.keyboardShortcuts.keyDown
@@ -224,6 +233,7 @@ export class Dialog {
 
     private removeKeyboardShortcuts() {
         if (this.keyboardShortcuts) {
+            OPENED_MODALS.splice(OPENED_MODALS.indexOf(this), 1);
             document.removeEventListener(
                 "keydown",
                 this.keyboardShortcuts.keyDown
@@ -258,12 +268,9 @@ export class Dialog {
         }
         this.opened = false;
 
-        // remove the html elements
-        if (this.overlay) {
-            document.body.removeChild(this.overlay);
-        }
-
-        document.body.removeChild(this.container);
+        // remove the html elements (doesn't throw if something else already took them out of the page)
+        this.overlay?.remove();
+        this.container.remove();
 
         // clean up the event listeners
         this.removeKeyboardShortcuts();

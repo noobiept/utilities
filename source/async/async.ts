@@ -136,7 +136,12 @@ export async function pollUntil<T>(
     const deadline = Date.now() + timeout;
 
     while (true) {
-        const result = await check();
+        // a check that never settles (a hung request, for example) still times out
+        const result = await withTimeout(
+            Promise.resolve(check()),
+            deadline - Date.now(),
+            "pollUntil timed out"
+        );
         if (result) {
             return result as T;
         }
@@ -229,6 +234,13 @@ export function throttle<Args extends unknown[]>(
         const elapsed = now - lastCallTime;
 
         if (elapsed >= ms) {
+            // the trailing call can still be pending if its timer is late (a busy event loop), it's outdated now
+            if (timer !== undefined) {
+                clearTimeout(timer);
+                timer = undefined;
+                trailingArgs = undefined;
+            }
+
             invoke(args);
             return;
         }

@@ -13,7 +13,7 @@
  *         }
  *     }
  *
- *     const instance = MyClass();
+ *     const instance = new MyClass();
  *     instance.addEventListener('anEvent', somethingToDo);
  */
 export class EventDispatcher<EventType extends string> {

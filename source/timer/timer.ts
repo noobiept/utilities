@@ -63,7 +63,7 @@ export class Timer {
      * `startValue` and `endValue` are in milliseconds.
      *
      * `onEnd` is called when the timer ends (only if an `endValue` was provided).
-     * `onTick` is called every second.
+     * `onTick` is called on every tick (so every `interval`).
      * `countDown` if it counts up or down (default is count up).
      * `interval` time in between each tick (default is 1000 milliseconds).
      */

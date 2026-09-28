@@ -59,7 +59,9 @@ const DATA: PreloadData = {};
  * @return The file type.
  */
 function getType(file: string): FileInfoType {
-    const extension = file.split(".").pop();
+    // only from the file name (without the url's query/hash), and case insensitive (so 'image.PNG?v=2' is a 'png')
+    const fileName = file.split(/[?#]/)[0].split("/").pop() ?? "";
+    const extension = fileName.split(".").pop()?.toLowerCase();
 
     if (extension) {
         const type = Object.entries(FileInfo).find(([_, value]) =>
@@ -94,7 +96,7 @@ function getType(file: string): FileInfoType {
  * Events:
  *
  * - `complete` -- `listener( data: { failed_ids: string[]; loaded_ids: string[]; } );`
- * - `error` -- `listener( data: { id: string; event; } );`
+ * - `error` -- `listener( data: { id: string; event; } );` (a network error, or an HTTP error status)
  * - `abort` -- `listener( data: { id: string; event; } );`
  * - `progress` -- `listener( progress: number );`
  * - `fileload` -- `listener( data: { id: string; data: Object; } );`
@@ -248,21 +250,21 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         request.open("get", path, true);
         request.responseType = FileInfo[type].responseType;
 
-        // add the request events
+        // add the request events (the 'error'/'abort' events are dispatched before the file is counted as failed, since that can dispatch the 'complete' event)
         request.addEventListener("error", (event) => {
-            this._failed_to_load(id);
             this._on_error(event, id);
+            this._failed_to_load(id);
         });
         request.addEventListener("abort", (event) => {
-            this._failed_to_load(id);
             this._on_abort(event, id);
+            this._failed_to_load(id);
         });
         request.addEventListener("progress", (event) => {
             this._on_progress(event, id);
         });
         request.addEventListener(
             "load",
-            () => {
+            (event) => {
                 // failed to load (accept any 2xx status, plus 304 from cache and 0 for the 'file://' protocol)
                 const status = request.status;
                 const success =
@@ -271,6 +273,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
                     status === 0;
 
                 if (!success) {
+                    this._on_error(event, id);
                     this._failed_to_load(id);
                     return;
                 }

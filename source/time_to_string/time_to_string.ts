@@ -68,6 +68,8 @@ const defaultInternationalization: InternationalizationConfig = {
  *
  * The display string can be internationalized with the `internationalization` argument (when using the `string` or `short_string`).
  *
+ * A negative time is shown with a minus sign (for example `-00:01:30`, or `-1 minute 30 seconds`).
+ *
  * Defaults:
  *     units: undefined (shows all non-zero if format is type `string` or `short_string`)
  *     format: string
@@ -97,8 +99,8 @@ export function timeToString(args: TimeToStringArgs) {
     const hour = 60 * minute;
     const day = 24 * hour;
 
-    // count the number of days/hours/minutes/seconds
-    let remainder = time;
+    // count the number of days/hours/minutes/seconds (of the absolute value, a negative time just gets a minus sign in the end)
+    let remainder = Math.abs(time);
 
     let daysLeft = Math.floor(remainder / day);
     remainder = remainder % day;
@@ -135,18 +137,29 @@ export function timeToString(args: TimeToStringArgs) {
     };
 
     // :: construct the string :: //
+
+    // a negative time (a count-down timer that went past zero, for example), unless it rounds to zero
+    const isZero =
+        daysLeft === 0 &&
+        hoursLeft === 0 &&
+        minutesLeft === 0 &&
+        secondsLeft === 0;
+    const sign = time < 0 && !isZero ? "-" : "";
+
     switch (format) {
         case "short_string":
-            return formatShortString(separated, units, internationalization);
+            return (
+                sign + formatShortString(separated, units, internationalization)
+            );
 
         case "daytime":
-            return formatDaytime(separated);
+            return sign + formatDaytime(separated);
 
         case "partial_daytime":
-            return formatPartialDaytime(separated);
+            return sign + formatPartialDaytime(separated);
 
         case "string":
-            return formatString(separated, units, internationalization);
+            return sign + formatString(separated, units, internationalization);
     }
 }
 

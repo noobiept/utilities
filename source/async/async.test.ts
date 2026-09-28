@@ -176,6 +176,23 @@ describe("pollUntil", () => {
         await vi.advanceTimersByTimeAsync(100);
         await rejection;
     });
+
+    test("rejects with TimeoutError when a check never settles (regression: it waited forever).", async () => {
+        let calls = 0;
+        const check = vi.fn(() => {
+            calls++;
+            // the second check hangs
+            return calls === 1
+                ? Promise.resolve(false)
+                : new Promise<string>(() => {});
+        });
+
+        const promise = pollUntil(check, { interval: 10, timeout: 50 });
+        const rejection = expect(promise).rejects.toBeInstanceOf(TimeoutError);
+        await vi.advanceTimersByTimeAsync(50);
+        await rejection;
+        expect(check).toHaveBeenCalledTimes(2);
+    });
 });
 
 describe("debounce", () => {
@@ -269,6 +286,21 @@ describe("throttle", () => {
         vi.advanceTimersByTime(200);
         expect(fn).toHaveBeenCalledTimes(1);
         expect(fn).toHaveBeenLastCalledWith("a");
+    });
+
+    test("a late trailing call doesn't run after a newer leading call (regression: it ran with outdated args).", () => {
+        const fn = vi.fn();
+        const t = throttle(fn, 100);
+
+        t("a");
+        t("b"); // trailing call scheduled for the end of the window
+
+        // a busy event loop: the window is over, but the trailing timer didn't get to run yet
+        vi.setSystemTime(Date.now() + 150);
+        t("c");
+        vi.runAllTimers();
+
+        expect(fn.mock.calls).toEqual([["a"], ["c"]]);
     });
 });
 
