@@ -1,5 +1,20 @@
+import { cpSync, globSync } from "node:fs";
+import { basename } from "node:path";
 import terser from "@rollup/plugin-terser";
-import copy from "rollup-plugin-copy";
+
+/**
+ * Copy the stylesheets to the `dest` folder, next to the bundle (so they can be imported from the package).
+ */
+export function copyCss(dest) {
+    return {
+        name: "copy-css",
+        writeBundle() {
+            for (const file of globSync("source/**/*.css")) {
+                cpSync(file, `${dest}/${basename(file)}`);
+            }
+        },
+    };
+}
 
 export default {
     input: "temp/index.js",
@@ -18,10 +33,5 @@ export default {
             format: "esm",
         },
     ],
-    plugins: [
-        terser(),
-        copy({
-            targets: [{ src: "source/**/*.css", dest: "build/" }],
-        }),
-    ],
+    plugins: [terser(), copyCss("build")],
 };

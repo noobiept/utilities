@@ -13,6 +13,7 @@
 - `Dialog` leaves the 'enter' key to the controls inside it (buttons, links, form fields), and a modal dialog doesn't let the 'enter' key reach the page behind it.
 - `Preload` now dispatches the `error` event for HTTP error statuses too (404, 500, etc.), not only for network errors.
 - The included `dialog.css` now blurs the page behind a modal dialog (it was blurring the overlay itself, with no visible effect), and the line above the buttons is visible.
+- Replaced `npm-run-all` with `npm-run-all2` (maintained fork), and dropped `rollup-plugin-copy` (dev dependencies).
 
 ## Fixed
 

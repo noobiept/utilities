@@ -1,5 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
-import copy from "rollup-plugin-copy";
+import { copyCss } from "../rollup.config.mjs";
 
 export default {
     input: "source/index.ts",
@@ -11,8 +11,6 @@ export default {
     ],
     plugins: [
         typescript({ tsconfig: "./dev/tsconfig.dev.json" }),
-        copy({
-            targets: [{ src: "source/**/*.css", dest: "dev/build/" }],
-        }),
+        copyCss("dev/build"),
     ],
 };
