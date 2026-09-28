@@ -3,7 +3,7 @@ node_modules/
 build/
 coverage/
 .DS_Store
-source/**/*.js
+temp/
 
 # Playwright
 /test-results/

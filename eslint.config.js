@@ -12,7 +12,7 @@ export default [
             "dev/build/**",
             "build/**",
             "coverage/**",
-            "source/**/*.js",
+            "temp/**",
         ],
     },
     {
