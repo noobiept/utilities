@@ -231,6 +231,49 @@ describe("Preload", () => {
         preload.load("mp3", "test.mp3");
     });
 
+    test("Audio is only loaded once, even if 'canplay' fires again later (regression: after seeking it was reported again).", () => {
+        mockXHR(generateFakeAudioResponse());
+        mockURL();
+
+        const audios: SeekableAudio[] = [];
+
+        class SeekableAudio {
+            oncanplay: (() => void) | null = null;
+            onerror: (() => void) | null = null;
+
+            constructor() {
+                audios.push(this);
+            }
+
+            set src(_url: string) {}
+
+            load() {
+                this.oncanplay?.();
+            }
+        }
+
+        window.Audio = SeekableAudio as any;
+
+        const preload = new Preload();
+        const onFileLoad = vi.fn();
+        const onComplete = vi.fn();
+
+        preload.addEventListener("fileload", onFileLoad);
+        preload.addEventListener("complete", onComplete);
+        preload.load("mp3", "test.mp3");
+
+        // what the browser does later on (after seeking, or on a playback error)
+        audios[0].oncanplay?.();
+        audios[0].onerror?.();
+
+        expect(onFileLoad).toHaveBeenCalledTimes(1);
+        expect(onComplete).toHaveBeenCalledTimes(1);
+        expect(onComplete).toHaveBeenCalledWith({
+            failed_ids: [],
+            loaded_ids: ["mp3"],
+        });
+    });
+
     test("Saving in a global object instead of on the preload instance.", () => {
         expect.assertions(2);
 
@@ -312,17 +355,75 @@ describe("Preload", () => {
     });
 
     test("Invalid json responses fail the asset.", () => {
-        expect.assertions(2);
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+        const onComplete = vi.fn();
 
-        mockXHR("{ not valid json");
+        preload.addEventListener("complete", onComplete);
+        preload.load("json", "test.json");
+
+        // what a browser gives back for an invalid file (regression: with the 'json' response type it's 'null', which was loaded as a valid value)
+        const request = requests[0];
+        request.response =
+            request.responseType === "json" ? null : "{ not valid json";
+        request.trigger("load");
+
+        expect(onComplete).toHaveBeenCalledWith({
+            failed_ids: ["json"],
+            loaded_ids: [],
+        });
+    });
+
+    test("The 'complete' event data is kept intact after the event (regression: the arrays were emptied).", () => {
+        mockXHR("test test");
 
         const preload = new Preload();
+        const completed: { failed_ids: string[]; loaded_ids: string[] }[] = [];
 
         preload.addEventListener("complete", (data) => {
-            expect(data.loaded_ids).toEqual([]);
-            expect(data.failed_ids).toEqual(["json"]);
+            completed.push(data);
         });
-        preload.load("json", "test.json");
+        preload.load("first", "first.txt");
+        preload.load("second", "second.txt");
+
+        expect(completed).toEqual([
+            { failed_ids: [], loaded_ids: ["first"] },
+            { failed_ids: [], loaded_ids: ["second"] },
+        ]);
+    });
+
+    test("More files can be loaded from the 'complete' listener.", () => {
+        const requests = mockControlledXHR();
+        const preload = new Preload();
+        const loaded: string[][] = [];
+        const progressValues: number[] = [];
+
+        preload.addEventListener("progress", (progress) => {
+            progressValues.push(progress);
+        });
+        preload.addEventListener("complete", (data) => {
+            loaded.push(data.loaded_ids);
+
+            if (loaded.length === 1) {
+                preload.load("second", "second.txt");
+            }
+        });
+
+        preload.load("first", "first.txt");
+        requests[0].trigger("load");
+
+        requests[1].trigger(
+            "progress",
+            new ProgressEvent("progress", {
+                lengthComputable: true,
+                loaded: 50,
+                total: 100,
+            })
+        );
+        requests[1].trigger("load");
+
+        expect(progressValues).toEqual([50]);
+        expect(loaded).toEqual([["first"], ["second"]]);
     });
 
     test("On abort event.", () => {

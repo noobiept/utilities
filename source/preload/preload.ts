@@ -1,5 +1,5 @@
-import { EventDispatcher } from "../event_dispatcher/event_dispatcher";
-import { isBoolean } from "../is_type/is_type";
+import { EventDispatcher } from "../event_dispatcher/event_dispatcher.js";
+import { isBoolean } from "../is_type/is_type.js";
 
 export type PreloadData = {
     [id: string]: any;
@@ -26,7 +26,7 @@ const FileInfo = {
     },
     json: {
         extensions: ["json"],
-        responseType: "json",
+        responseType: "text", // parsed by us, with the 'json' response type an invalid file comes back as 'null' (the same as a valid file with just 'null')
     },
     text: {
         extensions: ["txt"],
@@ -173,17 +173,19 @@ export class Preload extends EventDispatcher<PreloadEvent> {
      * All the elements were dealt with. Dispatch the `complete` event with a list of the loaded ids, and another list with the ids that failed to load as well.
      */
     private _loading_complete() {
-        this.dispatchEvent("complete", {
+        const data = {
             failed_ids: this._failed_ids,
             loaded_ids: this._loaded_ids,
-        });
+        };
 
-        // clear the variables
-        this._failed_ids.length = 0;
-        this._loaded_ids.length = 0;
+        // reset before dispatching (so the listeners can load more files), with new arrays since the listeners can hold on to the old ones
+        this._failed_ids = [];
+        this._loaded_ids = [];
         this._loaded_items = 0;
         this._total_items = 0;
         this._file_progress.clear();
+
+        this.dispatchEvent("complete", data);
     }
 
     /**
@@ -352,10 +354,18 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         const objectUrl = URL.createObjectURL(blob);
         const audio = new Audio();
 
+        // 'canplay' fires again later on (after seeking for example), so only react to the first event (a later error isn't a failed load either)
+        const done = () => {
+            audio.oncanplay = null;
+            audio.onerror = null;
+        };
+
         audio.oncanplay = () => {
+            done();
             onLoad(audio);
         };
         audio.onerror = () => {
+            done();
             URL.revokeObjectURL(objectUrl);
             onError();
         };
@@ -367,18 +377,17 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load a json resource.
      */
-    private loadJson(id: string, response: any) {
-        // for the browsers that don't return the object, but a string instead
-        if (typeof response === "string") {
-            try {
-                response = JSON.parse(response);
-            } catch (error) {
-                this._failed_to_load(id);
-                return;
-            }
+    private loadJson(id: string, response: string) {
+        let data;
+
+        try {
+            data = JSON.parse(response);
+        } catch {
+            this._failed_to_load(id);
+            return;
         }
 
-        this._loaded(id, response);
+        this._loaded(id, data);
     }
 
     /**

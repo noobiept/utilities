@@ -1,4 +1,4 @@
-import { shuffle } from "../array/array";
+import { shuffle } from "../array/array.js";
 
 // ---------- Random Utilities ---------- //
 

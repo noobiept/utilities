@@ -9,9 +9,17 @@
 - ❗ `Dialog` titles/bodies given as strings are now set as plain text instead of being parsed as HTML (avoids markup/script injection from untrusted strings). Pass an `HTMLElement` when you need HTML content.
 - `Timer` now counts from monotonic elapsed time instead of assuming exact intervals, so it no longer drifts away from real elapsed time (inexact intervals, throttled background tabs, etc.).
 - `Timer.start()` no longer mutates the given arguments object.
+- ❗ `EventDispatcher` now calls the listeners in the order they were added (it used to call them in reverse order).
+- `Dialog` leaves the 'enter' key to the controls inside it (buttons, links, form fields), and a modal dialog doesn't let the 'enter' key reach the page behind it.
 
 ## Fixed
 
+- The type declarations now work with `moduleResolution` `node16`/`nodenext` (the re-exports were missing the file extensions, so no exports were visible).
+- `Dialog` opened with the 'enter' key no longer closes right away (it was closing on the release of that same key).
+- `EventDispatcher` no longer skips or repeats listeners when one is removed during a dispatch.
+- `Preload` now reports each audio file only once — `canplay` firing again later (after seeking for example) dispatched the `fileload`/`complete` events again.
+- `Preload` now fails json files with invalid content (they were loaded as `null`).
+- `Preload` no longer empties the `loaded_ids`/`failed_ids` arrays of the `complete` event after it's dispatched, and more files can be loaded from the `complete` listener.
 - `timeToString` no longer shows 60 seconds when the seconds round up — `59999` now gives `1 minute` instead of `60 seconds` (and `00:01:00` instead of `00:00:60` with the `daytime` format).
 - `timeToString` now pads fractional seconds correctly on the `daytime`/`partial_daytime` formats (`00:00:01.5` instead of `00:00:1.5`).
 - `Dialog` custom buttons (your own `HTMLElement[]`) now get the `dialogButtons` class on their container, so the included styling applies to them as well.

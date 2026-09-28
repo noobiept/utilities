@@ -1,9 +1,34 @@
-import { describe, test, expect, beforeEach, vi } from "vitest";
+import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
 import { Dialog, DialogButtons, DialogPosition } from "./dialog";
 
 beforeEach(() => {
     document.body.replaceChildren();
 });
+
+afterEach(() => {
+    // close the modal dialogs a test left opened, otherwise their keyboard listeners (on the document) react to the next tests' key events
+    pressKey(document, "Escape");
+});
+
+function keyboardEvent(
+    target: EventTarget,
+    type: "keydown" | "keyup",
+    key: string
+) {
+    const event = new KeyboardEvent(type, {
+        key,
+        bubbles: true,
+        cancelable: true,
+    });
+    target.dispatchEvent(event);
+
+    return event;
+}
+
+function pressKey(target: EventTarget, key: string) {
+    keyboardEvent(target, "keydown", key);
+    keyboardEvent(target, "keyup", key);
+}
 
 describe("Dialog", () => {
     test("Verify that all elements are created.", () => {
@@ -86,7 +111,7 @@ describe("Dialog", () => {
             expect(dialogElement?.classList.contains(dialogCss)).toBe(true);
 
             // clear the previous dialog
-            document.body.replaceChildren();
+            dialog.close();
         };
 
         // default is 'center'
@@ -382,5 +407,86 @@ describe("Dialog", () => {
 
         const container = document.querySelector(".dialog");
         expect(container?.id).toBe(id);
+    });
+
+    test("The 'escape' and 'enter' keys close a modal dialog.", () => {
+        ["Escape", "Enter"].forEach((key) => {
+            const dialog = new Dialog({ title: "", body: "" });
+            dialog.open();
+
+            pressKey(document.body, key);
+            expect(dialog.isOpened()).toBe(false);
+        });
+    });
+
+    test("Releasing a key that was pressed before the dialog opened doesn't close it (regression: opening with 'enter' closed it right away).", () => {
+        const dialog = new Dialog({ title: "", body: "" });
+
+        // the key that opened the dialog is released after it's already opened
+        keyboardEvent(document.body, "keydown", "Enter");
+        dialog.open();
+        keyboardEvent(document.body, "keyup", "Enter");
+        expect(dialog.isOpened()).toBe(true);
+
+        // a key pressed before a previous close doesn't carry over to the next open either
+        keyboardEvent(document.body, "keydown", "Escape");
+        dialog.close();
+        dialog.open();
+        keyboardEvent(document.body, "keyup", "Escape");
+        expect(dialog.isOpened()).toBe(true);
+
+        pressKey(document.body, "Enter");
+        expect(dialog.isOpened()).toBe(false);
+    });
+
+    test("The 'enter' key is left to the controls inside the dialog.", () => {
+        const body = document.createElement("div");
+        const textarea = document.createElement("textarea");
+        const button = document.createElement("button");
+        body.append(textarea, button);
+
+        const dialog = new Dialog({ title: "", body });
+        dialog.open();
+
+        [textarea, button].forEach((control) => {
+            const keyDown = keyboardEvent(control, "keydown", "Enter");
+            keyboardEvent(control, "keyup", "Enter");
+
+            expect(keyDown.defaultPrevented).toBe(false);
+            expect(dialog.isOpened()).toBe(true);
+        });
+
+        // 'escape' still closes it
+        pressKey(textarea, "Escape");
+        expect(dialog.isOpened()).toBe(false);
+    });
+
+    test("The 'enter' key doesn't reach the page behind a modal dialog.", () => {
+        const pageButton = document.createElement("button");
+        document.body.appendChild(pageButton);
+
+        const dialog = new Dialog({ title: "", body: "" });
+        dialog.open();
+
+        // otherwise it would activate the focused button behind the dialog (like the one that opened it)
+        const keyDown = keyboardEvent(pageButton, "keydown", "Enter");
+        expect(keyDown.defaultPrevented).toBe(true);
+
+        keyboardEvent(pageButton, "keyup", "Enter");
+        expect(dialog.isOpened()).toBe(false);
+
+        // once closed, the page gets the key again
+        expect(
+            keyboardEvent(pageButton, "keydown", "Enter").defaultPrevented
+        ).toBe(false);
+    });
+
+    test("A non-modal dialog doesn't have keyboard shortcuts.", () => {
+        const dialog = new Dialog({ title: "", body: "", modal: false });
+        dialog.open();
+
+        pressKey(document.body, "Escape");
+        pressKey(document.body, "Enter");
+        expect(dialog.isOpened()).toBe(true);
     });
 });

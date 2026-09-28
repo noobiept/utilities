@@ -81,7 +81,8 @@ export class EventDispatcher<EventType extends string> {
     }
 
     /**
-     * Dispatches an event, which will trigger the listeners of that event.
+     * Dispatches an event, which will trigger the listeners of that event (in the order they were added).
+     * Like with the DOM events, a listener added during the dispatch is only called on the next one, and a listener removed during the dispatch isn't called.
      *
      * @param type Type of the event to dispatch.
      * @param data Data to be sent to every listener.
@@ -90,8 +91,11 @@ export class EventDispatcher<EventType extends string> {
         const listeners = this._listeners[type];
 
         if (listeners) {
-            for (let a = listeners.length - 1; a >= 0; a--) {
-                listeners[a](data);
+            // go through a copy, so adding/removing listeners from within a listener doesn't skip or repeat any of the others
+            for (const listener of listeners.slice()) {
+                if (this._listeners[type]?.includes(listener)) {
+                    listener(data);
+                }
             }
         }
     }

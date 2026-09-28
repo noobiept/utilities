@@ -1,8 +1,8 @@
 import {
     timeToString,
     TimeToStringArgs,
-} from "../time_to_string/time_to_string";
-import { isNumber, isFunction } from "../is_type/is_type";
+} from "../time_to_string/time_to_string.js";
+import { isNumber, isFunction } from "../is_type/is_type.js";
 
 export type UpdateFormat =
     | Omit<TimeToStringArgs, "time">

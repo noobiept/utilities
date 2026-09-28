@@ -1,5 +1,5 @@
-import { round } from "../number/number";
-import { isNumber } from "../is_type/is_type";
+import { round } from "../number/number.js";
+import { isNumber } from "../is_type/is_type.js";
 
 export type SeparatedTime = {
     days: number;

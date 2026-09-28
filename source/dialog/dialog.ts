@@ -23,6 +23,17 @@ export interface DialogArgs {
 }
 
 /**
+ * Whether the element does something itself on the 'enter' key (activates a button/link, submits a form, adds a new line, etc).
+ */
+function handlesEnter(element: Node) {
+    return (
+        element instanceof HTMLElement &&
+        (element.isContentEditable ||
+            element.matches("button, a[href], input, select, textarea"))
+    );
+}
+
+/**
  * Create a dialog window with the given message.
  * Can be a modal (forces user interaction) or not.
  *
@@ -45,7 +56,11 @@ export class Dialog {
     readonly buttons?: HTMLElement;
     private overlay?: HTMLElement;
     private onClose?: () => void;
-    private keyUp?: (event: KeyboardEvent) => void;
+    private keyboardShortcuts?: {
+        keyDown: (event: KeyboardEvent) => void;
+        keyUp: (event: KeyboardEvent) => void;
+    };
+    private pressedKey?: string; // shortcut key that was pressed while the dialog was opened (and not released yet)
     private opened: boolean;
 
     constructor(args: DialogArgs) {
@@ -65,7 +80,7 @@ export class Dialog {
         // if its not modal, then it doesn't have an overlay and the keyboard shortcuts
         if (args.modal !== false) {
             this.overlay = this.createOverlay(args.closeOnOverlay);
-            this.keyUp = this.setupKeyboardShortcuts();
+            this.keyboardShortcuts = this.setupKeyboardShortcuts();
         }
     }
 
@@ -162,27 +177,58 @@ export class Dialog {
     }
 
     private setupKeyboardShortcuts() {
-        const keyUp = (event: KeyboardEvent) => {
+        const keyDown = (event: KeyboardEvent) => {
             switch (event.key) {
                 case "Escape":
+                    this.pressedKey = event.key;
+                    break;
+
                 case "Enter":
-                    this.close();
+                    // leave it to the controls inside the dialog that handle the 'enter' key themselves
+                    if (
+                        event.target instanceof Node &&
+                        this.container.contains(event.target) &&
+                        handlesEnter(event.target)
+                    ) {
+                        return;
+                    }
+
+                    // it's a modal, so don't let the key reach the page behind it (it would activate the button that opened the dialog again, for example)
+                    event.preventDefault();
+                    this.pressedKey = event.key;
                     break;
             }
         };
 
-        return keyUp;
+        // only close on the release of a key that was pressed while the dialog was opened, otherwise releasing the key that opened the dialog would close it right away
+        const keyUp = (event: KeyboardEvent) => {
+            if (event.key === this.pressedKey) {
+                this.pressedKey = undefined;
+                this.close();
+            }
+        };
+
+        return { keyDown, keyUp };
     }
 
     private addKeyboardShortcuts() {
-        if (this.keyUp) {
-            document.addEventListener("keyup", this.keyUp);
+        if (this.keyboardShortcuts) {
+            this.pressedKey = undefined;
+            document.addEventListener(
+                "keydown",
+                this.keyboardShortcuts.keyDown
+            );
+            document.addEventListener("keyup", this.keyboardShortcuts.keyUp);
         }
     }
 
     private removeKeyboardShortcuts() {
-        if (this.keyUp) {
-            document.removeEventListener("keyup", this.keyUp);
+        if (this.keyboardShortcuts) {
+            document.removeEventListener(
+                "keydown",
+                this.keyboardShortcuts.keyDown
+            );
+            document.removeEventListener("keyup", this.keyboardShortcuts.keyUp);
         }
     }
 

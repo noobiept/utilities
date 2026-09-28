@@ -39,6 +39,21 @@ test.describe("Dialog", () => {
         await expect(page.locator(".dialog")).not.toBeVisible();
     });
 
+    test("Should stay open when opened with the 'enter' key.", async ({
+        page,
+    }) => {
+        // the button's click happens on the key press, so the key is released with the dialog already opened (regression: that closed it right away)
+        await page.locator("#OpenModalDialog").focus();
+        await page.keyboard.press("Enter");
+        await expect(page.locator(".dialog")).toHaveCount(1);
+        await expect(page.locator(".dialog")).toBeVisible();
+
+        // the button still has the focus, pressing 'enter' again closes the dialog instead of opening another one
+        await page.keyboard.press("Enter");
+        await expect(page.locator(".dialog")).toHaveCount(0);
+        await expect(page.locator("#ModalDialogCount")).toHaveText("1");
+    });
+
     test("Should apply the dialog stylesheet.", async ({ page }) => {
         await page.locator("#OpenModalDialog").click();
         const dialog = page.locator(".dialog");

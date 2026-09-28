@@ -109,4 +109,67 @@ describe("EventDispatcher", () => {
         expect(dispatcher.hasListeners(event1)).toBe(false);
         expect(dispatcher.hasListeners(event2)).toBe(false);
     });
+
+    test("Listeners are called in the order they were added.", () => {
+        const dispatcher = new EventDispatcher();
+        const calls: string[] = [];
+
+        dispatcher.addEventListener("test", () => calls.push("first"));
+        dispatcher.addEventListener("test", () => calls.push("second"));
+        dispatcher.addEventListener("test", () => calls.push("third"));
+        dispatcher.dispatchEvent("test");
+
+        expect(calls).toEqual(["first", "second", "third"]);
+    });
+
+    test("Removing listeners during a dispatch doesn't skip or repeat the others (regression).", () => {
+        const dispatcher = new EventDispatcher();
+        const calls: string[] = [];
+        const first = () => calls.push("first");
+        const second = () => {
+            calls.push("second");
+            dispatcher.removeEventListener("test", third); // not called anymore
+        };
+        const third = () => calls.push("third");
+        const fourth = () => {
+            calls.push("fourth");
+            dispatcher.removeEventListener("test", first); // was already called
+        };
+
+        dispatcher.addEventListener("test", first);
+        dispatcher.addEventListener("test", second);
+        dispatcher.addEventListener("test", third);
+        dispatcher.addEventListener("test", fourth);
+        dispatcher.dispatchEvent("test");
+
+        expect(calls).toEqual(["first", "second", "fourth"]);
+    });
+
+    test("A listener added during a dispatch is only called on the next one.", () => {
+        const dispatcher = new EventDispatcher();
+        const added = vi.fn();
+
+        dispatcher.addEventListener("test", () => {
+            dispatcher.addEventListener("test", added);
+        });
+
+        dispatcher.dispatchEvent("test");
+        expect(added).not.toHaveBeenCalled();
+
+        dispatcher.dispatchEvent("test");
+        expect(added).toHaveBeenCalledTimes(1);
+    });
+
+    test("Removing all the listeners during a dispatch stops the dispatch.", () => {
+        const dispatcher = new EventDispatcher();
+        const second = vi.fn();
+
+        dispatcher.addEventListener("test", () => {
+            dispatcher.removeAllEventListeners();
+        });
+        dispatcher.addEventListener("test", second);
+        dispatcher.dispatchEvent("test");
+
+        expect(second).not.toHaveBeenCalled();
+    });
 });
