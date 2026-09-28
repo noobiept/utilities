@@ -8,7 +8,7 @@
 
 > **saveObject**(`key`, `value`): `void`
 
-Defined in: [source/local\_storage/local\_storage.ts:13](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/local_storage/local_storage.ts#L13)
+Defined in: [source/local\_storage/local\_storage.ts:22](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/local_storage/local_storage.ts#L22)
 
 Saves in the `localStorage` a json string representation of the `value`.
 

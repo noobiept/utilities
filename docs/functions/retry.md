@@ -8,7 +8,7 @@
 
 > **retry**\<`T`\>(`fn`, `options`): `Promise`\<`T`\>
 
-Defined in: [source/async/async.ts:84](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/async/async.ts#L84)
+Defined in: [source/async/async.ts:84](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L84)
 
 Runs `fn`, retrying on rejection up to `attempts` times. Returns the first
 successful result. If every attempt fails, the last error is re-thrown.

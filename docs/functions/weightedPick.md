@@ -8,7 +8,7 @@
 
 > **weightedPick**\<`T`\>(`items`, `weights`): `T` \| `undefined`
 
-Defined in: [source/random/random.ts:44](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/random/random.ts#L44)
+Defined in: [source/random/random.ts:44](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/random/random.ts#L44)
 
 Returns a random item picked according to the given weights.
 `items` and `weights` are matched by index — higher weight means more likely.

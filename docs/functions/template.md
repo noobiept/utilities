@@ -8,7 +8,7 @@
 
 > **template**(`str`, `vars`): `string`
 
-Defined in: [source/string/string.ts:94](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/string/string.ts#L94)
+Defined in: [source/string/string.ts:94](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/string/string.ts#L94)
 
 Interpolates `{{name}}` placeholders in `str` using values from `vars`.
 Whitespace inside the braces is tolerated (`{{ name }}` works too).

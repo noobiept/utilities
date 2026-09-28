@@ -6,7 +6,7 @@
 
 # Class: EventDispatcher\<EventType\>
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:19](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L19)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:19](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L19)
 
 Base class that provides a way to add/remove listeners, and dispatch events.
 
@@ -22,7 +22,7 @@ Basic Usage:
         }
     }
 
-    const instance = MyClass();
+    const instance = new MyClass();
     instance.addEventListener('anEvent', somethingToDo);
 
 ## Extended by
@@ -41,7 +41,7 @@ Basic Usage:
 
 > **new EventDispatcher**\<`EventType`\>(): `EventDispatcher`\<`EventType`\>
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L24)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L24)
 
 #### Returns
 
@@ -53,7 +53,7 @@ Defined in: [source/event\_dispatcher/event\_dispatcher.ts:24](https://github.co
 
 > **addEventListener**(`type`, `listener`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L36)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:36](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L36)
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
@@ -84,9 +84,10 @@ If it was successfully added.
 
 > **dispatchEvent**(`type`, `data?`): `void`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:89](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L89)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:90](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L90)
 
-Dispatches an event, which will trigger the listeners of that event.
+Dispatches an event, which will trigger the listeners of that event (in the order they were added).
+Like with the DOM events, a listener added during the dispatch is only called on the next one, and a listener removed during the dispatch isn't called.
 
 #### Parameters
 
@@ -112,7 +113,7 @@ Data to be sent to every listener.
 
 > **hasListeners**(`type`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:105](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L105)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:109](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L109)
 
 Check if there are listeners to a particular event type.
 
@@ -136,7 +137,7 @@ If there are listeners or not.
 
 > **removeAllEventListeners**(): `void`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L79)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:79](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L79)
 
 Remove all the event listeners.
 
@@ -150,7 +151,7 @@ Remove all the event listeners.
 
 > **removeEventListener**(`type`, `listener?`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/event_dispatcher/event_dispatcher.ts#L56)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:56](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/event_dispatcher/event_dispatcher.ts#L56)
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 

@@ -8,7 +8,7 @@
 
 > **isNumber**(`element`): `element is number`
 
-Defined in: [source/is\_type/is\_type.ts:32](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/is_type/is_type.ts#L32)
+Defined in: [source/is\_type/is\_type.ts:32](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/is_type/is_type.ts#L32)
 
 ## Parameters
 

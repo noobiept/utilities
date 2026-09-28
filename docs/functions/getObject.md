@@ -8,9 +8,10 @@
 
 > **getObject**(`key`): `any`
 
-Defined in: [source/local\_storage/local\_storage.ts:4](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/local_storage/local_storage.ts#L4)
+Defined in: [source/local\_storage/local\_storage.ts:5](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/local_storage/local_storage.ts#L5)
 
 Returns an object that was obtained by parsing (with json) some data that was saved on `localStorage`.
+Returns `null` if the key doesn't exist, or if the saved data isn't valid json.
 
 ## Parameters
 

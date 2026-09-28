@@ -6,7 +6,7 @@
 
 # Interface: Debounced()\<Args\>
 
-Defined in: [source/async/async.ts:150](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/async/async.ts#L150)
+Defined in: [source/async/async.ts:155](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L155)
 
 ## Type Parameters
 
@@ -16,7 +16,7 @@ Defined in: [source/async/async.ts:150](https://github.com/noobiept/utilities/bl
 
 > **Debounced**(...`args`): `void`
 
-Defined in: [source/async/async.ts:151](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/async/async.ts#L151)
+Defined in: [source/async/async.ts:156](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L156)
 
 ## Parameters
 
@@ -34,7 +34,7 @@ Defined in: [source/async/async.ts:151](https://github.com/noobiept/utilities/bl
 
 > **cancel**(): `void`
 
-Defined in: [source/async/async.ts:153](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/async/async.ts#L153)
+Defined in: [source/async/async.ts:158](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L158)
 
 Cancel any pending call without invoking `fn`.
 
@@ -48,7 +48,7 @@ Cancel any pending call without invoking `fn`.
 
 > **flush**(): `void`
 
-Defined in: [source/async/async.ts:155](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/async/async.ts#L155)
+Defined in: [source/async/async.ts:160](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L160)
 
 Invoke any pending call immediately.
 

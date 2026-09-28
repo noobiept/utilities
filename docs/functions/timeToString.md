@@ -8,7 +8,7 @@
 
 > **timeToString**(`args`): `string`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:75](https://github.com/noobiept/utilities/blob/e6a08ca69d4fb1f440b5c1bfd63b2dadf3422789/source/time_to_string/time_to_string.ts#L75)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:77](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L77)
 
 Converts a time (in milliseconds) to a string (with the number of days/hours...).
 The units available are: day/hour/minute/second.
@@ -30,6 +30,8 @@ There's 4 possible display formats.
 The number of `units` can limit the number of units shown in the string/short_string formats (days/hours, or hours/minutes or minutes/seconds, and not days/hours/minutes for example (for a `units` with value 2)).
 
 The display string can be internationalized with the `internationalization` argument (when using the `string` or `short_string`).
+
+A negative time is shown with a minus sign (for example `-00:01:30`, or `-1 minute 30 seconds`).
 
 Defaults:
     units: undefined (shows all non-zero if format is type `string` or `short_string`)
