@@ -8,7 +8,7 @@
 
 > **throttle**\<`Args`\>(`fn`, `ms`): [`Throttled`](../interfaces/Throttled.md)\<`Args`\>
 
-Defined in: [source/async/async.ts:219](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L219)
+Defined in: [source/async/async.ts:251](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L251)
 
 Returns a wrapper that calls `fn` at most once per `ms` milliseconds.
 The first call within an idle window runs immediately (leading edge);

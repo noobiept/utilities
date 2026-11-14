@@ -8,7 +8,7 @@
 
 > **seededRandom**(`seed`): `object`
 
-Defined in: [source/random/random.ts:85](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/random/random.ts#L85)
+Defined in: [source/random/random.ts:85](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/random/random.ts#L85)
 
 Seeded random number generator, returns an object with the same shape as the
 stand-alone helpers but with reproducible output for a given `seed`.

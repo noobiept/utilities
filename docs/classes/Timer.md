@@ -6,7 +6,7 @@
 
 # Class: Timer
 
-Defined in: [source/timer/timer.ts:32](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L32)
+Defined in: [source/timer/timer.ts:32](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L32)
 
 Count-up or count-down timer. Can optionally update an html element.
 
@@ -16,7 +16,7 @@ Count-up or count-down timer. Can optionally update an html element.
 
 > **new Timer**(`args?`): `Timer`
 
-Defined in: [source/timer/timer.ts:48](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L48)
+Defined in: [source/timer/timer.ts:48](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L48)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [source/timer/timer.ts:48](https://github.com/noobiept/utilities/blo
 
 > **add**(`time`): `void`
 
-Defined in: [source/timer/timer.ts:213](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L213)
+Defined in: [source/timer/timer.ts:213](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L213)
 
 Adds time to the current value in the timer. So for example, if the timer is right now at 4 seconds, and we add 1000 (1 second), it jumps to 5 seconds.
 
@@ -56,7 +56,7 @@ In milliseconds.
 
 > **getTimeMilliseconds**(): `number`
 
-Defined in: [source/timer/timer.ts:235](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L235)
+Defined in: [source/timer/timer.ts:235](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L235)
 
 Returns the time it has passed so far, in milliseconds.
 
@@ -70,7 +70,7 @@ Returns the time it has passed so far, in milliseconds.
 
 > **getTimeSeconds**(): `number`
 
-Defined in: [source/timer/timer.ts:228](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L228)
+Defined in: [source/timer/timer.ts:228](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L228)
 
 Returns the time it has passed so far, in seconds.
 
@@ -84,7 +84,7 @@ Returns the time it has passed so far, in seconds.
 
 > **getTimeString**(): `string`
 
-Defined in: [source/timer/timer.ts:221](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L221)
+Defined in: [source/timer/timer.ts:221](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L221)
 
 Returns a string with the time passed so far.
 
@@ -98,7 +98,7 @@ Returns a string with the time passed so far.
 
 > **isActive**(): `boolean`
 
-Defined in: [source/timer/timer.ts:242](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L242)
+Defined in: [source/timer/timer.ts:242](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L242)
 
 Returns whether the timer is currently active or not.
 
@@ -112,7 +112,7 @@ Returns whether the timer is currently active or not.
 
 > **reset**(): `void`
 
-Defined in: [source/timer/timer.ts:164](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L164)
+Defined in: [source/timer/timer.ts:164](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L164)
 
 Stops and resets the count.
 
@@ -126,7 +126,7 @@ Stops and resets the count.
 
 > **restart**(): `void`
 
-Defined in: [source/timer/timer.ts:174](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L174)
+Defined in: [source/timer/timer.ts:174](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L174)
 
 Restart the timer.
 
@@ -140,7 +140,7 @@ Restart the timer.
 
 > **resume**(): `void`
 
-Defined in: [source/timer/timer.ts:98](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L98)
+Defined in: [source/timer/timer.ts:98](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L98)
 
 Resumes the timer with the same settings/values that were set before it was stopped.
 
@@ -154,7 +154,7 @@ Resumes the timer with the same settings/values that were set before it was stop
 
 > **setUpdateFormat**(`format?`): `void`
 
-Defined in: [source/timer/timer.ts:186](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L186)
+Defined in: [source/timer/timer.ts:186](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L186)
 
 #### Parameters
 
@@ -172,7 +172,7 @@ Defined in: [source/timer/timer.ts:186](https://github.com/noobiept/utilities/bl
 
 > **start**(`args?`): `void`
 
-Defined in: [source/timer/timer.ts:70](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L70)
+Defined in: [source/timer/timer.ts:70](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L70)
 
 Start counting.
 If no endValue is given, it never stops counting.
@@ -200,7 +200,7 @@ If no endValue is given, it never stops counting.
 
 > **stop**(): `void`
 
-Defined in: [source/timer/timer.ts:152](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L152)
+Defined in: [source/timer/timer.ts:152](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L152)
 
 Stop counting.
 
@@ -214,7 +214,7 @@ Stop counting.
 
 > **updateHtmlElement**(): `void`
 
-Defined in: [source/timer/timer.ts:202](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L202)
+Defined in: [source/timer/timer.ts:202](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L202)
 
 Updates the associated html element (if was given) with the current time value.
 

@@ -6,7 +6,7 @@
 
 # Interface: PollOptions
 
-Defined in: [source/async/async.ts:115](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L115)
+Defined in: [source/async/async.ts:141](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L141)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [source/async/async.ts:115](https://github.com/noobiept/utilities/bl
 
 > **interval**: `number`
 
-Defined in: [source/async/async.ts:117](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L117)
+Defined in: [source/async/async.ts:143](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L143)
 
 Milliseconds between checks.
 
@@ -24,6 +24,6 @@ Milliseconds between checks.
 
 > **timeout**: `number`
 
-Defined in: [source/async/async.ts:119](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L119)
+Defined in: [source/async/async.ts:145](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L145)
 
-Total milliseconds before giving up and rejecting with a `TimeoutError`.
+Total milliseconds before giving up and rejecting with a `TimeoutError` (including a check that is still running). Use `Infinity` to never give up.

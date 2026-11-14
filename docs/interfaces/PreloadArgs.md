@@ -6,7 +6,7 @@
 
 # Interface: PreloadArgs
 
-Defined in: [source/preload/preload.ts:47](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/preload/preload.ts#L47)
+Defined in: [source/preload/preload.ts:47](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/preload/preload.ts#L47)
 
 ## Properties
 
@@ -14,4 +14,4 @@ Defined in: [source/preload/preload.ts:47](https://github.com/noobiept/utilities
 
 > `optional` **saveGlobal?**: `boolean`
 
-Defined in: [source/preload/preload.ts:48](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/preload/preload.ts#L48)
+Defined in: [source/preload/preload.ts:48](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/preload/preload.ts#L48)

@@ -8,7 +8,7 @@
 
 > **isBoolean**(`element`): `element is boolean`
 
-Defined in: [source/is\_type/is\_type.ts:11](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/is_type/is_type.ts#L11)
+Defined in: [source/is\_type/is\_type.ts:11](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/is_type/is_type.ts#L11)
 
 ## Parameters
 

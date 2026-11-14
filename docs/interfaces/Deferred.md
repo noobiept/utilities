@@ -6,7 +6,7 @@
 
 # Interface: Deferred\<T\>
 
-Defined in: [source/async/async.ts:47](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L47)
+Defined in: [source/async/async.ts:73](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L73)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [source/async/async.ts:47](https://github.com/noobiept/utilities/blo
 
 > **promise**: `Promise`\<`T`\>
 
-Defined in: [source/async/async.ts:48](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L48)
+Defined in: [source/async/async.ts:74](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L74)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [source/async/async.ts:48](https://github.com/noobiept/utilities/blo
 
 > **reject**: (`reason?`) => `void`
 
-Defined in: [source/async/async.ts:50](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L50)
+Defined in: [source/async/async.ts:76](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L76)
 
 #### Parameters
 
@@ -46,7 +46,7 @@ Defined in: [source/async/async.ts:50](https://github.com/noobiept/utilities/blo
 
 > **resolve**: (`value`) => `void`
 
-Defined in: [source/async/async.ts:49](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L49)
+Defined in: [source/async/async.ts:75](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L75)
 
 #### Parameters
 

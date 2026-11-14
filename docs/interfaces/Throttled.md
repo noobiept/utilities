@@ -6,7 +6,7 @@
 
 # Interface: Throttled()\<Args\>
 
-Defined in: [source/async/async.ts:208](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L208)
+Defined in: [source/async/async.ts:240](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L240)
 
 ## Type Parameters
 
@@ -16,7 +16,7 @@ Defined in: [source/async/async.ts:208](https://github.com/noobiept/utilities/bl
 
 > **Throttled**(...`args`): `void`
 
-Defined in: [source/async/async.ts:209](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L209)
+Defined in: [source/async/async.ts:241](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L241)
 
 ## Parameters
 
@@ -34,7 +34,7 @@ Defined in: [source/async/async.ts:209](https://github.com/noobiept/utilities/bl
 
 > **cancel**(): `void`
 
-Defined in: [source/async/async.ts:211](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/async/async.ts#L211)
+Defined in: [source/async/async.ts:243](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L243)
 
 Cancel any pending trailing call and reset the throttle window.
 

@@ -6,7 +6,7 @@
 
 # Interface: DialogArgs
 
-Defined in: [source/dialog/dialog.ts:15](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L15)
+Defined in: [source/dialog/dialog.ts:15](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L15)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [source/dialog/dialog.ts:15](https://github.com/noobiept/utilities/b
 
 > **body**: `string` \| `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L17)
+Defined in: [source/dialog/dialog.ts:17](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L17)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [source/dialog/dialog.ts:17](https://github.com/noobiept/utilities/b
 
 > `optional` **buttons?**: [`DialogButtonsArg`](../type-aliases/DialogButtonsArg.md)
 
-Defined in: [source/dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L21)
+Defined in: [source/dialog/dialog.ts:21](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L21)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [source/dialog/dialog.ts:21](https://github.com/noobiept/utilities/b
 
 > `optional` **closeOnOverlay?**: `boolean`
 
-Defined in: [source/dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L20)
+Defined in: [source/dialog/dialog.ts:20](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L20)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [source/dialog/dialog.ts:20](https://github.com/noobiept/utilities/b
 
 > `optional` **modal?**: `boolean`
 
-Defined in: [source/dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L19)
+Defined in: [source/dialog/dialog.ts:19](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L19)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [source/dialog/dialog.ts:19](https://github.com/noobiept/utilities/b
 
 > `optional` **onClose?**: () => `void`
 
-Defined in: [source/dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L18)
+Defined in: [source/dialog/dialog.ts:18](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L18)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Defined in: [source/dialog/dialog.ts:18](https://github.com/noobiept/utilities/b
 
 > `optional` **position?**: [`DialogPosition`](../enumerations/DialogPosition.md)
 
-Defined in: [source/dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L22)
+Defined in: [source/dialog/dialog.ts:22](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L22)
 
 ***
 
@@ -66,4 +66,4 @@ Defined in: [source/dialog/dialog.ts:22](https://github.com/noobiept/utilities/b
 
 > **title**: `string` \| `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/dialog/dialog.ts#L16)
+Defined in: [source/dialog/dialog.ts:16](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/dialog/dialog.ts#L16)

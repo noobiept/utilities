@@ -8,7 +8,7 @@
 
 > **createEnum**(`values`, `start?`): `object`
 
-Defined in: [source/object/object.ts:16](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/object/object.ts#L16)
+Defined in: [source/object/object.ts:16](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/object/object.ts#L16)
 
 Enum - A way to associate a string name to a number.
 

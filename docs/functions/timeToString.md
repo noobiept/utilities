@@ -8,7 +8,7 @@
 
 > **timeToString**(`args`): `string`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:77](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L77)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:77](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L77)
 
 Converts a time (in milliseconds) to a string (with the number of days/hours...).
 The units available are: day/hour/minute/second.

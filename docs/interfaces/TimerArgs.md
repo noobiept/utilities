@@ -6,7 +6,7 @@
 
 # Interface: TimerArgs
 
-Defined in: [source/timer/timer.ts:16](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L16)
+Defined in: [source/timer/timer.ts:16](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L16)
 
 ## Properties
 
@@ -14,4 +14,4 @@ Defined in: [source/timer/timer.ts:16](https://github.com/noobiept/utilities/blo
 
 > `optional` **updateElement?**: [`UpdateElement`](../type-aliases/UpdateElement.md)
 
-Defined in: [source/timer/timer.ts:17](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/timer/timer.ts#L17)
+Defined in: [source/timer/timer.ts:17](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L17)

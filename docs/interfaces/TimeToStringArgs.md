@@ -6,7 +6,7 @@
 
 # Interface: TimeToStringArgs
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:23](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L23)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:23](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L23)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:23](https://github.com/
 
 > `optional` **format?**: `"string"` \| `"daytime"` \| `"partial_daytime"` \| `"short_string"`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:26](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L26)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:26](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L26)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:26](https://github.com/
 
 > `optional` **internationalization?**: [`InternationalizationConfig`](../type-aliases/InternationalizationConfig.md)
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:27](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L27)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:27](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L27)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:27](https://github.com/
 
 > **time**: `number`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:24](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L24)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:24](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L24)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:24](https://github.com/
 
 > `optional` **units?**: `number`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:25](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L25)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:25](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L25)

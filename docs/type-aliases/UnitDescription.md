@@ -8,7 +8,7 @@
 
 > **UnitDescription** = `object`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:11](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L11)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:11](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L11)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:11](https://github.com/
 
 > **plural**: `string`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:13](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L13)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:13](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L13)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:13](https://github.com/
 
 > **single**: `string`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:12](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/time_to_string/time_to_string.ts#L12)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:12](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/time_to_string/time_to_string.ts#L12)

@@ -8,7 +8,7 @@
 
 > **pointBoxCollision**(`pointX`, `pointY`, `boxX`, `boxY`, `boxWidth`, `boxHeight`): `boolean`
 
-Defined in: [source/collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/ff405698d7b76a746376c90801225054c3881c9b/source/collision_detection/collision_detection.ts#L72)
+Defined in: [source/collision\_detection/collision\_detection.ts:72](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/collision_detection/collision_detection.ts#L72)
 
 Detects collision between a point and a box.
 
