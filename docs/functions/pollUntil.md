@@ -8,7 +8,7 @@
 
 > **pollUntil**\<`T`\>(`check`, `options`): `Promise`\<`T`\>
 
-Defined in: [source/async/async.ts:152](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L152)
+Defined in: [source/async/async.ts:152](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/async/async.ts#L152)
 
 Calls `check` repeatedly until it returns a truthy value (which is then returned),
 or until `timeout` is exceeded (rejects with `TimeoutError`).

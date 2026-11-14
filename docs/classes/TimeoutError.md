@@ -6,7 +6,7 @@
 
 # Class: TimeoutError
 
-Defined in: [source/async/async.ts:6](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L6)
+Defined in: [source/async/async.ts:6](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/async/async.ts#L6)
 
 Error thrown by `withTimeout`, `pollUntil`, and other helpers when a deadline is missed.
 
@@ -20,7 +20,7 @@ Error thrown by `withTimeout`, `pollUntil`, and other helpers when a deadline is
 
 > **new TimeoutError**(`message?`): `TimeoutError`
 
-Defined in: [source/async/async.ts:7](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/async/async.ts#L7)
+Defined in: [source/async/async.ts:7](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/async/async.ts#L7)
 
 #### Parameters
 

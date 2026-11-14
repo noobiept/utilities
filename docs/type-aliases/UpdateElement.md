@@ -8,7 +8,7 @@
 
 > **UpdateElement** = `object`
 
-Defined in: [source/timer/timer.ts:11](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L11)
+Defined in: [source/timer/timer.ts:10](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timer/timer.ts#L10)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [source/timer/timer.ts:11](https://github.com/noobiept/utilities/blo
 
 > **element**: `HTMLElement`
 
-Defined in: [source/timer/timer.ts:12](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L12)
+Defined in: [source/timer/timer.ts:11](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timer/timer.ts#L11)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [source/timer/timer.ts:12](https://github.com/noobiept/utilities/blo
 
 > `optional` **format?**: [`UpdateFormat`](UpdateFormat.md)
 
-Defined in: [source/timer/timer.ts:13](https://github.com/noobiept/utilities/blob/8c20054bf1ac298a403aef316daa5a4edd492c22/source/timer/timer.ts#L13)
+Defined in: [source/timer/timer.ts:12](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timer/timer.ts#L12)
