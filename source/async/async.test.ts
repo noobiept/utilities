@@ -32,6 +32,21 @@ describe("sleep", () => {
         await vi.advanceTimersByTimeAsync(50);
         expect(resolved).toBe(true);
     });
+
+    test("a delay longer than 'setTimeout' supports still waits for it (regression: it resolved right away).", async () => {
+        const day = 24 * 60 * 60 * 1000;
+        const promise = sleep(30 * day);
+        let resolved = false;
+        promise.then(() => {
+            resolved = true;
+        });
+
+        await vi.advanceTimersByTimeAsync(30 * day - 1);
+        expect(resolved).toBe(false);
+
+        await vi.advanceTimersByTimeAsync(1);
+        expect(resolved).toBe(true);
+    });
 });
 
 describe("withTimeout", () => {
@@ -241,7 +256,7 @@ describe("pollUntil", () => {
         expect(check).toHaveBeenCalledTimes(3);
     });
 
-    test("doesn't start a check after the deadline (regression: it slept past it, then threw the check's result away).", async () => {
+    test("doesn't sleep past the deadline (regression: it waited for the next interval, then threw the check's result away).", async () => {
         const check = vi.fn(async () => {
             await sleep(20);
             return false;
@@ -254,14 +269,29 @@ describe("pollUntil", () => {
             settled = true;
         });
 
-        // gives up at the deadline, instead of waiting for the next interval
+        // gives up at the deadline, after a last check there which has no time left to settle (a 0ms timer runs 1ms later)
         await vi.advanceTimersByTimeAsync(49);
         expect(settled).toBe(false);
-        await vi.advanceTimersByTimeAsync(1);
+        await vi.advanceTimersByTimeAsync(2);
         await rejection;
+        expect(check).toHaveBeenCalledTimes(2);
 
         await vi.advanceTimersByTimeAsync(200);
-        expect(check).toHaveBeenCalledTimes(1);
+        expect(check).toHaveBeenCalledTimes(2);
+    });
+
+    test("checks one last time at the deadline (regression: with a timeout that is a multiple of the interval, it gave up without it).", async () => {
+        let counter = 0;
+        const check = vi.fn(() => {
+            counter++;
+            return counter >= 2 ? "done" : false;
+        });
+
+        const promise = pollUntil(check, { interval: 1000, timeout: 1000 });
+        await vi.advanceTimersByTimeAsync(1000);
+
+        await expect(promise).resolves.toBe("done");
+        expect(check).toHaveBeenCalledTimes(2);
     });
 
     test("a change to the system clock doesn't move the deadline (regression: turning it forward timed out right away).", async () => {

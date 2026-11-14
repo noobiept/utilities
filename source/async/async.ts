@@ -10,13 +10,6 @@ export class TimeoutError extends Error {
     }
 }
 
-/**
- * Returns a promise that resolves after `ms` milliseconds.
- */
-export function sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 // `setTimeout` runs a longer delay (about 24.8 days) after just 1ms
 const MAX_DELAY = 2 ** 31 - 1;
 
@@ -41,6 +34,13 @@ function longTimeout(callback: () => void, ms: number): () => void {
     schedule(ms);
 
     return () => clearTimeout(id);
+}
+
+/**
+ * Returns a promise that resolves after `ms` milliseconds (an `Infinity` delay never resolves).
+ */
+export function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => longTimeout(resolve, ms));
 }
 
 /**
@@ -141,7 +141,7 @@ export async function retry<T>(
 export interface PollOptions {
     /** Milliseconds between checks. */
     interval: number;
-    /** Total milliseconds before giving up and rejecting with a `TimeoutError` (including a check that is still running). Use `Infinity` to never give up. */
+    /** Total milliseconds before giving up and rejecting with a `TimeoutError` (including a check that is still running). The last check is at the deadline. Use `Infinity` to never give up. */
     timeout: number;
 }
 
@@ -162,21 +162,20 @@ export async function pollUntil<T>(
         // a check that never settles (a hung request, for example) still times out
         const result = await withTimeout(
             Promise.resolve(check()),
-            deadline - performance.now(),
+            Math.max(deadline - performance.now(), 0),
             "pollUntil timed out"
         );
         if (result) {
             return result as T;
         }
 
-        // don't sleep past the deadline, nor start a check after it (it would have no time left, so its result would be thrown away)
         const remaining = deadline - performance.now();
-        if (remaining > 0) {
-            await sleep(Math.min(interval, remaining));
-        }
-        if (performance.now() >= deadline) {
+        if (remaining <= 0) {
             throw new TimeoutError("pollUntil timed out");
         }
+
+        // without sleeping past the deadline, so the last check is right at it (a check that settles right away still counts there)
+        await sleep(Math.min(interval, remaining));
     }
 }
 

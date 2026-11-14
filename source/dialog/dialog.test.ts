@@ -473,22 +473,47 @@ describe("Dialog", () => {
         const body = document.createElement("div");
         const textarea = document.createElement("textarea");
         const button = document.createElement("button");
-        body.append(textarea, button);
+        const inputButton = document.createElement("input");
+        inputButton.type = "button";
+        const form = document.createElement("form");
+        const formField = document.createElement("input");
+        form.append(formField);
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        details.append(summary);
+        body.append(textarea, button, inputButton, form, details);
 
         const dialog = new Dialog({ title: "", body });
         dialog.open();
 
-        [textarea, button].forEach((control) => {
-            const keyDown = keyboardEvent(control, "keydown", "Enter");
-            keyboardEvent(control, "keyup", "Enter");
+        [textarea, button, inputButton, formField, summary].forEach(
+            (control) => {
+                const keyDown = keyboardEvent(control, "keydown", "Enter");
+                keyboardEvent(control, "keyup", "Enter");
 
-            expect(keyDown.defaultPrevented).toBe(false);
-            expect(dialog.isOpened()).toBe(true);
-        });
+                expect(keyDown.defaultPrevented).toBe(false);
+                expect(dialog.isOpened()).toBe(true);
+            }
+        );
 
         // 'escape' still closes it
         pressKey(textarea, "Escape");
         expect(dialog.isOpened()).toBe(false);
+    });
+
+    test("The 'enter' key on a field outside of a form, or on a checkbox, still closes the dialog (regression: it did nothing, so a prompt couldn't be confirmed with it).", () => {
+        ["text", "checkbox"].forEach((type) => {
+            const input = document.createElement("input");
+            input.type = type;
+
+            const dialog = new Dialog({ title: "", body: input });
+            dialog.open();
+
+            const keyDown = keyboardEvent(input, "keydown", "Enter");
+            keyboardEvent(input, "keyup", "Enter");
+            expect(keyDown.defaultPrevented).toBe(true);
+            expect(dialog.isOpened()).toBe(false);
+        });
     });
 
     test("The 'enter' key doesn't reach the page behind a modal dialog.", () => {
@@ -529,13 +554,13 @@ describe("Dialog", () => {
         const dialog = new Dialog({ title: "", body: "" });
         dialog.open();
 
-        // a popup added to the page after the dialog was opened (like an autocomplete list), and a non-modal dialog on top
-        const popupInput = document.createElement("input");
-        document.body.appendChild(popupInput);
+        // a popup added to the page after the dialog was opened (like the options of an autocomplete), and a non-modal dialog on top
+        const popupOption = document.createElement("button");
+        document.body.appendChild(popupOption);
         const nonModal = new Dialog({ title: "", body: "", modal: false });
         nonModal.open();
 
-        [popupInput, nonModal.buttons!.querySelector("button")!].forEach(
+        [popupOption, nonModal.buttons!.querySelector("button")!].forEach(
             (control) => {
                 const keyDown = keyboardEvent(control, "keydown", "Enter");
                 keyboardEvent(control, "keyup", "Enter");
@@ -637,22 +662,77 @@ describe("Dialog", () => {
         expect(second.isOpened()).toBe(true);
     });
 
-    test("Closing a dialog that failed to open doesn't affect the other dialogs (regression: it took another one off the keyboard shortcuts).", () => {
+    test("A dialog that failed to open can be opened again, and doesn't affect the other dialogs (regression: it stayed marked as opened, with its overlay blocking the page, and closing it took another dialog off the keyboard shortcuts).", () => {
         const first = new Dialog({ title: "", body: "" });
         const second = new Dialog({ title: "", body: "" });
         first.open();
 
-        const append = vi
+        // the overlay is added, but not the dialog
+        const append = document.body.appendChild.bind(document.body);
+        const spy = vi
             .spyOn(document.body, "appendChild")
+            .mockImplementationOnce((node) => append(node))
             .mockImplementationOnce(() => {
                 throw new Error("failed");
             });
         expect(() => second.open()).toThrow("failed");
-        append.mockRestore();
+        spy.mockRestore();
+
+        expect(second.isOpened()).toBe(false);
+        expect(document.querySelectorAll(".dialogOverlay")).toHaveLength(1);
         second.close();
 
+        // the other dialog still reacts to the keyboard
         pressKey(document.body, "Escape");
         expect(first.isOpened()).toBe(false);
+
+        second.open();
+        expect(second.isOpened()).toBe(true);
+    });
+
+    test("A non-modal dialog opened again over a modal dialog isn't inert (regression: it kept the inert from when it was behind the modal).", () => {
+        const nonModal = new Dialog({ title: "", body: "", modal: false });
+        nonModal.open();
+        const modal = new Dialog({ title: "", body: "" });
+        modal.open();
+        expect(nonModal.container.hasAttribute("inert")).toBe(true);
+
+        nonModal.close();
+        nonModal.open();
+        expect(nonModal.container.hasAttribute("inert")).toBe(false);
+    });
+
+    test("A key whose release got lost doesn't close the dialog on a later press that something else took care of (regression: it closed it).", () => {
+        // a widget that takes care of 'escape' itself
+        const input = document.createElement("input");
+        input.addEventListener("keydown", (event) => {
+            event.preventDefault();
+        });
+
+        const dialog = new Dialog({ title: "", body: input });
+        dialog.open();
+
+        // the release of this one never comes (the window lost the focus, for example)
+        keyboardEvent(document.body, "keydown", "Escape");
+
+        pressKey(input, "Escape");
+        expect(dialog.isOpened()).toBe(true);
+    });
+
+    test("Closing a modal dialog under another one passes on where to give the focus back (regression: it was lost when a wizard's next step opened before the current one closed).", () => {
+        const opener = document.createElement("button");
+        document.body.appendChild(opener);
+        opener.focus();
+
+        const current = new Dialog({ title: "", body: "" });
+        current.open();
+        const next = new Dialog({ title: "", body: "" });
+        next.open();
+        current.close();
+        expect(document.activeElement).toBe(next.container);
+
+        next.close();
+        expect(document.activeElement).toBe(opener);
     });
 
     test("A non-modal dialog doesn't have keyboard shortcuts.", () => {

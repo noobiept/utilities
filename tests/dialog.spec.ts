@@ -48,7 +48,7 @@ test.describe("Dialog", () => {
         await expect(page.locator(".dialog")).toHaveCount(1);
         await expect(page.locator(".dialog")).toBeVisible();
 
-        // the button still has the focus, pressing 'enter' again closes the dialog instead of opening another one
+        // the focus is in the dialog now, so pressing 'enter' again closes it instead of opening another one
         await page.keyboard.press("Enter");
         await expect(page.locator(".dialog")).toHaveCount(0);
         await expect(page.locator("#ModalDialogCount")).toHaveText("1");

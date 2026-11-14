@@ -26,14 +26,26 @@ export interface DialogArgs {
 const OPENED_MODALS: Dialog[] = [];
 
 /**
- * Whether the element does something itself on the 'enter' key (activates a button/link, submits a form, adds a new line, etc).
+ * Whether the element does something itself on the 'enter' key (activates a button/link/summary, submits a form, adds a new line, etc).
  */
 function handlesEnter(element: EventTarget) {
-    return (
-        element instanceof HTMLElement &&
-        (element.isContentEditable ||
-            element.matches("button, a[href], input, select, textarea"))
-    );
+    if (!(element instanceof HTMLElement)) {
+        return false;
+    }
+
+    if (element.isContentEditable) {
+        return true;
+    }
+
+    // the input buttons are activated, and the other inputs only submit their form (without a form, the key does nothing there)
+    if (element instanceof HTMLInputElement) {
+        return (
+            ["button", "submit", "reset", "image"].includes(element.type) ||
+            element.form !== null
+        );
+    }
+
+    return element.matches("button, a[href], select, textarea, summary");
 }
 
 /**
@@ -221,6 +233,11 @@ export class Dialog {
                 event.isComposing ||
                 event.keyCode === 229
             ) {
+                // and if the release of an earlier press of this key got lost (the window lost the focus, for example), this release doesn't close the dialog either
+                if (event.key === this.pressedKey) {
+                    this.pressedKey = undefined;
+                }
+
                 return;
             }
 
@@ -289,9 +306,6 @@ export class Dialog {
                 : undefined;
 
         // only what is in the page right now, so what opens on top of the dialog later (like a popup) still works, and the elements that were already inert are left alone
-        this.overlay?.removeAttribute("inert"); // a dialog that was on top of this one before might have left it inert
-        this.container.removeAttribute("inert");
-
         for (const element of document.body.children) {
             if (
                 element !== this.overlay &&
@@ -330,6 +344,14 @@ export class Dialog {
 
         if (above) {
             above.inertElements.push(...this.inertElements);
+
+            // the one above can't give the focus back into this dialog (like a wizard, where the next step opens before the current one closes), so it gives it back to where this one would have
+            if (
+                above.previousFocus === undefined ||
+                this.container.contains(above.previousFocus)
+            ) {
+                above.previousFocus = this.previousFocus;
+            }
         } else {
             this.inertElements.forEach((element) =>
                 element.removeAttribute("inert")
@@ -356,13 +378,24 @@ export class Dialog {
         if (this.opened) {
             return;
         }
-        this.opened = true;
+
+        // a modal dialog that was opened on top of this one before might have left it inert
+        this.overlay?.removeAttribute("inert");
+        this.container.removeAttribute("inert");
 
         if (this.overlay) {
             document.body.appendChild(this.overlay);
         }
 
-        document.body.appendChild(this.container);
+        // it's only opened once it's in the page, so it can be opened again if this fails
+        try {
+            document.body.appendChild(this.container);
+        } catch (error) {
+            this.overlay?.remove();
+            throw error;
+        }
+
+        this.opened = true;
         this.addModal();
     }
 
