@@ -96,7 +96,7 @@ function getType(file: string): FileInfoType {
  * Events:
  *
  * - `complete` -- `listener( data: { failed_ids: string[]; loaded_ids: string[]; } );`
- * - `error` -- `listener( data: { id: string; event; } );` (a network error, or an HTTP error status)
+ * - `error` -- `listener( data: { id: string; event: ProgressEvent; status: number; error?: Error; } );` (any file that failed to load: a network error where the `status` is 0, an HTTP error status, or a file that couldn't be parsed/decoded with the reason in `error`)
  * - `abort` -- `listener( data: { id: string; event; } );`
  * - `progress` -- `listener( progress: number );`
  * - `fileload` -- `listener( data: { id: string; data: Object; } );`
@@ -197,13 +197,16 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Dispatch the `error` event, and then count the file as failed (which can dispatch the `complete` event).
      *
-     * @param event The event to dispatch.
      * @param id The id of the element.
+     * @param details The request's event and status, and the reason when the file itself couldn't be used.
      */
-    private _on_error(event: ProgressEvent, id: string) {
+    private _on_error(
+        id: string,
+        details: { event: ProgressEvent; status: number; error?: Error }
+    ) {
         // still count it if a listener throws, otherwise the 'complete' event would never come
         try {
-            this.dispatchEvent("error", { event: event, id: id });
+            this.dispatchEvent("error", { id: id, ...details });
         } finally {
             this._failed_to_load(id);
         }
@@ -265,7 +268,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
 
         // add the request events
         request.addEventListener("error", (event) => {
-            this._on_error(event, id);
+            this._on_error(id, { event, status: request.status });
         });
         request.addEventListener("abort", (event) => {
             this._on_abort(event, id);
@@ -276,15 +279,21 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         request.addEventListener(
             "load",
             (event) => {
-                // failed to load (accept any 2xx status, plus 304 from cache and 0 for the 'file://' protocol)
                 const status = request.status;
+
+                // the request is done, but the file can still fail (an HTTP error status, or a file that can't be parsed/decoded)
+                const fail = (error?: Error) => {
+                    this._on_error(id, { event, status, error });
+                };
+
+                // accept any 2xx status, plus 304 from cache and 0 for the 'file://' protocol
                 const success =
                     (status >= 200 && status < 300) ||
                     status === 304 ||
                     status === 0;
 
                 if (!success) {
-                    this._on_error(event, id);
+                    fail();
                     return;
                 }
 
@@ -292,11 +301,11 @@ export class Preload extends EventDispatcher<PreloadEvent> {
 
                 switch (type) {
                     case "image":
-                        this.loadImage(id, response);
+                        this.loadImage(id, response, fail);
                         break;
 
                     case "json":
-                        this.loadJson(id, response);
+                        this.loadJson(id, response, fail);
                         break;
 
                     case "audio_mp3":
@@ -306,9 +315,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
                             (audio) => {
                                 this._loaded(id, audio);
                             },
-                            () => {
-                                this._failed_to_load(id);
-                            }
+                            fail
                         );
                         break;
 
@@ -319,9 +326,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
                             (audio) => {
                                 this._loaded(id, audio);
                             },
-                            () => {
-                                this._failed_to_load(id);
-                            }
+                            fail
                         );
                         break;
 
@@ -359,7 +364,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         response: any,
         blobType: "audio/mpeg" | "audio/ogg",
         onLoad: (audio: HTMLAudioElement) => void,
-        onError: () => void
+        onError: (error: Error) => void
     ) {
         const blob = new Blob([response], { type: blobType });
 
@@ -380,7 +385,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         audio.onerror = () => {
             done();
             URL.revokeObjectURL(objectUrl);
-            onError();
+            onError(new Error("The audio couldn't be decoded."));
         };
         audio.src = objectUrl;
 
@@ -390,13 +395,17 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load a json resource.
      */
-    private loadJson(id: string, response: string) {
+    private loadJson(
+        id: string,
+        response: string,
+        onError: (error: Error) => void
+    ) {
         let data;
 
         try {
             data = JSON.parse(response);
-        } catch {
-            this._failed_to_load(id);
+        } catch (error) {
+            onError(error as Error);
             return;
         }
 
@@ -406,7 +415,11 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     /**
      * Load an image resource.
      */
-    private loadImage(id: string, response: any) {
+    private loadImage(
+        id: string,
+        response: any,
+        onError: (error: Error) => void
+    ) {
         const image = new Image();
         const objectUrl = window.URL.createObjectURL(response);
 
@@ -417,7 +430,7 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         };
         image.onerror = () => {
             window.URL.revokeObjectURL(objectUrl);
-            this._failed_to_load(id);
+            onError(new Error("The image couldn't be decoded."));
         };
         image.src = objectUrl;
     }

@@ -1,6 +1,22 @@
-import { cpSync, globSync, readFileSync, writeFileSync } from "node:fs";
-import { basename } from "node:path";
+import { cpSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
 import terser from "@rollup/plugin-terser";
+
+/**
+ * The files in the `dir` folder (and its sub-folders) whose name ends with `suffix` (with `readdirSync()`, since `globSync()` needs node 22).
+ * Fails when there's none, so a wrong path (running from another folder, or a step that didn't run) doesn't go unnoticed.
+ */
+function findFiles(dir, suffix) {
+    const files = readdirSync(dir, { recursive: true })
+        .filter((file) => file.endsWith(suffix))
+        .map((file) => join(dir, file));
+
+    if (files.length === 0) {
+        throw new Error(`No '${suffix}' files found in '${dir}'.`);
+    }
+
+    return files;
+}
 
 /**
  * Write a CommonJS copy (`.d.cts`) of each type declaration in the `dir` folder, for the `require` condition of the package exports.
@@ -10,7 +26,7 @@ function cjsTypes(dir) {
     return {
         name: "cjs-types",
         closeBundle() {
-            for (const file of globSync(`${dir}/**/*.d.ts`)) {
+            for (const file of findFiles(dir, ".d.ts")) {
                 // the relative imports point to the '.cjs' files instead, which resolve to their '.d.cts' declarations
                 const content = readFileSync(file, "utf8").replace(
                     /((?:from\s*|import\(\s*)["']\.{1,2}\/[^"']*)\.js(["'])/g,
@@ -28,9 +44,10 @@ function cjsTypes(dir) {
 export function copyCss(dest) {
     return {
         name: "copy-css",
-        writeBundle() {
-            for (const file of globSync("source/**/*.css")) {
-                cpSync(file, `${dest}/${basename(file)}`);
+        // once all the outputs are written ('writeBundle' runs once per output)
+        closeBundle() {
+            for (const file of findFiles("source", ".css")) {
+                cpSync(file, join(dest, basename(file)));
             }
         },
     };

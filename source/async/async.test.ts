@@ -263,6 +263,22 @@ describe("pollUntil", () => {
         await vi.advanceTimersByTimeAsync(200);
         expect(check).toHaveBeenCalledTimes(1);
     });
+
+    test("a change to the system clock doesn't move the deadline (regression: turning it forward timed out right away).", async () => {
+        let counter = 0;
+        const check = vi.fn(() => {
+            counter++;
+            if (counter === 1) {
+                vi.setSystemTime(Date.now() + 60 * 60 * 1000);
+            }
+            return counter >= 3 ? "done" : false;
+        });
+
+        const promise = pollUntil(check, { interval: 10, timeout: 1000 });
+        await vi.advanceTimersByTimeAsync(20);
+
+        await expect(promise).resolves.toBe("done");
+    });
 });
 
 describe("debounce", () => {
@@ -366,11 +382,26 @@ describe("throttle", () => {
         t("b"); // trailing call scheduled for the end of the window
 
         // a busy event loop: the window is over, but the trailing timer didn't get to run yet
-        vi.setSystemTime(Date.now() + 150);
+        const now = vi
+            .spyOn(performance, "now")
+            .mockReturnValue(performance.now() + 150);
         t("c");
+        now.mockRestore();
         vi.runAllTimers();
 
         expect(fn.mock.calls).toEqual([["a"], ["c"]]);
+    });
+
+    test("a change to the system clock doesn't delay the trailing call (regression: turning it back an hour delayed it an hour).", () => {
+        const fn = vi.fn();
+        const t = throttle(fn, 100);
+
+        t("a");
+        vi.setSystemTime(Date.now() - 60 * 60 * 1000);
+        t("b");
+
+        vi.advanceTimersByTime(100);
+        expect(fn.mock.calls).toEqual([["a"], ["b"]]);
     });
 });
 

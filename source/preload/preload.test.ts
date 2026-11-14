@@ -470,6 +470,80 @@ describe("Preload", () => {
         });
     });
 
+    test("Every file that fails dispatches the 'error' event, with the status and the reason (regression: only network errors and HTTP error statuses did, without the status).", () => {
+        const requests = mockControlledXHR();
+        mockURL();
+
+        class ErrorImage {
+            onload: () => void = () => {};
+            onerror: () => void = () => {};
+
+            set src(_url: string) {
+                this.onerror();
+            }
+        }
+
+        class ErrorAudio {
+            oncanplay: () => void = () => {};
+            onerror: () => void = () => {};
+
+            set src(_url: string) {}
+
+            load() {
+                this.onerror();
+            }
+        }
+
+        window.Image = ErrorImage as any;
+        window.Audio = ErrorAudio as any;
+
+        const preload = new Preload();
+        const errors: any[] = [];
+        const onComplete = vi.fn();
+        preload.addEventListener("error", (data) => errors.push(data));
+        preload.addEventListener("complete", onComplete);
+
+        preload.loadManifest([
+            { id: "missing", path: "missing.txt" },
+            { id: "json", path: "invalid.json" },
+            { id: "image", path: "broken.png" },
+            { id: "audio", path: "broken.mp3" },
+            { id: "offline", path: "offline.txt" },
+        ]);
+
+        requests[0].status = 404;
+        requests[0].trigger("load");
+        requests[1].response = "{ not valid json";
+        requests[1].trigger("load");
+        requests[2].response = new Blob();
+        requests[2].trigger("load");
+        requests[3].response = new ArrayBuffer(1);
+        requests[3].trigger("load");
+        requests[4].status = 0;
+        requests[4].trigger("error");
+
+        expect(
+            errors.map(({ id, status, error }) => [
+                id,
+                status,
+                error?.constructor,
+            ])
+        ).toEqual([
+            ["missing", 404, undefined],
+            ["json", 200, SyntaxError],
+            ["image", 200, Error],
+            ["audio", 200, Error],
+            ["offline", 0, undefined],
+        ]);
+        errors.forEach((data) => {
+            expect(data.event).toBeInstanceOf(ProgressEvent);
+        });
+        expect(onComplete).toHaveBeenCalledWith({
+            failed_ids: ["missing", "json", "image", "audio", "offline"],
+            loaded_ids: [],
+        });
+    });
+
     test("The 'complete' event data is kept intact after the event (regression: the arrays were emptied).", () => {
         mockXHR("test test");
 

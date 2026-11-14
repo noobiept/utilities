@@ -172,4 +172,37 @@ describe("EventDispatcher", () => {
 
         expect(second).not.toHaveBeenCalled();
     });
+
+    test("A listener removed and added again during a dispatch is only called on the next one, like a new listener (regression: it was still called).", () => {
+        const dispatcher = new EventDispatcher();
+        const second = vi.fn();
+        const first = () => {
+            dispatcher.removeEventListener("test", first);
+            dispatcher.removeEventListener("test", second);
+            dispatcher.addEventListener("test", second);
+        };
+
+        dispatcher.addEventListener("test", first);
+        dispatcher.addEventListener("test", second);
+
+        dispatcher.dispatchEvent("test");
+        expect(second).not.toHaveBeenCalled();
+
+        dispatcher.dispatchEvent("test");
+        expect(second).toHaveBeenCalledTimes(1);
+    });
+
+    test("The listeners removed for one type, or for all the types, during a dispatch aren't called.", () => {
+        const dispatcher = new EventDispatcher();
+        const second = vi.fn();
+
+        dispatcher.addEventListener("test", () => {
+            dispatcher.removeEventListener("test");
+        });
+        dispatcher.addEventListener("test", second);
+        dispatcher.dispatchEvent("test");
+
+        expect(second).not.toHaveBeenCalled();
+        expect(dispatcher.hasListeners("test")).toBe(false);
+    });
 });

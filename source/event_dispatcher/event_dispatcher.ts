@@ -1,3 +1,8 @@
+interface ListenerEntry {
+    listener: (data: any) => void;
+    removed: boolean; // so a dispatch that is going on doesn't call it anymore (even if the same listener is added again)
+}
+
 /**
  * Base class that provides a way to add/remove listeners, and dispatch events.
  *
@@ -18,7 +23,7 @@
  */
 export class EventDispatcher<EventType extends string> {
     private _listeners: {
-        [E in EventType]?: ((data: any) => void)[];
+        [E in EventType]?: ListenerEntry[];
     };
 
     constructor() {
@@ -34,16 +39,14 @@ export class EventDispatcher<EventType extends string> {
      * @return If it was successfully added.
      */
     addEventListener(type: EventType, listener: (data: any) => void) {
-        if (!this._listeners[type]) {
-            this._listeners[type] = [];
+        const entries = (this._listeners[type] ??= []);
+
+        if (entries.some((entry) => entry.listener === listener)) {
+            return false;
         }
 
-        if (this._listeners[type]!.indexOf(listener) < 0) {
-            this._listeners[type]!.push(listener);
-            return true;
-        }
-
-        return false;
+        entries.push({ listener, removed: false });
+        return true;
     }
 
     /**
@@ -54,17 +57,21 @@ export class EventDispatcher<EventType extends string> {
      * @return If it was successfully removed.
      */
     removeEventListener(type: EventType, listener?: (data: any) => any) {
-        const listeners = this._listeners[type];
+        const entries = this._listeners[type];
 
-        if (listeners) {
+        if (entries) {
             if (typeof listener !== "undefined") {
-                const index = listeners.indexOf(listener);
+                const index = entries.findIndex(
+                    (entry) => entry.listener === listener
+                );
 
                 if (index >= 0) {
-                    listeners.splice(index, 1);
+                    entries[index].removed = true;
+                    entries.splice(index, 1);
                     return true;
                 }
             } else {
+                entries.forEach((entry) => (entry.removed = true));
                 this._listeners[type] = [];
                 return true;
             }
@@ -77,6 +84,12 @@ export class EventDispatcher<EventType extends string> {
      * Remove all the event listeners.
      */
     removeAllEventListeners() {
+        for (const entries of Object.values<ListenerEntry[] | undefined>(
+            this._listeners
+        )) {
+            entries?.forEach((entry) => (entry.removed = true));
+        }
+
         this._listeners = {};
     }
 
@@ -88,13 +101,13 @@ export class EventDispatcher<EventType extends string> {
      * @param data Data to be sent to every listener.
      */
     dispatchEvent(type: EventType, data?: any) {
-        const listeners = this._listeners[type];
+        const entries = this._listeners[type];
 
-        if (listeners) {
+        if (entries) {
             // go through a copy, so adding/removing listeners from within a listener doesn't skip or repeat any of the others
-            for (const listener of listeners.slice()) {
-                if (this._listeners[type]?.includes(listener)) {
-                    listener(data);
+            for (const entry of entries.slice()) {
+                if (!entry.removed) {
+                    entry.listener(data);
                 }
             }
         }
@@ -107,9 +120,9 @@ export class EventDispatcher<EventType extends string> {
      * @return If there are listeners or not.
      */
     hasListeners(type: EventType) {
-        const listeners = this._listeners[type];
+        const entries = this._listeners[type];
 
-        if (listeners && listeners.length > 0) {
+        if (entries && entries.length > 0) {
             return true;
         }
 

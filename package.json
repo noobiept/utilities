@@ -83,7 +83,7 @@
         "dev:build": "rollup --config ./dev/rollup-dev.config.mjs --watch",
         "dev:server": "vite preview --outDir ./dev/ --port 8080 --open",
         "build": "npm-run-all --serial build:*",
-        "build:clean": "rimraf build/ temp/",
+        "build:clean": "rimraf build/ temp/ && rimraf --glob \"source/**/*.js\"",
         "build:tsc": "tsc",
         "build:rollup": "rollup --config rollup.config.mjs",
         "test": "npm-run-all --serial build:tsc format:check lint unit e2e",

@@ -159,13 +159,14 @@ export async function pollUntil<T>(
     options: PollOptions
 ): Promise<T> {
     const { interval, timeout } = options;
-    const deadline = Date.now() + timeout;
+    // 'performance.now()' instead of 'Date.now()', so a change to the system clock doesn't move the deadline
+    const deadline = performance.now() + timeout;
 
     while (true) {
         // a check that never settles (a hung request, for example) still times out
         const result = await withTimeout(
             Promise.resolve(check()),
-            deadline - Date.now(),
+            deadline - performance.now(),
             "pollUntil timed out"
         );
         if (result) {
@@ -173,11 +174,11 @@ export async function pollUntil<T>(
         }
 
         // don't sleep past the deadline, nor start a check after it (it would have no time left, so its result would be thrown away)
-        const remaining = deadline - Date.now();
+        const remaining = deadline - performance.now();
         if (remaining > 0) {
             await sleep(Math.min(interval, remaining));
         }
-        if (Date.now() >= deadline) {
+        if (performance.now() >= deadline) {
             throw new TimeoutError("pollUntil timed out");
         }
     }
@@ -256,12 +257,13 @@ export function throttle<Args extends unknown[]>(
     let trailingArgs: Args | undefined;
 
     const invoke = (args: Args) => {
-        lastCallTime = Date.now();
+        lastCallTime = performance.now();
         fn(...args);
     };
 
     const throttled = ((...args: Args) => {
-        const now = Date.now();
+        // 'performance.now()' instead of 'Date.now()', so a change to the system clock doesn't stop or rush the calls
+        const now = performance.now();
         const elapsed = now - lastCallTime;
 
         if (elapsed >= ms) {
