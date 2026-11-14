@@ -8,7 +8,7 @@
 
 > **calculateAngle**(`aX`, `aY`, `bX`, `bY`): `number`
 
-Defined in: [source/trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/trigonometry/trigonometry.ts#L5)
+Defined in: [source/trigonometry/trigonometry.ts:5](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/trigonometry/trigonometry.ts#L5)
 
 Returns the angle between 2 points in radians.
 Positive in clockwise direction.

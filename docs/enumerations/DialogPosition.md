@@ -6,7 +6,7 @@
 
 # Enumeration: DialogPosition
 
-Defined in: [source/dialog/dialog.ts:1](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L1)
+Defined in: [source/dialog/dialog.ts:1](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L1)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [source/dialog/dialog.ts:1](https://github.com/noobiept/utilities/bl
 
 > **bottom**: `2`
 
-Defined in: [source/dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L4)
+Defined in: [source/dialog/dialog.ts:4](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L4)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [source/dialog/dialog.ts:4](https://github.com/noobiept/utilities/bl
 
 > **bottomLeft**: `1`
 
-Defined in: [source/dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L3)
+Defined in: [source/dialog/dialog.ts:3](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L3)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [source/dialog/dialog.ts:3](https://github.com/noobiept/utilities/bl
 
 > **bottomRight**: `3`
 
-Defined in: [source/dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L5)
+Defined in: [source/dialog/dialog.ts:5](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L5)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [source/dialog/dialog.ts:5](https://github.com/noobiept/utilities/bl
 
 > **center**: `0`
 
-Defined in: [source/dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L2)
+Defined in: [source/dialog/dialog.ts:2](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L2)

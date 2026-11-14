@@ -6,7 +6,7 @@
 
 # Class: Dialog
 
-Defined in: [source/dialog/dialog.ts:67](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L67)
+Defined in: [source/dialog/dialog.ts:79](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L79)
 
 Create a dialog window with the given message.
 Can be a modal (forces user interaction) or not.
@@ -29,7 +29,7 @@ There's some basic styling available, that you can import in case there's no nee
 
 > **new Dialog**(`args`): `Dialog`
 
-Defined in: [source/dialog/dialog.ts:85](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L85)
+Defined in: [source/dialog/dialog.ts:97](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L97)
 
 #### Parameters
 
@@ -47,7 +47,7 @@ Defined in: [source/dialog/dialog.ts:85](https://github.com/noobiept/utilities/b
 
 > `readonly` **body**: `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:70](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L70)
+Defined in: [source/dialog/dialog.ts:82](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L82)
 
 ***
 
@@ -55,7 +55,7 @@ Defined in: [source/dialog/dialog.ts:70](https://github.com/noobiept/utilities/b
 
 > `readonly` `optional` **buttons?**: `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:71](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L71)
+Defined in: [source/dialog/dialog.ts:83](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L83)
 
 ***
 
@@ -63,7 +63,7 @@ Defined in: [source/dialog/dialog.ts:71](https://github.com/noobiept/utilities/b
 
 > `readonly` **container**: `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:68](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L68)
+Defined in: [source/dialog/dialog.ts:80](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L80)
 
 ***
 
@@ -71,7 +71,7 @@ Defined in: [source/dialog/dialog.ts:68](https://github.com/noobiept/utilities/b
 
 > `readonly` **title**: `HTMLElement`
 
-Defined in: [source/dialog/dialog.ts:69](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L69)
+Defined in: [source/dialog/dialog.ts:81](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L81)
 
 ## Methods
 
@@ -79,7 +79,7 @@ Defined in: [source/dialog/dialog.ts:69](https://github.com/noobiept/utilities/b
 
 > **close**(): `void`
 
-Defined in: [source/dialog/dialog.ts:372](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L372)
+Defined in: [source/dialog/dialog.ts:405](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L405)
 
 Remove the dialog from the page.
 
@@ -93,7 +93,7 @@ Remove the dialog from the page.
 
 > **isOpened**(): `boolean`
 
-Defined in: [source/dialog/dialog.ts:394](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L394)
+Defined in: [source/dialog/dialog.ts:427](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L427)
 
 Check if the dialog is opened or not.
 
@@ -107,7 +107,7 @@ Check if the dialog is opened or not.
 
 > **open**(): `void`
 
-Defined in: [source/dialog/dialog.ts:355](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L355)
+Defined in: [source/dialog/dialog.ts:377](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L377)
 
 Add the dialog to the page.
 
@@ -121,7 +121,7 @@ Add the dialog to the page.
 
 > **setBody**(`content`): `void`
 
-Defined in: [source/dialog/dialog.ts:426](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L426)
+Defined in: [source/dialog/dialog.ts:459](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L459)
 
 Change the body of the dialog.
 A string is set as plain text — pass an `HTMLElement` if you need HTML content.
@@ -142,7 +142,7 @@ A string is set as plain text — pass an `HTMLElement` if you need HTML content
 
 > **setTitle**(`content`): `void`
 
-Defined in: [source/dialog/dialog.ts:413](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L413)
+Defined in: [source/dialog/dialog.ts:446](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L446)
 
 Change the title of the dialog.
 A string is set as plain text — pass an `HTMLElement` if you need HTML content.
@@ -163,7 +163,7 @@ A string is set as plain text — pass an `HTMLElement` if you need HTML content
 
 > **toggle**(): `void`
 
-Defined in: [source/dialog/dialog.ts:401](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L401)
+Defined in: [source/dialog/dialog.ts:434](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L434)
 
 Toggle between the open/close state.
 

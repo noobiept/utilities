@@ -8,7 +8,7 @@
 
 > **debounce**\<`Args`\>(`fn`, `ms`): [`Debounced`](../interfaces/Debounced.md)\<`Args`\>
 
-Defined in: [source/async/async.ts:195](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/async/async.ts#L195)
+Defined in: [source/async/async.ts:194](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/async/async.ts#L194)
 
 Returns a wrapper that delays calling `fn` until `ms` milliseconds have passed
 since the last invocation. Subsequent calls within that window reset the timer.

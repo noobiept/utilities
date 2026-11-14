@@ -6,7 +6,7 @@
 
 # Enumeration: DialogButtons
 
-Defined in: [source/dialog/dialog.ts:8](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L8)
+Defined in: [source/dialog/dialog.ts:8](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L8)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [source/dialog/dialog.ts:8](https://github.com/noobiept/utilities/bl
 
 > **none**: `0`
 
-Defined in: [source/dialog/dialog.ts:9](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L9)
+Defined in: [source/dialog/dialog.ts:9](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L9)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [source/dialog/dialog.ts:9](https://github.com/noobiept/utilities/bl
 
 > **ok**: `1`
 
-Defined in: [source/dialog/dialog.ts:10](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/dialog/dialog.ts#L10)
+Defined in: [source/dialog/dialog.ts:10](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/dialog/dialog.ts#L10)

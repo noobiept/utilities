@@ -6,7 +6,7 @@
 
 # Class: EventDispatcher\<EventType\>
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L24)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:24](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L24)
 
 Base class that provides a way to add/remove listeners, and dispatch events.
 
@@ -41,7 +41,7 @@ Basic Usage:
 
 > **new EventDispatcher**\<`EventType`\>(): `EventDispatcher`\<`EventType`\>
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:29](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L29)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:29](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L29)
 
 #### Returns
 
@@ -53,7 +53,7 @@ Defined in: [source/event\_dispatcher/event\_dispatcher.ts:29](https://github.co
 
 > **addEventListener**(`type`, `listener`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:41](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L41)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:41](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L41)
 
 'listener' will receive a 'data' argument when its called.
 What 'data' is, depends on the event type.
@@ -84,7 +84,7 @@ If it was successfully added.
 
 > **dispatchEvent**(`type`, `data?`): `void`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:103](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L103)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:103](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L103)
 
 Dispatches an event, which will trigger the listeners of that event (in the order they were added).
 Like with the DOM events, a listener added during the dispatch is only called on the next one, and a listener removed during the dispatch isn't called.
@@ -113,7 +113,7 @@ Data to be sent to every listener.
 
 > **hasListeners**(`type`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:122](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L122)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:122](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L122)
 
 Check if there are listeners to a particular event type.
 
@@ -137,7 +137,7 @@ If there are listeners or not.
 
 > **removeAllEventListeners**(): `void`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:86](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L86)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:86](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L86)
 
 Remove all the event listeners.
 
@@ -151,7 +151,7 @@ Remove all the event listeners.
 
 > **removeEventListener**(`type`, `listener?`): `boolean`
 
-Defined in: [source/event\_dispatcher/event\_dispatcher.ts:59](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/event_dispatcher/event_dispatcher.ts#L59)
+Defined in: [source/event\_dispatcher/event\_dispatcher.ts:59](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/event_dispatcher/event_dispatcher.ts#L59)
 
 Removes a specific listener of an event type, or all the listeners for that type (if 'listener' is not provided).
 

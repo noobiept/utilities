@@ -8,7 +8,7 @@
 
 > **getRandomInt**(`min`, `max`): `number`
 
-Defined in: [source/number/number.ts:17](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/number/number.ts#L17)
+Defined in: [source/number/number.ts:17](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/number/number.ts#L17)
 
 Returns a random integer number between `min` and `max` (inclusive).
 

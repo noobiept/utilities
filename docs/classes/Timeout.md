@@ -6,7 +6,7 @@
 
 # Class: Timeout
 
-Defined in: [source/timeout/timeout.ts:4](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timeout/timeout.ts#L4)
+Defined in: [source/timeout/timeout.ts:4](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/timeout/timeout.ts#L4)
 
 Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
@@ -16,7 +16,7 @@ Call a function after a certain time has passed. Uses the `window.setTimeout()`.
 
 > **new Timeout**(): `Timeout`
 
-Defined in: [source/timeout/timeout.ts:8](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timeout/timeout.ts#L8)
+Defined in: [source/timeout/timeout.ts:8](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/timeout/timeout.ts#L8)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [source/timeout/timeout.ts:8](https://github.com/noobiept/utilities/
 
 > **clear**(): `void`
 
-Defined in: [source/timeout/timeout.ts:32](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timeout/timeout.ts#L32)
+Defined in: [source/timeout/timeout.ts:32](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/timeout/timeout.ts#L32)
 
 Cancels the timeout.
 
@@ -42,7 +42,7 @@ Cancels the timeout.
 
 > **isActive**(): `boolean`
 
-Defined in: [source/timeout/timeout.ts:40](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timeout/timeout.ts#L40)
+Defined in: [source/timeout/timeout.ts:40](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/timeout/timeout.ts#L40)
 
 Returns whether the timeout is active or not.
 
@@ -56,7 +56,7 @@ Returns whether the timeout is active or not.
 
 > **start**(`functionToCall`, `interval`): `void`
 
-Defined in: [source/timeout/timeout.ts:16](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/timeout/timeout.ts#L16)
+Defined in: [source/timeout/timeout.ts:16](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/timeout/timeout.ts#L16)
 
 Starts the timeout. If there was an active timeout already, that one is canceled.
 

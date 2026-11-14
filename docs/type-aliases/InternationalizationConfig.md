@@ -8,7 +8,7 @@
 
 > **InternationalizationConfig** = `object`
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:16](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/time_to_string/time_to_string.ts#L16)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:16](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/time_to_string/time_to_string.ts#L16)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:16](https://github.com/
 
 > **day**: [`UnitDescription`](UnitDescription.md)
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:17](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/time_to_string/time_to_string.ts#L17)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:17](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/time_to_string/time_to_string.ts#L17)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:17](https://github.com/
 
 > **hour**: [`UnitDescription`](UnitDescription.md)
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:18](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/time_to_string/time_to_string.ts#L18)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:18](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/time_to_string/time_to_string.ts#L18)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:18](https://github.com/
 
 > **minute**: [`UnitDescription`](UnitDescription.md)
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:19](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/time_to_string/time_to_string.ts#L19)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:19](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/time_to_string/time_to_string.ts#L19)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [source/time\_to\_string/time\_to\_string.ts:19](https://github.com/
 
 > **second**: [`UnitDescription`](UnitDescription.md)
 
-Defined in: [source/time\_to\_string/time\_to\_string.ts:20](https://github.com/noobiept/utilities/blob/a2b219c4e944f55be1689b2aadd978da31c48c73/source/time_to_string/time_to_string.ts#L20)
+Defined in: [source/time\_to\_string/time\_to\_string.ts:20](https://github.com/noobiept/utilities/blob/b21d9fb0c9b704e42a1118c2425caf151c654ec9/source/time_to_string/time_to_string.ts#L20)
