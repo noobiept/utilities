@@ -5,8 +5,7 @@ import {
 import { isNumber, isFunction } from "../is_type/is_type.js";
 
 export type UpdateFormat =
-    | Omit<TimeToStringArgs, "time">
-    | ((timer: Timer) => string);
+    Omit<TimeToStringArgs, "time"> | ((timer: Timer) => string);
 
 export type UpdateElement = {
     element: HTMLElement;

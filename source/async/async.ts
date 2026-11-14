@@ -151,11 +151,7 @@ export interface PollOptions {
  */
 export async function pollUntil<T>(
     check: () =>
-        | Promise<T | false | null | undefined>
-        | T
-        | false
-        | null
-        | undefined,
+        Promise<T | false | null | undefined> | T | false | null | undefined,
     options: PollOptions
 ): Promise<T> {
     const { interval, timeout } = options;

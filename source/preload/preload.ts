@@ -12,11 +12,7 @@ export type ManifestData = {
 }[];
 
 export type PreloadEvent =
-    | "complete"
-    | "error"
-    | "abort"
-    | "progress"
-    | "fileload";
+    "complete" | "error" | "abort" | "progress" | "fileload";
 
 // supported file types
 const FileInfo = {
