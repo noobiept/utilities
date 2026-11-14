@@ -1,0 +1,33 @@
+name: release
+
+on:
+    push:
+        tags:
+            - "v*"
+
+permissions:
+    contents: read
+    id-token: write # OIDC token for npm trusted publishing and the provenance attestation
+
+jobs:
+    publish:
+        runs-on: ubuntu-24.04
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "24.x"
+                  cache: "pnpm"
+                  registry-url: "https://registry.npmjs.org"
+
+            # `npm stage` needs npm 11.15.0 or newer
+            - run: npm install --global npm@11
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm run e2e:install
+
+            # runs `prepublishOnly` (test, build, documentation), then uploads to the stage queue,
+            # where a maintainer has to approve it (with 2FA) on npmjs.com before it is released
+            # `--provenance` makes the job fail instead of silently publishing without it
+            - run: npm stage publish --provenance
