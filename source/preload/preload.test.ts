@@ -368,6 +368,40 @@ describe("Preload", () => {
         });
     });
 
+    test("A listener that throws doesn't stop the 'complete' event (regression: the file wasn't counted).", () => {
+        const cases = [
+            { listener: "error", trigger: "error", status: 200 },
+            { listener: "abort", trigger: "abort", status: 200 },
+            { listener: "error", trigger: "load", status: 404 },
+            { listener: "fileload", trigger: "load", status: 200 },
+        ] as const;
+
+        cases.forEach(({ listener, trigger, status }) => {
+            const requests = mockControlledXHR();
+            const preload = new Preload();
+            const complete = vi.fn();
+            const throwing = () => {
+                throw new Error("listener failed");
+            };
+
+            preload.addEventListener(listener, throwing);
+            preload.addEventListener("complete", complete);
+
+            preload.load("file", "file.txt");
+            requests[0].status = status;
+            expect(() => requests[0].trigger(trigger)).toThrow(
+                "listener failed"
+            );
+            expect(complete).toHaveBeenCalledTimes(1);
+
+            // the next load still works
+            preload.removeEventListener(listener, throwing);
+            preload.load("other", "other.txt");
+            requests[1].trigger("error");
+            expect(complete).toHaveBeenCalledTimes(2);
+        });
+    });
+
     test("The file type comes from the file name, ignoring the case and the url's query/hash (regression: 'Image.PNG' or 'data.json?v=2' loaded as text).", () => {
         const requests = mockControlledXHR();
         const preload = new Preload();

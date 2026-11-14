@@ -60,10 +60,12 @@ export class Dialog {
     private overlay?: HTMLElement;
     private onClose?: () => void;
     private keyboardShortcuts?: {
+        markKeyDown: (event: KeyboardEvent) => void;
         keyDown: (event: KeyboardEvent) => void;
         keyUp: (event: KeyboardEvent) => void;
     };
     private pressedKey?: string; // shortcut key that was pressed while the dialog was opened (and not released yet)
+    private keyDownsWhileOpened = new WeakSet<Event>(); // the 'keydown' events that started after the dialog was opened
     private opened: boolean;
 
     constructor(args: DialogArgs) {
@@ -180,7 +182,17 @@ export class Dialog {
     }
 
     private setupKeyboardShortcuts() {
+        // listens on the capture phase of the window (the first stop of an event), so it misses the key press that opened the dialog, which was already past it
+        const markKeyDown = (event: KeyboardEvent) => {
+            this.keyDownsWhileOpened.add(event);
+        };
+
         const keyDown = (event: KeyboardEvent) => {
+            // ignore the key press that opened the dialog (when opened from a 'keydown' listener on an element, the event still bubbles up to the document afterwards)
+            if (!this.keyDownsWhileOpened.has(event)) {
+                return;
+            }
+
             // only the dialog on top reacts, otherwise a single key press would close all the opened dialogs
             if (OPENED_MODALS[OPENED_MODALS.length - 1] !== this) {
                 return;
@@ -216,13 +228,19 @@ export class Dialog {
             }
         };
 
-        return { keyDown, keyUp };
+        return { markKeyDown, keyDown, keyUp };
     }
 
     private addKeyboardShortcuts() {
         if (this.keyboardShortcuts) {
             this.pressedKey = undefined;
+            this.keyDownsWhileOpened = new WeakSet();
             OPENED_MODALS.push(this);
+            window.addEventListener(
+                "keydown",
+                this.keyboardShortcuts.markKeyDown,
+                { capture: true }
+            );
             document.addEventListener(
                 "keydown",
                 this.keyboardShortcuts.keyDown
@@ -234,6 +252,11 @@ export class Dialog {
     private removeKeyboardShortcuts() {
         if (this.keyboardShortcuts) {
             OPENED_MODALS.splice(OPENED_MODALS.indexOf(this), 1);
+            window.removeEventListener(
+                "keydown",
+                this.keyboardShortcuts.markKeyDown,
+                { capture: true }
+            );
             document.removeEventListener(
                 "keydown",
                 this.keyboardShortcuts.keyDown

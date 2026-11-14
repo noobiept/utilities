@@ -14,10 +14,16 @@ const pkg = JSON.parse(
 
 describe("package exports", () => {
     test("exposes the main entry point with every condition", () => {
-        expect(pkg.exports["."]).toMatchObject({
-            types: "./build/index.d.ts",
-            import: "./build/utilities.mjs",
-            require: "./build/utilities.cjs",
+        // each one has its own types, a CommonJS project can't use the ES module declarations (regression: TS1479 with "module": "node16")
+        expect(pkg.exports["."]).toStrictEqual({
+            import: {
+                types: "./build/index.d.ts",
+                default: "./build/utilities.mjs",
+            },
+            require: {
+                types: "./build/index.d.cts",
+                default: "./build/utilities.cjs",
+            },
         });
     });
 

@@ -62,6 +62,38 @@ describe("withTimeout", () => {
         await vi.advanceTimersByTimeAsync(50);
         await rejection;
     });
+
+    test("an 'Infinity' timeout never rejects (regression: 'setTimeout' ran it right away).", async () => {
+        const inner = deferred<string>();
+        const wrapped = withTimeout(inner.promise, Infinity);
+        let settled = false;
+        wrapped.finally(() => {
+            settled = true;
+        });
+
+        await vi.advanceTimersByTimeAsync(2 ** 32);
+        expect(settled).toBe(false);
+
+        inner.resolve("ok");
+        await expect(wrapped).resolves.toBe("ok");
+    });
+
+    test("a timeout longer than 'setTimeout' supports still waits for it (regression: 'setTimeout' ran it right away).", async () => {
+        const day = 24 * 60 * 60 * 1000;
+        const inner = deferred<string>();
+        const wrapped = withTimeout(inner.promise, 30 * day);
+        let settled = false;
+        const rejection = expect(wrapped).rejects.toBeInstanceOf(TimeoutError);
+        wrapped.catch(() => {
+            settled = true;
+        });
+
+        await vi.advanceTimersByTimeAsync(30 * day - 1);
+        expect(settled).toBe(false);
+
+        await vi.advanceTimersByTimeAsync(1);
+        await rejection;
+    });
 });
 
 describe("deferred", () => {
@@ -192,6 +224,44 @@ describe("pollUntil", () => {
         await vi.advanceTimersByTimeAsync(50);
         await rejection;
         expect(check).toHaveBeenCalledTimes(2);
+    });
+
+    test("an 'Infinity' timeout keeps polling (regression: it timed out right away).", async () => {
+        let counter = 0;
+        const check = vi.fn(async () => {
+            await sleep(20);
+            counter++;
+            return counter >= 3 ? "done" : false;
+        });
+
+        const promise = pollUntil(check, { interval: 100, timeout: Infinity });
+        await vi.advanceTimersByTimeAsync(300);
+
+        await expect(promise).resolves.toBe("done");
+        expect(check).toHaveBeenCalledTimes(3);
+    });
+
+    test("doesn't start a check after the deadline (regression: it slept past it, then threw the check's result away).", async () => {
+        const check = vi.fn(async () => {
+            await sleep(20);
+            return false;
+        });
+
+        const promise = pollUntil(check, { interval: 100, timeout: 50 });
+        let settled = false;
+        const rejection = expect(promise).rejects.toBeInstanceOf(TimeoutError);
+        promise.catch(() => {
+            settled = true;
+        });
+
+        // gives up at the deadline, instead of waiting for the next interval
+        await vi.advanceTimersByTimeAsync(49);
+        expect(settled).toBe(false);
+        await vi.advanceTimersByTimeAsync(1);
+        await rejection;
+
+        await vi.advanceTimersByTimeAsync(200);
+        expect(check).toHaveBeenCalledTimes(1);
     });
 });
 

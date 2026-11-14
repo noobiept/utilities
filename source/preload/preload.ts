@@ -148,13 +148,17 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         }
 
         this._file_progress.delete(id);
-        this.dispatchEvent("fileload", { id: id, data: data });
 
-        this._loaded_items++;
-        this._loaded_ids.push(id);
+        // still count it if a listener throws, otherwise the 'complete' event would never come
+        try {
+            this.dispatchEvent("fileload", { id: id, data: data });
+        } finally {
+            this._loaded_items++;
+            this._loaded_ids.push(id);
 
-        if (this._loaded_items >= this._total_items) {
-            this._loading_complete();
+            if (this._loaded_items >= this._total_items) {
+                this._loading_complete();
+            }
         }
     }
 
@@ -191,23 +195,32 @@ export class Preload extends EventDispatcher<PreloadEvent> {
     }
 
     /**
-     * Dispatch the `error` event.
+     * Dispatch the `error` event, and then count the file as failed (which can dispatch the `complete` event).
      *
      * @param event The event to dispatch.
      * @param id The id of the element.
      */
     private _on_error(event: ProgressEvent, id: string) {
-        this.dispatchEvent("error", { event: event, id: id });
+        // still count it if a listener throws, otherwise the 'complete' event would never come
+        try {
+            this.dispatchEvent("error", { event: event, id: id });
+        } finally {
+            this._failed_to_load(id);
+        }
     }
 
     /**
-     * Dispatch the `abort` event.
+     * Dispatch the `abort` event, and then count the file as failed (which can dispatch the `complete` event).
      *
      * @param event The event to dispatch.
      * @param id The id of the element.
      */
     private _on_abort(event: ProgressEvent, id: string) {
-        this.dispatchEvent("abort", { event: event, id: id });
+        try {
+            this.dispatchEvent("abort", { event: event, id: id });
+        } finally {
+            this._failed_to_load(id);
+        }
     }
 
     /**
@@ -250,14 +263,12 @@ export class Preload extends EventDispatcher<PreloadEvent> {
         request.open("get", path, true);
         request.responseType = FileInfo[type].responseType;
 
-        // add the request events (the 'error'/'abort' events are dispatched before the file is counted as failed, since that can dispatch the 'complete' event)
+        // add the request events
         request.addEventListener("error", (event) => {
             this._on_error(event, id);
-            this._failed_to_load(id);
         });
         request.addEventListener("abort", (event) => {
             this._on_abort(event, id);
-            this._failed_to_load(id);
         });
         request.addEventListener("progress", (event) => {
             this._on_progress(event, id);
@@ -274,7 +285,6 @@ export class Preload extends EventDispatcher<PreloadEvent> {
 
                 if (!success) {
                     this._on_error(event, id);
-                    this._failed_to_load(id);
                     return;
                 }
 

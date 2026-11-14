@@ -17,9 +17,35 @@ export function sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// `setTimeout` runs a longer delay (about 24.8 days) after just 1ms
+const MAX_DELAY = 2 ** 31 - 1;
+
+/**
+ * Like `setTimeout`, but it also works with delays longer than `MAX_DELAY` (an `Infinity` delay never runs).
+ * Returns a function that cancels it.
+ */
+function longTimeout(callback: () => void, ms: number): () => void {
+    let id: ReturnType<typeof setTimeout> | undefined;
+
+    const schedule = (remaining: number) => {
+        if (remaining === Infinity) {
+            return;
+        }
+
+        if (remaining > MAX_DELAY) {
+            id = setTimeout(() => schedule(remaining - MAX_DELAY), MAX_DELAY);
+        } else {
+            id = setTimeout(callback, remaining);
+        }
+    };
+    schedule(ms);
+
+    return () => clearTimeout(id);
+}
+
 /**
  * Resolves with the value of `promise` if it settles before `ms` elapses,
- * otherwise rejects with a `TimeoutError`.
+ * otherwise rejects with a `TimeoutError`. An `Infinity` timeout never rejects.
  */
 export function withTimeout<T>(
     promise: PromiseLike<T>,
@@ -27,17 +53,17 @@ export function withTimeout<T>(
     message?: string
 ): Promise<T> {
     return new Promise<T>((resolve, reject) => {
-        const id = setTimeout(() => {
+        const cancel = longTimeout(() => {
             reject(new TimeoutError(message));
         }, ms);
 
         Promise.resolve(promise).then(
             (value) => {
-                clearTimeout(id);
+                cancel();
                 resolve(value);
             },
             (err) => {
-                clearTimeout(id);
+                cancel();
                 reject(err);
             }
         );
@@ -115,7 +141,7 @@ export async function retry<T>(
 export interface PollOptions {
     /** Milliseconds between checks. */
     interval: number;
-    /** Total milliseconds before giving up and rejecting with a `TimeoutError`. */
+    /** Total milliseconds before giving up and rejecting with a `TimeoutError` (including a check that is still running). Use `Infinity` to never give up. */
     timeout: number;
 }
 
@@ -145,10 +171,15 @@ export async function pollUntil<T>(
         if (result) {
             return result as T;
         }
+
+        // don't sleep past the deadline, nor start a check after it (it would have no time left, so its result would be thrown away)
+        const remaining = deadline - Date.now();
+        if (remaining > 0) {
+            await sleep(Math.min(interval, remaining));
+        }
         if (Date.now() >= deadline) {
             throw new TimeoutError("pollUntil timed out");
         }
-        await sleep(interval);
     }
 }
 

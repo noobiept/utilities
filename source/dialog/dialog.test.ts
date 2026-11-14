@@ -442,6 +442,29 @@ describe("Dialog", () => {
         expect(dialog.isOpened()).toBe(false);
     });
 
+    test("Opening from an element's 'keydown' listener doesn't close it on the release (regression: the key press still reached the dialog's listener).", () => {
+        ["Enter", "Escape"].forEach((key) => {
+            const input = document.createElement("input");
+            document.body.appendChild(input);
+
+            const dialog = new Dialog({ title: "", body: "" });
+            input.addEventListener("keydown", (event) => {
+                if (event.key === key) {
+                    dialog.open();
+                }
+            });
+
+            const keyDown = keyboardEvent(input, "keydown", key);
+            keyboardEvent(input, "keyup", key);
+            expect(keyDown.defaultPrevented).toBe(false);
+            expect(dialog.isOpened()).toBe(true);
+
+            // the next key press closes it
+            pressKey(document.body, key);
+            expect(dialog.isOpened()).toBe(false);
+        });
+    });
+
     test("The 'enter' key is left to the controls inside the dialog.", () => {
         const body = document.createElement("div");
         const textarea = document.createElement("textarea");
