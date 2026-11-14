@@ -2,7 +2,7 @@
 
 ❗ = breaking change
 
-# Unreleased
+# v8.0.0 - 14/11/2026
 
 ## Changed
 
@@ -10,25 +10,33 @@
 - `Timer` now counts from monotonic elapsed time instead of assuming exact intervals, so it no longer drifts away from real elapsed time (inexact intervals, throttled background tabs, etc.).
 - `Timer.start()` no longer mutates the given arguments object.
 - ❗ `EventDispatcher` now calls the listeners in the order they were added (it used to call them in reverse order).
-- `Dialog` leaves the 'enter' key to the controls inside it (buttons, links, form fields), and a modal dialog doesn't let the 'enter' key reach the page behind it.
-- `Preload` now dispatches the `error` event for HTTP error statuses too (404, 500, etc.), not only for network errors.
+- `Dialog` leaves the 'enter' key to the controls that handle it themselves (buttons, links, form fields), in the dialog (also inside a shadow DOM) or in something opened on top of it (like a popup), and a modal dialog doesn't let the 'enter' key reach the page behind it.
+- ❗ A modal `Dialog` now makes the page behind it `inert` while it's opened (it was only covered by the overlay, so it could still take the focus), and moves the focus into the dialog (giving it back when closed). The dialog gets a `tabindex="-1"` for that, and the included `dialog.css` hides its focus outline.
+- ❗ `Preload` now dispatches the `error` event for every file that fails, not only on network errors: HTTP error statuses (404, 500, etc.), and files that can't be parsed (invalid json) or decoded (images, audio). Its data now also has the request's `status`, and the reason in `error` when a file couldn't be parsed/decoded.
+- ❗ `pollUntil`'s `timeout` now also limits the checks: it rejects at the deadline, without waiting for the next interval or starting a check after it (so with a `timeout` of `0`, an async `check` times out).
 - The included `dialog.css` now blurs the page behind a modal dialog (it was blurring the overlay itself, with no visible effect), and the line above the buttons is visible.
 - Replaced `npm-run-all` with `npm-run-all2` (maintained fork), and dropped `rollup-plugin-copy` (dev dependencies).
+- Updated the runtimes and package dependencies to their latest versions (TypeScript stays on v6, the tooling doesn't support v7 yet).
 
 ## Fixed
 
 - `timeToString` now shows negative times with a minus sign (`-00:01:30`), instead of values like `-1:-1:-1.5`.
 - `pollUntil` now times out even when a `check` never settles (it waited forever).
+- `pollUntil` and `withTimeout` no longer time out right away with an `Infinity` timeout, or one longer than about 24.8 days (the longest `setTimeout` delay).
+- `pollUntil` and `throttle` are no longer affected by changes to the system clock (turning it forward timed out `pollUntil`, turning it back delayed the `throttle` trailing call).
 - `throttle` no longer runs a late trailing call (with outdated arguments) after a newer call.
 - `Dialog` keyboard shortcuts only close the dialog on top when several modal dialogs are opened (a single key press closed all of them).
 - `Dialog.close()` no longer throws when its elements were already taken out of the page.
 - `Preload` now gets the file type from the file name only, ignoring the case and the url's query/hash (`image.PNG` or `data.json?v=2` were loaded as text).
 - `Preload` now dispatches the `error`/`abort` events before the `complete` event.
-- The type declarations now work with `moduleResolution` `node16`/`nodenext` (the re-exports were missing the file extensions, so no exports were visible).
-- `Dialog` opened with the 'enter' key no longer closes right away (it was closing on the release of that same key).
-- `EventDispatcher` no longer skips or repeats listeners when one is removed during a dispatch.
+- The type declarations now work with `moduleResolution` `node16`/`nodenext` (the re-exports were missing the file extensions, so no exports were visible), and CommonJS projects get their own declarations (`.d.cts`), since the ES module ones failed with `TS1479` on `node16`.
+- `Dialog` opened with a key press (on a button, or from a `keydown` listener) no longer closes right away (it was closing on that same key).
+- `Dialog` keyboard shortcuts ignore a key that something else already took care of (a widget that calls `preventDefault()`, or an input method composing text), and releasing a key after another modal dialog opened on top no longer closes the one below.
+- Closing a `Dialog` whose `open()` failed half way no longer takes another dialog off the keyboard shortcuts.
+- `EventDispatcher` no longer skips or repeats listeners when one is removed (or removed and added again) during a dispatch.
 - `Preload` now reports each audio file only once — `canplay` firing again later (after seeking for example) dispatched the `fileload`/`complete` events again.
 - `Preload` now fails json files with invalid content (they were loaded as `null`).
+- `Preload` still dispatches the `complete` event when a `fileload`/`error`/`abort` listener throws (the file wasn't counted).
 - `Preload` no longer empties the `loaded_ids`/`failed_ids` arrays of the `complete` event after it's dispatched, and more files can be loaded from the `complete` listener.
 - `timeToString` no longer shows 60 seconds when the seconds round up — `59999` now gives `1 minute` instead of `60 seconds` (and `00:01:00` instead of `00:00:60` with the `daytime` format).
 - `timeToString` now pads fractional seconds correctly on the `daytime`/`partial_daytime` formats (`00:00:01.5` instead of `00:00:1.5`).
