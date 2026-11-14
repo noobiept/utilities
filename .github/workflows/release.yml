@@ -13,14 +13,26 @@ jobs:
     publish:
         runs-on: ubuntu-24.04
         steps:
-            - uses: actions/checkout@v4
+            # the actions are pinned to a commit (a moved tag can't change what runs), since this job can get a token to publish to npm
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
             - name: Install pnpm
-              uses: pnpm/action-setup@v4
-            - uses: actions/setup-node@v4
+              uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+            # without the dependencies cache, so a cache saved by another workflow can't end up in the release
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
               with:
                   node-version: "26.x"
-                  cache: "pnpm"
                   registry-url: "https://registry.npmjs.org"
+
+            # fail right away when the tag doesn't match the version that would be published
+            - name: Check that the tag matches the package version
+              run: |
+                  version="v$(node -p 'require("./package.json").version')"
+                  if [ "$GITHUB_REF_NAME" != "$version" ]; then
+                      echo "::error::The tag ($GITHUB_REF_NAME) doesn't match the package version ($version)."
+                      exit 1
+                  fi
 
             # the latest npm (`npm stage` needs 11.15.0 or newer)
             - run: npm install --global npm@12
