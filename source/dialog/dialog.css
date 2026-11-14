@@ -20,6 +20,11 @@
     z-index: 101;
 }
 
+/* a modal dialog takes the focus when opened, it's not a control so it doesn't need the outline */
+.dialog:focus {
+    outline: none;
+}
+
 .dialog-center {
     top: 50%;
     left: 50%;

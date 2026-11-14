@@ -16,12 +16,16 @@ afterEach(() => {
 function keyboardEvent(
     target: EventTarget,
     type: "keydown" | "keyup",
-    key: string
+    key: string,
+    init?: KeyboardEventInit
 ) {
+    // like the browser's keyboard events (which also get out of a shadow DOM)
     const event = new KeyboardEvent(type, {
         key,
         bubbles: true,
         cancelable: true,
+        composed: true,
+        ...init,
     });
     target.dispatchEvent(event);
 
@@ -505,6 +509,150 @@ describe("Dialog", () => {
         expect(
             keyboardEvent(pageButton, "keydown", "Enter").defaultPrevented
         ).toBe(false);
+    });
+
+    test("The 'enter' key is left to the controls inside a shadow DOM (regression: the event's target is the host element, so it closed the dialog).", () => {
+        const host = document.createElement("div");
+        const textarea = document.createElement("textarea");
+        host.attachShadow({ mode: "open" }).appendChild(textarea);
+
+        const dialog = new Dialog({ title: "", body: host });
+        dialog.open();
+
+        const keyDown = keyboardEvent(textarea, "keydown", "Enter");
+        keyboardEvent(textarea, "keyup", "Enter");
+        expect(keyDown.defaultPrevented).toBe(false);
+        expect(dialog.isOpened()).toBe(true);
+    });
+
+    test("The 'enter' key is left to the controls opened on top of a modal dialog (regression: a popup outside of the dialog closed it).", () => {
+        const dialog = new Dialog({ title: "", body: "" });
+        dialog.open();
+
+        // a popup added to the page after the dialog was opened (like an autocomplete list), and a non-modal dialog on top
+        const popupInput = document.createElement("input");
+        document.body.appendChild(popupInput);
+        const nonModal = new Dialog({ title: "", body: "", modal: false });
+        nonModal.open();
+
+        [popupInput, nonModal.buttons!.querySelector("button")!].forEach(
+            (control) => {
+                const keyDown = keyboardEvent(control, "keydown", "Enter");
+                keyboardEvent(control, "keyup", "Enter");
+
+                expect(keyDown.defaultPrevented).toBe(false);
+                expect(dialog.isOpened()).toBe(true);
+            }
+        );
+    });
+
+    test("A key that something else already took care of doesn't close the dialog (regression: a widget's own 'escape', or an input method composing text, closed it).", () => {
+        // a widget that closes its own popup on 'escape'
+        const input = document.createElement("input");
+        input.addEventListener("keydown", (event) => {
+            event.preventDefault();
+        });
+
+        const dialog = new Dialog({ title: "", body: input });
+        dialog.open();
+
+        pressKey(input, "Escape");
+        expect(dialog.isOpened()).toBe(true);
+
+        // 'escape' cancels the text that an input method is composing
+        keyboardEvent(document.body, "keydown", "Escape", {
+            isComposing: true,
+        });
+        keyboardEvent(document.body, "keyup", "Escape");
+        expect(dialog.isOpened()).toBe(true);
+
+        pressKey(document.body, "Escape");
+        expect(dialog.isOpened()).toBe(false);
+    });
+
+    test("The page behind a modal dialog is inert, and the focus moves into the dialog (regression: the focused button behind it could open another dialog).", () => {
+        const opener = document.createElement("button");
+        const alreadyInert = document.createElement("div");
+        alreadyInert.setAttribute("inert", "");
+        document.body.append(opener, alreadyInert);
+        opener.focus();
+
+        const dialog = new Dialog({ title: "", body: "" });
+        dialog.open();
+
+        expect(opener.hasAttribute("inert")).toBe(true);
+        expect(dialog.container.hasAttribute("inert")).toBe(false);
+        expect(
+            document.querySelector(".dialogOverlay")!.hasAttribute("inert")
+        ).toBe(false);
+        expect(document.activeElement).toBe(dialog.container);
+
+        dialog.close();
+        expect(opener.hasAttribute("inert")).toBe(false);
+        expect(alreadyInert.hasAttribute("inert")).toBe(true);
+
+        // the focus goes back to where it was
+        expect(document.activeElement).toBe(opener);
+    });
+
+    test("The page stays inert until the last modal dialog is closed, in any order.", () => {
+        const page = document.createElement("div");
+        document.body.appendChild(page);
+
+        const first = new Dialog({ title: "", body: "" });
+        const second = new Dialog({ title: "", body: "" });
+        first.open();
+        second.open();
+        expect(page.hasAttribute("inert")).toBe(true);
+        expect(first.container.hasAttribute("inert")).toBe(true);
+        expect(second.container.hasAttribute("inert")).toBe(false);
+
+        // closing the one below first
+        first.close();
+        expect(page.hasAttribute("inert")).toBe(true);
+
+        // opened again, now on top
+        first.open();
+        expect(first.container.hasAttribute("inert")).toBe(false);
+        expect(second.container.hasAttribute("inert")).toBe(true);
+
+        first.close();
+        expect(second.container.hasAttribute("inert")).toBe(false);
+        expect(page.hasAttribute("inert")).toBe(true);
+
+        second.close();
+        expect(page.hasAttribute("inert")).toBe(false);
+    });
+
+    test("Releasing a key after another modal dialog opened on top doesn't close the one below (regression: it closed it under the other one).", () => {
+        const first = new Dialog({ title: "", body: "" });
+        const second = new Dialog({ title: "", body: "" });
+        first.open();
+
+        keyboardEvent(document.body, "keydown", "Escape");
+        second.open();
+        keyboardEvent(document.body, "keyup", "Escape");
+
+        expect(first.isOpened()).toBe(true);
+        expect(second.isOpened()).toBe(true);
+    });
+
+    test("Closing a dialog that failed to open doesn't affect the other dialogs (regression: it took another one off the keyboard shortcuts).", () => {
+        const first = new Dialog({ title: "", body: "" });
+        const second = new Dialog({ title: "", body: "" });
+        first.open();
+
+        const append = vi
+            .spyOn(document.body, "appendChild")
+            .mockImplementationOnce(() => {
+                throw new Error("failed");
+            });
+        expect(() => second.open()).toThrow("failed");
+        append.mockRestore();
+        second.close();
+
+        pressKey(document.body, "Escape");
+        expect(first.isOpened()).toBe(false);
     });
 
     test("A non-modal dialog doesn't have keyboard shortcuts.", () => {

@@ -28,12 +28,24 @@ const OPENED_MODALS: Dialog[] = [];
 /**
  * Whether the element does something itself on the 'enter' key (activates a button/link, submits a form, adds a new line, etc).
  */
-function handlesEnter(element: Node) {
+function handlesEnter(element: EventTarget) {
     return (
         element instanceof HTMLElement &&
         (element.isContentEditable ||
             element.matches("button, a[href], input, select, textarea"))
     );
+}
+
+/**
+ * Whether the event comes from the page behind a modal dialog (which is inert while the dialog is opened).
+ */
+function isBehindModal(event: Event) {
+    return event
+        .composedPath()
+        .some(
+            (target) =>
+                target instanceof Element && target.hasAttribute("inert")
+        );
 }
 
 /**
@@ -66,6 +78,8 @@ export class Dialog {
     };
     private pressedKey?: string; // shortcut key that was pressed while the dialog was opened (and not released yet)
     private keyDownsWhileOpened = new WeakSet<Event>(); // the 'keydown' events that started after the dialog was opened
+    private inertElements: Element[] = []; // the elements behind the modal dialog that it made inert
+    private previousFocus?: HTMLElement; // the element that had the focus before the modal dialog was opened
     private opened: boolean;
 
     constructor(args: DialogArgs) {
@@ -86,6 +100,9 @@ export class Dialog {
         if (args.modal !== false) {
             this.overlay = this.createOverlay(args.closeOnOverlay);
             this.keyboardShortcuts = this.setupKeyboardShortcuts();
+
+            // so it can take the focus when opened
+            this.container.tabIndex = -1;
         }
     }
 
@@ -194,7 +211,16 @@ export class Dialog {
             }
 
             // only the dialog on top reacts, otherwise a single key press would close all the opened dialogs
-            if (OPENED_MODALS[OPENED_MODALS.length - 1] !== this) {
+            if (!this.isOnTop()) {
+                return;
+            }
+
+            // something else already took care of the key (a widget in the dialog, or an input method that is composing text, where 229 is for Safari)
+            if (
+                event.defaultPrevented ||
+                event.isComposing ||
+                event.keyCode === 229
+            ) {
                 return;
             }
 
@@ -204,16 +230,16 @@ export class Dialog {
                     break;
 
                 case "Enter":
-                    // leave it to the controls inside the dialog that handle the 'enter' key themselves
+                    // leave it to the controls that handle the 'enter' key themselves (in the dialog, or in something opened on top of it, like a popup), but not to the ones in the page behind it
+                    // the first target of the path is the element where it started, the event's 'target' is the host element when it comes from a shadow DOM
                     if (
-                        event.target instanceof Node &&
-                        this.container.contains(event.target) &&
-                        handlesEnter(event.target)
+                        handlesEnter(event.composedPath()[0]) &&
+                        !isBehindModal(event)
                     ) {
                         return;
                     }
 
-                    // it's a modal, so don't let the key reach the page behind it (it would activate the button that opened the dialog again, for example)
+                    // the key is for the dialog, so it doesn't do anything else
                     event.preventDefault();
                     this.pressedKey = event.key;
                     break;
@@ -224,45 +250,103 @@ export class Dialog {
         const keyUp = (event: KeyboardEvent) => {
             if (event.key === this.pressedKey) {
                 this.pressedKey = undefined;
-                this.close();
+
+                // unless another dialog was opened on top of this one in the meantime
+                if (this.isOnTop()) {
+                    this.close();
+                }
             }
         };
 
         return { markKeyDown, keyDown, keyUp };
     }
 
-    private addKeyboardShortcuts() {
-        if (this.keyboardShortcuts) {
-            this.pressedKey = undefined;
-            this.keyDownsWhileOpened = new WeakSet();
-            OPENED_MODALS.push(this);
-            window.addEventListener(
-                "keydown",
-                this.keyboardShortcuts.markKeyDown,
-                { capture: true }
-            );
-            document.addEventListener(
-                "keydown",
-                this.keyboardShortcuts.keyDown
-            );
-            document.addEventListener("keyup", this.keyboardShortcuts.keyUp);
-        }
+    private isOnTop() {
+        return OPENED_MODALS[OPENED_MODALS.length - 1] === this;
     }
 
-    private removeKeyboardShortcuts() {
-        if (this.keyboardShortcuts) {
-            OPENED_MODALS.splice(OPENED_MODALS.indexOf(this), 1);
-            window.removeEventListener(
-                "keydown",
-                this.keyboardShortcuts.markKeyDown,
-                { capture: true }
-            );
-            document.removeEventListener(
-                "keydown",
-                this.keyboardShortcuts.keyDown
-            );
-            document.removeEventListener("keyup", this.keyboardShortcuts.keyUp);
+    /**
+     * A modal dialog takes over the page: the page behind it is made inert (it can't take the focus, or be clicked), the focus moves into the dialog, and it reacts to the keyboard shortcuts.
+     */
+    private addModal() {
+        if (!this.keyboardShortcuts) {
+            return;
         }
+
+        this.pressedKey = undefined;
+        this.keyDownsWhileOpened = new WeakSet();
+        OPENED_MODALS.push(this);
+        window.addEventListener("keydown", this.keyboardShortcuts.markKeyDown, {
+            capture: true,
+        });
+        document.addEventListener("keydown", this.keyboardShortcuts.keyDown);
+        document.addEventListener("keyup", this.keyboardShortcuts.keyUp);
+
+        const focused = document.activeElement;
+        this.previousFocus =
+            focused instanceof HTMLElement && focused !== document.body
+                ? focused
+                : undefined;
+
+        // only what is in the page right now, so what opens on top of the dialog later (like a popup) still works, and the elements that were already inert are left alone
+        this.overlay?.removeAttribute("inert"); // a dialog that was on top of this one before might have left it inert
+        this.container.removeAttribute("inert");
+
+        for (const element of document.body.children) {
+            if (
+                element !== this.overlay &&
+                element !== this.container &&
+                !element.hasAttribute("inert")
+            ) {
+                element.setAttribute("inert", "");
+                this.inertElements.push(element);
+            }
+        }
+
+        this.container.focus({ preventScroll: true });
+    }
+
+    private removeModal() {
+        if (!this.keyboardShortcuts) {
+            return;
+        }
+
+        // it's not on the list if the opening failed half way
+        const index = OPENED_MODALS.indexOf(this);
+        if (index !== -1) {
+            OPENED_MODALS.splice(index, 1);
+        }
+
+        window.removeEventListener(
+            "keydown",
+            this.keyboardShortcuts.markKeyDown,
+            { capture: true }
+        );
+        document.removeEventListener("keydown", this.keyboardShortcuts.keyDown);
+        document.removeEventListener("keyup", this.keyboardShortcuts.keyUp);
+
+        // with another modal dialog still opened on top of this one, the page stays inert until that one closes as well
+        const above = index !== -1 ? OPENED_MODALS[index] : undefined;
+
+        if (above) {
+            above.inertElements.push(...this.inertElements);
+        } else {
+            this.inertElements.forEach((element) =>
+                element.removeAttribute("inert")
+            );
+        }
+        this.inertElements = [];
+
+        // give the focus back (unless it already went somewhere else)
+        const focused = document.activeElement;
+
+        if (
+            this.previousFocus?.isConnected &&
+            (focused === null || focused === document.body)
+        ) {
+            this.previousFocus.focus({ preventScroll: true });
+        }
+        this.previousFocus = undefined;
     }
 
     /**
@@ -279,7 +363,7 @@ export class Dialog {
         }
 
         document.body.appendChild(this.container);
-        this.addKeyboardShortcuts();
+        this.addModal();
     }
 
     /**
@@ -295,8 +379,8 @@ export class Dialog {
         this.overlay?.remove();
         this.container.remove();
 
-        // clean up the event listeners
-        this.removeKeyboardShortcuts();
+        // clean up the event listeners, and give the page back
+        this.removeModal();
 
         // call the given callback
         if (this.onClose) {

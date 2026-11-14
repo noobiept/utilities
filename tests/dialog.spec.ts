@@ -54,6 +54,27 @@ test.describe("Dialog", () => {
         await expect(page.locator("#ModalDialogCount")).toHaveText("1");
     });
 
+    test("Should keep the keyboard away from the page behind a modal dialog.", async ({
+        page,
+    }) => {
+        const opener = page.locator("#OpenModalDialog");
+        await opener.click();
+        await expect(page.locator(".dialog")).toBeVisible();
+
+        // the focus moved into the dialog, so 'space' doesn't activate the button that opened it (regression: it opened another dialog)
+        await page.keyboard.press("Space");
+        await expect(page.locator(".dialog")).toHaveCount(1);
+
+        // the page behind it is inert, so it can't take the focus
+        await opener.focus();
+        await expect(opener).not.toBeFocused();
+
+        // it gets the focus back once the dialog is closed
+        await page.keyboard.press("Escape");
+        await expect(page.locator(".dialog")).toHaveCount(0);
+        await expect(opener).toBeFocused();
+    });
+
     test("Should apply the dialog stylesheet.", async ({ page }) => {
         await page.locator("#OpenModalDialog").click();
         const dialog = page.locator(".dialog");
