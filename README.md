@@ -152,3 +152,10 @@ Or load it directly with a `script` tag — everything is exposed under the glob
 - `pnpm run documentation` (build the documentation into the `/docs` directory)
 
 Check `package.json` scripts section for more information.
+
+# Release
+
+1. Run `pnpm run everything` (tests, build and documentation), and try the dev pages (`pnpm run dev`) in the different browsers.
+2. Update the version in `package.json` and the `CHANGELOG.md`, and commit.
+3. Tag the commit and push it (`git tag vX.Y.Z` and `git push origin master vX.Y.Z`).
+4. The `release` workflow stages the package on npm (with provenance), then approve it on [npmjs.com](https://www.npmjs.com/package/@drk4/utilities) to publish it.
